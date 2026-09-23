@@ -1,0 +1,2221 @@
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  22/09/2026 21:34:10 ::1 GET /viewer
+ HTTP  22/09/2026 21:34:10 ::1 Returned 200 in 18 ms
+ HTTP  22/09/2026 21:34:10 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:34:10 ::1 Returned 304 in 4 ms
+ HTTP  22/09/2026 21:34:18 ::1 GET /favorites
+ HTTP  22/09/2026 21:34:18 ::1 Returned 200 in 2 ms
+ HTTP  22/09/2026 21:34:18 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:34:18 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:34:22 ::1 GET /viewer
+ HTTP  22/09/2026 21:34:22 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:34:22 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:34:22 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:34:33 ::1 GET /favorites
+ HTTP  22/09/2026 21:34:33 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:34:33 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:34:33 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:34:33 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:34:33 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:34:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:34:46 ::1 Returned 304 in 3 ms
+ HTTP  22/09/2026 21:34:58 ::1 GET /Portfolio/Components/1.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:34:58 ::1 Returned 304 in 3 ms
+ HTTP  22/09/2026 21:35:02 ::1 GET /Research/Components/1.%20Claude%20Fable%205.1%20Low
+ HTTP  22/09/2026 21:35:02 ::1 Returned 304 in 4 ms
+ HTTP  22/09/2026 21:35:07 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:07 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:13 ::1 GET /favorites
+ HTTP  22/09/2026 21:35:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:16 ::1 GET /viewer
+ HTTP  22/09/2026 21:35:16 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:35:16 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:16 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:21 ::1 GET /favorites
+ HTTP  22/09/2026 21:35:21 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:35:21 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:21 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:21 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:21 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:25 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:25 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:28 ::1 GET /viewer
+ HTTP  22/09/2026 21:35:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:32 ::1 GET /favorites
+ HTTP  22/09/2026 21:35:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:34 ::1 GET /viewer
+ HTTP  22/09/2026 21:35:34 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:35:34 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:35:34 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:24 ::1 GET /favorites
+ HTTP  22/09/2026 21:40:24 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:25 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:25 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:25 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:25 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:40:35 ::1 GET /favorites
+ HTTP  22/09/2026 21:40:35 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:39 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:39 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:40 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:40 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:50 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:50 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:53 ::1 GET /favorites
+ HTTP  22/09/2026 21:40:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:40:59 ::1 GET /viewer
+ HTTP  22/09/2026 21:40:59 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:40:59 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:40:59 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:41:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:41:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:41:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:41:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:52 ::1 GET /favorites
+ HTTP  22/09/2026 21:41:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:41:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:41:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:54 ::1 GET /viewer
+ HTTP  22/09/2026 21:41:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:41:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:41:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:55 ::1 GET /favorites
+ HTTP  22/09/2026 21:41:55 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:56 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:41:56 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:41:56 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:41:56 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:42:17 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202.html
+ HTTP  22/09/2026 21:42:17 ::1 Returned 301 in 1 ms
+ HTTP  22/09/2026 21:42:17 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:42:17 ::1 Returned 200 in 4 ms
+ HTTP  22/09/2026 21:42:22 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash.html
+ HTTP  22/09/2026 21:42:22 ::1 Returned 301 in 0 ms
+ HTTP  22/09/2026 21:42:22 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:42:22 ::1 Returned 200 in 4 ms
+ HTTP  22/09/2026 21:42:25 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs.html
+ HTTP  22/09/2026 21:42:25 ::1 Returned 301 in 1 ms
+ HTTP  22/09/2026 21:42:25 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 21:42:25 ::1 Returned 200 in 5 ms
+ HTTP  22/09/2026 21:42:37 ::1 GET /Markets/Components/6.%20Run%2015.html
+ HTTP  22/09/2026 21:42:37 ::1 Returned 301 in 0 ms
+ HTTP  22/09/2026 21:42:37 ::1 GET /Markets/Components/6.%20Run%2015
+ HTTP  22/09/2026 21:42:37 ::1 Returned 200 in 4 ms
+ HTTP  22/09/2026 21:42:41 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:42:41 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:42:45 ::1 GET /Research/Components/1.%20Claude%20Fable%205.1%20Low
+ HTTP  22/09/2026 21:42:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:42:47 ::1 GET /Research/Components/2.%20Claude%20Opus%204.8%20Thinking
+ HTTP  22/09/2026 21:42:47 ::1 Returned 304 in 5 ms
+ HTTP  22/09/2026 21:42:50 ::1 GET /Research/Components/3.%20Claude%20Opus%205%20Max
+ HTTP  22/09/2026 21:42:50 ::1 Returned 304 in 4 ms
+ HTTP  22/09/2026 21:42:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:42:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:42:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:42:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:15 ::1 GET /favorites
+ HTTP  22/09/2026 21:43:15 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:15 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:15 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:15 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:15 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:17 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:43:17 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:28 ::1 GET /favorites
+ HTTP  22/09/2026 21:43:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:29 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:43:29 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:43:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:43:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:42 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:45:42 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:45:53 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:45:53 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:13 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:46:45 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:46:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:45 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:52:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:52:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:52:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:27 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:27 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:53:28 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:28 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:53:49 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:53:49 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:32 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:32 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:33 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:33 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:45 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:45 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:54:46 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:54:46 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:56:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:56:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:03 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:57 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:57:58 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:57:58 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:51 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:58:52 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:58:52 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 21:59:54 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 21:59:54 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:10 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:10 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:10 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:10 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:10 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:10 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:00:11 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:00:11 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:12 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:12 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:13 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:13 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:13 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:06:13 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:13 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:06:13 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:06:13 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:05 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:07:05 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:07:06 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:07:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:04 ::1 GET /Markets/Components/6.%20Run%2015
+ HTTP  22/09/2026 22:17:04 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:41 ::1 GET /favorites
+ HTTP  22/09/2026 22:17:41 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:17:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:42 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:17:42 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:17:44 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:17:44 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:45 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:17:45 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:47 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:47 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:47 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:47 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:17:47 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:47 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:17:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:49 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:17:49 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:50 ::1 GET /viewer
+ HTTP  22/09/2026 22:17:50 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:51 ::1 GET /Markets/Components/6.%20Run%2015
+ HTTP  22/09/2026 22:17:51 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:53 ::1 GET /Markets/Page-Layout/1.%20Claude%20Opus%205
+ HTTP  22/09/2026 22:17:53 ::1 Returned 304 in 8 ms
+ HTTP  22/09/2026 22:17:55 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:17:55 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:17:56 ::1 GET /Research/Components/1.%20Claude%20Fable%205.1%20Low
+ HTTP  22/09/2026 22:17:56 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:17:56 ::1 GET /Portfolio/Components/1.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:17:56 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:17:57 ::1 GET /Research/Components/1.%20Claude%20Fable%205.1%20Low
+ HTTP  22/09/2026 22:17:57 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:01 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:01 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/2.%20Claude%20Opus%205%20Medium
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/3.%20Mimo%20v2.6%20Flash%20Vol%202
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:02 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:02 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/4.%20Mimo%20v2.6%20Flash
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/5.%20Meridian%20120%20Designs
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:03 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:18:03 ::1 Returned 304 in 0 ms
+ HTTP  22/09/2026 22:18:05 ::1 GET /Research/Components/2.%20Claude%20Opus%204.8%20Thinking
+ HTTP  22/09/2026 22:18:05 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:06 ::1 GET /Research/Components/1.%20Claude%20Fable%205.1%20Low
+ HTTP  22/09/2026 22:18:06 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:22 ::1 GET /Research/Components/2.%20Claude%20Opus%204.8%20Thinking
+ HTTP  22/09/2026 22:18:22 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:18:29 ::1 GET /Research/Components/4.%20GLM%205.3%20Max.html
+ HTTP  22/09/2026 22:18:29 ::1 Returned 301 in 1 ms
+ HTTP  22/09/2026 22:18:29 ::1 GET /Research/Components/4.%20GLM%205.3%20Max
+ HTTP  22/09/2026 22:18:29 ::1 Returned 200 in 11 ms
+ HTTP  22/09/2026 22:18:45 ::1 GET /Research/Components/5.%20Grok%204.7%20xHigh.html
+ HTTP  22/09/2026 22:18:45 ::1 Returned 301 in 0 ms
+ HTTP  22/09/2026 22:18:45 ::1 GET /Research/Components/5.%20Grok%204.7%20xHigh
+ HTTP  22/09/2026 22:18:45 ::1 Returned 200 in 11 ms
+ HTTP  22/09/2026 22:19:11 ::1 GET /Research/Components/6.%20u2%20Flash.html
+ HTTP  22/09/2026 22:19:11 ::1 Returned 301 in 0 ms
+ HTTP  22/09/2026 22:19:11 ::1 GET /Research/Components/6.%20u2%20Flash
+ HTTP  22/09/2026 22:19:11 ::1 Returned 200 in 4 ms
+ HTTP  22/09/2026 22:19:11 ::1 GET /src/main.tsx
+ HTTP  22/09/2026 22:19:11 ::1 Returned 404 in 3 ms
+ HTTP  22/09/2026 22:19:12 ::1 GET /Research/Components/7.%20Meridian%20Specimen%20Book.html
+ HTTP  22/09/2026 22:19:12 ::1 Returned 301 in 0 ms
+ HTTP  22/09/2026 22:19:12 ::1 GET /Research/Components/7.%20Meridian%20Specimen%20Book
+ HTTP  22/09/2026 22:19:12 ::1 Returned 200 in 5 ms
+ HTTP  22/09/2026 22:19:14 ::1 GET /Research/Components/6.%20u2%20Flash
+ HTTP  22/09/2026 22:19:14 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:19:14 ::1 GET /src/main.tsx
+ HTTP  22/09/2026 22:19:14 ::1 Returned 404 in 1 ms
+ HTTP  22/09/2026 22:56:38 ::1 GET /viewer
+ HTTP  22/09/2026 22:56:38 ::1 Returned 304 in 14 ms
+ HTTP  22/09/2026 22:56:39 ::1 GET /Research/Components/6.%20u2%20Flash
+ HTTP  22/09/2026 22:56:39 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:56:39 ::1 GET /src/main.tsx
+ HTTP  22/09/2026 22:56:39 ::1 Returned 404 in 4 ms
+ HTTP  22/09/2026 22:56:41 ::1 GET /favorites
+ HTTP  22/09/2026 22:56:41 ::1 Returned 304 in 1 ms
+ HTTP  22/09/2026 22:56:41 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:56:41 ::1 Returned 304 in 2 ms
+ HTTP  22/09/2026 22:56:41 ::1 GET /Markets/Components/1.%20Claude%20Opus%205%20Low
+ HTTP  22/09/2026 22:56:41 ::1 Returned 304 in 1 ms
