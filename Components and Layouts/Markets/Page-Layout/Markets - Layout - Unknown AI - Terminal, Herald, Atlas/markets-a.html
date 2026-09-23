@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="a">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meridian Terminal — Markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="engcss">
+.ch{display:block}
+.ch svg{display:block;width:100%;height:auto;overflow:visible}
+.gl{stroke:var(--gl,rgba(255,255,255,.07));stroke-width:1}
+.ax{fill:var(--mute);font-family:var(--mono);font-size:10px}
+.lb{fill:var(--ink);font-family:var(--sans);font-size:10.5px;font-weight:600}
+.ln{fill:none;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.s-acc{stroke:var(--acc)} .s-up{stroke:var(--up)} .s-dn{stroke:var(--dn)}
+.s-cy{stroke:var(--cy)} .s-mg{stroke:var(--mg)} .s-mu{stroke:var(--mute)} .s-ink{stroke:var(--ink)}
+.f-acc{fill:var(--acc)} .f-up{fill:var(--up)} .f-dn{fill:var(--dn)}
+.f-cy{fill:var(--cy)} .f-mg{fill:var(--mg)} .f-mu{fill:var(--mute)} .f-ink{fill:var(--ink)}
+.f-none{fill:none}
+.cellh,.cellt{cursor:default}
+</style>
+<style>
+:root{
+  --bg:#0B0D0E; --panel:#111417; --panel2:#161B1F; --line:#222A2E; --line2:#2E383D;
+  --ink:#E8EBE9; --mute:#7E8B90; --acc:#FFB000; --up:#26C08A; --dn:#FF5A5E;
+  --cy:#5BC8E8; --mg:#C792EA; --gl:rgba(255,255,255,.07);
+  --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'IBM Plex Sans Condensed',system-ui,sans-serif;
+  --rail:178px; --top:44px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.4;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+p{margin:0} a{color:inherit;text-decoration:none} button{font-family:inherit;color:inherit;cursor:pointer}
+.m{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.up{color:var(--up)} .dn{color:var(--dn)} .ac{color:var(--acc)} .cy{color:var(--cy)} .mg{color:var(--mg)} .mu{color:var(--mute)}
+.k{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.k2{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* top command bar */
+.top{position:fixed;top:0;left:0;right:0;height:var(--top);background:#0E1113;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 12px;z-index:70}
+.brand{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.2em;color:var(--acc);flex:none}
+.brand span{color:var(--mute);letter-spacing:.14em}
+.cmd{flex:none;display:flex;align-items:center;gap:8px;border:1px solid var(--line2);background:#0A0C0D;padding:4px 9px;min-width:210px}
+.cmd b{font-family:var(--mono);color:var(--acc);font-size:11px;font-weight:500}
+.cmd i{font-style:normal;font-size:11px;color:var(--mute)}
+.tape{flex:1;overflow:hidden;white-space:nowrap;font-family:var(--mono);font-size:11.5px;min-width:0}
+.tape>div{display:inline-block;animation:sl 52s linear infinite}
+.tape:hover>div{animation-play-state:paused}
+.tape span{padding:0 13px}
+@keyframes sl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.clock{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px}
+.pill{border:1px solid var(--up);color:var(--up);padding:2px 7px;font-size:9.5px;font-weight:700;letter-spacing:.12em}
+.pill.off{border-color:var(--line2);color:var(--mute)}
+.sw2{border:1px solid var(--line2);padding:3px 8px;font-size:9.5px;letter-spacing:.1em;color:var(--mute);background:transparent}
+.sw2:hover{border-color:var(--acc);color:var(--acc)}
+
+/* rail */
+.rail{position:fixed;top:var(--top);left:0;bottom:0;width:var(--rail);background:#0E1113;border-right:1px solid var(--line);overflow-y:auto;padding:12px 0 24px;z-index:60}
+.rail::-webkit-scrollbar{width:6px}.rail::-webkit-scrollbar-thumb{background:var(--line2)}
+.rail .k{padding:12px 14px 6px}
+.nav a{display:flex;align-items:center;gap:9px;padding:7px 14px;font-size:12.5px;color:var(--mute);border-left:2px solid transparent}
+.nav a i{font-style:normal;font-family:var(--mono);font-size:10px;opacity:.7}
+.nav a:hover{background:#14181A;color:var(--ink)}
+.nav a.on{background:#151A1D;color:var(--ink);border-left-color:var(--acc);font-weight:600}
+.nav a.on i{color:var(--acc);opacity:1}
+.railfoot{margin-top:18px;padding:12px 14px;border-top:1px solid var(--line)}
+.railfoot a{display:block;font-size:11px;color:var(--mute);padding:3px 0}
+.railfoot a:hover{color:var(--acc)}
+
+main{margin-left:var(--rail);padding:calc(var(--top) + 12px) 14px 80px;max-width:1720px}
+.page{display:none}
+.page.on{display:block;animation:fu .28s ease}
+@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.phd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line2);padding-bottom:9px;margin-bottom:12px}
+.phd h1{font-size:21px;letter-spacing:.04em;text-transform:uppercase}
+.phd .sub{font-size:11.5px;color:var(--mute)}
+
+/* panels + grid */
+.g{display:grid;gap:10px;margin-bottom:10px}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.m21{grid-template-columns:minmax(0,2.1fr) minmax(0,1fr)}
+.m12{grid-template-columns:minmax(0,1fr) minmax(0,2.1fr)}
+.m11{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.m111{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)}
+@media(max-width:1240px){.c4,.c5,.m21,.m12,.m11,.m111,.c3{grid-template-columns:1fr}}
+.pn{border:1px solid var(--line);background:var(--panel);min-width:0;position:relative}
+.pn::before,.pn::after{content:"";position:absolute;width:5px;height:5px;border:1px solid var(--line2);pointer-events:none}
+.pn::before{left:-1px;top:-1px;border-right:0;border-bottom:0}
+.pn::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 10px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.ph .k2{color:var(--ink)}
+.pb{padding:11px;min-width:0}
+.pb.t{padding:7px 10px}
+.q2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.q3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.q4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cell{border:1px solid var(--line);padding:8px 9px;min-width:0;background:#0F1214}
+.cell .k{display:block;margin-bottom:4px}
+.v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;white-space:nowrap}
+.v.l{font-size:19px;font-weight:500;letter-spacing:-.03em}
+.v.xl{font-size:29px;font-weight:500;letter-spacing:-.04em;line-height:1.05}
+.v.xxl{font-size:40px;font-weight:600;letter-spacing:-.045em;line-height:1}
+.xs{font-size:10.5px} .sm{font-size:11.5px}
+.hr{height:1px;background:var(--line);margin:9px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:6px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.nm{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:1.5px 6px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap}
+.tag.f{border:0;color:#0B0D0E}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.pulse{animation:pu 1.7s ease-in-out infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.25}}
+.trk{position:relative;height:6px;background:#1B2124;overflow:hidden}
+.trk i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--acc);transition:width .8s cubic-bezier(.2,.75,.3,1)}
+.page.on .trk i{width:var(--w)}
+.tabs{display:inline-flex;border:1px solid var(--line2)}
+.tabs button{border:0;border-right:1px solid var(--line2);background:transparent;padding:4px 9px;
+  font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.tabs button:last-child{border-right:0}
+.tabs button.on{background:var(--acc);color:#0B0D0E}
+.tabs button:hover:not(.on){background:#1A1F22}
+[data-p]{display:none}[data-p].on{display:block;animation:fu .22s ease}
+[data-x]{cursor:pointer}
+[data-x]:hover{background:#14191C}
+.fold{display:none}.open>.fold{display:block}
+.cv{display:inline-block;font-size:8px;color:var(--mute);transition:transform .2s}
+.open .cv{transform:rotate(90deg)}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{text-align:left;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:600;
+  padding:0 8px 5px 0;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl td{padding:5.5px 8px 5.5px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th:last-child,.tbl td:last-child,.tbl .e{text-align:right;padding-right:0}
+.tbl tbody tr:hover{background:#14191C}
+.ovf{overflow-x:auto}.ovf::-webkit-scrollbar{height:5px}.ovf::-webkit-scrollbar-thumb{background:var(--line2)}
+.cap{font-size:11px;color:var(--mute)}
+.spark{min-width:0}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">MERIDIAN <span>/ TERMINAL</span></div>
+  <div class="cmd"><b>/</b><i>command — type a symbol…</i></div>
+  <div class="tape"><div>
+    <span>SPX <b class="m">6,528.44</b> <i class="dn m">−0.42%</i></span><span>NDX <b class="m">23,640.18</b> <i class="dn m">−0.90%</i></span>
+    <span>DJI <b class="m">45,882.10</b> <i class="up m">+0.14%</i></span><span>RUT <b class="m">2,286.44</b> <i class="dn m">−1.24%</i></span>
+    <span>VIX <b class="m">18.24</b> <i class="up m">+6.40%</i></span><span>DXY <b class="m">103.42</b> <i class="up m">+0.28%</i></span>
+    <span>EURUSD <b class="m">1.0784</b> <i class="dn m">−0.34%</i></span><span>USDJPY <b class="m">148.20</b> <i class="dn m">−0.42%</i></span>
+    <span>US10Y <b class="m">4.18%</b> <i class="up m">+3bp</i></span><span>WTI <b class="m">68.90</b> <i class="up m">+1.62%</i></span>
+    <span>GOLD <b class="m">2,946.2</b> <i class="up m">+0.74%</i></span><span>COPPER <b class="m">4.418</b> <i class="dn m">−0.88%</i></span>
+    <span>BTC <b class="m">96,420</b> <i class="dn m">−1.86%</i></span><span>SPX <b class="m">6,528.44</b> <i class="dn m">−0.42%</i></span>
+    <span>NDX <b class="m">23,640.18</b> <i class="dn m">−0.90%</i></span><span>DJI <b class="m">45,882.10</b> <i class="up m">+0.14%</i></span>
+    <span>RUT <b class="m">2,286.44</b> <i class="dn m">−1.24%</i></span><span>VIX <b class="m">18.24</b> <i class="up m">+6.40%</i></span>
+    <span>DXY <b class="m">103.42</b> <i class="up m">+0.28%</i></span><span>EURUSD <b class="m">1.0784</b> <i class="dn m">−0.34%</i></span>
+    <span>USDJPY <b class="m">148.20</b> <i class="dn m">−0.42%</i></span><span>US10Y <b class="m">4.18%</b> <i class="up m">+3bp</i></span>
+    <span>WTI <b class="m">68.90</b> <i class="up m">+1.62%</i></span><span>GOLD <b class="m">2,946.2</b> <i class="up m">+0.74%</i></span>
+    <span>COPPER <b class="m">4.418</b> <i class="dn m">−0.88%</i></span><span>BTC <b class="m">96,420</b> <i class="dn m">−1.86%</i></span>
+  </div></div>
+  <div class="clock"><span class="pill">OPEN</span><span class="mu">NYSE</span><b data-clk="America/New_York">16:00:00</b></div>
+  <button class="sw2" onclick="location.href='./markets-b.html'">DESIGN B</button>
+  <button class="sw2" onclick="location.href='./markets-c.html'">DESIGN C</button>
+</div>
+
+<aside class="rail">
+  <div class="k">Markets</div>
+  <nav class="nav" id="nav">
+    <a href="#/board" data-go="board" class="on"><i>F1</i>Board</a>
+    <a href="#/equities" data-go="equities"><i>F2</i>Equities</a>
+    <a href="#/rates" data-go="rates"><i>F3</i>Rates &amp; FX</a>
+    <a href="#/commodities" data-go="commodities"><i>F4</i>Commodities</a>
+    <a href="#/sentiment" data-go="sentiment"><i>F5</i>Sentiment</a>
+  </nav>
+  <div class="k">Session</div>
+  <div style="padding:0 14px">
+    <div class="row"><span class="nm xs">New York</span><span class="v xs up">OPEN</span></div>
+    <div class="row"><span class="nm xs">London</span><span class="v xs mu">CLOSED</span></div>
+    <div class="row"><span class="nm xs">Tokyo</span><span class="v xs ac">PRE</span></div>
+    <div class="row"><span class="nm xs">Hong Kong</span><span class="v xs mu">CLOSED</span></div>
+  </div>
+  <div class="k">Desk</div>
+  <div style="padding:0 14px">
+    <div class="row"><span class="nm xs">Alerts</span><span class="v xs ac">3</span></div>
+    <div class="row"><span class="nm xs">Orders working</span><span class="v xs">7</span></div>
+    <div class="row"><span class="nm xs">Data</span><span class="v xs up">LIVE</span></div>
+  </div>
+  <div class="railfoot">
+    <a href="/">← Design chooser</a>
+    <a href="./markets-b.html">Design B · Herald →</a>
+    <a href="./markets-c.html">Design C · Atlas →</a>
+  </div>
+</aside>
+
+<main>
+<!-- ══════════ BOARD ══════════ -->
+<section class="page on" id="p-board">
+  <div class="phd">
+    <div><h1>Board</h1><div class="sub">Thursday 19 March 2026 · 16:00 ET · consolidated tape · figures as at the close</div></div>
+    <div class="fs" style="display:flex;gap:10px;align-items:center">
+      <span class="tag" style="color:var(--up)"><span class="dot pulse"></span>Live</span>
+      <span class="v xs mu">Risk-off session · 5 of 6 signals defensive</span></div>
+  </div>
+
+  <div class="g" style="grid-template-columns:repeat(auto-fit,minmax(158px,1fr));margin-bottom:10px">
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">S&amp;P 500</span><span class="v xs dn">−0.42%</span></div>
+      <div class="v l">6,528.44</div><div class="spark" data-ch="spark" data-v="6556,6552,6544,6548,6538,6531,6536,6528,6519,6524,6516,6522,6511,6504,6512,6506,6518,6524,6517,6531,6536,6528,6534,6522,6531,6528" data-h="30" data-mode="line" data-cls="dn"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Nasdaq 100</span><span class="v xs dn">−0.90%</span></div>
+      <div class="v l">23,640.18</div><div class="spark" data-ch="spark" data-v="23940,23910,23860,23872,23810,23768,23790,23742,23708,23736,23696,23712,23664,23628,23654,23632,23668,23690,23658,23702,23724,23676,23696,23648,23664,23640" data-h="30" data-mode="line" data-cls="dn"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Dow 30</span><span class="v xs up">+0.14%</span></div>
+      <div class="v l">45,882.10</div><div class="spark" data-ch="spark" data-v="45802,45788,45810,45796,45824,45840,45818,45834,45846,45832,45858,45870,45848,45862,45876,45864,45880,45868,45890,45876,45894,45882" data-h="30" data-mode="line" data-cls="up"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Russell 2000</span><span class="v xs dn">−1.24%</span></div>
+      <div class="v l">2,286.44</div><div class="spark" data-ch="spark" data-v="2326,2322,2316,2318,2310,2304,2307,2300,2294,2297,2291,2294,2287,2282,2286,2281,2288,2292,2285,2290,2286" data-h="30" data-mode="line" data-cls="dn"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">VIX</span><span class="v xs up">+6.40%</span></div>
+      <div class="v l">18.24</div><div class="spark" data-ch="spark" data-v="16.1,15.8,16.2,15.9,16.4,16.8,16.5,17.1,17.4,17.0,17.6,18.0,17.7,18.24" data-h="30" data-mode="line" data-cls="up"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">US 10Y</span><span class="v xs up">+3 bp</span></div>
+      <div class="v l">4.18%</div><div class="spark" data-ch="spark" data-v="4.08,4.06,4.09,4.11,4.10,4.13,4.12,4.15,4.14,4.16,4.15,4.18" data-h="30" data-mode="step" data-cls="up"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Dollar index</span><span class="v xs up">+0.28%</span></div>
+      <div class="v l">103.42</div><div class="spark" data-ch="spark" data-v="103.13,103.18,103.14,103.22,103.26,103.21,103.28,103.31,103.27,103.34,103.38,103.42" data-h="30" data-mode="line" data-cls="up"></div></div></div>
+    <div class="pn"><div class="pb t"><div class="flexb" style="display:flex;justify-content:space-between"><span class="k">WTI crude</span><span class="v xs up">+1.62%</span></div>
+      <div class="v l">68.90</div><div class="spark" data-ch="spark" data-v="67.8,68.1,67.9,68.4,68.2,68.6,68.5,68.9,68.7,69.1,68.8,68.9" data-h="30" data-mode="line" data-cls="up"></div></div></div>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">S&amp;P 500 · intraday &amp; beyond</span>
+        <span class="tabs" data-tg><button data-t="b1" class="on">1D</button><button data-t="b2">5D</button><button data-t="b3">1M</button><button data-t="b4">YTD</button></span></div>
+      <div class="pb">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap">
+          <div><span class="k">SPX · index</span><div class="v xxl">6,528.44</div></div>
+          <div style="text-align:right"><div class="v l dn">−27.40 · −0.42%</div><div class="v xs mu">O 6,556.10 · H 6,561.24 · L 6,504.88 · Prev 6,555.84</div></div>
+        </div>
+        <div data-p="b1" class="on" style="margin-top:8px"><div class="ch" data-ch="line" data-h="260" data-w="860" data-ymin="6480" data-ymax="6580" data-x="09:30,11:00,12:30,14:00,15:30,16:00"
+          data-series="SPX:acc:6556.1,6552.4,6544.8,6548.2,6538.6,6531.4,6536.2,6528.4,6519.6,6524.2,6516.8,6522.4,6511.2,6504.9,6512.4,6506.6,6518.2,6524.6,6517.4,6531.2,6536.4,6528.9,6534.2,6522.6,6531.4,6528.4"></div></div>
+        <div data-p="b2"><div class="ch" data-ch="line" data-h="260" data-w="860" data-ymin="6480" data-ymax="6660" data-x="Fri,Mon,Tue,Wed,Thu"
+          data-series="SPX:acc:6612.4,6598.6,6624.2,6640.8,6618.4,6574.2,6552.6,6568.4,6544.2,6528.4"></div></div>
+        <div data-p="b3"><div class="ch" data-ch="line" data-h="260" data-w="860" data-ymin="6380" data-ymax="6700" data-x="19 Feb,26 Feb,5 Mar,12 Mar,19 Mar"
+          data-series="SPX:acc:6410.4,6442.6,6488.2,6510.8,6562.4,6604.6,6588.2,6642.8,6688.4,6652.2,6596.6,6544.2,6528.4"></div></div>
+        <div data-p="b4"><div class="ch" data-ch="line" data-h="260" data-w="860" data-ymin="6080" data-ymax="6700" data-x="Jan,Jan,Jan,Feb,Feb,Feb,Mar,Mar"
+          data-series="SPX:acc:6128.4,6186.2,6244.6,6302.4,6368.8,6424.2,6486.6,6442.4,6388.6,6452.2,6508.4,6564.8,6528.4|Equal weight RSP:cy:6128.4,6160.2,6204.8,6262.4,6318.2,6370.6,6418.4,6396.2,6352.4,6410.8,6462.4,6502.6,6478.2"></div></div>
+        <div class="hr"></div>
+        <div class="q4">
+          <div class="cell"><span class="k">Adv / dec</span><span class="v">196 / 301</span></div>
+          <div class="cell"><span class="k">Up volume</span><span class="v dn">34.8%</span></div>
+          <div class="cell"><span class="k">Day range</span><span class="v">56.4 pts</span></div>
+          <div class="cell"><span class="k">Close vs VWAP</span><span class="v dn">−0.31%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="pn">
+        <div class="ph"><span class="k2">Movers</span>
+          <span class="tabs" data-tg><button data-t="m1" class="on">Gainers</button><button data-t="m2">Losers</button></span></div>
+        <div class="pb t">
+          <div data-p="m1" class="on">
+            <div class="row"><span class="nm"><b>AVGO</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="252,254,256,255,258,261,264,266,269,271" data-cls="up"></span><span class="v">271.44</span><span class="v up" style="width:56px;text-align:right">+9.12%</span></div>
+            <div class="row"><span class="nm"><b>CIEN</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="72,72.4,72.9,73.4,73.1,74.2,74.8,75.4" data-cls="up"></span><span class="v">75.42</span><span class="v up" style="width:56px;text-align:right">+6.44%</span></div>
+            <div class="row"><span class="nm"><b>MU</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="112,113,112.6,114.2,115.4,116.2,117.4,118.2" data-cls="up"></span><span class="v">118.24</span><span class="v up" style="width:56px;text-align:right">+5.86%</span></div>
+            <div class="row"><span class="nm"><b>MRVL</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="84,84.6,85.2,84.8,86.4,87.2,88.1,88.6" data-cls="up"></span><span class="v">88.62</span><span class="v up" style="width:56px;text-align:right">+4.82%</span></div>
+            <div class="row"><span class="nm"><b>ARM</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="146,147.2,148.4,147.8,150.2,151.6,152.4,153.1" data-cls="up"></span><span class="v">153.12</span><span class="v up" style="width:56px;text-align:right">+4.18%</span></div>
+            <div class="row"><span class="nm"><b>XOM</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="115.2,115.8,116.4,116.1,116.9,117.2,117.4,117.62" data-cls="up"></span><span class="v">117.62</span><span class="v up" style="width:56px;text-align:right">+2.06%</span></div>
+          </div>
+          <div data-p="m2">
+            <div class="row"><span class="nm"><b>FDX</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="267,264,258,252,248,250,246,241.86" data-cls="dn"></span><span class="v">241.86</span><span class="v dn" style="width:56px;text-align:right">−9.42%</span></div>
+            <div class="row"><span class="nm"><b>SMCI</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="41.2,40.8,40.1,39.4,39.8,38.9,38.4,38.14" data-cls="dn"></span><span class="v">38.14</span><span class="v dn" style="width:56px;text-align:right">−7.14%</span></div>
+            <div class="row"><span class="nm"><b>ADBE</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="442,438,434,430,426,424,421,418.2" data-cls="dn"></span><span class="v">418.20</span><span class="v dn" style="width:56px;text-align:right">−6.28%</span></div>
+            <div class="row"><span class="nm"><b>LEN</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="134,133,131.4,130.2,129.4,128.6,127.9,127.16" data-cls="dn"></span><span class="v">127.16</span><span class="v dn" style="width:56px;text-align:right">−5.44%</span></div>
+            <div class="row"><span class="nm"><b>PLTR</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="76.6,76.1,75.4,74.8,74.2,73.8,73.6,73.42" data-cls="dn"></span><span class="v">73.42</span><span class="v dn" style="width:56px;text-align:right">−4.22%</span></div>
+            <div class="row"><span class="nm"><b>NKE</b></span><span class="spark" style="width:74px" data-ch="spark" data-h="16" data-v="71.4,71.1,70.6,70.2,69.8,69.6,69.4,69.28" data-cls="dn"></span><span class="v">69.28</span><span class="v dn" style="width:56px;text-align:right">−3.16%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pn">
+        <div class="ph"><span class="k2">Breadth</span><span class="v xs dn">A/D 0.65</span></div>
+        <div class="pb">
+          <div style="display:flex;height:24px;gap:2px">
+            <span style="width:39.4%;background:var(--up);display:flex;align-items:center;justify-content:center" class="v xs">196</span>
+            <span style="width:1%;background:var(--mute)"></span>
+            <span style="flex:1;background:var(--dn);display:flex;align-items:center;justify-content:center" class="v xs">301</span>
+          </div>
+          <div class="q2" style="margin-top:9px">
+            <div class="cell"><span class="k">Arms index</span><span class="v ac">1.42</span></div>
+            <div class="cell"><span class="k">New lows</span><span class="v dn">102</span></div>
+            <div class="cell"><span class="k">New highs</span><span class="v up">34</span></div>
+            <div class="cell"><span class="k">% &gt; 50-day</span><span class="v">46%</span></div>
+          </div>
+          <div class="hr"></div>
+          <div class="cap">Distribution breadth: the median stock fell 0.58% while the index fell 0.42% — losses are wider than the headline.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">Sector heat · area = index weight, colour = 1D</span><span class="v xs mu">hover a tile</span></div>
+      <div class="pb"><div class="ch" data-ch="tree" data-w="860" data-h="300"
+        data-s="Info Tech:-1.24:33.8:XLK|Financials:0.08:13.2:XLF|Health Care:0.62:11.4:XLV|Cons Disc.:-0.86:10.4:XLY|Comm Svcs:-0.44:9.2:XLC|Industrials:0.24:8.6:XLI|Cons Staples:-0.16:5.4:XLP|Energy:1.42:3.2:XLE|Utilities:0.86:2.6:XLU|Real Estate:0.42:2.0:XLRE|Materials:-0.34:2.2:XLB"></div>
+        <div class="hr"></div>
+        <div class="flexb" style="display:flex;justify-content:space-between"><span class="k">6 sectors up</span><span class="k">5 sectors down</span><span class="k">spread 2.66 pts</span></div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Economic diary</span><span class="v xs mu">all times ET</span></div>
+      <div class="pb t">
+        <div class="row" data-x><span class="v xs mu" style="width:66px">Fri 20 · 08:30</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--dn)"></span> Durable goods</span><span class="v xs">−0.4%</span><span class="cv">▶</span>
+          <div class="fold" style="width:100%"><div class="cap" style="padding-top:6px">Consensus −0.4% m/m ex-transport · prior +0.7%. Core capital goods feed the Q1 GDP tracker.</div></div></div>
+        <div class="row" data-x><span class="v xs mu" style="width:66px">Fri 20 · 09:45</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--acc)"></span> S&amp;P Global PMI flash</span><span class="v xs">52.1</span><span class="cv">▶</span>
+          <div class="fold" style="width:100%"><div class="cap" style="padding-top:6px">Manufacturing 49.8 expected · services 52.4. First look at March activity.</div></div></div>
+        <div class="row" data-x><span class="v xs mu" style="width:66px">Fri 20 · 10:00</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--dn)"></span> UMich sentiment final</span><span class="v xs">62.4</span><span class="cv">▶</span>
+          <div class="fold" style="width:100%"><div class="cap" style="padding-top:6px"> prelim 61.8 · 1-yr inflation expectations 3.1% · the Fed watches this one.</div></div></div>
+        <div class="row"><span class="v xs mu" style="width:66px">Mon 23 · 09:00</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--mute)"></span> Dallas Fed manufacturing</span><span class="v xs mu">−8.4</span></div>
+        <div class="row"><span class="v xs mu" style="width:66px">Tue 24 · 10:00</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--acc)"></span> Consumer confidence</span><span class="v xs">96.2</span></div>
+        <div class="row"><span class="v xs mu" style="width:66px">Tue 24 · 14:00</span><span class="nm" style="flex:1"><span class="dot" style="color:var(--dn)"></span> 2Y note auction</span><span class="v xs">$69bn</span></div>
+        <div class="hr"></div>
+        <div class="cap">FOMC held at 4.25–4.50% yesterday; the March cut is now priced at 68%, April at 84%.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g c3">
+    <div class="pn">
+      <div class="ph"><span class="k2">ETF fund flows · $bn</span><span class="v xs mu">1 day</span></div>
+      <div class="pb"><div class="ch" data-ch="bars" data-lw="118" data-u="$" data-dp="1"
+        data-s="US large cap:up:4.82|Sector — tech:acc:3.12|US bonds:up:2.44|Intl developed:up:1.14|High yield:up:0.86|EM equity:dn:-0.62|Money market:dn:-6.20"></div>
+        <div class="hr"></div><div class="cap">Cash ETFs bled again — the 14th consecutive day of redemptions.</div></div>
+    </div>
+    <div class="pn">
+      <div class="ph"><span class="k2">Most active</span><span class="v xs mu">shares</span></div>
+      <div class="pb t">
+        <div class="row"><span class="nm"><b>NVDA</b> <span class="mu xs">NVIDIA</span></span><span class="v">412.6M</span><span class="v dn" style="width:54px;text-align:right">−2.84%</span></div>
+        <div class="row"><span class="nm"><b>TSLA</b> <span class="mu xs">Tesla</span></span><span class="v">306.4M</span><span class="v dn" style="width:54px;text-align:right">−3.61%</span></div>
+        <div class="row"><span class="nm"><b>F</b> <span class="mu xs">Ford</span></span><span class="v">214.8M</span><span class="v up" style="width:54px;text-align:right">+1.12%</span></div>
+        <div class="row"><span class="nm"><b>INTC</b> <span class="mu xs">Intel</span></span><span class="v">198.2M</span><span class="v dn" style="width:54px;text-align:right">−1.86%</span></div>
+        <div class="row"><span class="nm"><b>AAPL</b> <span class="mu xs">Apple</span></span><span class="v">182.4M</span><span class="v dn" style="width:54px;text-align:right">−0.94%</span></div>
+        <div class="row"><span class="nm"><b>PLTR</b> <span class="mu xs">Palantir</span></span><span class="v">168.6M</span><span class="v dn" style="width:54px;text-align:right">−4.22%</span></div>
+      </div>
+    </div>
+    <div class="pn">
+      <div class="ph"><span class="k2">Sector leadership</span><span class="v xs mu">1D</span></div>
+      <div class="pb">
+        <span class="k">Leading</span>
+        <div class="row"><span class="nm">Energy</span><span class="trk" style="width:110px"><i style="--w:100%;background:var(--up)"></i></span><span class="v up">+1.42%</span></div>
+        <div class="row"><span class="nm">Utilities</span><span class="trk" style="width:110px"><i style="--w:61%;background:var(--up)"></i></span><span class="v up">+0.86%</span></div>
+        <div class="row"><span class="nm">Health Care</span><span class="trk" style="width:110px"><i style="--w:44%;background:var(--up)"></i></span><span class="v up">+0.62%</span></div>
+        <span class="k" style="display:block;margin-top:8px">Lagging</span>
+        <div class="row"><span class="nm">Info Tech</span><span class="trk" style="width:110px"><i style="--w:88%;background:var(--dn)"></i></span><span class="v dn">−1.24%</span></div>
+        <div class="row"><span class="nm">Cons Disc.</span><span class="trk" style="width:110px"><i style="--w:61%;background:var(--dn)"></i></span><span class="v dn">−0.86%</span></div>
+        <div class="row"><span class="nm">Comm Svcs</span><span class="trk" style="width:110px"><i style="--w:31%;background:var(--dn)"></i></span><span class="v dn">−0.44%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EQUITIES ══════════ -->
+<section class="page" id="p-equities">
+  <div class="phd">
+    <div><h1>Equities</h1><div class="sub">Global indices · sector internals · factor and contribution detail</div></div>
+    <div class="fs" style="display:flex;gap:10px;align-items:center"><span class="v xs mu">2,986 US listings · 11 GICS sectors · close basis</span></div>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">World indices</span><span class="v xs mu">local currency · sorted by 1D</span></div>
+      <div class="pb ovf" style="padding-top:9px">
+        <table class="tbl">
+          <tr><th>Index</th><th>Region</th><th class="e">Last</th><th class="e">1D</th><th class="e">1M</th><th class="e">YTD</th><th class="e" style="width:88px">5 days</th></tr>
+          <tr><td><b>TOPIX</b></td><td class="mu">Japan</td><td class="e m">3,142.60</td><td class="e m up">+1.24%</td><td class="e m up">+3.8%</td><td class="e m up">+11.4%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="3066,3078,3072,3094,3108,3102,3124,3142" data-cls="up"></span></td></tr>
+          <tr><td><b>KOSPI</b></td><td class="mu">Korea</td><td class="e m">2,918.44</td><td class="e m up">+0.86%</td><td class="e m up">+2.4%</td><td class="e m up">+8.9%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="2864,2878,2872,2894,2902,2896,2910,2918" data-cls="up"></span></td></tr>
+          <tr><td><b>DAX</b></td><td class="mu">Germany</td><td class="e m">21,486.20</td><td class="e m up">+0.42%</td><td class="e m up">+1.6%</td><td class="e m up">+5.1%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="21180,21240,21206,21342,21404,21368,21462,21486" data-cls="up"></span></td></tr>
+          <tr><td><b>FTSE 100</b></td><td class="mu">United Kingdom</td><td class="e m">8,908.16</td><td class="e m up">+0.31%</td><td class="e m up">+0.9%</td><td class="e m up">+2.6%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="8842,8864,8852,8878,8894,8882,8902,8908" data-cls="up"></span></td></tr>
+          <tr><td><b>STOXX 600</b></td><td class="mu">Europe</td><td class="e m">578.44</td><td class="e m up">+0.18%</td><td class="e m up">+1.2%</td><td class="e m up">+3.4%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="572,574,573,576,577,576,578,578.44" data-cls="up"></span></td></tr>
+          <tr><td><b>S&amp;P 500</b></td><td class="mu">United States</td><td class="e m">6,528.44</td><td class="e m dn">−0.42%</td><td class="e m up">+0.8%</td><td class="e m up">+4.9%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="6612,6598,6624,6640,6618,6574,6552,6528" data-cls="dn"></span></td></tr>
+          <tr><td><b>NASDAQ 100</b></td><td class="mu">United States</td><td class="e m">23,640.18</td><td class="e m dn">−0.90%</td><td class="e m dn">−0.4%</td><td class="e m up">+6.2%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="24160,24080,24190,24240,24120,23940,23820,23640" data-cls="dn"></span></td></tr>
+          <tr><td><b>RUSSELL 2000</b></td><td class="mu">United States</td><td class="e m">2,286.44</td><td class="e m dn">−1.24%</td><td class="e m dn">−2.1%</td><td class="e m dn">−1.8%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="2344,2338,2352,2346,2330,2318,2304,2286" data-cls="dn"></span></td></tr>
+          <tr><td><b>CSI 300</b></td><td class="mu">China</td><td class="e m">3,782.16</td><td class="e m dn">−0.68%</td><td class="e m dn">−1.4%</td><td class="e m dn">−4.1%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="3858,3844,3862,3838,3820,3808,3794,3782" data-cls="dn"></span></td></tr>
+          <tr><td><b>IBOVESPA</b></td><td class="mu">Brazil</td><td class="e m">128,640</td><td class="e m dn">−1.42%</td><td class="e m dn">−3.6%</td><td class="e m dn">−6.8%</td><td class="e"><span class="spark" data-ch="spark" data-h="16" data-v="132400,131600,132040,130800,130200,129600,129040,128640" data-cls="dn"></span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="pn">
+        <div class="ph"><span class="k2">52-week highs</span><span class="tag" style="color:var(--up)">34 today</span></div>
+        <div class="pb t">
+          <div class="row"><span class="nm"><b>XOM</b> Exxon Mobil</span><span class="v">117.62</span><span class="v up" style="width:50px;text-align:right">+2.06%</span></div>
+          <div class="row"><span class="nm"><b>CVX</b> Chevron</span><span class="v">147.42</span><span class="v up" style="width:50px;text-align:right">+1.84%</span></div>
+          <div class="row"><span class="nm"><b>SO</b> Southern Co</span><span class="v">94.18</span><span class="v up" style="width:50px;text-align:right">+0.92%</span></div>
+          <div class="row"><span class="nm"><b>NEM</b> Newmont</span><span class="v">68.44</span><span class="v up" style="width:50px;text-align:right">+1.62%</span></div>
+          <div class="row"><span class="nm"><b>GOLD</b> Barrick</span><span class="v">26.18</span><span class="v up" style="width:50px;text-align:right">+1.24%</span></div>
+        </div>
+      </div>
+      <div class="pn">
+        <div class="ph"><span class="k2">52-week lows</span><span class="tag" style="color:var(--dn)">102 today</span></div>
+        <div class="pb t">
+          <div class="row"><span class="nm"><b>FDX</b> FedEx</span><span class="v">241.86</span><span class="v dn" style="width:50px;text-align:right">−9.42%</span></div>
+          <div class="row"><span class="nm"><b>PLTR</b> Palantir</span><span class="v">73.42</span><span class="v dn" style="width:50px;text-align:right">−4.22%</span></div>
+          <div class="row"><span class="nm"><b>LEN</b> Lennar</span><span class="v">127.16</span><span class="v dn" style="width:50px;text-align:right">−5.44%</span></div>
+          <div class="row"><span class="nm"><b>NKE</b> Nike</span><span class="v">69.28</span><span class="v dn" style="width:50px;text-align:right">−3.16%</span></div>
+          <div class="row"><span class="nm"><b>RIVN</b> Rivian</span><span class="v">13.84</span><span class="v dn" style="width:50px;text-align:right">−2.64%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g m11">
+    <div class="pn">
+      <div class="ph"><span class="k2">Sector returns grid</span><span class="v xs mu">% · GICS level 1</span></div>
+      <div class="pb"><div class="ch" data-ch="heat" data-cols="1D,1W,1M,3M,YTD" data-lw="132" data-max="7"
+        data-rows="Information Technology,Financials,Health Care,Cons. Discretionary,Comm. Services,Industrials,Cons. Staples,Energy,Utilities,Real Estate,Materials"
+        data-v="-1.24,0.86,2.4,-4.2,6.4;0.08,0.42,1.1,3.2,7.8;0.62,-0.34,1.8,-2.4,1.2;-0.86,1.24,-1.6,-3.8,-2.4;-0.44,0.62,0.9,-1.8,2.6;0.24,0.18,2.2,4.4,3.8;-0.16,-0.28,0.4,-1.2,0.6;1.42,3.18,6.2,8.4,14.2;0.86,1.42,2.8,4.1,9.4;0.42,1.06,3.4,6.2,11.8;-0.34,0.24,1.6,2.8,4.6"></div>
+        <div class="hr"></div>
+        <div class="cap">Energy is the only sector positive across every window; technology is negative over the week but still leads the year.</div>
+      </div>
+    </div>
+
+    <div class="pn" data-tg>
+      <div class="ph"><span class="k2">Benchmark comparison · rebased to 100</span>
+        <span class="tabs"><button data-t="e1" class="on">1 month</button><button data-t="e2">3 months</button><button data-t="e3">YTD</button></span></div>
+      <div class="pb">
+        <div data-p="e1" class="on"><div class="ch" data-ch="line" data-h="240" data-w="720" data-ymin="97" data-ymax="105" data-x="19 Feb,26 Feb,5 Mar,12 Mar,19 Mar"
+          data-series="S&amp;P 500:acc:100,100.4,101.2,101.8,102.4,103.1,102.6,103.8,104.2,103.6,102.4,101.6,101.2|Nasdaq 100:cy:100,100.6,101.8,102.6,103.4,104.2,103.4,104.8,105.4,104.4,102.8,101.6,100.8|STOXX 600:mg:100,100.3,100.9,101.4,101.9,102.4,103.1,103.4,103.2,103.9,104.4,104.8,105.2|MSCI EM:up:100,99.8,100.4,100.1,99.6,100.2,99.4,98.9,99.2,98.6,98.2,98.4,98.1"></div></div>
+        <div data-p="e2"><div class="ch" data-ch="line" data-h="240" data-w="720" data-ymin="94" data-ymax="108" data-x="Dec,Jan,Feb,Mar"
+          data-series="S&amp;P 500:acc:100,100.8,101.6,102.9,103.8,104.6,103.9,105.2,105.8,104.9,103.4,102.2,101.8|Nasdaq 100:cy:100,101.2,102.4,104.2,105.4,106.6,105.2,107.4,108.1,106.6,104.2,102.1,101.2|STOXX 600:mg:100,100.6,101.4,102.2,103.1,103.8,104.4,104.9,105.2,105.6,106.1,106.4,106.8|MSCI EM:up:100,100.2,99.6,100.4,99.8,100.6,99.2,98.4,98.9,97.8,97.2,97.6,97.1"></div></div>
+        <div data-p="e3"><div class="ch" data-ch="line" data-h="240" data-w="720" data-ymin="94" data-ymax="110" data-x="Jan,Jan,Feb,Feb,Mar"
+          data-series="S&amp;P 500:acc:100,100.6,101.4,102.2,103.1,104.2,103.6,104.8,105.4,104.2,103.1,104.2,104.9|Nasdaq 100:cy:100,100.9,102.1,103.4,104.8,106.2,105.1,107.2,108.4,106.4,104.2,105.6,106.2|STOXX 600:mg:100,100.4,101.2,102.1,102.8,103.6,104.2,104.6,105.1,105.4,105.8,106.2,106.4|MSCI EM:up:100,99.6,100.2,99.4,99.8,98.9,98.2,98.6,97.9,97.2,96.8,97.4,96.6"></div></div>
+        <div class="hr"></div>
+        <div class="legend" style="display:flex;gap:12px;flex-wrap:wrap">
+          <span class="tag" style="color:var(--acc)">S&amp;P 500</span><span class="tag" style="color:var(--cy)">Nasdaq 100</span>
+          <span class="tag" style="color:var(--mg)">STOXX 600</span><span class="tag" style="color:var(--up)">MSCI EM</span>
+          <span class="cap" style="margin-left:auto">Europe has led every window; EM has lagged every one of them.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g c3">
+    <div class="pn">
+      <div class="ph"><span class="k2">Contribution to the S&amp;P move</span><span class="v xs dn">−42 bp total</span></div>
+      <div class="pb"><div class="ch" data-ch="bars" data-lw="72" data-u="bp" data-dp="1" data-center="1"
+        data-s="NVDA:dn:-9.8|MSFT:dn:-6.4|AAPL:dn:-4.2|AMZN:dn:-3.8|META:dn:-3.1|GOOGL:dn:-2.4|AVGO:up:5.6|XOM:up:2.4|JPM:up:1.6|UNH:up:1.2"></div>
+        <div class="hr"></div><div class="cap">Top ten names explain −19.4bp; AVGO's post-earnings pop is the only meaningful offset.</div></div>
+    </div>
+    <div class="pn">
+      <div class="ph"><span class="k2">Style factors</span><span class="v xs mu">1D / 1M</span></div>
+      <div class="pb t">
+        <div class="row"><span class="nm">Growth</span><span class="v dn" style="width:56px;text-align:right">−0.86%</span><span class="v dn" style="width:56px;text-align:right">−1.84%</span></div>
+        <div class="row"><span class="nm">Value</span><span class="v up" style="width:56px;text-align:right">+0.42%</span><span class="v up" style="width:56px;text-align:right">+2.62%</span></div>
+        <div class="row"><span class="nm">Momentum</span><span class="v dn" style="width:56px;text-align:right">−0.64%</span><span class="v up" style="width:56px;text-align:right">+1.14%</span></div>
+        <div class="row"><span class="nm">Quality</span><span class="v up" style="width:56px;text-align:right">+0.28%</span><span class="v up" style="width:56px;text-align:right">+0.86%</span></div>
+        <div class="row"><span class="nm">Size (small)</span><span class="v dn" style="width:56px;text-align:right">−1.14%</span><span class="v dn" style="width:56px;text-align:right">−2.44%</span></div>
+        <div class="row"><span class="nm">Low volatility</span><span class="v up" style="width:56px;text-align:right">+0.62%</span><span class="v up" style="width:56px;text-align:right">+1.92%</span></div>
+        <div class="hr"></div><div class="cap">Every defensive factor beat every aggressive one. The rotation is visible in a single column.</div>
+      </div>
+    </div>
+    <div class="pn">
+      <div class="ph"><span class="k2">Reporting next</span><span class="v xs mu">US · after close unless noted</span></div>
+      <div class="pb t">
+        <div class="row"><span class="v xs mu" style="width:56px">24 Mar</span><span class="nm"><b>PAYX</b> Paychex</span><span class="v xs mu">BMO</span><span class="v xs">$1.31</span></div>
+        <div class="row"><span class="v xs mu" style="width:56px">25 Mar</span><span class="nm"><b>CCL</b> Carnival</span><span class="v xs mu">AMC</span><span class="v xs">$0.14</span></div>
+        <div class="row"><span class="v xs mu" style="width:56px">25 Mar</span><span class="nm"><b>WGO</b> Winnebago</span><span class="v xs mu">AMC</span><span class="v xs">$1.02</span></div>
+        <div class="row"><span class="v xs mu" style="width:56px">26 Mar</span><span class="nm"><b>NKE</b> Nike</span><span class="v xs mu">AMC</span><span class="v xs">$0.54</span></div>
+        <div class="row"><span class="v xs mu" style="width:56px">26 Mar</span><span class="nm"><b>LIN</b> Linde</span><span class="v xs mu">BMO</span><span class="v xs">$3.68</span></div>
+        <div class="row"><span class="v xs mu" style="width:56px">27 Mar</span><span class="nm"><b>KBH</b> KB Home</span><span class="v xs mu">AMC</span><span class="v xs">$2.14</span></div>
+        <div class="hr"></div>
+        <div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Season beat rate</span><span class="v up">68%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RATES & FX ══════════ -->
+<section class="page" id="p-rates">
+  <div class="phd">
+    <div><h1>Rates &amp; FX</h1><div class="sub">Government curves · policy expectations · currencies and the dollar</div></div>
+    <span class="v xs mu">Curves struck at 16:00 ET · 19 March 2026</span>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">US Treasury par yield curve</span><span class="v xs mu">%</span></div>
+      <div class="pb">
+        <div class="ch" data-ch="line" data-h="270" data-w="880" data-ymin="3.4" data-ymax="5.5" data-yp="2" data-x="1M,3M,6M,1Y,2Y,3Y,5Y,7Y,10Y,20Y,30Y"
+          data-series="Today:acc:4.24,4.21,4.06,3.84,3.66,3.68,3.82,4.00,4.18,4.56,4.72|1 month ago:cy:4.28,4.25,4.10,3.88,3.58,3.62,3.76,3.94,4.10,4.48,4.64|1 year ago:mu:5.30,5.22,4.98,4.56,4.22,4.14,4.16,4.28,4.44,4.72,4.66"></div>
+        <div class="hr"></div>
+        <div class="q4">
+          <div class="cell"><span class="k">2s10s</span><span class="v l up">+52 bp</span></div>
+          <div class="cell"><span class="k">5s30s</span><span class="v l up">+90 bp</span></div>
+          <div class="cell"><span class="k">1m2y</span><span class="v l dn">−58 bp</span></div>
+          <div class="cell"><span class="k">Curve state</span><span class="v l ac">Normalising</span></div>
+        </div>
+        <div class="hr"></div>
+        <div class="cap">Front end sold off 6bp after the FOMC held; the long end firmed on a well-received 30-year auction — classic bear steepening.</div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Curve monitor</span></div>
+      <div class="pb">
+        <div class="row"><span class="nm">10Y yield</span><span class="v">4.18%</span><span class="v up xs" style="width:52px;text-align:right">+3 bp</span></div>
+        <div class="row"><span class="nm">10Y real (TIPS)</span><span class="v">1.64%</span><span class="v up xs" style="width:52px;text-align:right">+2 bp</span></div>
+        <div class="row"><span class="nm">10Y breakeven</span><span class="v">2.54%</span><span class="v up xs" style="width:52px;text-align:right">+1 bp</span></div>
+        <div class="row"><span class="nm">30Y yield</span><span class="v">4.72%</span><span class="v dn xs" style="width:52px;text-align:right">−2 bp</span></div>
+        <div class="row"><span class="nm">2Y yield</span><span class="v">3.66%</span><span class="v up xs" style="width:52px;text-align:right">+6 bp</span></div>
+        <div class="hr"></div>
+        <span class="k">Real yield, 10 years</span>
+        <div class="ch" data-ch="spark" data-h="70" data-mode="area" data-v="-1.02,-0.88,-0.74,-0.61,-0.44,-0.28,-0.12,0.06,0.24,0.41,0.58,0.72,0.88,0.96,1.08,1.24,1.31,1.42,1.54,1.64" data-cls="cy" style="margin-top:6px"></div>
+        <div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Apr 2025</span><span class="k">Mar 2026</span></div>
+        <div class="hr"></div>
+        <div class="row"><span class="nm">Term premium (ACM)</span><span class="v ac">+0.42%</span></div>
+        <div class="row"><span class="nm">2s10s slope, z-score</span><span class="v">+1.4σ</span></div>
+        <div class="row"><span class="nm">Auction tail, 30Y</span><span class="v up">0.4 bp · clean</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g c2">
+    <div class="pn">
+      <div class="ph"><span class="k2">Policy rates &amp; implied next move</span><span class="v xs mu">OIS-implied</span></div>
+      <div class="pb ovf">
+        <table class="tbl">
+          <tr><th>Bank</th><th class="e">Rate</th><th class="e">Last change</th><th class="e">Next</th><th class="e" style="width:150px">Implied</th></tr>
+          <tr><td><b>Fed</b></td><td class="e m">4.25–4.50%</td><td class="e m mu">held 19 Mar</td><td class="e m">28 Apr</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:84%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">84% cut</span></span></td></tr>
+          <tr><td><b>ECB</b></td><td class="e m">2.75%</td><td class="e m mu">−25bp 5 Feb</td><td class="e m">30 Apr</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:46%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">46% cut</span></span></td></tr>
+          <tr><td><b>BoE</b></td><td class="e m">3.75%</td><td class="e m mu">−25bp 6 Nov</td><td class="e m">7 May</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:68%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">68% cut</span></span></td></tr>
+          <tr><td><b>BoJ</b></td><td class="e m">0.75%</td><td class="e m dn">+25bp 23 Jan</td><td class="e m">30 Apr</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:41%;background:var(--dn)"></i></span><span class="v dn xs" style="width:56px">41% hike</span></span></td></tr>
+          <tr><td><b>BoC</b></td><td class="e m">2.75%</td><td class="e m mu">−25bp 29 Jan</td><td class="e m">15 Apr</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:58%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">58% cut</span></span></td></tr>
+          <tr><td><b>RBA</b></td><td class="e m">3.60%</td><td class="e m mu">held 3 Dec</td><td class="e m">1 Apr</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:44%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">44% cut</span></span></td></tr>
+          <tr><td><b>PBoC</b></td><td class="e m">3.10% LPR</td><td class="e m mu">held 20 Feb</td><td class="e m">20 Mar</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:36%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">36% cut</span></span></td></tr>
+          <tr><td><b>Copom</b></td><td class="e m">13.25%</td><td class="e m dn">−50bp 4 Feb</td><td class="e m">19 Mar</td>
+            <td class="e"><span class="flexb" style="display:flex;justify-content:flex-end;gap:8px"><span class="trk" style="width:88px"><i style="--w:88%;background:var(--up)"></i></span><span class="v up xs" style="width:56px">88% cut</span></span></td></tr>
+        </table>
+        <div class="hr"></div>
+        <div class="cap">FOMC summary of projections: median 2026 funds rate 3.90% — two cuts — with one dot showing none.</div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Currencies</span><span class="v xs mu">spot · day change</span></div>
+      <div class="pb ovf">
+        <table class="tbl">
+          <tr><th>Pair</th><th class="e">Rate</th><th class="e">1D</th><th class="e">1M</th><th class="e" style="width:74px">Shape</th></tr>
+          <tr><td><b>EUR/USD</b></td><td class="e m">1.0784</td><td class="e m dn">−0.34%</td><td class="e m dn">−1.8%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="1.097,1.094,1.091,1.088,1.086,1.083,1.080,1.078" data-cls="dn"></span></td></tr>
+          <tr><td><b>USD/JPY</b></td><td class="e m">148.204</td><td class="e m dn">−0.42%</td><td class="e m dn">−3.2%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="153.2,152.6,152.1,151.2,150.4,149.6,148.9,148.2" data-cls="dn"></span></td></tr>
+          <tr><td><b>GBP/USD</b></td><td class="e m">1.2842</td><td class="e m dn">−0.28%</td><td class="e m dn">−0.9%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="1.296,1.294,1.291,1.289,1.287,1.286,1.285,1.284" data-cls="dn"></span></td></tr>
+          <tr><td><b>USD/CHF</b></td><td class="e m">0.8814</td><td class="e m dn">−0.19%</td><td class="e m dn">−2.4%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="0.902,0.899,0.896,0.893,0.890,0.886,0.883,0.881" data-cls="dn"></span></td></tr>
+          <tr><td><b>AUD/USD</b></td><td class="e m">0.6218</td><td class="e m dn">−0.71%</td><td class="e m dn">−4.8%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="0.652,0.648,0.644,0.640,0.634,0.629,0.625,0.622" data-cls="dn"></span></td></tr>
+          <tr><td><b>USD/CAD</b></td><td class="e m">1.4162</td><td class="e m up">+0.44%</td><td class="e m up">+1.6%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="1.394,1.397,1.401,1.404,1.408,1.411,1.414,1.416" data-cls="up"></span></td></tr>
+          <tr><td><b>USD/CNH</b></td><td class="e m">7.2418</td><td class="e m up">+0.12%</td><td class="e m up">+0.4%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="7.212,7.218,7.222,7.228,7.231,7.236,7.239,7.242" data-cls="up"></span></td></tr>
+          <tr><td><b>DXY</b></td><td class="e m">103.42</td><td class="e m up">+0.28%</td><td class="e m up">+1.2%</td><td class="e"><span class="spark" data-ch="spark" data-h="15" data-v="102.2,102.4,102.6,102.8,103.0,103.1,103.3,103.42" data-cls="up"></span></td></tr>
+        </table>
+        <div class="hr"></div>
+        <div class="cap">A hawkish hold: the dollar firmed against everything but the yen, which is now 3.2% stronger on the month.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g m11">
+    <div class="pn" data-tg>
+      <div class="ph"><span class="k2">Dollar index</span>
+        <span class="tabs"><button data-t="d1" class="on">3 months</button><button data-t="d2">1 year</button></span></div>
+      <div class="pb">
+        <div data-p="d1" class="on"><div class="ch" data-ch="line" data-h="220" data-w="700" data-ymin="100" data-ymax="105" data-x="Dec,Jan,Feb,Mar"
+          data-series="DXY:acc:102.4,102.6,102.2,102.8,103.1,102.6,102.2,102.8,103.4,103.1,103.8,104.2,103.4|US 2Y − DE 2Y spread:cy:101.8,102.1,101.9,102.4,102.8,102.6,102.2,101.9,101.6,101.4,101.2,101.1,100.9"></div></div>
+        <div data-p="d2"><div class="ch" data-ch="line" data-h="220" data-w="700" data-ymin="98" data-ymax="110" data-x="Mar 25,Jun,Sep,Dec,Mar 26"
+          data-series="DXY:acc:108.4,107.6,106.9,107.8,106.2,105.1,104.4,105.6,104.8,103.9,102.6,101.8,102.4,101.2,100.6,101.4,102.8,103.1,102.4,103.0,103.42|US 2Y − DE 2Y spread:cy:107.2,106.4,105.8,106.2,105.1,104.4,103.6,104.2,103.4,102.6,101.8,101.2,101.6,100.8,100.2,100.6,101.1,101.4,100.9,100.6,100.4"></div></div>
+        <div class="hr"></div>
+        <div class="cap">The dollar has decoupled from its rate driver: the spread keeps narrowing while DXY rises — a haven bid, not a carry bid.</div>
+        <div class="q2" style="margin-top:9px">
+          <div class="cell"><span class="k">Correlation, 12m</span><span class="v">0.86</span></div>
+          <div class="cell"><span class="k">Correlation, 1m</span><span class="v ac">0.41</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Inflation expectations</span><span class="v xs mu">annualised %</span></div>
+      <div class="pb">
+        <div class="ch" data-ch="line" data-h="200" data-w="700" data-ymin="1.8" data-ymax="3.4" data-x="Mar 25,Sep,Mar 26"
+          data-series="5y5y forward:mg:2.62,2.58,2.54,2.61,2.66,2.72,2.68,2.74,2.79,2.71,2.66,2.72,2.68,2.62,2.58,2.64,2.61,2.58,2.62,2.64|10y breakeven:acc:2.34,2.31,2.28,2.36,2.42,2.48,2.44,2.51,2.56,2.49,2.44,2.52,2.48,2.44,2.41,2.47,2.44,2.49,2.51,2.54|2y breakeven:cy:1.98,1.92,1.88,1.96,2.04,2.12,2.06,2.14,2.21,2.12,2.06,2.16,2.11,2.04,1.99,2.08,2.03,2.11,2.16,2.19"></div>
+        <div class="hr"></div>
+        <div class="q3">
+          <div class="cell"><span class="k">2y BE</span><span class="v l">2.19%</span></div>
+          <div class="cell"><span class="k">10y BE</span><span class="v l">2.54%</span></div>
+          <div class="cell"><span class="k">5y5y fwd</span><span class="v l">2.64%</span></div>
+        </div>
+        <div class="hr"></div>
+        <div class="cap">The curve is upward-sloping again from 2 to 10 years: the market has stopped pricing a deflation tail and gone back to arguing about the level.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMMODITIES ══════════ -->
+<section class="page" id="p-commodities">
+  <div class="phd">
+    <div><h1>Commodities</h1><div class="sub">Energy · metals · agriculture · futures curves and stocks</div></div>
+    <span class="v xs mu">Front-month settlement basis · 16:00 ET</span>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">Futures board</span><span class="v xs mu">candles: last six 4-hour bars</span></div>
+      <div class="pb ovf">
+        <table class="tbl">
+          <tr><th>Contract</th><th>Complex</th><th class="e">Last</th><th class="e">1D</th><th class="e" style="width:96px">Shape</th><th class="e">Day range</th></tr>
+          <tr><td><b>CL1</b> WTI crude</td><td class="mu">Energy</td><td class="e m">68.90</td><td class="e m up">+1.62%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="67.8/68.4/67.2/68.1,68.1/68.9/67.9/68.6,68.6/68.8/67.8/68.0,68.0/69.2/67.9/69.0,69.0/69.4/68.6/68.9,68.9/69.3/68.6/68.9"></span></td><td class="e m mu">68.60–69.34</td></tr>
+          <tr><td><b>CO1</b> Brent</td><td class="mu">Energy</td><td class="e m">73.04</td><td class="e m up">+1.44%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="71.9/72.5/71.4/72.2,72.2/73.0/72.0/72.7,72.7/72.9/71.9/72.1,72.1/73.3/72.0/73.1,73.1/73.5/72.7/73.0,73.0/73.4/72.8/73.04"></span></td><td class="e m mu">72.80–73.44</td></tr>
+          <tr><td><b>NG1</b> Nat gas</td><td class="mu">Energy</td><td class="e m">3.582</td><td class="e m up">+2.86%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="3.42/3.48/3.36/3.40,3.40/3.44/3.28/3.31,3.31/3.38/3.26/3.36,3.36/3.52/3.34/3.49,3.49/3.58/3.46/3.52,3.52/3.62/3.50/3.582"></span></td><td class="e m mu">3.50–3.62</td></tr>
+          <tr><td><b>GC1</b> Gold</td><td class="mu">Metals</td><td class="e m">2,946.20</td><td class="e m up">+0.74%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="2918/2932/2912/2926,2926/2940/2922/2936,2936/2944/2928/2931,2931/2948/2930/2944,2944/2952/2938/2941,2941/2958/2940/2946.2"></span></td><td class="e m mu">2,940–2,958</td></tr>
+          <tr><td><b>SI1</b> Silver</td><td class="mu">Metals</td><td class="e m">34.62</td><td class="e m up">+1.18%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="33.4/33.8/33.2/33.6,33.6/34.1/33.5/34.0,34.0/34.2/33.6/33.8,33.8/34.4/33.7/34.3,34.3/34.6/34.1/34.2,34.2/34.8/34.1/34.62"></span></td><td class="e m mu">34.10–34.80</td></tr>
+          <tr><td><b>HG1</b> Copper</td><td class="mu">Metals</td><td class="e m">4.418</td><td class="e m dn">−0.88%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="4.62/4.66/4.58/4.60,4.60/4.63/4.54/4.56,4.56/4.59/4.50/4.52,4.52/4.55/4.46/4.48,4.48/4.52/4.44/4.46,4.46/4.49/4.40/4.418"></span></td><td class="e m mu">4.40–4.49</td></tr>
+          <tr><td><b>C 1</b> Corn</td><td class="mu">Ags</td><td class="e m">463.25</td><td class="e m dn">−0.64%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="468/472/465/470,470/474/468/471,471/473/466/468,468/470/462/464,464/468/461/466,466/469/462/463.25"></span></td><td class="e m mu">462.00–469.00</td></tr>
+          <tr><td><b>KC1</b> Coffee</td><td class="mu">Ags</td><td class="e m">336.40</td><td class="e m dn">−1.24%</td><td class="e"><span class="spark" data-ch="spark" data-mode="candle" data-h="26" data-v="342/352/338/348,348/358/344/356,356/362/348/350,350/356/342/344,344/350/336/340,340/346/332/336.4"></span></td><td class="e m mu">332.00–346.00</td></tr>
+        </table>
+        <div class="hr"></div>
+        <div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Bloomberg Commodity Index</span><span class="v">106.84 · <span class="up">+0.62%</span></span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="pn">
+        <div class="ph"><span class="k2">Complex performance</span><span class="v xs mu">1D</span></div>
+        <div class="pb"><div class="ch" data-ch="bars" data-lw="86" data-u="%" data-dp="2"
+          data-s="Nat gas:up:2.86|WTI:up:1.62|Brent:up:1.44|Silver:up:1.18|Gold:up:0.74|Soybeans:up:0.38|Corn:dn:-0.64|Wheat:dn:-0.42|Copper:dn:-0.88|Coffee:dn:-1.24"></div>
+          <div class="hr"></div>
+          <div class="q2"><div class="cell"><span class="k">Energy complex</span><span class="v up">+1.72%</span></div>
+            <div class="cell"><span class="k">Agriculture</span><span class="v dn">−0.48%</span></div></div>
+        </div>
+      </div>
+      <div class="pn">
+        <div class="ph"><span class="k2">Why crude is bid</span></div>
+        <div class="pb t">
+          <div class="row"><span class="nm">EIA crude inventories</span><span class="v up">−0.9mn bbl</span></div>
+          <div class="row"><span class="nm">Cushing, Oklahoma</span><span class="v up">−1.4mn bbl</span></div>
+          <div class="row"><span class="nm">Refinery utilisation</span><span class="v">87.4%</span></div>
+          <div class="row"><span class="nm">OPEC+ spare capacity</span><span class="v">3.8mn bpd</span></div>
+          <div class="row"><span class="nm">Brent prompt spread</span><span class="v up">+$0.41 backwardated</span></div>
+          <div class="row"><span class="nm">US production</span><span class="v">13.62mbd</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g m11" data-tg>
+    <div class="pn">
+      <div class="ph"><span class="k2">Futures curve · front vs back</span>
+        <span class="tabs"><button data-t="k1" class="on">WTI</button><button data-t="k2">Gold</button><button data-t="k3">Corn</button></span></div>
+      <div class="pb">
+        <div data-p="k1" class="on"><div class="ch" data-ch="line" data-h="240" data-w="700" data-ymin="66.8" data-ymax="69.2" data-yp="2" data-x="Apr,May,Jun,Jul,Sep,Dec,Mar 27"
+          data-series="Today:acc:68.42,68.66,68.74,68.68,68.42,67.94,67.42|1 month ago:mu:67.84,67.92,67.94,67.86,67.54,67.02,66.48"></div>
+          <div class="q3" style="margin-top:9px"><div class="cell"><span class="k">Structure</span><span class="v l up">Backwardated</span></div>
+            <div class="cell"><span class="k">Apr–Mar 27</span><span class="v l dn">−$1.50</span></div>
+            <div class="cell"><span class="k">Annualised</span><span class="v l">−6.6%</span></div></div></div>
+        <div data-p="k2"><div class="ch" data-ch="line" data-h="240" data-w="700" data-ymin="2920" data-ymax="3030" data-yp="0" data-x="Apr,Jun,Aug,Dec,Jun 27"
+          data-series="Today:acc:2944.2,2951.6,2959.4,2974.8,3004.2|1 month ago:mu:2842.6,2849.4,2856.8,2871.4,2900.2"></div>
+          <div class="q3" style="margin-top:9px"><div class="cell"><span class="k">Structure</span><span class="v l ac">Contango</span></div>
+            <div class="cell"><span class="k">Apr–Jun 27</span><span class="v l up">+$60.00</span></div>
+            <div class="cell"><span class="k">Annualised</span><span class="v l">+4.1%</span></div></div></div>
+        <div data-p="k3"><div class="ch" data-ch="line" data-h="240" data-w="700" data-ymin="456" data-ymax="510" data-yp="0" data-x="May,Jul,Sep,Dec,Mar 27"
+          data-series="Today:acc:466.25,472.5,478.75,489.0,501.25|1 month ago:mu:452.75,459.5,466.25,477.0,489.5"></div>
+          <div class="q3" style="margin-top:9px"><div class="cell"><span class="k">Structure</span><span class="v l ac">Contango</span></div>
+            <div class="cell"><span class="k">May–Mar 27</span><span class="v l up">+$35.00</span></div>
+            <div class="cell"><span class="k">Annualised</span><span class="v l">+7.6%</span></div></div></div>
+        <div class="hr"></div>
+        <div class="cap">Carry traders are paid to hold grains and gold, and paid to sell crude forward: the three curves disagree about where scarcity sits.</div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">US petroleum stocks · weekly change, mn bbl</span></div>
+      <div class="pb">
+        <div class="ch" data-ch="bars" data-lw="96" data-u="mn" data-dp="1" data-center="1"
+          data-s="Cushing:up:-1.4|Crude oil:up:-0.9|Gasoline:up:-1.2|Distillates:dn:0.6|RBOB blend:dn:0.2"></div>
+        <div class="hr"></div>
+        <div class="row"><span class="nm">Strategic reserve</span><span class="v">394.2mn bbl</span><span class="v xs mu">−0.4mn</span></div>
+        <div class="row"><span class="nm">Days of cover, crude</span><span class="v">56.2</span><span class="v xs up">−1.4</span></div>
+        <div class="row"><span class="nm">Floating storage</span><span class="v">62.8mn bbl</span><span class="v xs mu">+0.8%</span></div>
+        <div class="row"><span class="nm">Gasoline demand, 4w avg</span><span class="v">8.92mbd</span><span class="v xs up">+1.2%</span></div>
+        <div class="hr"></div>
+        <div class="cap">Three consecutive draws against a five-year average build for this week of the year.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g c3">
+    <div class="pn"><div class="ph"><span class="k2">Energy</span><span class="tag" style="color:var(--up)">+1.72%</span></div>
+      <div class="pb t">
+        <div class="row"><span class="nm">WTI crude</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="67.8,68.1,67.9,68.4,68.2,68.6,68.5,68.9" data-cls="up"></span><span class="v">68.90</span><span class="v up" style="width:50px;text-align:right">+1.62%</span></div>
+        <div class="row"><span class="nm">Brent crude</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="71.9,72.2,72.1,72.6,72.4,72.9,72.8,73.04" data-cls="up"></span><span class="v">73.04</span><span class="v up" style="width:50px;text-align:right">+1.44%</span></div>
+        <div class="row"><span class="nm">Nat gas</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="3.42,3.40,3.31,3.36,3.49,3.52,3.55,3.582" data-cls="up"></span><span class="v">3.582</span><span class="v up" style="width:50px;text-align:right">+2.86%</span></div>
+        <div class="row"><span class="nm">Gasoline RBOB</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="2.11,2.12,2.15,2.13,2.18,2.19,2.20,2.218" data-cls="up"></span><span class="v">2.2184</span><span class="v up" style="width:50px;text-align:right">+0.94%</span></div>
+        <div class="row"><span class="nm">Heating oil</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="2.24,2.26,2.25,2.28,2.30,2.29,2.31,2.324" data-cls="up"></span><span class="v">2.3244</span><span class="v up" style="width:50px;text-align:right">+1.12%</span></div>
+      </div></div>
+    <div class="pn"><div class="ph"><span class="k2">Metals</span><span class="tag" style="color:var(--up)">+0.48%</span></div>
+      <div class="pb t">
+        <div class="row"><span class="nm">Gold</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="2918,2926,2936,2931,2944,2941,2944,2946" data-cls="up"></span><span class="v">2,946.20</span><span class="v up" style="width:50px;text-align:right">+0.74%</span></div>
+        <div class="row"><span class="nm">Silver</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="33.4,33.6,34.0,33.8,34.3,34.2,34.4,34.62" data-cls="up"></span><span class="v">34.62</span><span class="v up" style="width:50px;text-align:right">+1.18%</span></div>
+        <div class="row"><span class="nm">Copper</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="4.62,4.60,4.56,4.52,4.48,4.46,4.44,4.418" data-cls="dn"></span><span class="v">4.4180</span><span class="v dn" style="width:50px;text-align:right">−0.88%</span></div>
+        <div class="row"><span class="nm">Aluminium</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="2.612,2.624,2.618,2.636,2.644,2.638,2.652,2.664" data-cls="up"></span><span class="v">2.6640</span><span class="v up" style="width:50px;text-align:right">+0.62%</span></div>
+        <div class="row"><span class="nm">Platinum</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="1042,1048,1052,1049,1058,1056,1062,1068" data-cls="up"></span><span class="v">1,068.40</span><span class="v up" style="width:50px;text-align:right">+0.92%</span></div>
+      </div></div>
+    <div class="pn"><div class="ph"><span class="k2">Agriculture</span><span class="tag" style="color:var(--dn)">−0.48%</span></div>
+      <div class="pb t">
+        <div class="row"><span class="nm">Corn</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="468,470,471,468,464,466,465,463.25" data-cls="dn"></span><span class="v">463.25</span><span class="v dn" style="width:50px;text-align:right">−0.64%</span></div>
+        <div class="row"><span class="nm">Wheat</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="562,566,568,562,558,562,561,560.5" data-cls="dn"></span><span class="v">560.50</span><span class="v dn" style="width:50px;text-align:right">−0.42%</span></div>
+        <div class="row"><span class="nm">Soybeans</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="1042,1044,1050,1046,1042,1046,1048,1050.25" data-cls="up"></span><span class="v">1,050.25</span><span class="v up" style="width:50px;text-align:right">+0.38%</span></div>
+        <div class="row"><span class="nm">Coffee C</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="342,348,356,350,344,340,338,336.4" data-cls="dn"></span><span class="v">336.40</span><span class="v dn" style="width:50px;text-align:right">−1.24%</span></div>
+        <div class="row"><span class="nm">Sugar No.11</span><span class="spark" style="width:64px" data-ch="spark" data-h="15" data-v="19.84,19.92,19.88,19.96,20.02,19.98,20.06,20.12" data-cls="up"></span><span class="v">20.12</span><span class="v up" style="width:50px;text-align:right">+0.44%</span></div>
+      </div></div>
+  </div>
+</section>
+
+<!-- ══════════ SENTIMENT ══════════ -->
+<section class="page" id="p-sentiment">
+  <div class="phd">
+    <div><h1>Sentiment</h1><div class="sub">Fear, positioning and the option market's implied mood</div></div>
+    <span class="v xs mu">Composite of 7 signals · weekly CFTC · daily survey</span>
+  </div>
+
+  <div class="g m21">
+    <div class="pn">
+      <div class="ph"><span class="k2">Fear &amp; greed composite</span><span class="tag" style="color:var(--dn)">Fear</span></div>
+      <div class="pb">
+        <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px" class="fgx">
+          <div>
+            <div class="ch" data-ch="radial" data-val="31" data-mid="31" data-stops="dn,acc,up"></div>
+            <div style="display:flex;justify-content:space-between"><span class="k">Extreme fear</span><span class="k">Extreme greed</span></div>
+            <div class="hr"></div>
+            <div class="row"><span class="nm">Yesterday</span><span class="v dn">38</span></div>
+            <div class="row"><span class="nm">Last week</span><span class="v ac">46</span></div>
+            <div class="row"><span class="nm">Last month</span><span class="v up">61</span></div>
+            <div class="row"><span class="nm">52-week average</span><span class="v">58</span></div>
+            <div class="row"><span class="nm">Percentile</span><span class="v dn">8th</span></div>
+          </div>
+          <div>
+            <span class="k">Seven inputs · scored 0–100</span>
+            <div class="ch" data-ch="bars" data-lw="146" data-dp="0" style="margin-top:8px"
+              data-s="Market momentum:up:38|Stock price strength:up:24|Stock price breadth:up:29|Put/call ratio:up:34|Market volatility:up:22|Safe-haven demand:up:41|Junk bond demand:up:48"></div>
+            <div class="hr"></div>
+            <div class="q3">
+              <div class="cell"><span class="k">In fear</span><span class="v l dn">6 / 7</span></div>
+              <div class="cell"><span class="k">Neutral</span><span class="v l">1 / 7</span></div>
+              <div class="cell"><span class="k">In greed</span><span class="v l">0 / 7</span></div>
+            </div>
+            <div class="cap" style="margin-top:9px">Readings below 32 have preceded a positive three-month return in 71% of weeks since 2011 — but only after the level stops falling.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">VIX &amp; term structure</span><span class="v xs up">+6.40%</span></div>
+      <div class="pb">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end">
+          <div><span class="k">CBOE volatility index</span><div class="v xxl">18.24</div></div>
+          <div style="text-align:right"><div class="v l up">+1.09</div><div class="v xs mu">high 18.62 · low 16.08</div></div>
+        </div>
+        <div class="ch" data-ch="line" data-h="170" data-w="380" data-ymin="13" data-ymax="24" data-x="Feb,Mar,Mar"
+          data-series="VIX:acc:16.1,15.8,16.2,15.9,16.4,16.8,16.5,17.1,17.4,17.0,17.6,18.0,17.7,18.24"></div>
+        <div class="hr"></div>
+        <div class="row"><span class="nm">VIX1D</span><span class="v">22.60</span><span class="v up xs" style="width:56px;text-align:right">+14.2%</span></div>
+        <div class="row"><span class="nm">VIX9D</span><span class="v">17.40</span><span class="v up xs" style="width:56px;text-align:right">+5.1%</span></div>
+        <div class="row"><span class="nm">VIX3M</span><span class="v">19.62</span><span class="v up xs" style="width:56px;text-align:right">+2.4%</span></div>
+        <div class="row"><span class="nm">VIX6M</span><span class="v">20.44</span><span class="v up xs" style="width:56px;text-align:right">+1.1%</span></div>
+        <div class="row"><span class="nm">VIX1Y</span><span class="v">21.20</span><span class="v up xs" style="width:56px;text-align:right">+0.6%</span></div>
+        <div class="hr"></div>
+        <div class="flexb" style="display:flex;justify-content:space-between"><span class="k">Contango 1M/3M</span><span class="v up">−6.8% · still steep</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g c3">
+    <div class="pn">
+      <div class="ph"><span class="k2">Put/call ratio · 20 sessions</span><span class="v xs dn">1.12 today</span></div>
+      <div class="pb">
+        <div class="ch" data-ch="line" data-h="170" data-w="380" data-ymin="0.7" data-ymax="1.45" data-yp="2" data-ref="1" data-x="Feb 20,Mar 5,Mar 19"
+          data-series="Equity-only:acc:0.86,0.91,0.88,0.94,0.97,0.92,0.99,1.04,1.01,1.08,1.12,1.06,1.14,1.18,1.12"></div>
+        <div class="hr"></div>
+        <div class="row"><span class="nm">Equity-only, 5-day</span><span class="v dn">1.12</span><span class="v xs mu">avg 0.96</span></div>
+        <div class="row"><span class="nm">Index options</span><span class="v dn">1.28</span><span class="v xs mu">avg 1.04</span></div>
+        <div class="row"><span class="nm">Total, 10-day</span><span class="v">1.04</span><span class="v xs mu">avg 1.01</span></div>
+        <div class="row"><span class="nm">Percentile, 1 year</span><span class="v dn">86th</span></div>
+        <div class="cap" style="margin-top:8px">Dashed line is one — more puts than calls being bought for the first sustained period since January.</div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Positioning · CFTC non-commercial</span><span class="v xs mu">contracts, week to 17 Mar</span></div>
+      <div class="pb ovf">
+        <table class="tbl">
+          <tr><th>Market</th><th class="e">Net</th><th class="e">Δ week</th><th class="e">Z-score</th></tr>
+          <tr><td>S&amp;P 500 e-mini</td><td class="e m dn">−186.2k</td><td class="e m dn">−24.6k</td><td class="e m dn">−1.8</td></tr>
+          <tr><td>10Y Treasury note</td><td class="e m up">+512.4k</td><td class="e m up">+38.2k</td><td class="e m up">+1.4</td></tr>
+          <tr><td>Euro FX</td><td class="e m up">+96.4k</td><td class="e m up">+8.4k</td><td class="e m up">+0.9</td></tr>
+          <tr><td>Japanese yen</td><td class="e m dn">−92.6k</td><td class="e m dn">−14.2k</td><td class="e m dn">−2.1</td></tr>
+          <tr><td>Gold</td><td class="e m up">+208.4k</td><td class="e m up">+12.6k</td><td class="e m up">+2.4</td></tr>
+          <tr><td>WTI crude</td><td class="e m up">+86.2k</td><td class="e m up">+4.8k</td><td class="e m">+0.6</td></tr>
+          <tr><td>Bitcoin (CME)</td><td class="e m up">+11.4k</td><td class="e m dn">−1.8k</td><td class="e m dn">−0.4</td></tr>
+        </table>
+        <div class="hr"></div>
+        <div class="cap">Out of equities, into bonds, long gold, short the yen — the same four-way trade as last week, only bigger.</div>
+      </div>
+    </div>
+
+    <div class="pn">
+      <div class="ph"><span class="k2">Retail survey &amp; leverage</span><span class="v xs mu">AAII · week to 18 Mar</span></div>
+      <div class="pb">
+        <div class="ch" data-ch="stack" data-h="30" data-s="Bullish:up:24.6|Neutral:mu:26.2|Bearish:dn:49.2"></div>
+        <div class="q3" style="margin-top:9px">
+          <div class="cell"><span class="k">Bullish</span><span class="v up">24.6%</span></div>
+          <div class="cell"><span class="k">Neutral</span><span class="v">26.2%</span></div>
+          <div class="cell"><span class="k">Bearish</span><span class="v dn">49.2%</span></div>
+        </div>
+        <div class="hr"></div>
+        <div class="row"><span class="nm">Bull–bear spread</span><span class="v dn">−24.6</span><span class="v xs mu">1.9σ below</span></div>
+        <div class="row"><span class="nm">Consecutive negative weeks</span><span class="v">11</span></div>
+        <div class="row"><span class="nm">Margin debt, y/y</span><span class="v ac">+18.6%</span></div>
+        <div class="row"><span class="nm">Danger threshold</span><span class="v mu">+40%</span></div>
+        <div class="cap" style="margin-top:8px">Bearish as stated, still long as behaved: equity fund flows remain positive into a fourth week.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<style>
+.flexb{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+@media(max-width:980px){.fgx{grid-template-columns:1fr!important}}
+</style>
+<script>window.THEME={acc:'#FFB000',up:'#26C08A',dn:'#FF5A5E',cy:'#5BC8E8',mg:'#C792EA',mu:'#7E8B90',ink:'#E8EBE9',line:'#222A2E'};</script>
+<script id="eng">
+(function(){
+"use strict";
+var T=window.THEME||{};
+function col(k){return T[k]||k||'#888';}
+function rgba(k,a){var c=String(col(k));
+  if(c.charAt(0)!=='#')return c;
+  var h=c.length===4?c.slice(1).split('').map(function(x){return x+x;}).join(''):c.slice(1);
+  return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+function nums(s){return String(s||'').split(',').map(function(n){var v=parseFloat(n);return isNaN(v)?0:v;});}
+function fm(v,dp){var a=Math.abs(v);
+  if(dp!==undefined)return v.toFixed(dp);
+  if(a>=1e6)return (v/1e6).toFixed(2)+'mn';
+  if(a>=10000)return Math.round(v).toLocaleString('en-US');
+  if(a>=1000)return v.toLocaleString('en-US',{maximumFractionDigits:1});
+  if(a>=100)return v.toFixed(1);
+  if(a>=1)return v.toFixed(2);
+  return v.toFixed(3);}
+function sgn(v,dp){return (v>0?'+':'')+fm(v,dp);}
+function svg(w,h,inner,extra){return '<svg viewBox="0 0 '+w+' '+h+'" '+(extra||'style="width:100%;height:auto"')+'>'+inner+'</svg>';}
+function hex(c){c=String(c);if(c.charAt(0)!=='#')return [128,128,128];
+  if(c.length===4)c='#'+c[1]+c[1]+c[2]+c[2]+c[3]+c[3];
+  return [parseInt(c.substr(1,2),16),parseInt(c.substr(3,2),16),parseInt(c.substr(5,2),16)];}
+function mixc(a,b,t){var A=hex(a),B=hex(b);
+  return 'rgb('+A.map(function(v,i){return Math.round(v+(B[i]-v)*t);}).join(',')+')';}
+
+var R={};
+
+R.spark=function(el){
+  var h=+(el.dataset.h||28),w=200,mode=el.dataset.mode||'line',cls=el.dataset.cls||'acc',inner='',i;
+  if(mode==='candle'){
+    var cs=String(el.dataset.v||'').split(',').map(function(s){return s.split('/').map(parseFloat);});
+    var lo=1e18,hi=-1e18;cs.forEach(function(q){lo=Math.min(lo,q[2]);hi=Math.max(hi,q[1]);});
+    var rg=(hi-lo)||1,bw=w/cs.length;
+    inner=cs.map(function(q,i){
+      var X=i*bw+bw/2,Y=function(v){return 1+(1-(v-lo)/rg)*(h-2);};
+      var u=q[3]>=q[0],c=col(u?'up':'dn');
+      return '<line x1="'+X.toFixed(1)+'" x2="'+X.toFixed(1)+'" y1="'+Y(q[1]).toFixed(1)+'" y2="'+Y(q[2]).toFixed(1)+'" stroke="'+c+'" stroke-width="1"/>'+
+        '<rect x="'+(i*bw+bw*0.2).toFixed(1)+'" y="'+Y(Math.max(q[0],q[3])).toFixed(1)+'" width="'+(bw*0.6).toFixed(1)+'" height="'+Math.max(1,Math.abs(Y(q[0])-Y(q[3]))).toFixed(1)+'" fill="'+c+'" fill-opacity="'+(u?'.3':'1')+'" stroke="'+c+'" stroke-width="1"><title>o '+q[0]+' · h '+q[1]+' · l '+q[2]+' · c '+q[3]+'</title></rect>';
+    }).join('');
+    el.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="width:100%;height:'+h+'px">'+inner+'</svg>';return;
+  }
+  var a=nums(el.dataset.v);if(a.length<2)a=[a[0]||0,a[0]||0];
+  var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a);
+  if(mode==='bars'){mn=Math.min(0,mn);mx=Math.max(0,mx);}
+  var r=(mx-mn)||1,n=a.length,X=function(k){return (k/(n-1))*w;},Y=function(v){return 2+(1-(v-mn)/r)*(h-4);};
+  if(mode==='bars'){
+    var bwn=w/n,z=Y(0);
+    inner=a.map(function(v,j){var yy=Y(v);
+      return '<rect x="'+(j*bwn+bwn*0.15).toFixed(1)+'" y="'+Math.min(yy,z).toFixed(1)+'" width="'+(bwn*0.7).toFixed(1)+'" height="'+Math.max(1,Math.abs(z-yy)).toFixed(1)+'" fill="'+col(v<0?'dn':cls)+'"/>';}).join('');
+  }else{
+    var pts=[];
+    if(mode==='step'){for(i=0;i<n;i++){if(i)pts.push(X(i).toFixed(1)+','+Y(a[i-1]).toFixed(1));pts.push(X(i).toFixed(1)+','+Y(a[i]).toFixed(1));}}
+    else{for(i=0;i<n;i++)pts.push(X(i).toFixed(1)+','+Y(a[i]).toFixed(1));}
+    var P=pts.join(' ');
+    if(mode==='area')inner+='<polygon points="'+P+' '+w+','+h+' 0,'+h+'" fill="'+col(cls)+'" fill-opacity=".15"/>';
+    inner+='<polyline class="ln" points="'+P+'" style="stroke:'+col(cls)+'"/>';
+    inner+='<circle cx="'+X(n-1).toFixed(1)+'" cy="'+Y(a[n-1]).toFixed(1)+'" r="2.4" fill="'+col(cls)+'"/>';
+  }
+  el.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="width:100%;height:'+h+'px">'+inner+'</svg>';
+};
+
+R.line=function(el){
+  var W=+(el.dataset.w||620),H=+(el.dataset.h||220),PL=48,PR=10,PT=10,PB=20,k;
+  var S=String(el.dataset.series||'').split('|').filter(Boolean).map(function(s){
+    var q=s.split(':');return {n:q[0],c:q[1]||'acc',a:nums(q[2])};});
+  if(!S.length)return;
+  var all=[];S.forEach(function(s){all=all.concat(s.a);});
+  var mn=el.dataset.ymin!==undefined?+el.dataset.ymin:Math.min.apply(null,all);
+  var mx=el.dataset.ymax!==undefined?+el.dataset.ymax:Math.max.apply(null,all);
+  var dp=el.dataset.yp!==undefined?+el.dataset.yp:2;
+  var r=(mx-mn)||1;
+  var X=function(i,n){return PL+(n<2?0:(i/(n-1))*(W-PL-PR));},Y=function(v){return PT+(1-(v-mn)/r)*(H-PT-PB);};
+  var out='';
+  for(k=0;k<=4;k++){var gv=mn+r*k/4,gy=Y(gv);
+    out+='<line class="gl" x1="'+PL+'" x2="'+(W-PR)+'" y1="'+gy.toFixed(1)+'" y2="'+gy.toFixed(1)+'"/>'+
+      '<text class="ax" x="'+(PL-6)+'" y="'+(gy+3.5).toFixed(1)+'" text-anchor="end">'+fm(gv,dp)+'</text>';}
+  if(el.dataset.ref){var rv=+el.dataset.ref;
+    out+='<line x1="'+PL+'" x2="'+(W-PR)+'" y1="'+Y(rv).toFixed(1)+'" y2="'+Y(rv).toFixed(1)+'" stroke="'+col('mu')+'" stroke-dasharray="5 4"/>'+
+      '<text class="ax" x="'+(W-PR)+'" y="'+(Y(rv)-5).toFixed(1)+'" text-anchor="end">'+fm(rv,dp)+'</text>';}
+  if(el.dataset.zero==='1'&&mn<0&&mx>0)
+    out+='<line x1="'+PL+'" x2="'+(W-PR)+'" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" stroke="'+col('ink')+'" stroke-opacity=".5"/>';
+  var xs=String(el.dataset.x||'').split(',').filter(Boolean);
+  if(xs.length){var n0=S[0].a.length;
+    xs.forEach(function(t,i){var px=X(Math.round(i*((n0-1)/Math.max(1,xs.length-1))),n0);
+      out+='<text class="ax" x="'+px.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle">'+t+'</text>';});}
+  S.forEach(function(s){
+    var p=s.a.map(function(v,i){return X(i,s.a.length).toFixed(1)+','+Y(v).toFixed(1);}).join(' ');
+    out+='<polyline class="ln" points="'+p+'" style="stroke:'+col(s.c)+'"/>';
+    var li=s.a.length-1;
+    out+='<circle cx="'+X(li,s.a.length).toFixed(1)+'" cy="'+Y(s.a[li]).toFixed(1)+'" r="2.8" fill="'+col(s.c)+'"><title>'+s.n+' '+fm(s.a[li],dp)+'</title></circle>';});
+  el.innerHTML=svg(W,H,out);
+};
+
+R.cols=function(el){
+  var W=+(el.dataset.w||600),H=+(el.dataset.h||140);
+  var a=nums(el.dataset.v),labs=String(el.dataset.x||'').split(',').filter(Boolean);
+  var mn=Math.min(0,Math.min.apply(null,a)),mx=Math.max(0,Math.max.apply(null,a)),r=(mx-mn)||1;
+  var bw=W/a.length,z=(1-(0-mn)/r)*H,out='';
+  a.forEach(function(v,i){var y=(1-(v-mn)/r)*H;
+    out+='<rect x="'+(i*bw+bw*0.14).toFixed(1)+'" y="'+Math.min(y,z).toFixed(1)+'" width="'+(bw*0.72).toFixed(1)+'" height="'+Math.max(1,Math.abs(z-y)).toFixed(1)+'" fill="'+col(v<0?'dn':(el.dataset.cls||'acc'))+'"><title>'+(labs[i]||i)+' '+sgn(v,el.dataset.dp?+el.dataset.dp:undefined)+'</title></rect>';});
+  out+='<line x1="0" x2="'+W+'" y1="'+z.toFixed(1)+'" y2="'+z.toFixed(1)+'" stroke="'+col('mu')+'" stroke-opacity=".6"/>';
+  el.innerHTML=svg(W,H,out);
+};
+
+R.bars=function(el){
+  var S=String(el.dataset.s||'').split('|').map(function(s){var q=s.split(':');
+    return {n:q[0],c:q[1]||'',v:parseFloat(q[2])||0};});
+  var mx=Math.max.apply(null,S.map(function(s){return Math.abs(s.v);}))||1;
+  var lw=+(el.dataset.lw||110),u=el.dataset.u||'',dp=el.dataset.dp!==undefined?+el.dataset.dp:2,ctr=el.dataset.center==='1';
+  el.innerHTML=S.map(function(s){
+    var w=Math.abs(s.v)/mx*(ctr?50:100),c=col(s.c||(s.v<0?'dn':'up'));
+    var track=ctr
+      ?'<span style="position:relative;flex:1;height:11px;background:rgba(128,128,128,.16);min-width:40px"><i style="position:absolute;top:0;bottom:0;'+(s.v<0?'right:50%':'left:50%')+';width:'+w.toFixed(1)+'%;background:'+c+'"></i><i style="position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:rgba(128,128,128,.6)"></i></span>'
+      :'<span style="position:relative;flex:1;height:11px;background:rgba(128,128,128,.16);min-width:40px"><i style="position:absolute;left:0;top:0;bottom:0;width:'+w.toFixed(1)+'%;background:'+c+'"></i></span>';
+    return '<div style="display:flex;align-items:center;gap:8px;padding:3.5px 0">'+
+      '<span class="xs" style="width:'+lw+'px;flex:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">'+s.n+'</span>'+track+
+      '<span class="v xs" style="width:64px;text-align:right;flex:none;color:'+c+'">'+(s.v>0?'+':'')+fm(s.v,dp)+u+'</span></div>';}).join('');
+};
+
+R.heat=function(el){
+  var cols=el.dataset.cols.split(','),rows=el.dataset.rows.split(',');
+  var data=String(el.dataset.v||'').split(';').map(function(r){return r.split(',').map(parseFloat);});
+  var mx=+(el.dataset.max||1),lw=+(el.dataset.lw||120);
+  var h='<div style="display:grid;grid-template-columns:'+lw+'px repeat('+cols.length+',minmax(0,1fr));gap:2px">';
+  h+='<span></span>'+cols.map(function(c){return '<span class="k" style="text-align:center;font-size:9px;padding-bottom:3px">'+c+'</span>';}).join('');
+  rows.forEach(function(r,ri){
+    h+='<span class="xs" style="display:flex;align-items:center;justify-content:flex-end;padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+r+'</span>';
+    cols.forEach(function(c,ci){
+      var v=data[ri]?data[ri][ci]:0,t=Math.min(1,Math.abs(v)/mx),a=.12+t*.75;
+      var fg=a>.55?'#fff':'';
+      h+='<span title="'+r+' · '+c+' · '+(v>0?'+':'')+v.toFixed(2)+'%" style="padding:7px 2px;text-align:center;font-family:var(--mono);font-size:11px;background:'+rgba(v<0?'dn':'up',a)+';color:'+fg+'">'+(v>0?'+':'')+v.toFixed(2)+'</span>';});});
+  el.innerHTML=h+'</div>';
+};
+
+R.tree=function(el){
+  var W=+(el.dataset.w||600),H=+(el.dataset.h||300);
+  var items=String(el.dataset.s||'').split('|').map(function(s){var q=s.split(':');
+      return {n:q[0],v:parseFloat(q[1])||0,w:Math.abs(parseFloat(q[2]))||0.01,t:q[3]||''};})
+    .sort(function(a,b){return b.w-a.w;});
+  var mx=0;items.forEach(function(i){mx=Math.max(mx,Math.abs(i.v));});mx=mx||1;
+  var out=[];
+  (function split(arr,x,y,w,h){
+    if(!arr.length)return;
+    if(arr.length===1){out.push({i:arr[0],x:x,y:y,w:w,h:h});return;}
+    var tot=0;arr.forEach(function(i){tot+=i.w;});
+    var best=1,bv=1e9,k,j;
+    for(k=1;k<arr.length;k++){var acc=0;for(j=0;j<k;j++)acc+=arr[j].w;
+      var d=Math.abs(acc/tot-0.5);if(d<bv){bv=d;best=k;}}
+    var hw=0;for(k=0;k<best;k++)hw+=arr[k].w;hw/=tot;
+    if(w>=h){split(arr.slice(0,best),x,y,w*hw,h);split(arr.slice(best),x+w*hw,y,w*(1-hw),h);}
+    else{split(arr.slice(0,best),x,y,w,h*hw);split(arr.slice(best),x,y+h*hw,w,h*(1-hw));}
+  })(items,0,0,W,H);
+  var body=out.map(function(o){
+    var t=Math.min(1,Math.abs(o.i.v)/mx),a=.16+t*.72,fg=a>.5?'#fff':'';
+    var g='<g><rect x="'+o.x.toFixed(1)+'" y="'+o.y.toFixed(1)+'" width="'+Math.max(0,o.w-1.5).toFixed(1)+'" height="'+Math.max(0,o.h-1.5).toFixed(1)+'" fill="'+rgba(o.i.v<0?'dn':'up',a)+'">'+
+      '<title>'+o.i.n+' · '+(o.i.v>0?'+':'')+o.i.v.toFixed(2)+'% · weight '+o.i.w+'%'+(o.i.t?' · '+o.i.t:'')+'</title></rect>';
+    if(o.w>54&&o.h>24)g+='<text x="'+(o.x+7).toFixed(1)+'" y="'+(o.y+16).toFixed(1)+'" class="lb" style="fill:'+fg+'">'+o.i.n+'</text>';
+    if(o.w>54&&o.h>44)g+='<text x="'+(o.x+7).toFixed(1)+'" y="'+(o.y+33).toFixed(1)+'" font-size="12" style="font-family:var(--mono);fill:'+fg+'">'+(o.i.v>0?'+':'')+o.i.v.toFixed(2)+'%</text>';
+    if(o.w>54&&o.h>64&&o.i.t)g+='<text x="'+(o.x+7).toFixed(1)+'" y="'+(o.y+48).toFixed(1)+'" font-size="9.5" style="font-family:var(--mono);fill:'+fg+'" opacity=".75">'+o.i.t+' · w '+o.i.w+'%</text>';
+    return g+'</g>';}).join('');
+  el.innerHTML=svg(W,H,body);
+};
+
+R.donut=function(el){
+  var S=String(el.dataset.s||'').split('|').map(function(s){var q=s.split(':');
+    return {n:q[0],c:col(q[1]||'acc'),v:parseFloat(q[2])||0};});
+  var tot=S.reduce(function(a,b){return a+b.v;},0)||1,R=48,r=+(el.dataset.inner||30),cx=60,acc=-Math.PI/2,out='';
+  S.forEach(function(s){
+    var a0=acc,a1=acc+2*Math.PI*(s.v/tot);acc=a1;var big=(a1-a0)>Math.PI?1:0;
+    var d=['M',cx+R*Math.cos(a0),cx+R*Math.sin(a0),'A',R,R,0,big,1,cx+R*Math.cos(a1),cx+R*Math.sin(a1),
+      'L',cx+r*Math.cos(a1),cx+r*Math.sin(a1),'A',r,r,0,big,0,cx+r*Math.cos(a0),cx+r*Math.sin(a0),'Z'].join(' ');
+    out+='<path d="'+d+'" fill="'+s.c+'"><title>'+s.n+' · '+fm(s.v)+'</title></path>';});
+  if(el.dataset.mid)out+='<text x="60" y="58" text-anchor="middle" font-size="17" font-weight="600" style="font-family:var(--mono);fill:'+col('ink')+'">'+el.dataset.mid+'</text>';
+  if(el.dataset.sub)out+='<text x="60" y="74" text-anchor="middle" font-size="9" letter-spacing="1.4" style="font-family:var(--sans);fill:'+col('mu')+'">'+el.dataset.sub+'</text>';
+  el.innerHTML=svg(120,120,out,'style="width:100%;height:auto;max-width:180px;margin:0 auto"');
+};
+
+R.radial=function(el){
+  var pct=Math.max(0,Math.min(100,+(el.dataset.val||0))),W=240,H=142,cx=120,cy=126,R=98;
+  var seg=+(el.dataset.seg||34),stops=(el.dataset.stops||'dn,acc,up').split(',').map(function(k){return col(k);}),out='',i;
+  function mix(f){var idx=f*(stops.length-1),i0=Math.floor(idx),t=idx-i0;
+    return mixc(stops[Math.min(i0,stops.length-1)],stops[Math.min(i0+1,stops.length-1)],t);}
+  for(i=0;i<seg;i++){
+    var f0=i/seg,a0=Math.PI*(1+f0),a1=Math.PI*(1+(i+0.66)/seg),on=f0<pct/100;
+    out+='<path d="M'+(cx+R*Math.cos(a0)).toFixed(1)+','+(cy+R*Math.sin(a0)).toFixed(1)+' A'+R+','+R+' 0 0 1 '+
+      (cx+R*Math.cos(a1)).toFixed(1)+','+(cy+R*Math.sin(a1)).toFixed(1)+'" stroke="'+(on?mix(f0):'rgba(128,128,128,.22)')+'" stroke-width="14" fill="none"/>';}
+  var ang=Math.PI*(1+pct/100);
+  out+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+(R-18)*Math.cos(ang)).toFixed(1)+'" y2="'+(cy+(R-18)*Math.sin(ang)).toFixed(1)+'" stroke="'+col('ink')+'" stroke-width="2.6"/>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="'+col('ink')+'"/>';
+  if(el.dataset.mid)out+='<text x="'+cx+'" y="'+(cy-14)+'" text-anchor="middle" font-size="34" font-weight="600" style="font-family:var(--mono);fill:'+col('ink')+'">'+el.dataset.mid+'</text>';
+  el.innerHTML=svg(W,H,out);
+};
+
+R.scatter=function(el){
+  var W=+(el.dataset.w||520),H=+(el.dataset.h||250),PL=44,PB=24,PT=12,PR=14;
+  var P=String(el.dataset.p||'').split('|').filter(Boolean).map(function(s){var q=s.split(':');
+    return {x:parseFloat(q[0]),y:parseFloat(q[1]),r:+(q[2])||6,n:q[3]||'',c:col(q[4]||'acc')};});
+  var xs=P.map(function(p){return p.x;}),ys=P.map(function(p){return p.y;});
+  var x0=+el.dataset.xmin,x1=+el.dataset.xmax,y0=+el.dataset.ymin,y1=+el.dataset.ymax;
+  var X=function(v){return PL+((v-x0)/((x1-x0)||1))*(W-PL-PR);},Y=function(v){return PT+(1-(v-y0)/((y1-y0)||1))*(H-PT-PB);};
+  var out='',i;
+  for(i=0;i<=4;i++){var gy=PT+(i/4)*(H-PT-PB),gv=y1-(i/4)*(y1-y0);
+    out+='<line class="gl" x1="'+PL+'" x2="'+(W-PR)+'" y1="'+gy.toFixed(1)+'" y2="'+gy.toFixed(1)+'"/>'+
+      '<text class="ax" x="'+(PL-6)+'" y="'+(gy+3.5).toFixed(1)+'" text-anchor="end">'+fm(gv)+'</text>';}
+  for(i=0;i<=4;i++){var gx=PL+(i/4)*(W-PL-PR),xv=x0+(i/4)*(x1-x0);
+    out+='<text class="ax" x="'+gx.toFixed(1)+'" y="'+(H-7)+'" text-anchor="middle">'+fm(xv)+'</text>';}
+  if(el.dataset.fit){var f=nums(el.dataset.fit);
+    out+='<line x1="'+X(f[0]).toFixed(1)+'" y1="'+Y(f[1]).toFixed(1)+'" x2="'+X(f[2]).toFixed(1)+'" y2="'+Y(f[3]).toFixed(1)+'" stroke="'+col('mu')+'" stroke-width="1.4" stroke-dasharray="6 4"/>';}
+  P.forEach(function(p){
+    out+='<circle cx="'+X(p.x).toFixed(1)+'" cy="'+Y(p.y).toFixed(1)+'" r="'+p.r+'" fill="'+p.c+'" fill-opacity=".28" stroke="'+p.c+'" stroke-width="1.5"><title>'+p.n+' · '+fm(p.x)+' / '+fm(p.y)+'</title></circle>';
+    if(p.n&&el.dataset.labels!=='0')out+='<text x="'+(X(p.x)+p.r+4).toFixed(1)+'" y="'+(Y(p.y)+3.5).toFixed(1)+'" class="lb">'+p.n+'</text>';});
+  el.innerHTML=svg(W,H,out);
+};
+
+R.waffle=function(el){
+  var S=String(el.dataset.s||'').split('|').map(function(s){var q=s.split(':');
+    return {n:q[0],c:col(q[1]||'acc'),v:Math.round(+q[2])||0};});
+  var cols=+(el.dataset.cols||20),sz=+(el.dataset.sz||12),gap=2,cells=[];
+  S.forEach(function(s){for(var i=0;i<s.v;i++)cells.push(s);});
+  var rows=Math.ceil(cells.length/cols),W=cols*(sz+gap),H=rows*(sz+gap);
+  var body=cells.map(function(s,i){var x=(i%cols)*(sz+gap),y=Math.floor(i/cols)*(sz+gap);
+    return '<rect x="'+x+'" y="'+y+'" width="'+sz+'" height="'+sz+'" fill="'+s.c+'"><title>'+s.n+'</title></rect>';}).join('');
+  el.innerHTML=svg(W,H,body,'style="width:100%;height:auto"');
+};
+
+R.stack=function(el){
+  var S=String(el.dataset.s||'').split('|').map(function(s){var q=s.split(':');
+    return {n:q[0],c:col(q[1]||'acc'),v:parseFloat(q[2])||0};});
+  var tot=S.reduce(function(a,b){return a+b.v;},0)||1;
+  el.innerHTML='<div style="display:flex;height:'+(el.dataset.h||24)+'px;gap:1px">'+S.map(function(s){
+    return '<span title="'+s.n+' · '+fm(s.v)+'" style="width:'+(s.v/tot*100).toFixed(2)+'%;background:'+s.c+'"></span>';}).join('')+'</div>';
+};
+
+function paint(el){var f=R[el.getAttribute('data-ch')];if(!f)return;try{f(el);}catch(e){el.setAttribute('data-err','1');}}
+document.querySelectorAll('[data-ch]').forEach(paint);
+
+/* tabs: button group inside a [data-tg] container, else the closest .pn / .grp */
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-t]');
+  if(b){
+    var cands=[b.closest('[data-tg]'),b.closest('.pn'),b.closest('.card'),b.closest('.fig'),b.closest('.g'),b.closest('.page')].filter(Boolean);
+    var g=null;
+    for(var ci=0;ci<cands.length;ci++){
+      if(cands[ci].querySelectorAll('[data-t]').length&&cands[ci].querySelectorAll('[data-p]').length){g=cands[ci];break;}}
+    if(g){
+      var k=b.getAttribute('data-t'),fam=k.replace(/\d+$/,'');
+      g.querySelectorAll('[data-t]').forEach(function(x){
+        if(x.getAttribute('data-t').replace(/\d+$/,'')===fam)x.classList.toggle('on',x===b);});
+      g.querySelectorAll('[data-p]').forEach(function(x){
+        var pk=x.getAttribute('data-p');
+        if(pk.replace(/\d+$/,'')===fam)x.classList.toggle('on',pk===k);});
+      g.querySelectorAll('[data-ch]').forEach(paint);
+    }
+  }
+  var x=e.target.closest('[data-x]');
+  if(x)x.classList.toggle('open');
+});
+
+/* hash router */
+function route(){
+  var h=(location.hash||'').replace(/^#\/?/,'');
+  var p=document.getElementById('p-'+h)||document.getElementById('p-board');
+  document.querySelectorAll('.page').forEach(function(s){s.classList.toggle('on',s===p);});
+  document.querySelectorAll('[data-go]').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-go')===h);});
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+
+var F={F1:'board',F2:'equities',F3:'rates',F4:'commodities',F5:'sentiment'};
+document.addEventListener('keydown',function(e){
+  if(F[e.key]){e.preventDefault();location.hash='#/'+F[e.key];}});
+
+/* clocks */
+function tick(){
+  document.querySelectorAll('[data-clk]').forEach(function(el){
+    el.textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:el.getAttribute('data-clk')});});
+}
+tick();setInterval(tick,1000);
+})();
+</script>
+
+</body>
+</html>

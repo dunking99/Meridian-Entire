@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Design Viewer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; background: #111; color: #eee; font-family: sans-serif; }
+  header { display: flex; align-items: center; gap: 18px; padding: 10px 14px; background: #1b1b1b; border-bottom: 1px solid #2c2c2c; flex-wrap: wrap; }
+  .row2 { display: flex; align-items: center; gap: 18px; padding: 8px 14px; background: #161616; border-bottom: 1px solid #2c2c2c; flex-wrap: wrap; }
+  .group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .label { font-size: 12px; color: #888; margin-right: 4px; text-transform: uppercase; letter-spacing: .06em; }
+  button, a.btn { background: #262626; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; text-decoration: none; }
+  button.active { background: #f2f2f2; color: #111; border-color: #f2f2f2; font-weight: 600; }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  .spacer { flex: 1; }
+  main { flex: 1; position: relative; display: flex; justify-content: center; align-items: stretch; overflow: auto; background: #0b0b0b; }
+  main.framed { padding: 16px; }
+  iframe { border: 0; background: #fff; width: 100%; height: 100%; transition: width .2s ease; }
+  #loading { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 8px; background: rgba(11,11,11,.85); color: #bbb; z-index: 2; }
+  .empty { color: #666; font-size: 13px; padding: 40px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="group">
+    <span class="label">Category</span>
+    <span id="cat-buttons" class="group"></span>
+  </div>
+  <span class="spacer"></span>
+  <div class="group">
+    <button id="prev" title="Previous (left arrow)">&larr;</button>
+    <button id="next" title="Next (right arrow)">&rarr;</button>
+    <a id="open-tab" class="btn" target="_blank" rel="noopener">Open in new tab &nearr;</a>
+  </div>
+</header>
+
+<div class="row2">
+  <div class="group">
+    <span class="label">Type</span>
+    <span id="sub-buttons" class="group"></span>
+  </div>
+  <span class="spacer"></span>
+  <div class="group">
+    <span class="label">Design</span>
+    <span id="design-buttons" class="group"></span>
+  </div>
+  <div class="group">
+    <span class="label">Size</span>
+    <button data-size="100%" class="size active">Desktop</button>
+    <button data-size="820px" class="size">Tablet</button>
+    <button data-size="390px" class="size">Phone</button>
+  </div>
+</div>
+
+<main id="stage">
+  <iframe id="frame" title="Design preview"></iframe>
+  <div id="loading"><div>Loading design&hellip;</div></div>
+</main>
+
+<script>
+  // =====================================================================
+  // THE CATALOG
+  // Add new designs by adding entries to the arrays below.
+  // "file" is the path relative to this viewer.html file.
+  // =====================================================================
+  const CATALOG = {
+    "Portfolio": {
+      "Components": [
+        { short: "Claude Opus 5 Medium", name: "Claude Opus 5 Medium", file: "Portfolio/Components/1. Claude Opus 5 Medium.html" },
+        { short: "DeepSeek",             name: "DeepSeek",             file: "Portfolio/Components/2. DeepSeek.html" },
+        { short: "Gemini 3.8 Flash",     name: "Gemini 3.8 Flash",     file: "Portfolio/Components/3. Gemini 3.8 Flash.html" },
+        { short: "Grok 4.6 Best",        name: "Grok 4.6 · Best",      file: "Portfolio/Components/4. Grok 4.6 (Best).html" },
+        { short: "Grok 4.6",             name: "Grok 4.6",             file: "Portfolio/Components/5. Grok 4.6.html" },
+        { short: "Grok 4.7 xHigh",       name: "Grok 4.7 xHigh",       file: "Portfolio/Components/6. Grok 4.7 xHigh.html" },
+        { short: "Kimi k3",              name: "Kimi k3",              file: "Portfolio/Components/7. Kimi k3.html" }
+      ],
+      "Page Layout": []
+    },
+    "Research": {
+      "Components": [
+        { short: "Claude Fable 5.1 Low",     name: "Claude Fable 5.1 Low",     file: "Research/Components/1. Claude Fable 5.1 Low.html" },
+        { short: "Claude Opus 4.8 Thinking", name: "Claude Opus 4.8 Thinking", file: "Research/Components/2. Claude Opus 4.8 Thinking.html" },
+        { short: "Claude Opus 5 Max",        name: "Claude Opus 5 Max",        file: "Research/Components/3. Claude Opus 5 Max.html" },
+        { short: "GLM 5.3 Max",              name: "GLM 5.3 Max",              file: "Research/Components/4. GLM 5.3 Max.html" },
+        { short: "Grok 4.7 xHigh",           name: "Grok 4.7 xHigh",           file: "Research/Components/5. Grok 4.7 xHigh.html" },
+        { short: "u2 Flash",                 name: "u2 Flash",                 file: "Research/Components/6. u2 Flash.html" },
+        { short: "Meridian Specimen Book",   name: "Meridian Specimen Book",   file: "Research/Components/7. Meridian Specimen Book.html" }
+      ],
+      "Page Layout": []
+    },
+    "Markets": {
+      "Components": [
+        { short: "Claude Opus 5 Low",     name: "Claude Opus 5 Low",     file: "Markets/Components/1. Claude Opus 5 Low.html" },
+        { short: "Claude Opus 5 Medium",  name: "Claude Opus 5 Medium",  file: "Markets/Components/2. Claude Opus 5 Medium.html" },
+        { short: "Mimo v2.6 Flash Vol 2", name: "Mimo v2.6 Flash Vol 2", file: "Markets/Components/3. Mimo v2.6 Flash Vol 2.html" },
+        { short: "Mimo v2.6 Flash",       name: "Mimo v2.6 Flash",       file: "Markets/Components/4. Mimo v2.6 Flash.html" },
+        { short: "Meridian 120 Designs",  name: "Meridian 120 Designs",  file: "Markets/Components/5. Meridian 120 Designs.html" },
+        { short: "Run 15",                name: "Run 15",                file: "Markets/Components/6. Run 15.html" }
+      ],
+      "Page Layout": [
+        { short: "Claude Opus 5",   name: "Markets layout · Claude Opus 5",   file: "Markets/Page-Layout/1. Claude Opus 5.html" },
+        { short: "Fable 5.1 Max",   name: "Markets layout · Fable 5.1 Max",   file: "Markets/Page-Layout/2. Fable 5.1 Max.html" },
+        { short: "Mimo v2.6 Flash", name: "Markets layout · Mimo v2.6 Flash", file: "Markets/Page-Layout/3. Mimo v2.6 Flash.html" },
+        { short: "Mimo v2.6 Pro",   name: "Markets layout · Mimo v2.6 Pro",   file: "Markets/Page-Layout/4. Mimo v2.6 Pro.html" },
+        { short: "Unknown AI",      name: "Markets layout · Unknown AI",      file: "Markets/Page-Layout/5. Unknown AI/index.html" }
+      ]
+    }
+  };
+  // =====================================================================
+
+  const frame      = document.getElementById("frame");
+  const stage      = document.getElementById("stage");
+  const loading    = document.getElementById("loading");
+  const openTab    = document.getElementById("open-tab");
+  const catWrap    = document.getElementById("cat-buttons");
+  const subWrap    = document.getElementById("sub-buttons");
+  const designWrap = document.getElementById("design-buttons");
+
+  const categories = Object.keys(CATALOG);
+  let activeCat = categories[0];
+  let activeSub = Object.keys(CATALOG[activeCat])[0];
+  let activeIdx = 0;
+
+  // ---- category buttons ----
+  categories.forEach(c => {
+    const b = document.createElement("button");
+    b.textContent = c;
+    b.dataset.cat = c;
+    b.addEventListener("click", () => {
+      activeCat = c;
+      activeSub = Object.keys(CATALOG[c]).find(s => CATALOG[c][s].length) || Object.keys(CATALOG[c])[0];
+      activeIdx = 0;
+      render();
+    });
+    catWrap.appendChild(b);
+  });
+
+  function currentList() {
+    return CATALOG[activeCat]?.[activeSub] || [];
+  }
+
+  function render() {
+    // category active state
+    catWrap.querySelectorAll("button").forEach(b =>
+      b.classList.toggle("active", b.dataset.cat === activeCat));
+
+    // sub-category buttons
+    subWrap.innerHTML = "";
+    Object.keys(CATALOG[activeCat] || {}).forEach(s => {
+      const b = document.createElement("button");
+      const n = CATALOG[activeCat][s].length;
+      b.textContent = n ? `${s} (${n})` : s;
+      b.disabled = !n;
+      b.classList.toggle("active", s === activeSub);
+      b.addEventListener("click", () => {
+        if (!n) return;
+        activeSub = s;
+        activeIdx = 0;
+        render();
+      });
+      subWrap.appendChild(b);
+    });
+
+    // design buttons
+    designWrap.innerHTML = "";
+    const list = currentList();
+    list.forEach((d, i) => {
+      const b = document.createElement("button");
+      b.textContent = `${i + 1} · ${d.short}`;
+      b.title = d.name;
+      b.addEventListener("click", () => { activeIdx = i; load(); });
+      designWrap.appendChild(b);
+    });
+
+    if (!list.length) {
+      designWrap.innerHTML = '<span class="empty">No designs here yet</span>';
+      frame.src = "about:blank";
+      openTab.href = "#";
+      return;
+    }
+
+    activeIdx = Math.max(0, Math.min(activeIdx, list.length - 1));
+    load();
+  }
+
+  function load() {
+    const d = currentList()[activeIdx];
+    if (!d) return;
+    loading.style.display = "flex";
+    frame.src = encodeURI(d.file);
+    openTab.href = encodeURI(d.file);
+    designWrap.querySelectorAll("button").forEach((b, i) =>
+      b.classList.toggle("active", i === activeIdx));
+    try {
+      localStorage.setItem("ui-viewer-pos", JSON.stringify({
+        cat: activeCat, sub: activeSub, idx: activeIdx
+      }));
+    } catch (e) {}
+  }
+
+  frame.addEventListener("load", () => { loading.style.display = "none"; });
+
+  document.querySelectorAll("button.size").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("button.size").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      frame.style.width = b.dataset.size;
+      stage.classList.toggle("framed", b.dataset.size !== "100%");
+    });
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    const n = currentList().length;
+    if (!n) return;
+    activeIdx = (activeIdx - 1 + n) % n;
+    load();
+  });
+  document.getElementById("next").addEventListener("click", () => {
+    const n = currentList().length;
+    if (!n) return;
+    activeIdx = (activeIdx + 1) % n;
+    load();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      const n = currentList().length;
+      if (!n) return;
+      activeIdx = (activeIdx + (e.key === "ArrowRight" ? 1 : -1) + n) % n;
+      load();
+    }
+  });
+
+  // restore last position
+  try {
+    const saved = JSON.parse(localStorage.getItem("ui-viewer-pos") || "null");
+    if (saved && CATALOG[saved.cat] && CATALOG[saved.cat][saved.sub]?.length) {
+      activeCat = saved.cat;
+      activeSub = saved.sub;
+      activeIdx = saved.idx || 0;
+    }
+  } catch (e) {}
+
+  render();
+</script>
+</body>
+</html>

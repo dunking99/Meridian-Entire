@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Favourites</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111; color: #eee; font-family: sans-serif; }
+  header { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: #1b1b1b; border-bottom: 1px solid #2c2c2c; }
+  h1 { font-size: 16px; font-weight: 600; }
+  header .count { color: #888; font-size: 13px; }
+  header .spacer { flex: 1; }
+  button, a.btn { background: #262626; color: #ddd; border: 1px solid #333; border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; text-decoration: none; }
+  button:hover, a.btn:hover { border-color: #555; }
+  button.danger:hover { border-color: #a33; color: #f99; }
+
+  .list { display: flex; flex-direction: column; }
+  .item { position: relative; border-bottom: 8px solid #111; }
+  .item .toolbar {
+    position: absolute; top: 8px; right: 8px; z-index: 10;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(15,15,15,.72); border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px; padding: 5px 6px;
+    opacity: .35; transition: opacity .15s ease;
+  }
+  .item .toolbar:hover, .item:hover .toolbar { opacity: 1; }
+  .item .toolbar .title { font-size: 12px; font-weight: 600; color: #eee; max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 4px; }
+  .item .toolbar button, .item .toolbar a.btn { padding: 3px 8px; font-size: 11px; }
+
+  .viewport { position: relative; overflow: hidden; background: #fff; }
+  .viewport iframe { position: absolute; border: 0; }
+
+  .empty { text-align: center; color: #777; padding: 80px 20px; font-size: 14px; }
+  .empty a { color: #6cf; }
+</style>
+</head>
+<body>
+<header>
+  <h1>★ Favourites</h1>
+  <span class="count" id="count"></span>
+  <span class="spacer"></span>
+  <a href="viewer.html" class="btn">&larr; Back to viewer</a>
+  <button id="export">Export JSON</button>
+  <button id="clear" class="danger">Clear all</button>
+</header>
+<div id="list" class="list"></div>
+<div id="empty" class="empty" style="display:none">
+  No favourites yet. Open the viewer and click the &#9734; on any component you like.
+</div>
+
+<script>
+const FAV_KEY = "ui-viewer-favorites";
+
+const list = document.getElementById("list");
+const empty = document.getElementById("empty");
+const countEl = document.getElementById("count");
+
+function getFavs() {
+  try { return JSON.parse(localStorage.getItem(FAV_KEY) || "[]"); } catch { return []; }
+}
+function saveFavs(favs) { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); }
+
+function render() {
+  let favs = getFavs();
+  // drop anything saved by an older version of this page that didn't
+  // record a proper width/height (would otherwise render as a broken,
+  // tiny, scrollable box)
+  const valid = favs.filter(f => f && f.file && Number.isFinite(f.w) && Number.isFinite(f.h) && f.w > 0 && f.h > 0);
+  if (valid.length !== favs.length) { favs = valid; saveFavs(favs); }
+
+  countEl.textContent = favs.length ? `(${favs.length})` : "";
+  list.innerHTML = "";
+  empty.style.display = favs.length ? "none" : "block";
+  if (!favs.length) return;
+
+  // full page width, identical to how it looks in the real file — only
+  // scaled down if the browser window itself is narrower than the design
+  const available = window.innerWidth;
+
+  favs.forEach((f, i) => {
+    const scale = Math.min(1, available / f.w);
+    const dispW = Math.round(f.w * scale);
+    const dispH = Math.round(f.h * scale);
+
+    const item = document.createElement("div");
+    item.className = "item";
+    item.innerHTML = `
+      <div class="toolbar">
+        <span class="title" title="${escapeAttr(f.label)}">${escapeHtml(f.label)}</span>
+        <a class="btn" href="${encodeURI(f.file)}" target="_blank" rel="noopener" title="Open the full file in a new tab">&#8599;</a>
+        <button class="danger" data-i="${i}" title="Remove">&#10005;</button>
+      </div>
+      <div class="viewport" style="width:${dispW}px; height:${dispH}px;">
+        <iframe
+          loading="lazy"
+          src="${encodeURI(f.file)}"
+          style="width:${f.pageW}px; height:8000px; left:${-f.x}px; top:${-f.y}px; transform: scale(${scale}); transform-origin: ${f.x}px ${f.y}px;">
+        </iframe>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+
+  list.querySelectorAll("button[data-i]").forEach(b => {
+    b.addEventListener("click", () => {
+      const i = +b.dataset.i;
+      const favs = getFavs();
+      favs.splice(i, 1);
+      saveFavs(favs);
+      render();
+    });
+  });
+}
+
+function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function escapeAttr(s) { return escapeHtml(s).replace(/"/g, "&quot;"); }
+
+document.getElementById("clear").addEventListener("click", () => {
+  if (confirm("Remove all favourites?")) { saveFavs([]); render(); }
+});
+document.getElementById("export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(getFavs(), null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "favourites.json";
+  a.click();
+});
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(render, 150);
+});
+
+render();
+window.addEventListener("storage", render);
+</script>
+</body>
+</html>
