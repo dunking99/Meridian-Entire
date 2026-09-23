@@ -1,0 +1,7 @@
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  23/09/2026 14:14:58 ::1 GET /viewer
+ HTTP  23/09/2026 14:14:58 ::1 Returned 200 in 71 ms
+ HTTP  23/09/2026 14:15:00 ::1 GET /favicon.ico
+ HTTP  23/09/2026 14:15:00 ::1 Returned 404 in 2 ms
+ HTTP  23/09/2026 14:15:02 ::1 GET /UI-Design-12/
+ HTTP  23/09/2026 14:15:02 ::1 Returned 200 in 2 ms

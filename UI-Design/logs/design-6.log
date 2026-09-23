@@ -1,0 +1,10 @@
+
+> dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:4006
+- Network:       http://192.168.1.178:4006
+✓ Ready in 2.7s
+
+ GET / 200 in 665ms (next.js: 463ms, application-code: 202ms)
