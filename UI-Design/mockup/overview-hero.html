@@ -1,0 +1,165 @@
+<title>Overview Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0B0F0E; --panel:#121817; --panel2:#121815; --card:#151C19;
+    --ink:#F1F3EF; --muted:#8B958E; --faint:#5C665F; --hair:#232B26;
+    --accent:#4ADE9A; --accent-dim:#2E8B63; --accent-wash:rgba(74,222,154,.12);
+    --loss:#E28B8B;
+    --note:#E8B24A; --note-wash:rgba(232,178,74,.10);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .num{font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-variant-numeric:tabular-nums;}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .page{max-width:1040px;margin:0 auto;padding:2.4rem 1.6rem 5rem;position:relative;}
+
+  .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6rem;}
+  .toolbar-label{font-size:.72rem;color:var(--muted);}
+  .toggle{
+    display:flex;align-items:center;gap:.5rem;font-size:.76rem;font-weight:600;color:var(--muted);
+    padding:.4rem .7rem;border:1px solid var(--hair);border-radius:7px;
+  }
+  .toggle:hover{color:var(--ink);border-color:#3A443E;}
+  .toggle .sw{width:30px;height:16px;border-radius:999px;background:var(--hair);position:relative;transition:background .15s;}
+  .toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s;}
+  .toggle.on .sw{background:var(--accent-wash);}
+  .toggle.on .sw::after{transform:translateX(14px);background:var(--accent);}
+
+  .header-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.4rem;}
+  .breadcrumb{font-size:.82rem;color:var(--muted);}
+  .breadcrumb b{color:var(--ink);font-weight:700;}
+  .header-actions{display:flex;gap:.6rem;}
+  .btn{padding:.5rem .85rem;border-radius:7px;font-size:.8rem;font-weight:600;}
+  .btn.ghost{border:1px solid var(--hair);color:var(--muted);}
+  .btn.ghost:hover{color:var(--ink);border-color:#3A443E;}
+  .btn.primary{background:var(--accent);color:#06110C;}
+
+  /* ---------- annotation system ---------- */
+  .ann{
+    position:absolute;background:var(--note-wash);border:1px solid var(--note);color:var(--note);
+    font-size:.72rem;font-weight:600;padding:.35rem .6rem;border-radius:7px;max-width:230px;line-height:1.4;
+    display:none;z-index:5;
+  }
+  body.show-ann .ann{display:block;}
+  .ann::before{content:attr(data-n);display:inline-flex;align-items:center;justify-content:center;
+    width:16px;height:16px;border-radius:50%;background:var(--note);color:#241900;font-weight:800;font-size:.64rem;
+    margin-right:.35rem;flex-shrink:0;}
+  .ann-1{top:6.4rem;right:-244px;}
+  .ann-2{top:16.6rem;right:-244px;}
+  .ann-3{top:32rem;right:-244px;}
+  @media (max-width:1400px){ .ann{position:static;display:none !important;margin:.5rem 0 0;max-width:none;}
+    body.show-ann .ann{display:flex !important;align-items:center;} }
+
+  /* ---------- hero ---------- */
+  .hero{margin-bottom:1.6rem;}
+  .hero-label{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.6rem;}
+  .hero-row{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;margin-bottom:.6rem;}
+  .hero-value{font-size:2.7rem;font-weight:800;}
+  .hero-pill{display:inline-flex;align-items:center;gap:.3rem;background:var(--accent-wash);color:var(--accent);
+    font-size:.8rem;font-weight:700;padding:.25rem .6rem;border-radius:999px;}
+  .hero-footnote{font-size:.82rem;color:var(--muted);}
+  .hero-footnote b{color:var(--ink);font-weight:700;}
+  .hero-footnote .sep{margin:0 .6rem;color:var(--faint);}
+
+  /* ---------- KPI strip ---------- */
+  .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1.6rem;}
+  .kpi-tile{background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:.95rem 1.1rem;}
+  .kpi-tile .l{font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.5rem;}
+  .kpi-tile .v{font-size:1.2rem;font-weight:800;}
+  .kpi-tile .s{font-size:.72rem;color:var(--faint);margin-top:.3rem;}
+
+  /* ---------- chart card ---------- */
+  .chart-card{background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:1.3rem 1.4rem 1.1rem;}
+  .chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.8rem;}
+  .seg{display:flex;gap:.2rem;background:var(--panel2);border-radius:7px;padding:.2rem;}
+  .seg span{font-size:.72rem;font-weight:600;color:var(--muted);padding:.32rem .6rem;border-radius:5px;}
+  .seg span.active{background:var(--hair);color:var(--ink);}
+  .period{display:flex;gap:.15rem;}
+  .period span{font-size:.72rem;font-weight:600;color:var(--muted);padding:.32rem .55rem;border-radius:5px;}
+  .period span.active{background:var(--accent-wash);color:var(--accent);}
+  .chart-card svg{width:100%;height:260px;display:block;}
+  .chart-legend{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem;font-size:.76rem;color:var(--muted);}
+  .chart-legend .keys{display:flex;gap:1.3rem;}
+  .chart-legend .dot{width:8px;height:2px;display:inline-block;margin-right:.4rem;vertical-align:middle;}
+</style>
+
+<div class="page">
+  <div class="toolbar">
+    <span class="toolbar-label">Overview hero — the layout from the earlier comparison, built out</span>
+    <button class="toggle" id="ann-toggle"><span class="sw"></span>Show reasoning</button>
+  </div>
+
+  <div class="header-row">
+    <div class="breadcrumb"><b>Portfolio</b> · Main Account · 18 positions · USD</div>
+    <div class="header-actions">
+      <button class="btn ghost">Export</button>
+      <button class="btn primary">+ Log transaction</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Total portfolio value</div>
+    <div class="hero-row">
+      <span class="hero-value num">$567,290</span>
+      <span class="hero-pill">▲ +$1,240 (+0.22%) today</span>
+    </div>
+    <div class="hero-footnote">
+      All-time gain <b class="num">+$198,430</b><span class="sep">·</span>Money-weighted <b class="num">+54.2%</b><span class="sep">·</span>Annualised TWR <b class="num">+18.7%</b>
+    </div>
+    <div class="ann ann-1" data-n="1">Hero stays the one big thing on the page. Performance context sits right under it as plain text — not another box — so it reads as a footnote, not a competitor for attention.</div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi-tile"><div class="l">Invested</div><div class="v num">$520,110</div><div class="s">91.7% of total</div></div>
+    <div class="kpi-tile"><div class="l">Cash</div><div class="v num">$47,180</div><div class="s">8.3% of total</div></div>
+    <div class="kpi-tile"><div class="l">Unrealized P&amp;L</div><div class="v num" style="color:var(--accent);">+$142,860</div><div class="s">+37.9% on cost</div></div>
+    <div class="kpi-tile"><div class="l">YTD return</div><div class="v num" style="color:var(--accent);">+9.4%</div><div class="s">1M +2.1%</div></div>
+  </div>
+  <div class="ann ann-2" data-n="2">These are composition facts, not performance facts — what you're made of right now. They live <em>above</em> the chart on purpose: checking your cash balance shouldn't require scrolling past a 260px chart first.</div>
+
+  <div class="chart-card">
+    <div class="chart-head">
+      <div class="seg"><span class="active">Value</span><span>Return %</span><span>Drawdown</span></div>
+      <div class="period"><span>1D</span><span>1W</span><span>1M</span><span>3M</span><span class="active">6M</span><span>YTD</span><span>1Y</span><span>ALL</span></div>
+    </div>
+    <svg viewBox="0 0 1000 260" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="fillg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4ADE9A" stop-opacity=".28"/>
+          <stop offset="100%" stop-color="#4ADE9A" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="60" x2="1000" y2="60" stroke="#1C2420" stroke-width="1"/>
+      <line x1="0" y1="120" x2="1000" y2="120" stroke="#1C2420" stroke-width="1"/>
+      <line x1="0" y1="180" x2="1000" y2="180" stroke="#1C2420" stroke-width="1"/>
+      <!-- net invested / cost basis reference line -->
+      <line x1="0" y1="210" x2="1000" y2="196" stroke="#5C665F" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <!-- market value line -->
+      <polygon points="0,200 60,196 120,199 180,182 240,188 300,164 360,172 420,142 480,150 540,118 600,126 660,96 720,104 780,76 840,84 900,58 960,66 1000,52 1000,260 0,260" fill="url(#fillg)"/>
+      <polyline points="0,200 60,196 120,199 180,182 240,188 300,164 360,172 420,142 480,150 540,118 600,126 660,96 720,104 780,76 840,84 900,58 960,66 1000,52"
+        fill="none" stroke="#4ADE9A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="1000" cy="52" r="3.5" fill="#4ADE9A"/>
+    </svg>
+    <div class="chart-legend">
+      <div class="keys">
+        <span><span class="dot" style="background:#4ADE9A;"></span>Market value</span>
+        <span><span class="dot" style="background:#5C665F;border-top:1px dashed #5C665F;height:0;"></span>Net invested</span>
+      </div>
+      <span>6M change <b style="color:var(--accent);" class="num">+$71,540</b></span>
+    </div>
+  </div>
+  <div class="ann ann-3" data-n="3">Reference line is the portfolio's <em>own</em> cost basis, not an external index — the gap between the two lines <em>is</em> the gain, which is more personally meaningful here than "vs S&amp;P 500." That comparison belongs on the Performance page, not the Overview.</div>
+</div>
+
+<script>
+  document.getElementById('ann-toggle').addEventListener('click', function(){
+    document.body.classList.toggle('show-ann');
+    this.classList.toggle('on');
+  });
+</script>

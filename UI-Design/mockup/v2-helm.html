@@ -1,0 +1,308 @@
+<meta charset="utf-8">
+<title>Helm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090C11;--p1:#0F141B;--p2:#151C26;--ln:#1E2732;--ln2:#2B3745;--tx:#DCE4EE;--mu:#8493A6;--fa:#556274;--ac:#8FA8FF;--ac2:#5C7CFA;--acw:rgba(143,168,255,.12);--gn:#34C38F;--gnw:rgba(52,195,143,.13);--rd:#F0616D;--rdw:rgba(240,97,109,.13);--am:#F0B429;--amw:rgba(240,180,41,.13);
+--ui:"Barlow Semi Condensed","Segoe UI",sans-serif;--hd:"Barlow Condensed",sans-serif;--mo:"IBM Plex Mono",Menlo,monospace;--row:34px;}
+body.compact{--row:26px;}
+*{box-sizing:border-box;} html,body{height:100%;}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--ui);font-size:14px;overflow:hidden;-webkit-font-smoothing:antialiased;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;} input{font:inherit;color:inherit;}
+.mo{font-family:var(--mo);font-variant-numeric:tabular-nums;} .gn{color:var(--gn);} .rd{color:var(--rd);} .mu{color:var(--mu);}
+:focus-visible{outline:1.5px solid var(--ac);outline-offset:1px;}
+::-webkit-scrollbar{width:9px;height:9px;} ::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:5px;} ::-webkit-scrollbar-track{background:transparent;}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001ms!important;}}
+
+.app{display:grid;grid-template-rows:44px 28px 1fr;grid-template-columns:54px 1fr;height:100vh;}
+.top{grid-column:1/3;display:flex;align-items:center;gap:1rem;padding:0 .9rem;background:var(--p1);border-bottom:1px solid var(--ln);}
+.logo{font-family:var(--hd);font-weight:700;font-size:1.25rem;letter-spacing:.22em;display:flex;align-items:center;gap:.55rem;}
+.logo i{width:18px;height:18px;border:2px solid var(--ac);border-radius:50%;position:relative;} .logo i::after{content:"";position:absolute;left:50%;top:-5px;width:2px;height:24px;background:var(--ac);transform:translateX(-50%) rotate(35deg);}
+.cmdk{margin:0 auto;display:flex;align-items:center;gap:.6rem;width:420px;max-width:38vw;height:30px;padding:0 .7rem;background:var(--bg);border:1px solid var(--ln2);border-radius:7px;color:var(--fa);font-size:13px;text-align:left;}
+.cmdk:hover{border-color:var(--ac);color:var(--mu);} .cmdk kbd{margin-left:auto;font-family:var(--mo);font-size:10px;border:1px solid var(--ln2);border-radius:4px;padding:1px 5px;color:var(--mu);}
+.stat{display:flex;align-items:center;gap:.9rem;font-size:12px;color:var(--mu);} .dot{width:7px;height:7px;border-radius:50%;background:var(--am);display:inline-block;margin-right:.35rem;}
+.av{width:26px;height:26px;border-radius:50%;background:var(--ac2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;}
+.tick{grid-column:1/3;display:flex;overflow:hidden;background:var(--bg);border-bottom:1px solid var(--ln);align-items:center;}
+.tick .trk{display:flex;gap:2.2rem;white-space:nowrap;animation:mq 60s linear infinite;padding-left:1rem;font-family:var(--mo);font-size:11px;} .tick:hover .trk{animation-play-state:paused;}
+@keyframes mq{to{transform:translateX(-50%);}} .tick b{color:var(--tx);font-weight:500;margin-right:.4rem;}
+.rail{background:var(--p1);border-right:1px solid var(--ln);display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.7rem 0;}
+.rail button{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--fa);position:relative;} .rail button:hover{background:var(--p2);color:var(--tx);}
+.rail button.on{background:var(--acw);color:var(--ac);} .rail svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;} .rail .sp{flex:1;}
+.rail button[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:44px;top:50%;transform:translateY(-50%);background:var(--p2);border:1px solid var(--ln2);padding:3px 8px;border-radius:5px;font-size:11px;white-space:nowrap;color:var(--tx);z-index:30;}
+.ws{display:flex;flex-direction:column;min-width:0;min-height:0;position:relative;}
+.tabs{display:flex;background:var(--p1);border-bottom:1px solid var(--ln);padding:0 .5rem;gap:2px;flex-shrink:0;}
+.tabs button{padding:.6rem 1rem;font-size:13px;font-weight:600;color:var(--mu);display:flex;gap:.5rem;align-items:center;border-bottom:2px solid transparent;margin-bottom:-1px;letter-spacing:.02em;}
+.tabs button:hover{color:var(--tx);} .tabs button.on{color:var(--tx);border-color:var(--ac);background:linear-gradient(0deg,var(--acw),transparent);}
+.tabs kbd{font-family:var(--mo);font-size:10px;color:var(--fa);border:1px solid var(--ln2);border-radius:3px;padding:0 4px;}
+.tabs .dens{margin-left:auto;font-size:12px;color:var(--mu);display:flex;align-items:center;gap:.5rem;padding:0 .5rem;} .tabs .dens:hover{color:var(--tx);}
+.body{flex:1;overflow:auto;padding:.8rem;min-height:0;} .view{display:none;} .view.on{display:block;}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:.7rem;}
+.pn{background:var(--p1);border:1px solid var(--ln);border-radius:9px;min-width:0;display:flex;flex-direction:column;}
+.ph{display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-bottom:1px solid var(--ln);cursor:default;user-select:none;}
+.ph h3{margin:0;font-family:var(--hd);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mu);flex:1;}
+.ph .ib{width:22px;height:22px;border-radius:5px;color:var(--fa);display:flex;align-items:center;justify-content:center;font-size:12px;} .ph .ib:hover{background:var(--p2);color:var(--tx);}
+.pb{padding:.8rem;flex:1;min-height:0;} .pn.col .pb{display:none;} .pn.col .ph{border-bottom:none;}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:.7rem;margin-bottom:.7rem;}
+.kpi{background:var(--p1);border:1px solid var(--ln);border-radius:9px;padding:.7rem .85rem;position:relative;overflow:hidden;cursor:pointer;transition:border-color .15s;} .kpi:hover{border-color:var(--ac);}
+.kpi .l{font-family:var(--hd);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fa);font-weight:600;} .kpi .v{font-family:var(--mo);font-size:20px;font-weight:500;margin:.25rem 0 .1rem;} .kpi .d{font-size:12px;} .kpi svg{position:absolute;right:.6rem;bottom:.55rem;opacity:.9;}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--ln);border-radius:6px;padding:2px;} .seg button{padding:2px 9px;font-size:12px;color:var(--mu);border-radius:4px;font-weight:600;} .seg button.on{background:var(--ln2);color:var(--tx);}
+.chartw{position:relative;} .chartw svg{width:100%;display:block;} .cx{position:absolute;pointer-events:none;background:var(--p2);border:1px solid var(--ln2);border-radius:6px;padding:5px 9px;font-size:12px;display:none;white-space:nowrap;z-index:4;font-family:var(--mo);}
+table{width:100%;border-collapse:collapse;} th{position:sticky;top:0;background:var(--p1);text-align:left;font-family:var(--hd);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fa);font-weight:600;padding:.45rem .6rem;border-bottom:1px solid var(--ln);cursor:pointer;white-space:nowrap;user-select:none;}
+th:hover{color:var(--tx);} th.r,td.r{text-align:right;} td{padding:0 .6rem;height:var(--row);border-bottom:1px solid var(--ln);font-size:13px;white-space:nowrap;}
+tr.rw{cursor:pointer;} tr.rw:hover td{background:var(--p2);} tr.rw.sel td{background:var(--acw);}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:99px;letter-spacing:.04em;} .pill.g{background:var(--gnw);color:var(--gn);} .pill.r{background:var(--rdw);color:var(--rd);} .pill.a{background:var(--amw);color:var(--am);} .pill.b{background:var(--acw);color:var(--ac);}
+.chip{font-size:12px;padding:3px 10px;border-radius:99px;border:1px solid var(--ln2);color:var(--mu);font-weight:600;} .chip:hover{color:var(--tx);border-color:var(--fa);} .chip.on{background:var(--acw);border-color:var(--ac);color:var(--ac);}
+.tb{display:flex;gap:.6rem;align-items:center;margin-bottom:.7rem;flex-wrap:wrap;} .inp{background:var(--p1);border:1px solid var(--ln2);border-radius:6px;height:28px;padding:0 .6rem;width:200px;font-size:13px;} .inp:focus{outline:none;border-color:var(--ac);}
+.insp{position:absolute;top:0;right:0;bottom:0;width:380px;background:var(--p1);border-left:1px solid var(--ln2);transform:translateX(100%);transition:transform .22s cubic-bezier(.2,.8,.2,1);z-index:10;overflow:auto;box-shadow:-20px 0 40px rgba(0,0,0,.35);} .insp.on{transform:none;}
+.insp h2{margin:0;font-family:var(--hd);font-size:28px;letter-spacing:.04em;font-weight:600;} .kvr{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--ln);font-size:13px;} .kvr span:first-child{color:var(--mu);}
+.sel-bar{position:absolute;left:50%;bottom:16px;transform:translate(-50%,120px);background:var(--p2);border:1px solid var(--ac);border-radius:10px;padding:.55rem 1rem;display:flex;gap:1.4rem;align-items:center;box-shadow:0 12px 30px rgba(0,0,0,.5);transition:transform .2s;z-index:9;font-size:13px;} .sel-bar.on{transform:translate(-50%,0);}
+.al{display:flex;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--ln);font-size:13px;align-items:flex-start;} .al:last-child{border-bottom:none;} .al .x{margin-left:auto;color:var(--fa);} .al .x:hover{color:var(--tx);}
+.sl{display:grid;grid-template-columns:130px 1fr 60px;gap:.8rem;align-items:center;padding:.5rem 0;font-size:13px;} .sl input[type=range]{accent-color:var(--ac);width:100%;}
+.bar2{display:grid;grid-template-columns:52px 1fr 1fr 44px;gap:.6rem;align-items:center;font-size:12px;padding:3px 0;} .bar2 .t{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;position:relative;} .bar2 .t i{display:block;height:100%;}
+.mx{display:grid;gap:2px;font-family:var(--mo);font-size:10.5px;} .mx div{aspect-ratio:1.5;display:flex;align-items:center;justify-content:center;border-radius:3px;cursor:default;transition:outline .1s;} .mx .h{aspect-ratio:auto;color:var(--mu);font-family:var(--ui);font-weight:600;background:transparent;}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--p2);border:1px solid var(--ac);padding:.6rem 1rem;border-radius:8px;font-size:13px;transform:translateY(80px);opacity:0;transition:.25s;z-index:60;} .toast.on{transform:none;opacity:1;}
+.ov{position:fixed;inset:0;background:rgba(3,5,8,.68);display:none;align-items:flex-start;justify-content:center;padding-top:14vh;z-index:50;backdrop-filter:blur(3px);} .ov.on{display:flex;}
+.pal{width:560px;max-width:92vw;background:var(--p1);border:1px solid var(--ln2);border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;}
+.pal input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--ln);padding:.95rem 1.1rem;font-size:16px;outline:none;} .pal .list{max-height:340px;overflow:auto;padding:.4rem;}
+.pal .it{display:flex;gap:.7rem;align-items:center;padding:.55rem .7rem;border-radius:7px;cursor:pointer;font-size:14px;} .pal .it.on{background:var(--acw);color:var(--ac);} .pal .it small{margin-left:auto;color:var(--fa);font-size:11px;letter-spacing:.06em;text-transform:uppercase;}
+.pal .foot{padding:.5rem .9rem;border-top:1px solid var(--ln);font-size:11px;color:var(--fa);display:flex;gap:1rem;}
+.max{position:fixed;inset:52px 12px 12px 66px;background:var(--p1);border:1px solid var(--ac);border-radius:12px;z-index:40;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.6);} .max.on{display:flex;} .max .pb{overflow:auto;}
+.tl{border-left:1px solid var(--ln2);margin-left:6px;padding-left:1.1rem;} .tle{position:relative;padding:0 0 1.1rem;} .tle::before{content:"";position:absolute;left:-1.55rem;top:4px;width:9px;height:9px;border-radius:50%;background:var(--ac);border:2px solid var(--bg);}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr);} .grid>*{grid-column:1/-1!important;} .cmdk{display:none;}}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="logo"><i></i>HELM</div>
+    <button class="cmdk" id="cmdk"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="17" y1="17" x2="13" y2="13"/></svg>Search positions, or run a command…<kbd>Ctrl K</kbd></button>
+    <div class="stat"><span><span class="dot"></span>US markets closed</span><span class="mo">SUN 20 SEP 2026</span><div class="av">HD</div></div>
+  </header>
+  <div class="tick"><div class="trk" id="trk"></div></div>
+  <nav class="rail" id="rail">
+    <button class="on" data-tip="Portfolio"><svg viewBox="0 0 20 20"><rect x="3" y="7" width="14" height="9" rx="1.5"/><path d="M7 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg></button>
+    <button data-tip="Markets"><svg viewBox="0 0 20 20"><polyline points="2,14 7,9 10,12 17,4"/></svg></button>
+    <button data-tip="Research"><svg viewBox="0 0 20 20"><path d="M10 5.2c-1.5-1-3.5-1.4-6-1.4v10.8c2.5 0 4.5.4 6 1.4 1.5-1 3.5-1.4 6-1.4V3.8c-2.5 0-4.5.4-6 1.4z"/></svg></button>
+    <div class="sp"></div>
+    <button data-tip="Shortcuts (?)" id="qm"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M8 8a2 2 0 1 1 3 1.7c-.7.4-1 .8-1 1.6"/><circle cx="10" cy="14.5" r=".4"/></svg></button>
+    <button data-tip="Settings"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3"/><path d="M10 2v3M10 15v3M2 10h3M15 10h3"/></svg></button>
+  </nav>
+  <section class="ws">
+    <div class="tabs" id="tabs"></div>
+    <div class="body" id="body">
+      <div class="view on" id="v-overview"></div><div class="view" id="v-positions"></div><div class="view" id="v-risk"></div><div class="view" id="v-lab"></div><div class="view" id="v-flows"></div><div class="view" id="v-journal"></div>
+    </div>
+    <aside class="insp" id="insp"></aside>
+    <div class="sel-bar" id="selbar"></div>
+  </section>
+</div>
+<div class="max" id="max"></div>
+<div class="ov" id="ov"><div class="pal"><input id="pi" placeholder="Type a command or ticker…" autocomplete="off"><div class="list" id="pl"></div><div class="foot"><span>↑↓ navigate</span><span>↵ run</span><span>esc close</span></div></div></div>
+<div class="ov" id="ov2"><div class="pal" style="padding:1.2rem 1.4rem"><h3 style="margin:0 0 .8rem;font-family:var(--hd);letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--mu)">Keyboard shortcuts</h3><div id="sc"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var TOTAL=284920;
+var H=[
+ {t:'VTI',n:'Vanguard Total Stock Mkt',c:'US equity',w:22,d:.4,r:11.2,px:268.9,m:2.1,y:1.3,vol:14,note:'Core holding. ~30% tech look-through.'},
+ {t:'VXUS',n:'Vanguard Total Intl',c:'Intl equity',w:12,d:-.2,r:4.8,px:61.2,m:-.8,y:3.2,vol:16,note:'Only non-US exposure. Under target.'},
+ {t:'BND',n:'Vanguard Total Bond',c:'Fixed income',w:14,d:.1,r:1.9,px:72.4,m:.4,y:3.6,vol:5,note:'Ballast. Monthly payer.'},
+ {t:'AAPL',n:'Apple',c:'US equity',w:8.5,d:.6,r:24.1,px:198.42,m:3.4,y:.5,vol:26,note:'Thesis review overdue by 14 days.'},
+ {t:'MSFT',n:'Microsoft',c:'US equity',w:7.5,d:1.1,r:31.8,px:412.18,m:4.8,y:.7,vol:24,note:'Steady compounder.'},
+ {t:'NVDA',n:'NVIDIA',c:'US equity',w:6,d:2.3,r:142.6,px:118.5,m:9.6,y:.03,vol:48,note:'43% of lifetime gain from 6% of capital.'},
+ {t:'AMZN',n:'Amazon',c:'US equity',w:4.5,d:.9,r:18.3,px:186.1,m:2.2,y:0,vol:30,note:'Reinvestor, no dividend.'},
+ {t:'JPM',n:'JPMorgan Chase',c:'US equity',w:3.5,d:.3,r:15.8,px:349.67,m:1.4,y:2.1,vol:22,note:'Only bank exposure.'},
+ {t:'JNJ',n:'Johnson & Johnson',c:'US equity',w:3,d:-.4,r:6.2,px:156.3,m:-1.1,y:3,vol:15,note:'Defensive ballast.'},
+ {t:'XOM',n:'ExxonMobil',c:'US equity',w:2.5,d:.2,r:9.4,px:112.4,m:-2.6,y:3.4,vol:25,note:'Inflation hedge.'},
+ {t:'BTC',n:'Bitcoin',c:'Alternatives',w:5.5,d:-1.4,r:38.5,px:64200,m:-3.9,y:0,vol:60,note:'0.5 pts over 5% cap.'},
+ {t:'GLD',n:'SPDR Gold Shares',c:'Alternatives',w:6,d:.5,r:12.7,px:232.1,m:1.8,y:0,vol:14,note:'Insurance sleeve.'},
+ {t:'CASH',n:'Cash & equivalents',c:'Cash',w:5,d:0,r:0,px:1,m:0,y:4.1,vol:0,note:'On target.'}
+];
+function rng(s){return function(){s=(s*16807)%2147483647;return (s-1)/2147483646;};}
+function series(n,a,b,vol,seed){var r=rng(seed),o=[],x=a;for(var i=0;i<n;i++){var t=i/(n-1),tg=a+(b-a)*t;x+=(tg-x)*.16+(r()-.5)*vol*a;o.push(x);}o[n-1]=b;return o;}
+H.forEach(function(h,i){h.v=Math.round(h.w/100*TOTAL);h.qty=h.v/h.px;h.cost=h.v/(1+h.r/100);h.sp=series(30,100,100*(1+h.m/100),.014,11+i*7);});
+var $=function(s,r){return (r||document).querySelector(s);},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+var fmt=function(n){return Math.round(n).toLocaleString('en-US');};
+var pc=function(n,d){d=d==null?2:d;return (n>0?'+':n<0?'−':'')+Math.abs(n).toFixed(d)+'%';};
+var cl=function(n){return n>=0?'gn':'rd';}; var byT=function(t){return H.filter(function(h){return h.t===t;})[0];};
+function pts(a,w,h,p,mn,mx){mn=mn==null?Math.min.apply(null,a):mn;mx=mx==null?Math.max.apply(null,a):mx;return a.map(function(v,i){return (p+i*(w-2*p)/(a.length-1)).toFixed(1)+','+(h-p-(v-mn)/(mx-mn||1)*(h-2*p)).toFixed(1);}).join(' ');}
+function spark(a,w,h,c){return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><polyline points="'+pts(a,w,h,2)+'" fill="none" stroke="'+c+'" stroke-width="1.4" stroke-linejoin="round"/></svg>';}
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];var TODAY=new Date(2026,8,20);
+function dstr(b){var d=new Date(TODAY.getTime()-b*864e5);return d.getDate()+' '+MON[d.getMonth()]+(b>300?' '+d.getFullYear():'');}
+var PER={'1D':{n:48,days:1,a:283160,seed:4},'1W':{n:40,days:7,a:281300,seed:6},'1M':{n:60,days:30,a:277400,seed:5},'3M':{n:90,days:91,a:268300,seed:9},'1Y':{n:150,days:365,a:237800,seed:21},'ALL':{n:200,days:1100,a:168000,seed:31}};
+Object.keys(PER).forEach(function(k){var p=PER[k];p.data=series(p.n,p.a,TOTAL,k==='1D'?.004:.016,p.seed);p.bench=series(p.n,p.a,p.a*(k==='ALL'?1.52:k==='1Y'?1.128:k==='3M'?1.03:1.012),.012,p.seed+3);});
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on');},2200);}
+var CLASSC={'US equity':'#8FA8FF','Intl equity':'#5CC8D7','Fixed income':'#A78BFA','Alternatives':'#F0B429','Cash':'#64748B'};
+
+// ticker
+var tk=[['SPX','5,412.8','+0.34%'],['NDX','19,220','+0.61%'],['DJI','40,118','+0.12%'],['VIX','14.2','−2.10%'],['US10Y','4.28%','+0.02'],['BTC','64,200','−1.40%'],['GOLD','2,388','+0.20%'],['WTI','78.4','−0.60%'],['DXY','104.2','+0.10%'],['EURUSD','1.0842','−0.05%']];
+$('#trk').innerHTML=(tk.concat(tk)).map(function(x){return '<span><b>'+x[0]+'</b>'+x[1]+' <span class="'+(x[2][0]==='−'?'rd':'gn')+'">'+x[2]+'</span></span>';}).join('');
+
+// ---------- generic chart ----------
+function chart(host,cfg){
+  var W=900,Ht=cfg.h||260,pl=6,pr=54,pt=10,pb=22,all=[];cfg.series.forEach(function(s){all=all.concat(s.data);});
+  var mn=Math.min.apply(null,all),mx=Math.max.apply(null,all),pd=(mx-mn)*.08||1;mn-=pd;mx+=pd;var n=cfg.series[0].data.length;
+  var X=function(i){return pl+i*(W-pl-pr)/(n-1);},Y=function(v){return pt+(mx-v)/(mx-mn)*(Ht-pt-pb);};
+  var g='',i;for(i=0;i<=4;i++){var v=mn+(mx-mn)*i/4,y=Y(v);g+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y+'" y2="'+y+'" stroke="#1E2732"/><text x="'+(W-pr+6)+'" y="'+(y+4)+'" font-family="IBM Plex Mono" font-size="10" fill="#556274">'+cfg.fy(v)+'</text>';}
+  [0,.25,.5,.75,1].forEach(function(f){g+='<text x="'+X(Math.round(f*(n-1)))+'" y="'+(Ht-5)+'" font-size="10" fill="#556274" font-family="IBM Plex Mono" text-anchor="'+(f===0?'start':f===1?'end':'middle')+'">'+(cfg.days<=1?(9+Math.round(f*7))+':30':dstr(Math.round((1-f)*cfg.days)))+'</text>';});
+  var L='',defs='<defs>';cfg.series.forEach(function(s,k){var p=s.data.map(function(v,j){return X(j).toFixed(1)+','+Y(v).toFixed(1);}).join(' ');
+    if(s.area){defs+='<linearGradient id="g'+k+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+s.color+'" stop-opacity=".32"/><stop offset="1" stop-color="'+s.color+'" stop-opacity="0"/></linearGradient>';L+='<polygon points="'+X(0)+','+(Ht-pb)+' '+p+' '+X(n-1)+','+(Ht-pb)+'" fill="url(#g'+k+')"/>';}
+    L+='<polyline points="'+p+'" fill="none" stroke="'+s.color+'" stroke-width="'+(s.w||1.8)+'" '+(s.dash?'stroke-dasharray="'+s.dash+'"':'')+' stroke-linejoin="round"/>';});
+  defs+='</defs>';
+  host.innerHTML='<div class="chartw"><svg viewBox="0 0 '+W+' '+Ht+'">'+defs+g+L+'<line class="xh" y1="'+pt+'" y2="'+(Ht-pb)+'" stroke="#8FA8FF" stroke-dasharray="3 3" style="display:none"/><circle class="xd" r="4" fill="#8FA8FF" stroke="#090C11" stroke-width="2" style="display:none"/></svg><div class="cx"></div></div>';
+  var svg=$('svg',host),xh=$('.xh',host),xd=$('.xd',host),cx=$('.cx',host);
+  svg.addEventListener('mousemove',function(e){var r=svg.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width*W,ix=Math.max(0,Math.min(n-1,Math.round((fx-pl)/((W-pl-pr)/(n-1)))));var x=X(ix);
+    xh.setAttribute('x1',x);xh.setAttribute('x2',x);xh.style.display='';xd.setAttribute('cx',x);xd.setAttribute('cy',Y(cfg.series[0].data[ix]));xd.style.display='';
+    cx.style.display='block';var px=x/W*r.width;cx.style.left=Math.min(px+12,r.width-170)+'px';cx.style.top=(Y(cfg.series[0].data[ix])/Ht*r.height-40)+'px';
+    var lab=cfg.days<=1?(9+Math.round(ix/(n-1)*7))+':'+(ix%2?'30':'00'):dstr(Math.round((1-ix/(n-1))*cfg.days));
+    cx.innerHTML='<span class="mu">'+lab+'</span>  <b>'+cfg.fy(cfg.series[0].data[ix],1)+'</b>'+(cfg.series[1]?'  <span class="mu">idx '+cfg.fy(cfg.series[1].data[ix],1)+'</span>':'');});
+  svg.addEventListener('mouseleave',function(){xh.style.display='none';xd.style.display='none';cx.style.display='none';});
+}
+
+// ---------- panels ----------
+function panel(id,title,span,body,tools){return '<div class="pn" style="grid-column:span '+span+'" data-p="'+id+'"><div class="ph"><h3>'+title+'</h3>'+(tools||'')+'<button class="ib" data-a="max" title="Expand">⤢</button><button class="ib" data-a="col" title="Collapse">▾</button></div><div class="pb">'+body+'</div></div>';}
+document.addEventListener('click',function(e){var b=e.target.closest('.ph .ib');if(!b)return;var pn=b.closest('.pn');if(b.dataset.a==='col'){pn.classList.toggle('col');b.textContent=pn.classList.contains('col')?'▸':'▾';}
+  if(b.dataset.a==='max'){var m=$('#max');m.innerHTML='<div class="ph"><h3>'+pn.querySelector('h3').textContent+'</h3><button class="ib" id="mx">✕</button></div><div class="pb">'+pn.querySelector('.pb').innerHTML+'</div>';m.classList.add('on');$('#mx').onclick=function(){m.classList.remove('on');};}});
+
+// ---------- OVERVIEW ----------
+var mode='Value',per='1M';
+function donut(){var r=54,C=2*Math.PI*r,off=0,agg={};H.forEach(function(h){agg[h.c]=(agg[h.c]||0)+h.w;});var s='';
+  Object.keys(agg).forEach(function(k){var len=agg[k]/100*C;s+='<circle class="sl2" data-k="'+k+'" cx="70" cy="70" r="'+r+'" fill="none" stroke="'+CLASSC[k]+'" stroke-width="16" stroke-dasharray="'+(len-2)+' '+(C-len+2)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 70 70)" style="cursor:pointer;transition:stroke-width .15s"/>';off+=len;});
+  return '<div style="display:flex;gap:1.2rem;align-items:center"><svg width="140" height="140" viewBox="0 0 140 140">'+s+'<text x="70" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" fill="#DCE4EE" id="dc1">$285k</text><text x="70" y="83" text-anchor="middle" font-size="10" fill="#556274" id="dc2">NET VALUE</text></svg><div style="flex:1">'+Object.keys(agg).map(function(k){return '<div class="kvr lg" data-k="'+k+'" style="cursor:pointer"><span><i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:'+CLASSC[k]+';margin-right:.5rem"></i>'+k+'</span><span class="mo">'+agg[k].toFixed(1)+'%</span></div>';}).join('')+'</div></div>';}
+function renderOverview(){
+  var kp=[['Net value','$'+fmt(TOTAL),'▲ 0.62% today','gn',H[0].sp,'#34C38F'],['Day P&L','+$1,760','+0.62%','gn',H[3].sp,'#34C38F'],['All-time','+$41,860','+17.2%','gn',H[5].sp,'#34C38F'],['Cash','$14,246','5.0% of book','mu',H[12].sp,'#64748B'],['Beta','1.08','vs S&P 500','mu',H[1].sp,'#8FA8FF'],['Health','76/100','2 flags','a',H[4].sp,'#F0B429']];
+  var mv=H.filter(function(h){return h.t!=='CASH';}).sort(function(a,b){return b.d-a.d;});
+  var al=[['a','DRIFT','US equity 7.5 pts over target (50%)'],['a','CAP','BTC at 5.5% — cap is 5.0%'],['b','REVIEW','AAPL thesis review 14d overdue'],['g','DIV','JNJ pays $67 on Sep 8 · received']];
+  $('#v-overview').innerHTML='<div class="kpis">'+kp.map(function(k,i){return '<div class="kpi" data-k="'+i+'"><div class="l">'+k[0]+'</div><div class="v '+(k[3]==='gn'?'gn':k[3]==='a'?'':'')+'" style="'+(k[3]==='a'?'color:var(--am)':'')+'">'+k[1]+'</div><div class="d '+k[3]+'">'+k[2]+'</div>'+spark(k[4],70,26,k[5])+'</div>';}).join('')+'</div><div class="grid">'
+   +panel('perf','Performance',8,'<div class="chartw" id="pc"></div>','<div class="seg" id="md"><button class="on">Value</button><button>Return %</button><button>Drawdown</button></div><div class="seg" id="pr">'+Object.keys(PER).map(function(k){return '<button class="'+(k===per?'on':'')+'" data-k="'+k+'">'+k+'</button>';}).join('')+'</div>')
+   +panel('alloc','Allocation',4,donut())
+   +panel('mv','Movers today',4,'<div style="margin-bottom:.4rem" class="mu">Top gainers</div>'+mv.slice(0,3).map(function(h){return '<div class="kvr" data-open="'+h.t+'" style="cursor:pointer"><span>'+h.t+' <span class="mu">'+h.n+'</span></span><span class="mo gn">'+pc(h.d)+'</span></div>';}).join('')+'<div style="margin:.8rem 0 .4rem" class="mu">Top losers</div>'+mv.slice(-3).reverse().map(function(h){return '<div class="kvr" data-open="'+h.t+'" style="cursor:pointer"><span>'+h.t+' <span class="mu">'+h.n+'</span></span><span class="mo '+cl(h.d)+'">'+pc(h.d)+'</span></div>';}).join(''))
+   +panel('al','Alerts & flags',4,al.map(function(a){return '<div class="al"><span class="pill '+a[0]+'">'+a[1]+'</span><span>'+a[2]+'</span><button class="x">✕</button></div>';}).join(''))
+   +panel('exp','Look-through exposure',4,[['Technology',30.4,'#8FA8FF'],['Financials',9.6,'#5CC8D7'],['Healthcare',7.1,'#A78BFA'],['Consumer',7.7,'#F0B429'],['Industrials',6.4,'#64748B'],['Energy',4.2,'#F0616D']].map(function(x){return '<div class="bar2" style="grid-template-columns:78px 1fr 44px"><span>'+x[0]+'</span><div class="t"><i style="width:'+(x[1]/32*100)+'%;background:'+x[2]+'"></i></div><span class="mo" style="text-align:right">'+x[1]+'%</span></div>';}).join('')+'<div class="mu" style="margin-top:.6rem;font-size:12px">Tech is 22.0% direct + 8.4% inside funds.</div>')
+   +'</div>';
+  function draw(){var p=PER[per],d=p.data,b=p.bench,base=d[0],fy=function(v,dec){return '$'+Math.round(v/1000)+'k';};var ser;
+    if(mode==='Value'){ser=[{data:d,color:'#8FA8FF',area:1,w:2},{data:b,color:'#556274',dash:'4 4',w:1.2}];fy=function(v,x){return x?'$'+fmt(v):'$'+Math.round(v/1000)+'k';};}
+    else if(mode==='Return %'){ser=[{data:d.map(function(v){return (v/base-1)*100;}),color:'#8FA8FF',area:1,w:2},{data:b.map(function(v){return (v/b[0]-1)*100;}),color:'#556274',dash:'4 4',w:1.2}];fy=function(v){return pc(v,1);};}
+    else{var pk=0;ser=[{data:d.map(function(v){pk=Math.max(pk,v);return (v/pk-1)*100;}),color:'#F0616D',area:1,w:1.8}];fy=function(v){return pc(v,1);};}
+    chart($('#pc'),{series:ser,days:p.days,fy:fy,h:280});}
+  draw();
+  $('#md').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;mode=b.textContent;$$('#md button').forEach(function(x){x.classList.toggle('on',x===b);});draw();});
+  $('#pr').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;per=b.dataset.k;$$('#pr button').forEach(function(x){x.classList.toggle('on',x===b);});draw();});
+  $$('.sl2,.lg',$('#v-overview')).forEach(function(el){el.addEventListener('mouseenter',function(){var k=el.dataset.k;$$('.sl2').forEach(function(c){c.setAttribute('stroke-width',c.dataset.k===k?22:16);c.style.opacity=c.dataset.k===k?1:.35;});var w=0;H.forEach(function(h){if(h.c===k)w+=h.w;});$('#dc1').textContent='$'+fmt(w/100*TOTAL/1000)+'k';$('#dc2').textContent=k.toUpperCase();});
+    el.addEventListener('mouseleave',function(){$$('.sl2').forEach(function(c){c.setAttribute('stroke-width',16);c.style.opacity=1;});$('#dc1').textContent='$285k';$('#dc2').textContent='NET VALUE';});
+    el.addEventListener('click',function(){posF=el.dataset.k;tab('positions');});});
+  $$('[data-open]',$('#v-overview')).forEach(function(el){el.addEventListener('click',function(){openInsp(el.dataset.open);});});
+  $$('.al .x',$('#v-overview')).forEach(function(x){x.addEventListener('click',function(){x.parentNode.style.opacity=0;setTimeout(function(){x.parentNode.remove();},180);toast('Alert dismissed');});});
+  $$('.kpi',$('#v-overview')).forEach(function(k){k.addEventListener('click',function(){tab(+k.dataset.k===4?'risk':+k.dataset.k===3?'flows':'positions');});});
+}
+
+// ---------- POSITIONS ----------
+var posF='All',posQ='',posS='w',posD=-1,sel={},cols={px:1,qty:1,w:1,v:1,sp:1,d:1,r:1,y:0,cost:0};
+var COLDEF=[['px','Price'],['qty','Qty'],['w','Weight'],['v','Value'],['sp','30d'],['d','Day'],['r','Return'],['y','Yield'],['cost','Cost']];
+function renderPositions(){
+  var cls=['All','US equity','Intl equity','Fixed income','Alternatives','Cash'];
+  $('#v-positions').innerHTML='<div class="tb"><input class="inp" id="pq" placeholder="Filter…  (/)" value="'+posQ+'">'+cls.map(function(c){return '<button class="chip '+(c===posF?'on':'')+'" data-c="'+c+'">'+c+'</button>';}).join('')+'<span style="margin-left:auto;position:relative"><button class="chip" id="colb">Columns ▾</button><div id="colm" style="display:none;position:absolute;right:0;top:32px;background:var(--p2);border:1px solid var(--ln2);border-radius:8px;padding:.5rem .8rem;z-index:8;width:150px">'+COLDEF.map(function(c){return '<label style="display:flex;gap:.5rem;padding:3px 0;font-size:13px;cursor:pointer"><input type="checkbox" data-c="'+c[0]+'" '+(cols[c[0]]?'checked':'')+'> '+c[1]+'</label>';}).join('')+'</div></span></div><div class="pn"><div style="overflow:auto;max-height:calc(100vh - 230px)"><table id="ptb"></table></div></div>';
+  function rows(){var l=H.filter(function(h){return (posF==='All'||h.c===posF)&&(!posQ||(h.t+h.n).toLowerCase().indexOf(posQ.toLowerCase())>-1);});l.sort(function(a,b){var x=a[posS],y=b[posS];return (x>y?1:x<y?-1:0)*posD;});
+    var th='<thead><tr><th style="width:30px"></th><th data-s="t">Symbol</th><th data-s="c">Class</th>'+COLDEF.filter(function(c){return cols[c[0]];}).map(function(c){return '<th class="r" data-s="'+(c[0]==='sp'?'m':c[0])+'">'+c[1]+'</th>';}).join('')+'</tr></thead>';
+    var tb='<tbody>'+l.map(function(h){return '<tr class="rw'+(sel[h.t]?' sel':'')+'" data-t="'+h.t+'"><td><input type="checkbox" class="ck" '+(sel[h.t]?'checked':'')+'></td><td><b>'+h.t+'</b> <span class="mu">'+h.n+'</span></td><td><span style="color:'+CLASSC[h.c]+'">●</span> '+h.c+'</td>'
+     +(cols.px?'<td class="r mo">'+(h.px>999?fmt(h.px):h.px.toFixed(2))+'</td>':'')+(cols.qty?'<td class="r mo">'+(h.t==='CASH'?'—':h.qty.toFixed(h.qty<5?2:0))+'</td>':'')+(cols.w?'<td class="r mo">'+h.w.toFixed(1)+'%</td>':'')+(cols.v?'<td class="r mo">$'+fmt(h.v)+'</td>':'')+(cols.sp?'<td class="r">'+spark(h.sp,60,18,h.m>=0?'#34C38F':'#F0616D')+'</td>':'')+(cols.d?'<td class="r mo '+cl(h.d)+'">'+pc(h.d)+'</td>':'')+(cols.r?'<td class="r mo '+cl(h.r)+'">'+pc(h.r,1)+'</td>':'')+(cols.y?'<td class="r mo">'+h.y.toFixed(1)+'%</td>':'')+(cols.cost?'<td class="r mo">$'+fmt(h.cost)+'</td>':'')+'</tr>';}).join('')+'</tbody>';
+    $('#ptb').innerHTML=th+tb;
+    $$('#ptb th[data-s]').forEach(function(t){t.addEventListener('click',function(){var s=t.dataset.s;if(posS===s)posD*=-1;else{posS=s;posD=(s==='t'||s==='c')?1:-1;}rows();});});
+    $$('#ptb tr.rw').forEach(function(tr){tr.addEventListener('click',function(e){if(e.target.classList.contains('ck')){sel[tr.dataset.t]=e.target.checked;selBar();tr.classList.toggle('sel',e.target.checked);return;}openInsp(tr.dataset.t);});});}
+  rows();
+  $('#pq').addEventListener('input',function(e){posQ=e.target.value;rows();});
+  $$('#v-positions .chip[data-c]').forEach(function(c){c.addEventListener('click',function(){posF=c.dataset.c;renderPositions();});});
+  $('#colb').addEventListener('click',function(){var m=$('#colm');m.style.display=m.style.display==='none'?'block':'none';});
+  $$('#colm input').forEach(function(i){i.addEventListener('change',function(){cols[i.dataset.c]=i.checked?1:0;rows();});});
+}
+function selBar(){var k=Object.keys(sel).filter(function(t){return sel[t];});var b=$('#selbar');if(!k.length){b.classList.remove('on');return;}var v=0,w=0;k.forEach(function(t){var h=byT(t);v+=h.v;w+=h.w;});
+  b.innerHTML='<b>'+k.length+' selected</b><span class="mo">$'+fmt(v)+'</span><span class="mo mu">'+w.toFixed(1)+'% of book</span><button class="chip" id="sb1">Compare</button><button class="chip" id="sb2">Clear</button>';b.classList.add('on');
+  $('#sb2').onclick=function(){sel={};selBar();if($('#v-positions').classList.contains('on'))renderPositions();};$('#sb1').onclick=function(){toast('Comparing '+k.join(', ')+' — chart overlay coming');};}
+function openInsp(t){var h=byT(t),i=$('#insp'),ret=h.v-h.cost;
+  i.innerHTML='<div style="padding:1rem 1.1rem"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><h2>'+h.t+'</h2><div class="mu">'+h.n+'</div></div><button class="ib chip" id="ic">✕ Esc</button></div><div style="margin:1rem 0 .4rem;display:flex;align-items:baseline;gap:.7rem"><span class="mo" style="font-size:24px">$'+(h.px>999?fmt(h.px):h.px.toFixed(2))+'</span><span class="mo '+cl(h.d)+'">'+pc(h.d)+'</span></div><div id="ich"></div>'
+   +'<div style="margin-top:.8rem">'+[['Position value','$'+fmt(h.v)],['Weight',h.w.toFixed(1)+'%'],['Quantity',h.t==='CASH'?'—':h.qty.toFixed(h.qty<5?3:1)],['Cost basis','$'+fmt(h.cost)],['Unrealised',(ret>=0?'+':'−')+'$'+fmt(Math.abs(ret))],['Volatility (ann.)',h.vol+'%'],['Yield',h.y.toFixed(1)+'%']].map(function(x){return '<div class="kvr"><span>'+x[0]+'</span><span class="mo">'+x[1]+'</span></div>';}).join('')+'</div>'
+   +'<div style="margin-top:1rem" class="pn"><div class="ph"><h3>Note</h3></div><div class="pb" style="font-size:13px" contenteditable="true">'+h.note+'</div></div><div style="display:flex;gap:.6rem;margin-top:1rem"><button class="chip on" id="ia">Add to compare</button><button class="chip" id="ib2">Set alert</button></div></div>';
+  i.classList.add('on');
+  chart($('#ich'),{series:[{data:series(60,100,100*(1+h.m/100)*1.02,.02,h.t.charCodeAt(0)),color:h.m>=0?'#34C38F':'#F0616D',area:1,w:1.8}],days:60,fy:function(v){return v.toFixed(0);},h:150});
+  $('#ic').onclick=function(){i.classList.remove('on');};$('#ia').onclick=function(){sel[t]=true;selBar();toast(t+' added to selection');};$('#ib2').onclick=function(){toast('Alert set on '+t);};
+  if($('#v-positions').classList.contains('on')){$$('#ptb tr.rw').forEach(function(tr){tr.classList.toggle('sel',tr.dataset.t===t||sel[tr.dataset.t]);});}}
+
+// ---------- RISK ----------
+function renderRisk(){
+  var names=['VTI','AAPL','MSFT','NVDA','VXUS','BND','BTC'];var cor=[[],[.86],[.85,.72],[.78,.62,.70],[.82,.66,.62,.58],[.12,.05,.10,.02,.20],[.35,.30,.32,.38,.30,.08]];
+  function cv(i,j){if(i===j)return 1;return i>j?cor[i][j]:cor[j][i];}
+  var mt=[['Volatility','14.2%','mkt 13.2%','a'],['Max drawdown','−11.8%','mkt −9.1%','r'],['VaR 95% (1d)','−$4,120','−1.45%','a'],['Sharpe','1.12','Above 1.0','g'],['Sortino','1.61','Solid','g'],['Top-3 conc.','48.0%','2 are funds','b']];
+  var tot=0;H.forEach(function(h){tot+=h.w*h.vol;});
+  var dd=(function(){var d=PER['1Y'].data,pk=0;return d.map(function(v){pk=Math.max(pk,v);return (v/pk-1)*100;});})();
+  $('#v-risk').innerHTML='<div class="kpis">'+mt.map(function(m){return '<div class="kpi"><div class="l">'+m[0]+'</div><div class="v">'+m[1]+'</div><div class="d '+(m[3]==='g'?'gn':m[3]==='r'?'rd':'mu')+'">'+m[2]+'</div></div>';}).join('')+'</div><div class="grid">'
+   +panel('cm','Correlation matrix',5,'<div class="mx" id="mxh" style="grid-template-columns:38px repeat(7,1fr)"></div><div class="mu" style="font-size:12px;margin-top:.6rem" id="mxi">Hover a cell to compare two holdings.</div>')
+   +panel('rc','Weight vs. share of risk',7,'<div class="bar2" style="color:var(--fa)"><span></span><span>Weight</span><span>Risk share</span><span></span></div>'+H.filter(function(h){return h.vol>0;}).sort(function(a,b){return b.w*b.vol-a.w*a.vol;}).map(function(h){var rs=h.w*h.vol/tot*100;return '<div class="bar2"><span><b>'+h.t+'</b></span><div class="t"><i style="width:'+(h.w/25*100)+'%;background:#556274"></i></div><div class="t"><i style="width:'+(rs/25*100)+'%;background:'+(rs>h.w*1.4?'#F0B429':'#8FA8FF')+'"></i></div><span class="mo" style="text-align:right">'+rs.toFixed(0)+'%</span></div>';}).join('')+'<div class="mu" style="font-size:12px;margin-top:.7rem">Amber = contributes far more risk than its weight. NVDA and BTC are 11.5% of capital but ~27% of risk.</div>')
+   +panel('dd','Drawdown, 1 year',12,'<div id="ddc"></div>')+'</div>';
+  var h='<div class="h"></div>'+names.map(function(n){return '<div class="h">'+n+'</div>';}).join('');
+  names.forEach(function(rn,i){h+='<div class="h" style="justify-content:flex-start">'+rn+'</div>';names.forEach(function(cn,j){var v=cv(i,j);h+='<div data-i="'+i+'" data-j="'+j+'" style="background:rgba(143,168,255,'+(.06+v*.8).toFixed(2)+');color:'+(v>.55?'#090C11':'#DCE4EE')+'">'+v.toFixed(2)+'</div>';});});
+  $('#mxh').innerHTML=h;
+  $$('#mxh div[data-i]').forEach(function(c){c.addEventListener('mouseenter',function(){var i=+c.dataset.i,j=+c.dataset.j;$$('#mxh div[data-i]').forEach(function(x){x.style.opacity=(+x.dataset.i===i||+x.dataset.j===j)?1:.25;});$('#mxi').innerHTML='<b>'+names[i]+' / '+names[j]+'</b> — correlation <span class="mo">'+cv(i,j).toFixed(2)+'</span>. '+(cv(i,j)>.7?'Move together: little diversification.':cv(i,j)<.2?'Nearly independent: real diversification.':'Partly related.');});c.addEventListener('mouseleave',function(){$$('#mxh div[data-i]').forEach(function(x){x.style.opacity=1;});});});
+  chart($('#ddc'),{series:[{data:dd,color:'#F0616D',area:1,w:1.6}],days:365,fy:function(v){return pc(v,1);},h:200});
+}
+
+// ---------- SCENARIO LAB ----------
+var SC={us:-20,intl:-18,rate:100,btc:-40,gold:5};
+var PRE=[['2008 crash',{us:-37,intl:-43,rate:-150,btc:0,gold:5}],['COVID Mar-20',{us:-34,intl:-32,rate:-100,btc:-50,gold:-3}],['2022 rates',{us:-19,intl:-16,rate:250,btc:-64,gold:0}],['Crypto winter',{us:-5,intl:-4,rate:0,btc:-75,gold:2}],['Melt-up',{us:25,intl:15,rate:-25,btc:60,gold:-4}],['Reset',{us:0,intl:0,rate:0,btc:0,gold:0}]];
+function renderLab(){
+  var defs=[['us','US equities','%',-50,40],['intl','Intl equities','%',-50,40],['rate','Rates change','bp',-300,300],['btc','Bitcoin','%',-80,100],['gold','Gold','%',-30,40]];
+  $('#v-lab').innerHTML='<div class="grid">'+panel('sl','Shock the portfolio',5,defs.map(function(d){return '<div class="sl"><span>'+d[1]+'</span><input type="range" min="'+d[3]+'" max="'+d[4]+'" value="'+SC[d[0]]+'" data-k="'+d[0]+'"><span class="mo" style="text-align:right" id="lv-'+d[0]+'">'+SC[d[0]]+d[2]+'</span></div>';}).join('')+'<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem">'+PRE.map(function(p,i){return '<button class="chip" data-pre="'+i+'">'+p[0]+'</button>';}).join('')+'</div>')
+   +panel('rs','Result',7,'<div style="display:flex;gap:2.2rem;align-items:flex-end;margin-bottom:.9rem"><div><div class="mu" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase">Estimated impact</div><div class="mo" style="font-size:38px;line-height:1.1" id="ri"></div></div><div><div class="mu" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase">Portfolio after</div><div class="mo" style="font-size:22px" id="rp"></div></div></div><div id="rb"></div>')+'</div>';
+  function calc(){var imp=[],tot=0;H.forEach(function(h){var s=0;if(h.c==='US equity')s=SC.us/100;else if(h.c==='Intl equity')s=SC.intl/100;else if(h.c==='Fixed income')s=-6.2*SC.rate/10000;else if(h.t==='BTC')s=SC.btc/100;else if(h.t==='GLD')s=SC.gold/100;var v=h.v*s;tot+=v;if(v!==0)imp.push({t:h.t,v:v});});
+    imp.sort(function(a,b){return a.v-b.v;});$('#ri').innerHTML='<span class="'+cl(tot)+'">'+(tot>=0?'+':'−')+'$'+fmt(Math.abs(tot))+'</span> <span class="mu" style="font-size:18px">'+pc(tot/TOTAL*100,1)+'</span>';$('#rp').textContent='$'+fmt(TOTAL+tot);
+    var mx=Math.max.apply(null,imp.map(function(x){return Math.abs(x.v);}))||1;
+    $('#rb').innerHTML=imp.map(function(x){var w=Math.abs(x.v)/mx*50;return '<div class="bar2" style="grid-template-columns:52px 1fr 80px"><span><b>'+x.t+'</b></span><div class="t" style="height:12px"><i style="position:absolute;'+(x.v<0?'right:50%':'left:50%')+';width:'+w+'%;background:'+(x.v<0?'#F0616D':'#34C38F')+'"></i><span style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:#2B3745"></span></div><span class="mo" style="text-align:right">'+(x.v>=0?'+':'−')+'$'+fmt(Math.abs(x.v))+'</span></div>';}).join('');}
+  $$('#v-lab input[type=range]').forEach(function(r){r.addEventListener('input',function(){SC[r.dataset.k]=+r.value;$('#lv-'+r.dataset.k).textContent=r.value+(r.dataset.k==='rate'?'bp':'%');calc();});});
+  $$('#v-lab [data-pre]').forEach(function(b){b.addEventListener('click',function(){var p=PRE[+b.dataset.pre];SC=JSON.parse(JSON.stringify(p[1]));renderLab();toast('Loaded '+p[0]);});});calc();}
+
+// ---------- FLOWS ----------
+var txT='All';
+var TX=[['Sep 18','Buy','NVDA','10 sh @ $115.20',-1152],['Sep 14','Div','MSFT','$0.83 × 45',37],['Sep 10','Sell','BND','50 sh @ $72.10',3605],['Sep 03','Deposit','—','Bank transfer',2000],['Aug 29','Buy','BTC','0.05 @ $63,800',-3190],['Aug 22','Div','VTI','$0.94 × 200',188],['Aug 15','Buy','VXUS','80 sh @ $60.80',-4864],['Aug 03','Deposit','—','Bank transfer',2000],['Jul 22','Div','JPM','$1.25 × 60',75],['Jul 09','Sell','XOM','20 sh @ $111.00',2220]];
+function renderFlows(){
+  var mo=['Apr','May','Jun','Jul','Aug','Sep'],dep=[2000,2000,2000,2000,2000,2000],div=[420,180,610,195,210,278],trd=[-1800,-2400,-900,2220,-8054,2413];
+  var mx=3000,bars='';mo.forEach(function(m,i){var x=30+i*80;bars+='<rect x="'+x+'" y="'+(160-dep[i]/mx*120)+'" width="26" height="'+(dep[i]/mx*120)+'" fill="#8FA8FF"/><rect x="'+(x+28)+'" y="'+(160-div[i]/mx*120)+'" width="26" height="'+(div[i]/mx*120)+'" fill="#34C38F"/><text x="'+(x+27)+'" y="178" text-anchor="middle" font-size="11" fill="#556274">'+m+'</text>';});
+  $('#v-flows').innerHTML='<div class="grid">'+panel('fl','Contributions & dividends, 6 months',5,'<svg viewBox="0 0 500 190" style="width:100%">'+bars+'</svg><div style="display:flex;gap:1rem;font-size:12px" class="mu"><span><i style="display:inline-block;width:8px;height:8px;background:#8FA8FF;margin-right:5px"></i>Deposits</span><span><i style="display:inline-block;width:8px;height:8px;background:#34C38F;margin-right:5px"></i>Dividends</span></div><div class="kvr" style="margin-top:.8rem"><span>Contributed, 6m</span><span class="mo">$12,000</span></div><div class="kvr"><span>Dividends, 6m</span><span class="mo gn">+$1,893</span></div>')
+   +panel('tx','Transactions',7,'<div class="tb">'+['All','Buy','Sell','Div','Deposit'].map(function(t){return '<button class="chip '+(t===txT?'on':'')+'" data-t="'+t+'">'+t+'</button>';}).join('')+'</div><table>'+TX.filter(function(t){return txT==='All'||t[1]===txT;}).map(function(t){return '<tr><td class="mu">'+t[0]+'</td><td><span class="pill '+(t[1]==='Buy'?'b':t[1]==='Sell'?'a':'g')+'">'+t[1].toUpperCase()+'</span></td><td><b>'+t[2]+'</b></td><td class="mu">'+t[3]+'</td><td class="r mo '+(t[4]>0?'gn':'')+'">'+(t[4]>0?'+':'−')+'$'+fmt(Math.abs(t[4]))+'</td></tr>';}).join('')+'</table>')+'</div>';
+  $$('#v-flows .chip[data-t]').forEach(function(c){c.addEventListener('click',function(){txT=c.dataset.t;renderFlows();});});}
+
+// ---------- JOURNAL ----------
+var JR=[['Sep 18','NVDA','Added 10 shares','Post-earnings dip felt overdone; kept position under 7%.','pending'],['Sep 10','BND','Trimmed 50 shares','Funding the international top-up. Fixed income stays above 12%.','good'],['Aug 29','BTC','Bought 0.05','Small DCA. Broke my 5% cap by 0.5 pts — accept for now.','flag'],['Jul 09','XOM','Sold 20 shares','Energy overweight vs plan. Took the gain.','good']];
+function renderJournal(){
+  $('#v-journal').innerHTML='<div class="grid">'+panel('jn','Decision log',8,'<div style="display:flex;gap:.6rem;margin-bottom:1rem"><input class="inp" id="jt" style="width:90px" placeholder="TICKER"><input class="inp" id="jx" style="flex:1;width:auto" placeholder="What did you do, and why?"><button class="chip on" id="ja">Log it ⏎</button></div><div class="tl" id="jl"></div>')
+   +panel('js','Review stats',4,[['Decisions logged','27'],['Judged good','19 (70%)'],['Flagged','3'],['Avg hold before sell','14 months']].map(function(x){return '<div class="kvr"><span>'+x[0]+'</span><span class="mo">'+x[1]+'</span></div>';}).join('')+'<div class="mu" style="margin-top:.8rem;font-size:12px">Decisions you tag &ldquo;pending&rdquo; are revisited after 90 days.</div>')+'</div>';
+  function draw(){$('#jl').innerHTML=JR.map(function(j){return '<div class="tle"><div class="mu mo" style="font-size:12px">'+j[0]+' · <b style="color:var(--tx)">'+j[1]+'</b> <span class="pill '+(j[4]==='good'?'g':j[4]==='flag'?'a':'b')+'">'+j[4].toUpperCase()+'</span></div><div><b>'+j[2]+'</b></div><div class="mu" style="font-size:13px">'+j[3]+'</div></div>';}).join('');}
+  draw();function add(){var t=$('#jt').value.toUpperCase(),x=$('#jx').value;if(!x)return;JR.unshift(['Sep 20',t||'—','Note',x,'pending']);renderJournal();toast('Logged');}
+  $('#ja').onclick=add;$('#jx').addEventListener('keydown',function(e){if(e.key==='Enter')add();});}
+
+// ---------- tabs / router ----------
+var TABS=[['overview','Overview',renderOverview],['positions','Positions',renderPositions],['risk','Risk',renderRisk],['lab','Scenario Lab',renderLab],['flows','Flows',renderFlows],['journal','Journal',renderJournal]];
+function tab(id){var idx=0;TABS.forEach(function(t,i){if(t[0]===id)idx=i;});$$('.view').forEach(function(v){v.classList.toggle('on',v.id==='v-'+id);});$$('#tabs button.tb').forEach(function(b){b.classList.toggle('on',b.dataset.id===id);});TABS[idx][2]();$('#insp').classList.remove('on');location.hash=id;$('#body').scrollTop=0;}
+$('#tabs').innerHTML=TABS.map(function(t,i){return '<button class="tb'+(i===0?' on':'')+'" data-id="'+t[0]+'">'+t[1]+' <kbd>'+(i+1)+'</kbd></button>';}).join('')+'<button class="dens" id="dens">▤ Density</button>';
+$('#tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;if(b.id==='dens'){document.body.classList.toggle('compact');toast(document.body.classList.contains('compact')?'Compact rows':'Comfortable rows');return;}tab(b.dataset.id);});
+
+// ---------- palette ----------
+var cmds=[];TABS.forEach(function(t,i){cmds.push({l:'Go to '+t[1],k:'View',f:function(){tab(t[0]);}});});
+H.forEach(function(h){cmds.push({l:h.t+' — '+h.n,k:'Position',f:function(){openInsp(h.t);}});});
+PRE.forEach(function(p,i){cmds.push({l:'Scenario: '+p[0],k:'Lab',f:function(){SC=JSON.parse(JSON.stringify(p[1]));tab('lab');}});});
+cmds.push({l:'Toggle compact density',k:'Action',f:function(){document.body.classList.toggle('compact');}});cmds.push({l:'Export positions as CSV',k:'Action',f:function(){toast('positions.csv downloaded (demo)');}});cmds.push({l:'Show keyboard shortcuts',k:'Help',f:function(){$('#ov2').classList.add('on');}});
+var pi=0,pf=[];
+function palRender(){var q=$('#pi').value.toLowerCase();pf=cmds.filter(function(c){return !q||c.l.toLowerCase().indexOf(q)>-1;}).slice(0,50);if(pi>=pf.length)pi=0;$('#pl').innerHTML=pf.map(function(c,i){return '<div class="it'+(i===pi?' on':'')+'" data-i="'+i+'">'+c.l+'<small>'+c.k+'</small></div>';}).join('')||'<div class="it mu">No matches</div>';
+  $$('#pl .it[data-i]').forEach(function(el){el.addEventListener('click',function(){run(+el.dataset.i);});});}
+function run(i){var c=pf[i];if(!c)return;$('#ov').classList.remove('on');c.f();}
+function palOpen(){$('#ov').classList.add('on');$('#pi').value='';pi=0;palRender();setTimeout(function(){$('#pi').focus();},20);}
+$('#cmdk').onclick=palOpen;$('#qm').onclick=function(){$('#ov2').classList.add('on');};
+$('#pi').addEventListener('input',function(){pi=0;palRender();});
+$('#pi').addEventListener('keydown',function(e){if(e.key==='ArrowDown'){pi=Math.min(pf.length-1,pi+1);palRender();e.preventDefault();}else if(e.key==='ArrowUp'){pi=Math.max(0,pi-1);palRender();e.preventDefault();}else if(e.key==='Enter'){run(pi);}});
+$('#ov').addEventListener('mousedown',function(e){if(e.target.id==='ov')$('#ov').classList.remove('on');});$('#ov2').addEventListener('mousedown',function(e){if(e.target.id==='ov2')$('#ov2').classList.remove('on');});
+$('#sc').innerHTML=[['Ctrl / ⌘ + K','Command palette'],['1 – 6','Switch tab'],['/','Filter positions'],['D','Toggle density'],['?','This help'],['Esc','Close anything']].map(function(s){return '<div class="kvr"><span class="mo" style="color:var(--ac)">'+s[0]+'</span><span>'+s[1]+'</span></div>';}).join('');
+document.addEventListener('keydown',function(e){var typing=/INPUT|TEXTAREA/.test(document.activeElement.tagName)||document.activeElement.isContentEditable;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palOpen();return;}
+  if(e.key==='Escape'){$('#ov').classList.remove('on');$('#ov2').classList.remove('on');$('#insp').classList.remove('on');$('#max').classList.remove('on');document.activeElement.blur&&document.activeElement.blur();return;}
+  if(typing)return;
+  if(e.key>='1'&&e.key<='6'){tab(TABS[+e.key-1][0]);}else if(e.key==='/'){e.preventDefault();tab('positions');setTimeout(function(){$('#pq').focus();},30);}else if(e.key==='?'){$('#ov2').classList.add('on');}else if(e.key.toLowerCase()==='d'){document.body.classList.toggle('compact');}});
+var start=(location.hash||'#overview').slice(1);tab(TABS.some(function(t){return t[0]===start;})?start:'overview');
+</script>
