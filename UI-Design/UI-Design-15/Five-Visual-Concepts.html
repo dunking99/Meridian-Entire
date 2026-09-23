@@ -1,0 +1,462 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Five Visual Concepts</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #0d0d0d; }
+
+  .switcher {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; background: #151515; border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 0 12px; overflow-x: auto;
+  }
+  .switcher button {
+    appearance: none; border: none; background: none; color: #8a8a8a;
+    font-family: system-ui, sans-serif; font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.04em; padding: 14px 16px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .switcher button.active { color: #fff; border-bottom-color: #fff; }
+  .switcher button:hover { color: #ddd; }
+  .design { display: none; min-height: 100vh; }
+  .design.active { display: block; }
+
+  /* ================= 1: SUNBURST RINGS ================= */
+  #v1 {
+    --bg: #150f2b; --card: #1e1640; --ink: #f3f0ff; --ink-2: #b3a9dd;
+    background: radial-gradient(ellipse at 50% -10%, #2a1c5c 0%, #150f2b 60%);
+    color: var(--ink); font-family: "Sora", system-ui, sans-serif;
+    padding: 44px 20px 90px;
+  }
+  #v1 .inner { max-width: 880px; margin: 0 auto; }
+  #v1 .kicker { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 6px; }
+  #v1 h1 { font-size: 24px; font-weight: 700; margin: 0 0 30px; }
+  #v1 .layout { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  #v1 .ring-wrap { position: relative; width: 300px; height: 300px; flex: none; }
+  #v1 .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #v1 .ring-center .n { font-size: 30px; font-weight: 700; }
+  #v1 .ring-center .t { font-size: 10.5px; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+  #v1 .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 26px; }
+  #v1 .lrow { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+  #v1 .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  #v1 .lval { margin-left: auto; font-weight: 700; }
+  #v1 .warns { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+  #v1 .gaugewrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  #v1 .gaugewrap .gn { font-size: 22px; font-weight: 700; }
+  #v1 .gaugewrap .gl { font-size: 11px; color: var(--ink-2); text-align: center; }
+  #v1 .minirings { display: flex; gap: 30px; margin-top: 40px; justify-content: center; flex-wrap: wrap; }
+  #v1 .minirow { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  #v1 .minirow .mn { font-size: 15px; font-weight: 700; }
+  #v1 .minirow .ml { font-size: 10.5px; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ================= 2: BUBBLE CLUSTER ================= */
+  #v2 {
+    --bg: #fff7f2; --ink: #3a2a22; --ink-2: #8c7566;
+    background: var(--bg); color: var(--ink);
+    font-family: "Quicksand", system-ui, sans-serif;
+    padding: 40px 20px 90px;
+  }
+  #v2 .inner { max-width: 820px; margin: 0 auto; }
+  #v2 h1 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+  #v2 .sub { font-size: 13px; color: var(--ink-2); margin: 0 0 20px; }
+  #v2 .stage { position: relative; height: 440px; }
+  #v2 .bubble {
+    position: absolute; border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #fff; text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  #v2 .bubble .bn { font-weight: 700; font-variant-numeric: tabular-nums; }
+  #v2 .bubble .bl { font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
+  #v2 .bubble.flag { box-shadow: 0 0 0 4px rgba(216,80,58,0.35), 0 8px 20px rgba(0,0,0,0.12); }
+  #v2 .footrow { display: flex; gap: 28px; margin-top: 24px; flex-wrap: wrap; }
+  #v2 .fchip { background: #fff; border: 1px solid rgba(58,42,34,0.1); border-radius: 14px; padding: 12px 16px; flex: 1; min-width: 160px; }
+  #v2 .fchip .fl { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); }
+  #v2 .fchip .fv { font-size: 20px; font-weight: 700; margin-top: 2px; }
+
+  /* ================= 3: ISOMETRIC SKYLINE ================= */
+  #v3 {
+    background: linear-gradient(180deg, #ff9a6c 0%, #ff6f91 45%, #6a4c93 100%);
+    color: #fff7ee; font-family: "Space Mono", ui-monospace, monospace;
+    padding: 44px 20px 100px;
+  }
+  #v3 .inner { max-width: 900px; margin: 0 auto; }
+  #v3 h1 { font-size: 20px; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+  #v3 .sub { font-size: 12.5px; opacity: 0.85; margin: 0 0 36px; }
+  #v3 .city { display: flex; align-items: flex-end; gap: 26px; height: 260px; padding: 0 10px 40px; border-bottom: 2px solid rgba(255,255,255,0.35); }
+  #v3 .bldg { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  #v3 .iso { position: relative; width: 64px; }
+  #v3 .iso .top {
+    position: absolute; top: -13px; left: 0; width: 64px; height: 26px;
+    transform: skewX(-40deg) scaleY(0.6); transform-origin: bottom left;
+  }
+  #v3 .iso .front { width: 44px; }
+  #v3 .iso .side {
+    position: absolute; top: 0; left: 44px; width: 20px; height: 100%;
+    transform: skewY(-32deg); transform-origin: top left; filter: brightness(0.72);
+  }
+  #v3 .lbl { font-size: 11px; text-align: center; letter-spacing: 0.03em; }
+  #v3 .lbl b { display: block; font-size: 15px; margin-top: 2px; }
+  #v3 .warnrow { display: flex; gap: 30px; margin-top: 34px; flex-wrap: wrap; }
+  #v3 .wcard { background: rgba(0,0,0,0.22); border-radius: 12px; padding: 14px 18px; }
+  #v3 .wcard .wn { font-size: 24px; font-weight: 700; }
+  #v3 .wcard .wl { font-size: 11px; opacity: 0.85; margin-top: 2px; }
+
+  /* ================= 4: ORBITAL CONSTELLATION ================= */
+  #v4 {
+    background: #06070f; color: #e8ecff; font-family: "Exo 2", system-ui, sans-serif;
+    padding: 44px 20px 90px; position: relative; overflow: hidden;
+  }
+  #v4 .stars { position: absolute; inset: 0; background-image: radial-gradient(1px 1px at 20px 30px, #ffffff55, transparent), radial-gradient(1px 1px at 120px 80px, #ffffff33, transparent), radial-gradient(1px 1px at 200px 20px, #ffffff44, transparent), radial-gradient(1px 1px at 300px 150px, #ffffff33, transparent), radial-gradient(1px 1px at 400px 60px, #ffffff55, transparent); background-repeat: repeat; background-size: 420px 220px; opacity: 0.6; }
+  #v4 .inner { position: relative; max-width: 880px; margin: 0 auto; }
+  #v4 .kicker { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #7d8ad0; margin: 0 0 6px; }
+  #v4 h1 { font-size: 22px; font-weight: 700; margin: 0 0 26px; }
+  #v4 .orbitstage { position: relative; width: 480px; height: 480px; margin: 0 auto; }
+  #v4 .orbit-ring { position: absolute; border: 1px dashed rgba(232,236,255,0.14); border-radius: 50%; top: 50%; left: 50%; }
+  #v4 .hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #6a7dff, #2c3583); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(106,125,255,0.5); }
+  #v4 .hub .hn { font-size: 12px; font-weight: 700; }
+  #v4 .hub .hs { font-size: 8.5px; opacity: 0.8; }
+  #v4 .node { position: absolute; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 0 18px currentColor; }
+  #v4 .node .nn { font-weight: 700; font-size: 12px; color: #06070f; }
+  #v4 .node .nl { font-size: 8px; color: #06070f; opacity: 0.75; }
+  #v4 .caption { text-align: center; font-size: 11.5px; color: #7d8ad0; margin-top: 18px; }
+
+  /* ================= 5: WAFFLE PICTOGRAM ================= */
+  #v5 {
+    background: #fbfaf6; color: #1d1c19; font-family: "Manrope", system-ui, sans-serif;
+    padding: 44px 20px 90px;
+  }
+  #v5 .inner { max-width: 900px; margin: 0 auto; }
+  #v5 h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+  #v5 .sub { font-size: 13px; color: #6b675e; margin: 0 0 26px; }
+  #v5 .layout { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 720px) { #v5 .layout { grid-template-columns: 1fr; } }
+  #v5 .waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; width: 300px; }
+  #v5 .cell { aspect-ratio: 1; border-radius: 3px; }
+  #v5 .legend2 { display: flex; flex-direction: column; gap: 12px; }
+  #v5 .lrow2 { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+  #v5 .sw { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+  #v5 .lrow2 b { margin-left: auto; font-variant-numeric: tabular-nums; }
+  #v5 .subwaffles { display: flex; gap: 30px; margin-top: 34px; flex-wrap: wrap; }
+  #v5 .subw { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  #v5 .subw .swlabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #6b675e; }
+  #v5 .miniwaffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; width: 100px; }
+  #v5 .miniwaffle .cell { border-radius: 2px; }
+  #v5 .miniwaffle-note { font-size: 12px; font-weight: 700; }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Quicksand:wght@500;600;700&family=Space+Mono:wght@400;700&family=Exo+2:wght@400;600;700&family=Manrope:wght@500;700;800&display=swap">
+
+<div class="switcher" id="switcher">
+  <button data-t="v1" class="active">01 · Sunburst</button>
+  <button data-t="v2">02 · Bubble Cluster</button>
+  <button data-t="v3">03 · Isometric Skyline</button>
+  <button data-t="v4">04 · Orbital</button>
+  <button data-t="v5">05 · Pictogram Waffle</button>
+</div>
+
+<!-- ============ 1: SUNBURST ============ -->
+<div class="design active" id="v1">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>One ring, the whole portfolio.</h1>
+    <div class="layout">
+      <div class="ring-wrap">
+        <svg id="sunburst" viewBox="0 0 300 300" width="300" height="300"></svg>
+        <div class="ring-center"><div class="n">100%</div><div class="t">Allocated</div></div>
+      </div>
+      <div class="legend" id="v1-legend"></div>
+    </div>
+    <div class="warns">
+      <div class="gaugewrap">
+        <svg width="96" height="96" viewBox="0 0 96 96">
+          <circle cx="48" cy="48" r="40" fill="none" stroke="#2c2260" stroke-width="10"/>
+          <circle cx="48" cy="48" r="40" fill="none" stroke="#ff6f91" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="251.3" stroke-dashoffset="163" transform="rotate(-90 48 48)"/>
+        </svg>
+        <div class="gn">35.5%</div><div class="gl">Largest position<br/>vs 25% convention</div>
+      </div>
+      <div class="gaugewrap">
+        <svg width="96" height="96" viewBox="0 0 96 96">
+          <circle cx="48" cy="48" r="40" fill="none" stroke="#2c2260" stroke-width="10"/>
+          <circle cx="48" cy="48" r="40" fill="none" stroke="#ffb347" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="251.3" stroke-dashoffset="63.8" transform="rotate(-90 48 48)"/>
+        </svg>
+        <div class="gn">74.6%</div><div class="gl">Top three combined<br/>vs 60% convention</div>
+      </div>
+    </div>
+    <div class="minirings" id="v1-mini"></div>
+  </div>
+</div>
+
+<!-- ============ 2: BUBBLE CLUSTER ============ -->
+<div class="design" id="v2">
+  <div class="inner">
+    <h1>Portfolio, as a cluster.</h1>
+    <p class="sub">Every circle is a slice of geography &mdash; area is weight. The ringed bubble is your largest single position.</p>
+    <div class="stage" id="v2-stage"></div>
+    <div class="footrow">
+      <div class="fchip"><div class="fl">Sector</div><div class="fv">92% Broad</div></div>
+      <div class="fchip"><div class="fl">Currency</div><div class="fv">100% GBP</div></div>
+      <div class="fchip"><div class="fl">Wrapper</div><div class="fv">92% ISA</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3: ISOMETRIC SKYLINE ============ -->
+<div class="design" id="v3">
+  <div class="inner">
+    <h1>THE PORTFOLIO SKYLINE</h1>
+    <p class="sub">Every district is a region. Height is weight.</p>
+    <div class="city" id="v3-city"></div>
+    <div class="warnrow">
+      <div class="wcard"><div class="wn">35.5%</div><div class="wl">Largest position &middot; over 25%</div></div>
+      <div class="wcard"><div class="wn">74.6%</div><div class="wl">Top three &middot; over 60%</div></div>
+      <div class="wcard"><div class="wn">92% / 92%</div><div class="wl">Broad sector / ISA wrapper</div></div>
+      <div class="wcard"><div class="wn">100%</div><div class="wl">GBP currency</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4: ORBITAL ============ -->
+<div class="design" id="v4">
+  <div class="stars"></div>
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Geography, in orbit.</h1>
+    <div class="orbitstage" id="v4-stage"></div>
+    <p class="caption">Node size = weight &middot; largest position flagged 35.5% &middot; top three 74.6% combined</p>
+  </div>
+</div>
+
+<!-- ============ 5: PICTOGRAM WAFFLE ============ -->
+<div class="design" id="v5">
+  <div class="inner">
+    <h1>100 squares, one portfolio.</h1>
+    <p class="sub">Each square is one percent. Count them and you've counted the whole portfolio.</p>
+    <div class="layout">
+      <div class="waffle" id="v5-waffle"></div>
+      <div class="legend2" id="v5-legend"></div>
+    </div>
+    <div class="subwaffles">
+      <div class="subw"><div class="swlabel">Sector</div><div class="miniwaffle" id="v5-sector"></div><div class="miniwaffle-note">92% Broad</div></div>
+      <div class="subw"><div class="swlabel">Currency</div><div class="miniwaffle" id="v5-ccy"></div><div class="miniwaffle-note">100% GBP</div></div>
+      <div class="subw"><div class="swlabel">Wrapper</div><div class="miniwaffle" id="v5-wrap"></div><div class="miniwaffle-note">92% ISA</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var geo = [
+    { name: "US", value: 46.0, c: "#ff6f91" },
+    { name: "Global", value: 19.5, c: "#6a7dff" },
+    { name: "Europe", value: 13.5, c: "#ffb347" },
+    { name: "UK", value: 8.5, c: "#5fd6c0" },
+    { name: "Asia-Pacific", value: 5.0, c: "#c589ff" },
+    { name: "Cash", value: 7.5, c: "#6b6a63" }
+  ];
+
+  document.getElementById("switcher").addEventListener("click", function (e) {
+    var btn = e.target.closest("button"); if (!btn) return;
+    document.querySelectorAll(".switcher button").forEach(function (b) { b.classList.remove("active"); });
+    document.querySelectorAll(".design").forEach(function (d) { d.classList.remove("active"); });
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.t).classList.add("active");
+  });
+
+  function polar(cx, cy, r, deg) {
+    var rad = (deg * Math.PI) / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+  function arcPath(cx, cy, rOuter, rInner, startDeg, endDeg) {
+    var large = endDeg - startDeg > 180 ? 1 : 0;
+    var p1 = polar(cx, cy, rOuter, startDeg), p2 = polar(cx, cy, rOuter, endDeg);
+    var p3 = polar(cx, cy, rInner, endDeg), p4 = polar(cx, cy, rInner, startDeg);
+    return ["M", p1.x, p1.y, "A", rOuter, rOuter, 0, large, 1, p2.x, p2.y,
+      "L", p3.x, p3.y, "A", rInner, rInner, 0, large, 0, p4.x, p4.y, "Z"].join(" ");
+  }
+
+  // ===== 1: Sunburst =====
+  (function () {
+    var svg = document.getElementById("sunburst");
+    var cx = 150, cy = 150, gap = 1.4, angle = -90;
+    var total = geo.reduce(function (a, d) { return a + d.value; }, 0);
+    geo.forEach(function (d) {
+      var sweep = (d.value / total) * 360;
+      var start = angle + gap / 2, end = angle + sweep - gap / 2;
+      angle += sweep;
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", arcPath(cx, cy, 145, 95, start, end));
+      path.setAttribute("fill", d.c);
+      svg.appendChild(path);
+    });
+    // inner ring: invested vs cash
+    var inner = [{ v: 92.5, c: "#6a7dff" }, { v: 7.5, c: "#3a2f78" }];
+    var a2 = -90;
+    inner.forEach(function (d) {
+      var sweep = (d.v / 100) * 360;
+      var start = a2 + 1.4 / 2, end = a2 + sweep - 1.4 / 2;
+      a2 += sweep;
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", arcPath(cx, cy, 82, 58, start, end));
+      path.setAttribute("fill", d.c);
+      svg.appendChild(path);
+    });
+    document.getElementById("v1-legend").innerHTML = geo.map(function (d) {
+      return '<div class="lrow"><span class="dot" style="background:' + d.c + '"></span>' + d.name + '<span class="lval">' + d.value.toFixed(1) + '%</span></div>';
+    }).join("");
+    document.getElementById("v1-mini").innerHTML =
+      ['Sector|92% Broad', 'Currency|100% GBP', 'Wrapper|92% ISA'].map(function (s) {
+        var p = s.split("|");
+        return '<div class="minirow"><div class="mn">' + p[1] + '</div><div class="ml">' + p[0] + '</div></div>';
+      }).join("");
+  })();
+
+  // ===== 2: Bubble cluster (approximate packing) =====
+  (function () {
+    var stage = document.getElementById("v2-stage");
+    var W = stage.clientWidth || 780, H = 440;
+    var cx = W / 2, cy = H / 2;
+    var maxR = 105, minR = 30;
+    var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+    var minV = Math.min.apply(null, geo.map(function (d) { return d.value; }));
+    var placed = [];
+    var sorted = geo.slice().sort(function (a, b) { return b.value - a.value; });
+    sorted.forEach(function (d, i) {
+      var r = minR + ((d.value - minV) / (maxV - minV || 1)) * (maxR - minR);
+      var pos;
+      if (i === 0) {
+        pos = { x: cx - 60, y: cy, r: r };
+      } else {
+        var angle = 0, radius = r + placed[0].r + 6, found = false, tries = 0;
+        while (!found && tries < 400) {
+          var ang = (i * 47 + tries * 11) * Math.PI / 180;
+          var testR = placed[0].r + r + 10 + Math.floor(tries / 20) * 8;
+          var x = placed[0].x + Math.cos(ang) * testR;
+          var y = placed[0].y + Math.sin(ang) * testR;
+          var ok = true;
+          for (var j = 0; j < placed.length; j++) {
+            var dx = x - placed[j].x, dy = y - placed[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < r + placed[j].r + 6) { ok = false; break; }
+          }
+          if (x - r < 4 || x + r > W - 4 || y - r < 4 || y + r > H - 4) ok = false;
+          if (ok) { pos = { x: x, y: y, r: r }; found = true; }
+          tries++;
+        }
+        if (!found) pos = { x: cx + i * 20, y: cy + i * 10, r: r };
+      }
+      placed.push({ x: pos.x, y: pos.y, r: r, d: d });
+    });
+    placed.forEach(function (p) {
+      var el = document.createElement("div");
+      el.className = "bubble" + (p.d.name === "US" ? " flag" : "");
+      el.style.width = p.r * 2 + "px";
+      el.style.height = p.r * 2 + "px";
+      el.style.left = (p.x - p.r) + "px";
+      el.style.top = (p.y - p.r) + "px";
+      el.style.background = p.d.c;
+      el.innerHTML = '<div class="bn">' + p.d.value.toFixed(1) + '%</div><div class="bl">' + p.d.name + '</div>';
+      stage.appendChild(el);
+    });
+  })();
+
+  // ===== 3: Isometric skyline =====
+  (function () {
+    var city = document.getElementById("v3-city");
+    var faceColors = { "US": "#ff5f7a", "Global": "#5a6bff", "Europe": "#ffb347", "UK": "#4fd6bd", "Asia-Pacific": "#c589ff", "Cash": "#8a8577" };
+    var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+    geo.forEach(function (d) {
+      var h = 40 + (d.value / maxV) * 180;
+      var col = faceColors[d.name];
+      var bldg = document.createElement("div");
+      bldg.className = "bldg";
+      bldg.innerHTML =
+        '<div class="iso" style="height:' + h + 'px">' +
+        '<div class="top" style="background:' + col + '"></div>' +
+        '<div class="front" style="position:absolute;bottom:0;left:0;width:44px;height:' + h + 'px;background:' + col + '"></div>' +
+        '<div class="side" style="background:' + col + '"></div>' +
+        '</div>' +
+        '<div class="lbl">' + d.name + '<b>' + d.value.toFixed(1) + '%</b></div>';
+      city.appendChild(bldg);
+    });
+  })();
+
+  // ===== 4: Orbital =====
+  (function () {
+    var stage = document.getElementById("v4-stage");
+    var cx = 240, cy = 240;
+    var radii = [90, 145, 200];
+    radii.forEach(function (r) {
+      var ring = document.createElement("div");
+      ring.className = "orbit-ring";
+      ring.style.width = r * 2 + "px";
+      ring.style.height = r * 2 + "px";
+      ring.style.marginLeft = -r + "px";
+      ring.style.marginTop = -r + "px";
+      stage.appendChild(ring);
+    });
+    var hub = document.createElement("div");
+    hub.className = "hub";
+    hub.innerHTML = '<div class="hn">PORTFOLIO</div><div class="hs">100% allocated</div>';
+    stage.appendChild(hub);
+
+    var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+    var minV = Math.min.apply(null, geo.map(function (d) { return d.value; }));
+    var orbitAssign = [radii[1], radii[2], radii[1], radii[2], radii[0], radii[0]];
+    var angles = [-40, 30, 150, 200, 90, 260];
+    geo.forEach(function (d, i) {
+      var r = orbitAssign[i];
+      var size = 34 + ((d.value - minV) / (maxV - minV || 1)) * 46;
+      var pos = polar(cx, cy, r, angles[i]);
+      var node = document.createElement("div");
+      node.className = "node";
+      node.style.width = size + "px";
+      node.style.height = size + "px";
+      node.style.left = (pos.x - size / 2) + "px";
+      node.style.top = (pos.y - size / 2) + "px";
+      node.style.background = d.c;
+      node.style.color = d.c;
+      node.innerHTML = '<div class="nn">' + d.value.toFixed(0) + '%</div><div class="nl">' + d.name + '</div>';
+      stage.appendChild(node);
+    });
+  })();
+
+  // ===== 5: Waffle pictogram =====
+  (function () {
+    var waffle = document.getElementById("v5-waffle");
+    var seq = [];
+    geo.forEach(function (d) {
+      var n = Math.round(d.value);
+      for (var i = 0; i < n; i++) seq.push(d.c);
+    });
+    while (seq.length < 100) seq.push(geo[geo.length - 1].c);
+    seq = seq.slice(0, 100);
+    seq.forEach(function (c) {
+      var cell = document.createElement("div");
+      cell.className = "cell";
+      cell.style.background = c;
+      waffle.appendChild(cell);
+    });
+    document.getElementById("v5-legend").innerHTML = geo.map(function (d) {
+      return '<div class="lrow2"><span class="sw" style="background:' + d.c + '"></span>' + d.name + '<b>' + d.value.toFixed(1) + '%</b></div>';
+    }).join("");
+
+    function miniWaffle(id, pct, colorOn, colorOff) {
+      var el = document.getElementById(id);
+      var n = Math.round(pct);
+      for (var i = 0; i < 100; i++) {
+        var cell = document.createElement("div");
+        cell.className = "cell";
+        cell.style.background = i < n ? colorOn : colorOff;
+        el.appendChild(cell);
+      }
+    }
+    miniWaffle("v5-sector", 92, "#6a7dff", "#e7e4da");
+    miniWaffle("v5-ccy", 100, "#5fd6c0", "#e7e4da");
+    miniWaffle("v5-wrap", 92, "#ff6f91", "#e7e4da");
+  })();
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,408 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four Command Rooms</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Chakra+Petch:wght@500;600;700&family=Domine:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<style>
+  /* ============================================================
+     WARDROOM is the resting/default state — a complete, correctly
+     themed page with no JS at all. The other three redefine the
+     same variables under [data-app-theme="..."].
+     ============================================================ */
+  :root {
+    --bg:#050c10; --bgDeep:#02070a; --surface:#0b1a20; --surfaceAlt:#0f232b; --surface2: #0c1e25;
+    --border:#1c3944; --borderStrong:#2e5964;
+    --text:#d9f2ec; --textSoft:#8fb9b8; --textFaint:#4d6d70;
+    --accent:#2be08a; --accent2:#c9a24a;
+    --pos:#2be08a; --neg:#ff6b5e; --warn:#e0b12a;
+    --displayFont:"Big Shoulders Display", sans-serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:4px; --radiusLg:6px; --bw:1px;
+    --panelBg: var(--surface); --panelBlur: none; --glow: none;
+    --gaugeStyle: dial;
+  }
+
+  :root[data-app-theme="marble"] {
+    --bg:#eae4d6; --bgDeep:#ddd4bd; --surface:#f7f3e8; --surfaceAlt:#efe8d4; --surface2:#22201a;
+    --border:#c7ba97; --borderStrong:#a4906a;
+    --text:#201d16; --textSoft:#4c452f; --textFaint:#7c7154;
+    --accent:#8a6a2e; --accent2:#1e4d3a;
+    --pos:#1e4d3a; --neg:#7c2320; --warn:#8a6a2e;
+    --displayFont:"Cormorant Garamond", serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:2px; --radiusLg:2px; --bw:1px;
+    --panelBg: var(--surface); --panelBlur: none; --glow: none;
+    --gaugeStyle: dial;
+  }
+
+  :root[data-app-theme="aurora"] {
+    --bg:#0a0918; --bgDeep:#050410; --surface: rgba(255,255,255,.045); --surfaceAlt: rgba(255,255,255,.075); --surface2: rgba(255,255,255,.06);
+    --border: rgba(255,255,255,.14); --borderStrong: rgba(255,255,255,.26);
+    --text:#eef0ff; --textSoft:#b7bce4; --textFaint:#767bab;
+    --accent:#8b6bff; --accent2:#3be7c6;
+    --pos:#3be7c6; --neg:#ff5c81; --warn:#ffce5c;
+    --displayFont:"Chakra Petch", sans-serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:14px; --radiusLg:18px; --bw:1px;
+    --panelBg: var(--surface); --panelBlur: blur(16px); --glow: 0 0 24px;
+    --gaugeStyle: ring;
+  }
+
+  :root[data-app-theme="print"] {
+    --bg:#f7f4ee; --bgDeep:#efebe1; --surface:#ffffff; --surfaceAlt:#f1eee5; --surface2:#111111;
+    --border:#1a1a1a; --borderStrong:#000000;
+    --text:#111111; --textSoft:#3d3d3d; --textFaint:#7c7c7c;
+    --accent:#e0472b; --accent2:#111111;
+    --pos:#1c7a4a; --neg:#c8321c; --warn:#c07f10;
+    --displayFont:"Domine", serif; --bodyFont:"Archivo", sans-serif;
+    --radius:0px; --radiusLg:0px; --bw:2px;
+    --panelBg: var(--surface); --panelBlur: none; --glow: none;
+    --gaugeStyle: arc;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--text); font-family: var(--bodyFont);
+    padding-inline: 14px; padding-block: 18px;
+    transition: background .3s ease, color .3s ease;
+  }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .outer { max-width: 1180px; margin: 0 auto; }
+
+  .banner {
+    border: var(--bw) solid var(--border); border-radius: var(--radius);
+    background: var(--surfaceAlt); padding: 10px 14px; font-size: 12.5px;
+    color: var(--textSoft); line-height: 1.5; margin-bottom: 16px; max-width: 84ch;
+  }
+  .banner b { color: var(--accent); }
+
+  .switcher { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+  .switcher button {
+    font-family: var(--bodyFont); font-size:12px; font-weight:600; letter-spacing:.3px;
+    padding:8px 14px 8px 10px; border-radius:999px; cursor:pointer;
+    background: var(--surface); border: var(--bw) solid var(--border); color: var(--textSoft);
+    display:inline-flex; align-items:center; gap:8px; transition: all .15s ease;
+  }
+  .switcher button .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .switcher button:hover { color: var(--text); border-color: var(--accent); }
+  .switcher button.active { background: var(--accent); color: var(--bgDeep); border-color: var(--accent); }
+  .switcher button.active .dot { background: var(--bgDeep); }
+
+  /* ============================================================
+     THE ROOM
+     ============================================================ */
+  .room {
+    position: relative; overflow: hidden; border-radius: var(--radiusLg);
+    border: var(--bw) solid var(--border); background: var(--bg);
+    display: flex; min-height: 640px;
+  }
+  .room-deco { position:absolute; inset:0; z-index:0; pointer-events:none; }
+
+  /* ---- sidebar ---- */
+  .sidebar {
+    position: relative; z-index: 2; width: 190px; flex-shrink:0; padding: 18px 12px;
+    background: var(--surfaceAlt); border-right: var(--bw) solid var(--border);
+    display:flex; flex-direction:column; gap: 20px;
+  }
+  .sb-brand { display:flex; align-items:center; gap:9px; padding: 0 6px; }
+  .sb-brand svg { width:22px; height:22px; }
+  .sb-word { font-family: var(--displayFont); font-weight:700; font-size:15px; letter-spacing:1.2px; }
+  .sb-nav { display:flex; flex-direction:column; gap:2px; }
+  .sb-item { display:flex; align-items:center; gap:10px; padding:8px 9px; border-radius: var(--radius); font-size:12px; color: var(--textFaint); font-weight:500; }
+  .sb-item .ic { width:14px; height:14px; flex-shrink:0; opacity:.85; }
+  .sb-item.on { color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); }
+
+  /* ---- main ---- */
+  .main { position: relative; z-index: 2; flex: 1; min-width:0; padding: 18px 20px; display:flex; flex-direction:column; gap: 14px; }
+
+  .topbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:1.6px; color: var(--textFaint); }
+  .search { flex:1; min-width:180px; display:flex; align-items:center; gap:10px; background: var(--surface); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 8px 12px; }
+  .search input { background:none; border:none; outline:none; color:var(--text); font-family: var(--bodyFont); font-size:13px; width:100%; }
+  .btn-analyse { font-family: var(--bodyFont); font-weight:700; font-size:11.5px; letter-spacing:.6px; padding:9px 16px; border-radius: var(--radius); background: var(--accent); color: var(--bgDeep); border: var(--bw) solid var(--accent); cursor:pointer; }
+
+  .pillrow { display:flex; gap:7px; flex-wrap:wrap; }
+  .pill { font-size:10.5px; font-weight:600; padding:5px 10px; border-radius:999px; background: var(--surface); border: var(--bw) solid var(--border); color: var(--textSoft); }
+  .pill.on { color: var(--accent); border-color: var(--accent); }
+
+  /* ---- hero ---- */
+  .hero { position: relative; overflow:hidden; border-radius: var(--radiusLg); border: var(--bw) solid var(--border); background: var(--panelBg); backdrop-filter: var(--panelBlur); padding: 18px 20px; display:flex; align-items:center; gap: 20px; flex-wrap:wrap; }
+  .hero-mono { width:52px; height:52px; border-radius:50%; background: var(--surfaceAlt); border: var(--bw) solid var(--borderStrong); display:flex; align-items:center; justify-content:center; font-family:var(--displayFont); font-weight:700; font-size:20px; flex-shrink:0; }
+  .hero-id { min-width: 150px; }
+  .hero-name { font-family: var(--displayFont); font-weight:700; font-size:18px; }
+  .hero-live { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; letter-spacing:1px; color: var(--accent); margin-top:3px; }
+  .hero-live .blip { width:6px; height:6px; border-radius:50%; background: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) { .hero-live .blip { animation: blip 1.6s ease-in-out infinite; } }
+  @keyframes blip { 50% { opacity:.25; } }
+
+  .hero-price-wrap { flex-shrink:0; }
+  .hero-price { font-family: var(--displayFont); font-weight:700; font-size:40px; line-height:1; }
+  .hero-deltas { display:flex; gap:14px; margin-top:6px; }
+  .hero-delta { font-size:12px; font-weight:600; }
+  .up { color: var(--pos); } .down { color: var(--neg); }
+
+  .spark { flex-shrink:0; }
+
+  .gauge-wrap { margin-left:auto; display:flex; flex-direction:column; align-items:center; gap:4px; flex-shrink:0; }
+  .gauge-label { font-size:9.5px; letter-spacing:1px; color: var(--textFaint); font-weight:600; }
+  .gauge { width:76px; height:76px; position:relative; }
+  .gauge-num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family: var(--displayFont); font-weight:700; font-size:19px; }
+
+  /* dial (Wardroom / Marble): brass bezel + needle */
+  .dial-face { width:100%; height:100%; border-radius:50%; position:relative;
+    background: radial-gradient(circle at 35% 30%, var(--surfaceAlt), var(--surface2) 78%);
+    border: 3px solid var(--accent2); box-shadow: inset 0 0 0 1px var(--border); }
+  .dial-tick { position:absolute; width:2px; height:8px; background: var(--textFaint); left:50%; top:3px; transform-origin: 1px 35px; }
+  .dial-needle { position:absolute; width:2px; height:30px; background: var(--accent); left:50%; top:8px; transform-origin: 1px 30px; border-radius:2px; }
+  .dial-hub { position:absolute; width:8px; height:8px; border-radius:50%; background: var(--accent2); left:50%; top:50%; transform: translate(-50%,-50%); }
+
+  /* ring (Aurora / Print): conic gradient */
+  .ring-face { width:100%; height:100%; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--surfaceAlt) 0); }
+  .ring-inner { width:76%; height:76%; border-radius:50%; background: var(--bg); }
+  :root[data-app-theme="print"] .ring-face { background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--surface) 0); border: var(--bw) solid var(--borderStrong); }
+  :root[data-app-theme="print"] .ring-inner { background: var(--surface); }
+  :root[data-app-theme="aurora"] .ring-face { box-shadow: var(--glow) color-mix(in srgb, var(--accent) 55%, transparent); }
+
+  :root:not([data-app-theme="aurora"]):not([data-app-theme="print"]) .ring-wrap { display:none; }
+  :root[data-app-theme="aurora"] .dial-wrap, :root[data-app-theme="print"] .dial-wrap { display:none; }
+
+  /* ---- tabs ---- */
+  .tabs { display:flex; gap: 4px; border-bottom: var(--bw) solid var(--border); flex-wrap:wrap; }
+  .tab { font-size:11.5px; font-weight:600; letter-spacing:.4px; padding:9px 4px; margin-right:16px; color: var(--textFaint); border-bottom: 2px solid transparent; }
+  .tab.on { color: var(--accent); border-color: var(--accent); }
+
+  /* ---- content grid ---- */
+  .content { display:grid; grid-template-columns: 1fr 260px; gap:14px; flex:1; min-height:0; }
+  @media (max-width: 760px) { .content { grid-template-columns: 1fr; } .room { flex-direction:column; } .sidebar { width:auto; flex-direction:row; overflow-x:auto; } .sb-nav { flex-direction:row; } }
+
+  .panel { background: var(--panelBg); backdrop-filter: var(--panelBlur); border: var(--bw) solid var(--border); border-radius: var(--radiusLg); overflow:hidden; }
+  .panel-head { padding:11px 15px; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color: var(--textFaint); font-weight:700; display:flex; justify-content:space-between; border-bottom: var(--bw) solid var(--border); }
+
+  .chartbox { padding: 12px 15px 6px; }
+  .rangebtns { display:flex; gap:4px; margin-bottom:8px; }
+  .rangebtn { font-size:10px; font-weight:600; padding:3px 8px; border-radius: var(--radius); color: var(--textFaint); }
+  .rangebtn.on { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .chart-legend { display:flex; gap:14px; font-size:10.5px; color: var(--textSoft); margin-bottom:6px; }
+  .legend-dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  .notesrow { display:flex; align-items:center; gap:10px; padding: 10px 15px; border-top: var(--bw) solid var(--border); font-size:11.5px; color: var(--textSoft); }
+  .notesrow input { background: var(--surfaceAlt); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 5px 9px; color: var(--text); font-family: var(--bodyFont); font-size:11px; }
+
+  .stat3 { display:grid; grid-template-columns: repeat(3,1fr); gap:1px; background: var(--border); }
+  .stat3 > div { background: var(--panelBg); padding: 11px 10px; text-align:center; }
+  .stat3 .v { font-family: var(--displayFont); font-weight:700; font-size:16px; }
+  .stat3 .l { font-size:9.5px; color: var(--textFaint); letter-spacing:.5px; margin-top:3px; }
+
+  .bbbar { display:flex; height:10px; border-radius:999px; overflow:hidden; margin: 4px 15px 10px; }
+  .bbbar .bull { background: var(--pos); } .bbbar .bear { background: var(--neg); }
+  .bbrow { display:flex; justify-content:space-between; padding: 0 15px 10px; font-size:11px; }
+  .bbsig { padding: 6px 15px; font-size:11.5px; color: var(--textSoft); border-top: var(--bw) solid var(--border); line-height:1.5; }
+  .bbsig b { color: var(--text); }
+
+  .narrative { padding: 12px 15px; font-size:12px; color: var(--textSoft); line-height:1.65; }
+
+  footer.note { text-align:center; font-size:11px; color: var(--textFaint); margin-top:12px; }
+
+  /* ---- decorative layers ---- */
+  .room-deco > div { display:none; }
+  :root[data-app-theme="wardroom"] .deco-wardroom,
+  :root:not([data-app-theme]) .deco-wardroom,
+  :root[data-app-theme="marble"] .deco-marble,
+  :root[data-app-theme="aurora"] .deco-aurora,
+  :root[data-app-theme="print"] .deco-print { display:block; }
+
+  .deco-wardroom { position:absolute; inset:0; background:
+    repeating-radial-gradient(circle at 78% 18%, transparent 0, transparent 34px, rgba(43,224,138,.05) 35px);
+  }
+  .deco-marble { position:absolute; inset:0; opacity:.5; background-image:
+    linear-gradient(115deg, transparent 40%, rgba(0,0,0,.035) 41%, rgba(0,0,0,.035) 42%, transparent 43%),
+    linear-gradient(65deg, transparent 60%, rgba(0,0,0,.03) 61%, rgba(0,0,0,.03) 62%, transparent 63%); }
+  .deco-aurora { position:absolute; inset:0; }
+  .deco-aurora::before { content:""; position:absolute; top:-160px; left:-80px; width:520px; height:420px;
+    background: conic-gradient(from 120deg, #8b6bff, #3be7c6, #ff5ca8, #8b6bff); filter: blur(90px); opacity:.28; }
+  .deco-print { position:absolute; inset:0; background-image: repeating-linear-gradient(to right, var(--border) 0, var(--border) var(--bw), transparent var(--bw), transparent 25%); opacity:.5; }
+
+  .radar-sweep { transform-origin: 50% 50%; }
+  @media (prefers-reduced-motion: no-preference) { .radar-sweep { animation: sweep 5s linear infinite; } }
+  @keyframes sweep { to { transform: rotate(360deg); } }
+</style>
+
+<div class="outer">
+  <div class="banner">
+    <b>Four full command-room layouts, nothing decided.</b> Same Research page, same sidebar and chrome,
+    same fictional AAPL example — the visual language and instrumentation style change completely.
+    Switch below.
+  </div>
+
+  <div class="switcher" id="switcher">
+    <button data-theme="wardroom" class="active"><span class="dot" style="background:#2be08a"></span>Wardroom</button>
+    <button data-theme="marble"><span class="dot" style="background:#8a6a2e"></span>Marble Exchange</button>
+    <button data-theme="aurora"><span class="dot" style="background:#8b6bff"></span>Aurora Grid</button>
+    <button data-theme="print"><span class="dot" style="background:#e0472b"></span>Studio Print</button>
+  </div>
+
+  <div class="room">
+    <div class="room-deco">
+      <div class="deco-wardroom"></div>
+      <div class="deco-marble"></div>
+      <div class="deco-aurora"></div>
+      <div class="deco-print"></div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sb-brand" id="brandmark"></div>
+      <div class="sb-nav">
+        <div class="sb-item">What Changed</div>
+        <div class="sb-item">Risk</div>
+        <div class="sb-item on">Research</div>
+        <div class="sb-item">Portfolio</div>
+        <div class="sb-item">Watchlist</div>
+        <div class="sb-item">Screener</div>
+        <div class="sb-item">Markets</div>
+        <div class="sb-item">News</div>
+        <div class="sb-item">Settings</div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <span class="eyebrow">ASSET RESEARCH</span>
+        <div class="search"><input value="Apple" readonly></div>
+        <button class="btn-analyse">ANALYSE</button>
+      </div>
+
+      <div class="pillrow">
+        <span class="pill on">S&amp;P 500</span><span class="pill">NASDAQ</span><span class="pill">VUSA</span>
+        <span class="pill">FTSE 100</span><span class="pill">Eurostoxx 50</span><span class="pill">Asia Pac</span>
+        <span class="pill">Emerging Mkts</span><span class="pill">VIX</span><span class="pill">Gold</span>
+      </div>
+
+      <div class="hero">
+        <div class="hero-mono">A</div>
+        <div class="hero-id">
+          <div class="hero-name">Apple Inc. · AAPL</div>
+          <div class="hero-live"><span class="blip"></span>LIVE TRACKED</div>
+        </div>
+        <div class="hero-price-wrap">
+          <div class="hero-price tabular">312.44</div>
+          <div class="hero-deltas">
+            <span class="hero-delta up tabular">↑ 1D +0.80%</span>
+            <span class="hero-delta down tabular">↓ 1W −1.20%</span>
+          </div>
+        </div>
+        <svg class="spark" width="120" height="40" viewBox="0 0 120 40">
+          <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="var(--pos)"/><stop offset="60%" stop-color="var(--pos)"/><stop offset="100%" stop-color="var(--neg)"/>
+          </linearGradient></defs>
+          <polyline points="0,28 12,24 24,26 36,18 48,20 60,12 72,15 84,10 96,16 108,13 120,22"
+            fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="gauge-wrap">
+          <div class="gauge-label">SCREENER SCORE</div>
+          <div style="position:relative; width:76px; height:76px;">
+            <div class="gauge dial-wrap">
+              <div class="dial-face">
+                <div class="dial-tick" style="transform: rotate(-54deg)"></div>
+                <div class="dial-tick" style="transform: rotate(-27deg)"></div>
+                <div class="dial-tick" style="transform: rotate(0deg)"></div>
+                <div class="dial-tick" style="transform: rotate(27deg)"></div>
+                <div class="dial-tick" style="transform: rotate(54deg)"></div>
+                <div class="dial-needle" style="transform: rotate(28deg)"></div>
+                <div class="dial-hub"></div>
+              </div>
+            </div>
+            <div class="gauge ring-wrap" style="--pct:78">
+              <div class="ring-face"><div class="ring-inner"></div></div>
+            </div>
+            <div class="gauge-num">78</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <span class="tab on">OVERVIEW</span><span class="tab">COMPARE</span><span class="tab">PRECEDENTS</span>
+        <span class="tab">NEWS</span><span class="tab">BULL / BEAR</span><span class="tab">FILINGS</span><span class="tab">AI NOTE</span>
+      </div>
+
+      <div class="content">
+        <div class="panel" style="display:flex; flex-direction:column;">
+          <div class="panel-head"><span>PRICE</span><span class="mono">1Y</span></div>
+          <div class="chartbox">
+            <div class="rangebtns">
+              <span class="rangebtn">1D</span><span class="rangebtn">1M</span><span class="rangebtn on">1Y</span>
+              <span class="rangebtn">3Y</span><span class="rangebtn">MAX</span>
+            </div>
+            <div class="chart-legend">
+              <span><span class="legend-dot" style="background:var(--accent)"></span>Price</span>
+              <span><span class="legend-dot" style="background:var(--accent2)"></span>50d / 200d</span>
+            </div>
+            <svg width="100%" height="200" viewBox="0 0 560 200" preserveAspectRatio="none">
+              <g stroke="var(--border)" stroke-width="1">
+                <line x1="0" y1="40" x2="560" y2="40"/><line x1="0" y1="90" x2="560" y2="90"/>
+                <line x1="0" y1="140" x2="560" y2="140"/><line x1="0" y1="190" x2="560" y2="190"/>
+              </g>
+              <polyline points="0,170 40,150 80,160 120,120 160,130 200,95 240,110 280,80 320,90 360,60 400,75 440,45 480,55 520,30 560,42"
+                fill="none" stroke="var(--accent2)" stroke-width="1.4" opacity=".55"/>
+              <polyline points="0,175 40,168 80,172 120,150 160,158 200,130 240,140 280,115 320,120 360,95 400,100 440,78 480,82 520,58 560,65"
+                fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+              <circle cx="560" cy="65" r="3.5" fill="var(--accent)"/>
+            </svg>
+          </div>
+          <div class="notesrow">
+            <input value="12/09/2028" readonly><span>Guidance raised note — example annotation</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="panel">
+            <div class="panel-head">PRECEDENT OUTLOOK</div>
+            <div class="stat3">
+              <div><div class="v tabular">6</div><div class="l">CLOSE MATCHES</div></div>
+              <div><div class="v tabular up">+4.2%</div><div class="l">TYPICAL 3M FWD</div></div>
+              <div><div class="v tabular">67%</div><div class="l">HIT RATE</div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">BULL / BEAR SIGNALS</div>
+            <div class="bbbar"><div class="bull" style="width:71%"></div><div class="bear" style="width:29%"></div></div>
+            <div class="bbrow"><span class="up">5 bullish</span><span class="down">2 bearish</span></div>
+            <div class="bbsig"><b>Bull</b> — price above both 50d and 200d averages</div>
+            <div class="bbsig"><b>Bear</b> — short interest above its own 1y average</div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">WHERE THINGS STAND</div>
+            <div class="narrative">Trading 4.2% above its 50-day average on volume in line with the past
+            month. No stored earnings or dividend event in the next two weeks. Example narrative — composed
+            from the same figures shown above it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="note">Preview only — fictional example data, not connected to a real account.</footer>
+</div>
+
+<script>
+  const marks = {
+    wardroom: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="var(--accent)" stroke-width="1"/><g class="radar-sweep"><path d="M12 12 L12 2.5 A9.5 9.5 0 0 1 19.7 6.6 Z" fill="var(--accent)" opacity=".3"/></g><circle cx="12" cy="12" r="1.6" fill="var(--accent2)"/></svg>`,
+    marble: `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="11" stroke="var(--accent2)" stroke-width="1.2"/><path d="M3 9 L12 3 L21 9" stroke="var(--accent2)" stroke-width="1.2" fill="none"/><line x1="7" y1="9" x2="7" y2="20" stroke="var(--accent2)" stroke-width="1"/><line x1="17" y1="9" x2="17" y2="20" stroke="var(--accent2)" stroke-width="1"/></svg>`,
+    aurora: `<svg viewBox="0 0 24 24" fill="none"><path d="M3 16c3-7 7-10 9-10s6 3 9 10" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round"/><path d="M3 19c3-6 7-8 9-8s6 2 9 8" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity=".65"/></svg>`,
+    print: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--accent)" stroke-width="2"/><line x1="12" y1="3" x2="12" y2="21" stroke="var(--accent)" stroke-width="2"/></svg>`,
+  };
+  const wordmarks = { wardroom:"MERIDIAN", marble:"MERIDIAN", aurora:"MERIDIAN", print:"MERIDIAN" };
+
+  const root = document.documentElement;
+  const brandEl = document.getElementById("brandmark");
+  const buttons = document.querySelectorAll("#switcher button");
+
+  function setTheme(name) {
+    root.setAttribute("data-app-theme", name);
+    brandEl.innerHTML = marks[name] + `<span class="sb-word">${wordmarks[name]}</span>`;
+    buttons.forEach(b => b.classList.toggle("active", b.dataset.theme === name));
+  }
+  buttons.forEach(b => b.addEventListener("click", () => setTheme(b.dataset.theme)));
+  setTheme("wardroom");
+</script>
+
+</body></html>

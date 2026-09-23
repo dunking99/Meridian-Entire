@@ -1,0 +1,396 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four Composition Concepts</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #0d0d0d; }
+
+  /* ---------- switcher chrome (neutral, separate from the 4 worlds) ---------- */
+  .switcher {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; gap: 0;
+    background: #151515;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 0 12px;
+    overflow-x: auto;
+  }
+  .switcher button {
+    appearance: none; border: none; background: none;
+    color: #8a8a8a; font-family: system-ui, sans-serif;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 14px 16px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .switcher button.active { color: #fff; border-bottom-color: #fff; }
+  .switcher button:hover { color: #ddd; }
+
+  .design { display: none; }
+  .design.active { display: block; }
+
+  /* ==================================================================
+     DESIGN 1 — Terminal Ledger
+     ================================================================== */
+  #d1 {
+    --bg: #05140a;
+    --surface: #0a1f11;
+    --ink: #baffcb;
+    --ink-2: #5f9b74;
+    --amber: #ffb020;
+    --rule: #163821;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    padding: 40px 20px 80px;
+    min-height: 100vh;
+  }
+  #d1 .head { max-width: 720px; margin: 0 auto 28px; }
+  #d1 .head .tag { font-size: 11px; color: var(--ink-2); letter-spacing: 0.15em; }
+  #d1 .head h1 { font-size: 16px; margin: 6px 0 0; font-weight: 700; letter-spacing: 0.02em; }
+  #d1 .alerts { max-width: 720px; margin: 0 auto 24px; border: 1px solid var(--amber); padding: 12px 14px; }
+  #d1 .alerts div { font-size: 12.5px; margin-bottom: 4px; color: var(--amber); }
+  #d1 .alerts div:last-child { margin-bottom: 0; color: var(--ink-2); font-size: 11px; }
+  #d1 .alerts b { color: var(--amber); }
+  #d1 table { max-width: 720px; margin: 0 auto; width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  #d1 thead th {
+    text-align: left; font-weight: 600; color: var(--ink-2);
+    border-bottom: 1px solid var(--rule); padding: 6px 8px; letter-spacing: 0.06em; font-size: 10.5px;
+  }
+  #d1 tbody td { padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  #d1 tbody tr:hover { background: rgba(186,255,203,0.04); }
+  #d1 .grp-row td { padding-top: 16px; color: var(--ink-2); font-size: 10.5px; letter-spacing: 0.1em; border-bottom: none; }
+  #d1 .code { color: var(--ink); }
+  #d1 .code .dim { color: var(--ink-2); }
+  #d1 .bar-cell { width: 220px; }
+  #d1 .tickbar { display: flex; gap: 2px; }
+  #d1 .tick { width: 3px; height: 11px; background: var(--rule); }
+  #d1 .tick.on { background: var(--ink); }
+  #d1 .tick.cash { background: var(--ink-2); }
+  #d1 .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ==================================================================
+     DESIGN 2 — Weighted Map (treemap, editorial salmon)
+     ================================================================== */
+  #d2 {
+    --bg: #f6e3d3;
+    --ink: #1c2b3a;
+    --ink-2: #6d5d51;
+    --rule: rgba(28,43,58,0.16);
+    --navy: #1c2b3a; --teal: #2f6f62; --mustard: #b6862c; --brick: #a13f2d; --dusty: #5c7ea3; --cash2: #948572;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Work Sans", system-ui, sans-serif;
+    padding: 48px 24px 90px;
+    min-height: 100vh;
+  }
+  #d2 .inner { max-width: 900px; margin: 0 auto; }
+  #d2 .kicker { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 6px; }
+  #d2 h1 { font-family: "Newsreader", Georgia, serif; font-size: 34px; font-weight: 500; margin: 0 0 28px; font-style: italic; }
+  #d2 .layout { display: grid; grid-template-columns: 1fr 220px; gap: 40px; }
+  @media (max-width: 720px) { #d2 .layout { grid-template-columns: 1fr; } }
+  #d2 .map { display: flex; flex-wrap: wrap; gap: 3px; height: 320px; }
+  #d2 .cell {
+    position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 10px; color: #fff; overflow: hidden; cursor: default;
+  }
+  #d2 .cell .nm { font-family: "Newsreader", serif; font-size: 15px; font-style: italic; }
+  #d2 .cell .vl { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  #d2 .side { display: flex; flex-direction: column; gap: 22px; }
+  #d2 .pull { border-left: 2px solid var(--brick); padding-left: 14px; }
+  #d2 .pull .n { font-family: "Newsreader", serif; font-style: italic; font-size: 19px; line-height: 1.3; }
+  #d2 .pull .l { font-size: 11px; color: var(--ink-2); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+  #d2 .strip-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin: 0 0 6px; }
+  #d2 .strip { display: flex; height: 22px; border-radius: 2px; overflow: hidden; margin-bottom: 4px; }
+  #d2 .strip div:first-child { background: var(--navy); }
+  #d2 .strip div:last-child { background: var(--cash2); }
+  #d2 .strip-note { font-size: 11.5px; color: var(--ink-2); }
+
+  /* ==================================================================
+     DESIGN 3 — Fact Cards (bento mosaic)
+     ================================================================== */
+  #d3 {
+    --bg: #f3f5f6;
+    --card: #ffffff;
+    --ink: #14171a;
+    --ink-2: #5a6068;
+    --accent: #4b3fae;
+    --accent-2: #d8d4f4;
+    --warn: #c96a1f;
+    --border: rgba(20,23,26,0.09);
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Public Sans", system-ui, sans-serif;
+    padding: 40px 20px 90px;
+    min-height: 100vh;
+  }
+  #d3 .inner { max-width: 920px; margin: 0 auto; }
+  #d3 h1 { font-family: "Fraunces", Georgia, serif; font-size: 26px; font-weight: 600; margin: 0 0 22px; }
+  #d3 .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 108px;
+    gap: 12px;
+  }
+  @media (max-width: 720px) { #d3 .bento { grid-template-columns: repeat(2, 1fr); } }
+  #d3 .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  #d3 .c-gauge { grid-column: span 1; grid-row: span 2; align-items: center; }
+  #d3 .c-hero { grid-column: span 2; grid-row: span 2; justify-content: center; }
+  #d3 .c-list { grid-column: span 2; grid-row: span 2; }
+  #d3 .c-meter { grid-column: span 2; grid-row: span 1; }
+  #d3 .lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-2); font-weight: 600; }
+  #d3 .hero-n { font-family: "Fraunces", serif; font-size: 46px; font-weight: 600; text-align: center; line-height: 1; }
+  #d3 .hero-s { font-size: 12.5px; color: var(--ink-2); text-align: center; margin-top: 6px; }
+  #d3 .gauge-n { font-family: "Fraunces", serif; font-size: 22px; font-weight: 600; margin-top: 8px; }
+  #d3 .gauge-l { font-size: 10.5px; color: var(--ink-2); text-align: center; margin-top: 2px; }
+  #d3 .rank-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 12.5px; }
+  #d3 .rank-row .rn { width: 14px; color: var(--ink-2); font-size: 11px; }
+  #d3 .rank-row .rl { flex: 0 0 78px; }
+  #d3 .rank-row .rb { flex: 1; height: 7px; background: var(--accent-2); border-radius: 4px; overflow: hidden; }
+  #d3 .rank-row .rb i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+  #d3 .rank-row .rv { width: 40px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  #d3 .meter-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; font-size: 12px; }
+  #d3 .meter-track { height: 8px; background: var(--accent-2); border-radius: 4px; overflow: hidden; }
+  #d3 .meter-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+
+  /* ==================================================================
+     DESIGN 4 — Brutalist Ledger
+     ================================================================== */
+  #d4 {
+    --bg: #0a0a0a; --ink: #f5f5f0; --ink-2: #8a8a82; --red: #ff3b30; --rule: #2a2a2a;
+    background: var(--bg); color: var(--ink);
+    font-family: "Barlow Condensed", system-ui, sans-serif;
+    padding: 0 0 100px;
+    min-height: 100vh;
+  }
+  #d4 .band { border-bottom: 1px solid var(--rule); padding: 22px 24px; }
+  #d4 .band .k { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+  #d4 .warnband { display: flex; flex-wrap: wrap; gap: 40px; align-items: baseline; }
+  #d4 .warnband .wn { font-family: "Archivo Black", sans-serif; font-size: 40px; color: var(--red); line-height: 1; }
+  #d4 .warnband .wl { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2); margin-top: 4px; }
+  #d4 .row { display: flex; align-items: center; gap: 22px; padding: 18px 24px; border-bottom: 1px solid var(--rule); }
+  #d4 .row .rlabel { width: 150px; flex: none; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2); }
+  #d4 .row .rnum { font-family: "Archivo Black", sans-serif; font-size: 34px; width: 110px; flex: none; font-variant-numeric: tabular-nums; }
+  #d4 .row .ruler { flex: 1; display: flex; gap: 3px; align-items: flex-end; height: 24px; }
+  #d4 .row .ruler i { width: 4px; background: var(--rule); }
+  #d4 .row .ruler i.on { background: var(--ink); }
+  #d4 .grp { padding: 22px 24px 4px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Newsreader:ital,wght@0,500;1,500;1,600&family=Work+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600&family=Archivo+Black&display=swap">
+
+<div class="switcher" id="switcher">
+  <button data-t="d1" class="active">01 · Terminal Ledger</button>
+  <button data-t="d2">02 · Weighted Map</button>
+  <button data-t="d3">03 · Fact Cards</button>
+  <button data-t="d4">04 · Brutalist Ledger</button>
+</div>
+
+<!-- ============ DESIGN 1 ============ -->
+<div class="design active" id="d1">
+  <div class="head">
+    <div class="tag">MERIDIAN // PORTFOLIO.COMPOSITION</div>
+    <h1>HOLDINGS BREAKDOWN — LIVE</h1>
+  </div>
+  <div class="alerts">
+    <div>[!] LARGEST POSITION <b>35.5%</b> OF PORTFOLIO — EXCEEDS 25% CONVENTION</div>
+    <div>[!] TOP 3 POSITIONS <b>74.6%</b> COMBINED — EXCEEDS 60% CONVENTION</div>
+    <div>thresholds are conventions, not advice · full diagnostics on risk page</div>
+  </div>
+  <table>
+    <thead><tr><th>CODE</th><th class="bar-cell">WEIGHT</th><th class="num">PCT</th></tr></thead>
+    <tbody id="d1-geo"></tbody>
+    <tbody><tr class="grp-row"><td colspan="3">SECTOR</td></tr></tbody>
+    <tbody id="d1-sector"></tbody>
+    <tbody><tr class="grp-row"><td colspan="3">CURRENCY</td></tr></tbody>
+    <tbody id="d1-ccy"></tbody>
+    <tbody><tr class="grp-row"><td colspan="3">WRAPPER</td></tr></tbody>
+    <tbody id="d1-wrap"></tbody>
+  </table>
+</div>
+
+<!-- ============ DESIGN 2 ============ -->
+<div class="design" id="d2">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Where the money actually sits.</h1>
+    <div class="layout">
+      <div>
+        <p class="strip-title">Geography, by area</p>
+        <div class="map" id="d2-map"></div>
+      </div>
+      <div class="side">
+        <div class="pull">
+          <div class="n">"One position holds more than a third of the portfolio."</div>
+          <div class="l">Largest position — 35.5%</div>
+        </div>
+        <div class="pull">
+          <div class="n">"Three names carry three quarters of the total."</div>
+          <div class="l">Top three combined — 74.6%</div>
+        </div>
+        <div>
+          <p class="strip-title">Sector</p>
+          <div class="strip"><div style="width:92%"></div><div style="width:8%"></div></div>
+          <div class="strip-note">92% Broad &middot; 8% cash</div>
+        </div>
+        <div>
+          <p class="strip-title">Wrapper</p>
+          <div class="strip"><div style="width:92%"></div><div style="width:8%"></div></div>
+          <div class="strip-note">92% ISA &middot; 8% cash</div>
+        </div>
+        <div>
+          <p class="strip-title">Currency</p>
+          <div class="strip"><div style="width:100%"></div></div>
+          <div class="strip-note">100% GBP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DESIGN 3 ============ -->
+<div class="design" id="d3">
+  <div class="inner">
+    <h1>Composition</h1>
+    <div class="bento">
+      <div class="card c-gauge">
+        <div class="lbl">Largest position</div>
+        <svg width="86" height="86" viewBox="0 0 86 86">
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#e8e6f7" stroke-width="9"/>
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#4b3fae" stroke-width="9"
+            stroke-dasharray="226.19" stroke-dashoffset="146.5" stroke-linecap="round" transform="rotate(-90 43 43)"/>
+        </svg>
+        <div class="gauge-n">35.5%</div>
+        <div class="gauge-l">vs 25% convention</div>
+      </div>
+      <div class="card c-hero">
+        <div class="lbl">Currency</div>
+        <div class="hero-n">100%</div>
+        <div class="hero-s">GBP &mdash; the entire portfolio, no FX exposure</div>
+      </div>
+      <div class="card c-gauge">
+        <div class="lbl">Top three</div>
+        <svg width="86" height="86" viewBox="0 0 86 86">
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#e8e6f7" stroke-width="9"/>
+          <circle cx="43" cy="43" r="36" fill="none" stroke="#c96a1f" stroke-width="9"
+            stroke-dasharray="226.19" stroke-dashoffset="60.5" stroke-linecap="round" transform="rotate(-90 43 43)"/>
+        </svg>
+        <div class="gauge-n">74.6%</div>
+        <div class="gauge-l">vs 60% convention</div>
+      </div>
+      <div class="card c-list">
+        <div class="lbl">Geography</div>
+        <div id="d3-geo"></div>
+      </div>
+      <div class="card c-meter">
+        <div class="lbl">Sector</div>
+        <div class="meter-row"><span>Broad</span><b>92%</b></div>
+        <div class="meter-track"><div class="meter-fill" style="width:92%"></div></div>
+      </div>
+      <div class="card c-meter">
+        <div class="lbl">Wrapper</div>
+        <div class="meter-row"><span>ISA</span><b>92%</b></div>
+        <div class="meter-track"><div class="meter-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DESIGN 4 ============ -->
+<div class="design" id="d4">
+  <div class="band">
+    <div class="warnband">
+      <div><div class="wn">35.5%</div><div class="wl">Largest position &middot; over 25%</div></div>
+      <div><div class="wn">74.6%</div><div class="wl">Top three combined &middot; over 60%</div></div>
+    </div>
+  </div>
+  <div class="grp">Geography</div>
+  <div id="d4-geo"></div>
+  <div class="grp">Sector / Currency / Wrapper</div>
+  <div id="d4-rest"></div>
+</div>
+
+<script>
+(function () {
+  var geo = [
+    { name: "US", value: 46.0 },
+    { name: "Global", value: 19.5 },
+    { name: "Europe", value: 13.5 },
+    { name: "UK", value: 8.5 },
+    { name: "Asia-Pacific", value: 5.0 },
+    { name: "Cash", value: 7.5 }
+  ];
+  var mapColors = { "US": "var(--navy)", "Global": "var(--teal)", "Europe": "var(--mustard)", "UK": "var(--brick)", "Asia-Pacific": "var(--dusty)", "Cash": "var(--cash2)" };
+
+  // switcher
+  document.getElementById("switcher").addEventListener("click", function (e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    document.querySelectorAll(".switcher button").forEach(function (b) { b.classList.remove("active"); });
+    document.querySelectorAll(".design").forEach(function (d) { d.classList.remove("active"); });
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.t).classList.add("active");
+  });
+
+  // ---- Design 1: terminal ledger ----
+  function ticks(n, cash) {
+    var total = 20, on = Math.round((n / 100) * total * 2); // scale so 100% ~ full
+    var html = "";
+    for (var i = 0; i < total; i++) {
+      var isOn = i < Math.round((n / 50) * total);
+      html += '<div class="tick' + (isOn ? (cash ? " tick cash on" : " on") : "") + '"></div>';
+    }
+    return html;
+  }
+  function d1row(name, value, cash) {
+    return '<tr><td class="code">' + name + '</td>' +
+      '<td class="bar-cell"><div class="tickbar">' + ticks(value, cash) + '</div></td>' +
+      '<td class="num">' + value.toFixed(1) + '%</td></tr>';
+  }
+  document.getElementById("d1-geo").innerHTML = geo.map(function (d) { return d1row(d.name, d.value, d.name === "Cash"); }).join("");
+  document.getElementById("d1-sector").innerHTML = d1row("Broad", 92, false) + d1row("Cash", 8, true);
+  document.getElementById("d1-ccy").innerHTML = d1row("GBP", 100, false);
+  document.getElementById("d1-wrap").innerHTML = d1row("ISA", 92, false) + d1row("Cash", 8, true);
+
+  // ---- Design 2: treemap ----
+  var mapEl = document.getElementById("d2-map");
+  geo.forEach(function (d) {
+    var cell = document.createElement("div");
+    cell.className = "cell";
+    cell.style.flex = d.value + " 1 " + (d.value * 6) + "px";
+    cell.style.background = mapColors[d.name];
+    cell.innerHTML = '<span class="nm">' + d.name + '</span><span class="vl">' + d.value.toFixed(1) + '%</span>';
+    mapEl.appendChild(cell);
+  });
+
+  // ---- Design 3: ranked list ----
+  var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+  document.getElementById("d3-geo").innerHTML = geo.map(function (d, i) {
+    return '<div class="rank-row"><span class="rn">' + (i + 1) + '</span>' +
+      '<span class="rl">' + d.name + '</span>' +
+      '<span class="rb"><i style="width:' + ((d.value / maxV) * 100).toFixed(0) + '%"></i></span>' +
+      '<span class="rv">' + d.value.toFixed(1) + '%</span></div>';
+  }).join("");
+
+  // ---- Design 4: ruler rows ----
+  function ruler(n) {
+    var total = 30, on = Math.round((n / 50) * total);
+    var html = "";
+    for (var i = 0; i < total; i++) html += '<i class="' + (i < on ? "on" : "") + '" style="height:' + (i < on ? (10 + (i % 4) * 3) : 8) + 'px"></i>';
+    return html;
+  }
+  function d4row(label, value) {
+    return '<div class="row"><span class="rlabel">' + label + '</span>' +
+      '<span class="rnum">' + value.toFixed(1) + '</span>' +
+      '<span class="ruler">' + ruler(value) + '</span></div>';
+  }
+  document.getElementById("d4-geo").innerHTML = geo.map(function (d) { return d4row(d.name, d.value); }).join("");
+  document.getElementById("d4-rest").innerHTML =
+    d4row("Sector · Broad", 92) + d4row("Sector · Cash", 8) +
+    d4row("Currency · GBP", 100) +
+    d4row("Wrapper · ISA", 92) + d4row("Wrapper · Cash", 8);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,273 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four Page Designs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: #0a0a0c; }
+  body { color: #e8e8ec; font-family: system-ui, sans-serif; padding-inline: 14px; padding-block: 18px; }
+  .outer { max-width: 1180px; margin: 0 auto; }
+  .banner { border: 1px solid #2a2a32; border-radius: 6px; background: #131318; padding: 10px 14px; font-size: 12.5px; color: #a8a8b4; line-height: 1.5; margin-bottom: 16px; max-width: 84ch; }
+  .banner b { color: #e8e8ec; }
+  .switcher { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .switcher button { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: 999px; cursor: pointer; background: #131318; border: 1px solid #2a2a32; color: #a8a8b4; transition: all .15s ease; }
+  .switcher button:hover { color: #fff; border-color: #4a4a58; }
+  .switcher button.active { background: #e8e8ec; color: #0a0a0c; border-color: #e8e8ec; }
+  .stage { border-radius: 10px; overflow: hidden; border: 1px solid #22222a; }
+  .room { display: none; }
+  .room.active { display: block; }
+  footer.note { text-align: center; font-size: 11px; color: #6a6a76; margin-top: 12px; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* ===================== 1. EDITORIAL ===================== */
+  .r1 { background: #f4f1e8; color: #1b241d; font-family: "Work Sans", sans-serif; min-height: 680px; }
+  .r1-nav { display: flex; align-items: center; gap: 26px; padding: 18px 34px; border-bottom: 1px solid #d8d2bd; }
+  .r1-word { font-family: "Lora", serif; font-weight: 700; font-size: 15px; letter-spacing: .5px; color: #14371f; }
+  .r1-tabs { display: flex; gap: 22px; margin-left: 10px; font-size: 12.5px; color: #6b6a54; }
+  .r1-tabs span.on { color: #14371f; font-weight: 600; border-bottom: 2px solid #b5652f; padding-bottom: 4px; }
+  .r1-hero { padding: 40px 34px 20px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: end; }
+  .r1-kick { font-size: 11.5px; letter-spacing: 2px; color: #b5652f; font-weight: 600; margin-bottom: 10px; }
+  .r1-h1 { font-family: "Lora", serif; font-size: 52px; line-height: 1.02; color: #14201a; text-wrap: balance; }
+  .r1-h1 em { font-style: italic; color: #b5652f; }
+  .r1-price { text-align: right; }
+  .r1-price .n { font-family: "Lora", serif; font-weight: 600; font-size: 44px; }
+  .r1-price .d { font-size: 13px; margin-top: 6px; }
+  .r1-up { color: #14603a; } .r1-down { color: #a4392c; }
+  .r1-chart { margin: 8px 34px 0; border-top: 1px solid #d8d2bd; border-bottom: 1px solid #d8d2bd; padding: 18px 0; }
+  .r1-caption { font-size: 11px; color: #7a795f; margin-top: 6px; font-family: "IBM Plex Mono", monospace; }
+  .r1-stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .r1-stat { padding: 26px 34px; border-right: 1px solid #d8d2bd; }
+  .r1-stat:last-child { border-right: none; }
+  .r1-stat .l { font-size: 10.5px; letter-spacing: 1.4px; color: #8a8968; text-transform: uppercase; margin-bottom: 8px; }
+  .r1-stat .v { font-family: "Lora", serif; font-size: 26px; font-weight: 600; }
+  .r1-stat .s { font-size: 12px; color: #5c5b45; margin-top: 6px; line-height: 1.5; }
+  .r1-pull { padding: 30px 34px 40px; }
+  .r1-pull .drop { font-family: "Lora", serif; font-size: 46px; float: left; line-height: .8; padding-right: 8px; color: #b5652f; font-weight: 700; }
+  .r1-pull p { font-size: 15px; line-height: 1.75; color: #2c3427; max-width: 68ch; font-family: "Lora", serif; font-style: italic; }
+
+  /* ===================== 2. CONTROL ROOM ===================== */
+  .r2 { background: #0c0d0f; color: #d4d4d8; font-family: "IBM Plex Sans", sans-serif; min-height: 680px; display: flex; }
+  .r2-side { width: 168px; flex-shrink: 0; background: #101113; border-right: 1px solid #232427; padding: 16px 14px; }
+  .r2-brand { font-family: "IBM Plex Mono", monospace; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; color: #e8b23e; margin-bottom: 20px; }
+  .r2-nav div { font-size: 11.5px; color: #75757c; padding: 7px 0; border-bottom: 1px solid #1a1b1e; }
+  .r2-nav div.on { color: #e8b23e; }
+  .r2-watch { margin-top: 20px; }
+  .r2-watch .h { font-size: 9.5px; letter-spacing: 1.2px; color: #52525a; margin-bottom: 8px; }
+  .r2-watch .row { display: flex; justify-content: space-between; font-size: 11px; font-family: "IBM Plex Mono", monospace; padding: 4px 0; color: #8c8c92; }
+
+  .r2-main { flex: 1; padding: 16px 20px; min-width: 0; }
+  .r2-pillrow { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .r2-pill { font-family: "IBM Plex Mono", monospace; font-size: 10px; padding: 4px 9px; border: 1px solid #232427; color: #8c8c92; border-radius: 2px; }
+  .r2-pill.on { color: #e8b23e; border-color: #e8b23e; }
+
+  .r2-grid { display: grid; grid-template-columns: 2.2fr 1fr; gap: 12px; }
+  .r2-block { border: 1px solid #232427; }
+  .r2-blockhead { font-size: 10px; letter-spacing: 1.2px; color: #6a6a72; padding: 8px 12px; border-bottom: 1px solid #1a1b1e; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; }
+  .r2-priceline { padding: 14px 14px 6px; display: flex; align-items: baseline; gap: 14px; }
+  .r2-priceline .n { font-family: "IBM Plex Mono", monospace; font-weight: 700; font-size: 30px; color: #f0f0f2; }
+  .r2-up { color: #4fbf7a; } .r2-down { color: #d4665c; }
+  .r2-chartsvg { padding: 0 10px 12px; }
+  .r2-substack { display: flex; flex-direction: column; gap: 12px; }
+  .r2-mini { padding: 10px 12px; }
+  .r2-mini .l { font-size: 9.5px; letter-spacing: 1px; color: #6a6a72; }
+  .r2-mini .v { font-family: "IBM Plex Mono", monospace; font-size: 17px; margin-top: 4px; color: #e8e8ec; }
+  .r2-bar { height: 4px; background: #1a1b1e; margin-top: 8px; }
+  .r2-bar > div { height: 100%; background: #e8b23e; }
+  .r2-sig { font-size: 10.5px; color: #8c8c92; padding: 4px 0; border-top: 1px solid #1a1b1e; margin-top: 8px; }
+
+  /* ===================== 3. SOFT GLASS ===================== */
+  .r3 { background: linear-gradient(160deg, #fdf3f0, #eef7f3 55%, #eef3fb); color: #212a26; font-family: "Figtree", sans-serif; min-height: 680px; padding: 30px 24px 40px; }
+  .r3-nav { display: flex; justify-content: center; gap: 26px; margin-bottom: 26px; font-size: 12.5px; color: #7c8a83; }
+  .r3-nav span.on { color: #1c6b52; font-weight: 700; }
+  .r3-wrap { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .r3-card { background: #ffffffcc; border-radius: 22px; box-shadow: 0 14px 30px -18px #2b3b3420; padding: 22px 24px; }
+  .r3-hero { display: flex; align-items: center; gap: 16px; }
+  .r3-mono { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #ffe3d6, #d9f0e6); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; color: #1c6b52; flex-shrink: 0; }
+  .r3-id .nm { font-weight: 700; font-size: 15px; }
+  .r3-id .lv { font-size: 10.5px; color: #1c9d6d; font-weight: 700; margin-top: 3px; }
+  .r3-price { margin-left: auto; text-align: right; }
+  .r3-price .n { font-weight: 700; font-size: 28px; }
+  .r3-price .d { font-size: 11.5px; margin-top: 3px; }
+  .r3-up { color: #1c9d6d; } .r3-down { color: #cc5847; }
+  .r3-row2 { display: grid; grid-template-columns: 1fr 150px; gap: 16px; }
+  .r3-gaugebox { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .r3-ring { --pct: 78; width: 96px; height: 96px; border-radius: 50%; background: conic-gradient(#e39a6c calc(var(--pct)*1%), #eef1ee 0); display: flex; align-items: center; justify-content: center; }
+  .r3-ring-in { width: 78%; height: 78%; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px; }
+  .r3-glabel { font-size: 10px; color: #7c8a83; letter-spacing: .5px; }
+  .r3-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .r3-mini-l { font-size: 10.5px; color: #7c8a83; letter-spacing: .5px; margin-bottom: 8px; }
+  .r3-mini-v { font-weight: 700; font-size: 20px; }
+  .r3-mini-s { font-size: 11.5px; color: #4d5a54; margin-top: 6px; line-height: 1.5; }
+  .r3-callout { background: linear-gradient(120deg, #fff2ec, #ecf7f1); border-radius: 18px; padding: 18px 20px; font-size: 13px; line-height: 1.65; color: #2b352f; }
+
+  /* ===================== 4. BLUEPRINT POSTER ===================== */
+  .r4 { background: #0a2440; color: #dcecfb; font-family: "IBM Plex Mono", monospace; min-height: 680px; padding: 26px 30px;
+    background-image: linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px); background-size: 26px 26px; }
+  .r4-top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #3f6a95; padding-bottom: 16px; margin-bottom: 20px; }
+  .r4-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: 26px; color: #eaf4ff; letter-spacing: .5px; }
+  .r4-sub { font-size: 11px; color: #7fb3e0; margin-top: 4px; letter-spacing: 1px; }
+  .r4-bignum { text-align: right; }
+  .r4-bignum .n { font-family: "Syne", sans-serif; font-weight: 800; font-size: 46px; color: #eaf4ff; }
+  .r4-bignum .d { font-size: 11.5px; margin-top: 4px; }
+  .r4-up { color: #6fe3b0; } .r4-down { color: #ff9d8a; }
+
+  .r4-chartplate { border: 1px solid #3f6a95; padding: 16px; margin-bottom: 18px; position: relative; }
+  .r4-platelabel { position: absolute; top: -10px; left: 14px; background: #0a2440; padding: 0 8px; font-size: 10px; letter-spacing: 1.5px; color: #7fb3e0; }
+  .r4-dims { position: absolute; font-size: 9.5px; color: #7fb3e0; }
+
+  .r4-plates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .r4-plate { border: 1px solid #3f6a95; padding: 14px 16px; position: relative; }
+  .r4-plate::before, .r4-plate::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #7fb3e0; top: 6px; }
+  .r4-plate::before { left: 6px; } .r4-plate::after { right: 6px; }
+  .r4-plate .l { font-size: 9.5px; letter-spacing: 1.5px; color: #7fb3e0; margin-bottom: 10px; }
+  .r4-plate .v { font-family: "Syne", sans-serif; font-weight: 700; font-size: 22px; color: #eaf4ff; }
+  .r4-plate .s { font-size: 10.5px; color: #a9c9e4; margin-top: 6px; line-height: 1.5; }
+</style>
+
+<div class="outer">
+  <div class="banner"><b>Design only, static.</b> Four page compositions for Meridian's Research view — same
+    fictional AAPL example, four unrelated layouts. Nothing to click except the switcher.</div>
+  <div class="switcher" id="switcher">
+    <button data-room="r1" class="active">Editorial</button>
+    <button data-room="r2">Control Room</button>
+    <button data-room="r3">Soft Glass</button>
+    <button data-room="r4">Blueprint Poster</button>
+  </div>
+
+  <div class="stage">
+    <!-- 1. EDITORIAL -->
+    <section class="room active r1" id="room-r1">
+      <div class="r1-nav">
+        <span class="r1-word">MERIDIAN</span>
+        <div class="r1-tabs"><span>What Changed</span><span>Risk</span><span class="on">Research</span><span>Portfolio</span><span>Markets</span></div>
+      </div>
+      <div class="r1-hero">
+        <div>
+          <div class="r1-kick">ASSET RESEARCH · LIVE TRACKED</div>
+          <div class="r1-h1">Apple Inc.<br><em>AAPL</em></div>
+        </div>
+        <div class="r1-price">
+          <div class="n tabular">312.44</div>
+          <div class="d"><span class="r1-up tabular">▲ 1D +0.80%</span> &nbsp; <span class="r1-down tabular">▼ 1W −1.20%</span></div>
+        </div>
+      </div>
+      <div class="r1-chart">
+        <svg width="100%" height="140" viewBox="0 0 900 140" preserveAspectRatio="none">
+          <polyline points="0,110 60,95 120,102 180,72 240,80 300,55 360,64 420,42 480,50 540,28 600,36 660,18 720,25 780,10 840,20 900,14" fill="none" stroke="#14603a" stroke-width="2"/>
+        </svg>
+        <div class="r1-caption" style="padding:0 34px 0 0; margin-left:34px;">1Y · daily close · 50/200-day averages not shown at this scale</div>
+      </div>
+      <div class="r1-stats">
+        <div class="r1-stat"><div class="l">Screener score</div><div class="v">78 / 100</div><div class="s">Quality, trend, technicals, precedent and cost, weighted by horizon.</div></div>
+        <div class="r1-stat"><div class="l">Precedent outlook</div><div class="v">67% hit rate</div><div class="s">6 close matches in its own history · typical 3-month forward +4.2%.</div></div>
+        <div class="r1-stat"><div class="l">Bull / Bear</div><div class="v">5 vs 2</div><div class="s">Above both 50- and 200-day averages, against elevated short interest.</div></div>
+      </div>
+      <div class="r1-pull"><span class="drop">“</span><p>Trading 4.2% above its 50-day average on volume in line with the past month.
+      No stored earnings or dividend event falls in the next two weeks. Example narrative, composed from the figures shown beside it.”</p></div>
+    </section>
+
+    <!-- 2. CONTROL ROOM -->
+    <section class="room r2" id="room-r2">
+      <div class="r2-side">
+        <div class="r2-brand">MERIDIAN</div>
+        <div class="r2-nav">
+          <div>What Changed</div><div>Risk</div><div class="on">Research</div><div>Portfolio</div>
+          <div>Watchlist</div><div>Screener</div><div>Markets</div><div>News</div><div>Settings</div>
+        </div>
+        <div class="r2-watch">
+          <div class="h">WATCHLIST</div>
+          <div class="row"><span>MSFT</span><span class="r2-up">+0.4%</span></div>
+          <div class="row"><span>NVDA</span><span class="r2-down">−1.1%</span></div>
+          <div class="row"><span>VUSA.L</span><span class="r2-up">+0.2%</span></div>
+        </div>
+      </div>
+      <div class="r2-main">
+        <div class="r2-pillrow">
+          <span class="r2-pill on">S&amp;P 500</span><span class="r2-pill">NASDAQ</span><span class="r2-pill">FTSE 100</span>
+          <span class="r2-pill">EUROSTOXX 50</span><span class="r2-pill">VIX</span><span class="r2-pill">GOLD</span>
+        </div>
+        <div class="r2-grid">
+          <div class="r2-block">
+            <div class="r2-blockhead"><span>AAPL · APPLE INC.</span><span>LIVE</span></div>
+            <div class="r2-priceline"><span class="n tabular">312.44</span><span class="r2-up tabular">▲ +0.80%</span><span class="r2-down tabular">▼ 1W −1.20%</span></div>
+            <div class="r2-chartsvg">
+              <svg width="100%" height="150" viewBox="0 0 700 150" preserveAspectRatio="none">
+                <g stroke="#1a1b1e" stroke-width="1"><line x1="0" y1="40" x2="700" y2="40"/><line x1="0" y1="90" x2="700" y2="90"/><line x1="0" y1="140" x2="700" y2="140"/></g>
+                <polyline points="0,130 50,115 100,122 150,90 200,100 250,68 300,80 350,50 400,62 450,32 500,45 550,18 600,28 650,8 700,18" fill="none" stroke="#3f4348" stroke-width="1.4" opacity=".7"/>
+                <polyline points="0,120 50,108 100,112 150,82 200,90 250,60 300,70 350,42 400,52 450,25 500,36 550,10 600,20 650,4 700,12" fill="none" stroke="#e8b23e" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="r2-substack">
+            <div class="r2-block r2-mini"><div class="l">SCREENER SCORE</div><div class="v">78 / 100</div><div class="r2-bar"><div style="width:78%"></div></div></div>
+            <div class="r2-block r2-mini"><div class="l">PRECEDENT</div><div class="v">67% hit</div><div class="s" style="font-size:10.5px;color:#8c8c92;margin-top:6px;">6 matches · fwd 3m +4.2%</div></div>
+            <div class="r2-block r2-mini"><div class="l">BULL / BEAR</div><div class="v"><span class="r2-up">5</span> / <span class="r2-down">2</span></div>
+              <div class="r2-sig">above 50d &amp; 200d avg</div><div class="r2-sig">short interest elevated</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SOFT GLASS -->
+    <section class="room r3" id="room-r3">
+      <div class="r3-nav"><span>What Changed</span><span>Risk</span><span class="on">Research</span><span>Portfolio</span><span>Markets</span></div>
+      <div class="r3-wrap">
+        <div class="r3-card r3-hero">
+          <div class="r3-mono">A</div>
+          <div class="r3-id"><div class="nm">Apple Inc. · AAPL</div><div class="lv">● LIVE TRACKED</div></div>
+          <div class="r3-price"><div class="n tabular">312.44</div><div class="d"><span class="r3-up tabular">▲ +0.80%</span> &nbsp;<span class="r3-down tabular">▼ 1W −1.20%</span></div></div>
+        </div>
+        <div class="r3-card r3-row2">
+          <svg width="100%" height="150" viewBox="0 0 420 150" preserveAspectRatio="none">
+            <polyline points="0,120 30,108 60,113 90,90 120,98 150,72 180,82 210,58 240,66 270,42 300,52 330,28 360,38 390,18 420,26" fill="none" stroke="#1c9d6d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="r3-gaugebox">
+            <div class="r3-ring"><div class="r3-ring-in">78</div></div>
+            <div class="r3-glabel">SCREENER SCORE</div>
+          </div>
+        </div>
+        <div class="r3-card r3-split">
+          <div><div class="r3-mini-l">PRECEDENT OUTLOOK</div><div class="r3-mini-v">67% hit</div><div class="r3-mini-s">6 close matches · typical 3-month forward +4.2%</div></div>
+          <div><div class="r3-mini-l">BULL / BEAR</div><div class="r3-mini-v"><span class="r3-up">5</span> vs <span class="r3-down">2</span></div><div class="r3-mini-s">Above 50d &amp; 200d averages, against elevated short interest.</div></div>
+        </div>
+        <div class="r3-callout">Trading 4.2% above its 50-day average on volume in line with the past month.
+        No stored earnings or dividend event in the next two weeks. Example narrative.</div>
+      </div>
+    </section>
+
+    <!-- 4. BLUEPRINT POSTER -->
+    <section class="room r4" id="room-r4">
+      <div class="r4-top">
+        <div><div class="r4-title">APPLE INC.</div><div class="r4-sub">FIG. 04 — AAPL · ASSET RESEARCH · LIVE TRACKED</div></div>
+        <div class="r4-bignum"><div class="n tabular">312.44</div><div class="d"><span class="r4-up tabular">▲ 1D +0.80%</span> &nbsp;<span class="r4-down tabular">▼ 1W −1.20%</span></div></div>
+      </div>
+      <div class="r4-chartplate">
+        <div class="r4-platelabel">PRICE — 1Y ELEVATION</div>
+        <svg width="100%" height="220" viewBox="0 0 900 220" preserveAspectRatio="none" style="overflow:visible;">
+          <g stroke="#3f6a95" stroke-width="1"><line x1="0" y1="55" x2="900" y2="55"/><line x1="0" y1="110" x2="900" y2="110"/><line x1="0" y1="165" x2="900" y2="165"/></g>
+          <polyline points="0,180 60,165 120,172 180,120 240,135 300,90 360,105 420,60 480,75 540,35 600,50 660,15 720,28 780,5 840,18 900,10" fill="none" stroke="#eaf4ff" stroke-width="2.2"/>
+          <line x1="780" y1="5" x2="820" y2="-22" stroke="#7fb3e0" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="780" cy="5" r="4" fill="#7fb3e0"/>
+          <text x="826" y="-22" fill="#7fb3e0" font-size="11" font-family="IBM Plex Mono">peak, 315.90</text>
+        </svg>
+      </div>
+      <div class="r4-plates">
+        <div class="r4-plate"><div class="l">SCREENER SCORE</div><div class="v">78 / 100</div><div class="s">quality · trend · technicals · precedent · cost</div></div>
+        <div class="r4-plate"><div class="l">PRECEDENT OUTLOOK</div><div class="v">67% HIT</div><div class="s">6 close matches · typical 3m fwd +4.2%</div></div>
+        <div class="r4-plate"><div class="l">BULL / BEAR</div><div class="v">5 / 2</div><div class="s">above 50d/200d avg · short interest elevated</div></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="note">Preview only — fictional example data, not connected to a real account.</footer>
+</div>
+
+<script>
+  const rooms = document.querySelectorAll(".room");
+  const buttons = document.querySelectorAll("#switcher button");
+  buttons.forEach(b => b.addEventListener("click", () => {
+    rooms.forEach(r => r.classList.toggle("active", r.id === "room-" + b.dataset.room));
+    buttons.forEach(x => x.classList.toggle("active", x === b));
+  }));
+</script>
+
+</body></html>

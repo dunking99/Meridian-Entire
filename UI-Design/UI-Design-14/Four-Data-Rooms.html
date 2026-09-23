@@ -1,0 +1,582 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four Data Rooms</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Bricolage+Grotesque:wght@500;600;700;800&family=Chivo+Mono:wght@400;500;600;700&display=swap">
+<style>
+  /* ================= SHELL — not part of any theme's own design ================= */
+  * { box-sizing: border-box; }
+  html, body { background: #0a0a0c; }
+  body { color: #e8e8ec; font-family: system-ui, sans-serif; padding-inline: 14px; padding-block: 18px; }
+  .outer { max-width: 1180px; margin: 0 auto; }
+  .banner {
+    border: 1px solid #2a2a32; border-radius: 6px; background: #131318; padding: 10px 14px;
+    font-size: 12.5px; color: #a8a8b4; line-height: 1.5; margin-bottom: 16px; max-width: 84ch;
+  }
+  .banner b { color: #e8e8ec; }
+  .switcher { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .switcher button {
+    font-family: system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .3px;
+    padding: 9px 16px; border-radius: 999px; cursor: pointer; background: #131318;
+    border: 1px solid #2a2a32; color: #a8a8b4; transition: all .15s ease;
+  }
+  .switcher button:hover { color: #fff; border-color: #4a4a58; }
+  .switcher button.active { background: #e8e8ec; color: #0a0a0c; border-color: #e8e8ec; }
+  .stage { border-radius: 10px; overflow: hidden; border: 1px solid #22222a; }
+  .room { display: none; }
+  .room.active { display: block; }
+  footer.note { text-align: center; font-size: 11px; color: #6a6a76; margin-top: 12px; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* =====================================================================
+     THEME 1 — TERMINAL. A REPL session, not a dashboard. No sidebar, no
+     cards: everything is a scroll of command output, folded and unfolded
+     like a real shell history.
+     ===================================================================== */
+  .t1 {
+    background: #060a08; color: #baf7c8; font-family: "JetBrains Mono", monospace; font-size: 13px;
+    min-height: 620px; padding: 0;
+  }
+  .t1-chrome { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: #0a120e; border-bottom: 1px solid #163224; }
+  .t1-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t1-title { margin-left: 10px; font-size: 11.5px; color: #4f9a68; letter-spacing: .5px; }
+  .t1-body { padding: 18px 20px 90px; height: 560px; overflow-y: auto; }
+  .t1-line { color: #6fe392; margin-bottom: 4px; }
+  .t1-line .prompt { color: #3d8f57; }
+  .t1-cursor { display: inline-block; width: 8px; height: 15px; background: #6fe392; vertical-align: -2px; }
+  @media (prefers-reduced-motion: no-preference) { .t1-cursor { animation: t1blink 1s steps(1) infinite; } }
+  @keyframes t1blink { 50% { opacity: 0; } }
+
+  .t1-hint { margin: 10px 0 18px; font-size: 12px; color: #4f9a68; }
+  .t1-hint span { color: #baf7c8; cursor: pointer; border-bottom: 1px dashed #3d8f57; margin-right: 14px; }
+  .t1-hint span:hover { color: #fff; border-color: #6fe392; }
+  .t1-hint span.on { color: #ffd76a; border-color: #ffd76a; }
+
+  .t1-block { border-left: 2px solid #1c3a29; margin-bottom: 4px; opacity: 0; transform: translateY(6px); }
+  .t1-block.shown { opacity: 1; transform: none; transition: opacity .35s ease, transform .35s ease; }
+  .t1-head { padding: 7px 0 7px 14px; cursor: pointer; color: #ffd76a; font-weight: 700; font-size: 12px; letter-spacing: .5px; display: flex; align-items: center; gap: 8px; }
+  .t1-head::before { content: "▾"; font-size: 10px; color: #4f9a68; transition: transform .15s; }
+  .t1-block.folded .t1-head::before { transform: rotate(-90deg); }
+  .t1-content { padding: 0 0 14px 14px; }
+  .t1-block.folded .t1-content { display: none; }
+  .t1-content pre { margin: 0; white-space: pre; color: #baf7c8; line-height: 1.55; font-size: 12.5px; overflow-x: auto; }
+  .t1-up { color: #6fe392; } .t1-down { color: #ff8a7a; }
+  .t1-muted { color: #4f9a68; }
+  .t1-narr { color: #9adcae; line-height: 1.6; max-width: 68ch; font-size: 12.5px; }
+
+  /* =====================================================================
+     THEME 2 — COMMAND DECK. Asymmetric bento grid, icon-only rail,
+     flip cards, a live crosshair on the chart.
+     ===================================================================== */
+  .t2 { background: #101014; min-height: 620px; padding: 0; display: flex; font-family: "Bricolage Grotesque", sans-serif; }
+  .t2-rail { width: 58px; flex-shrink: 0; background: #17171d; border-right: 1px solid #26262f; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 0; }
+  .t2-rail .t2-logo { width: 26px; height: 26px; margin-bottom: 10px; }
+  .t2-ic { position: relative; width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: #75758a; cursor: pointer; }
+  .t2-ic.on { background: #ff3f6a22; color: #ff3f6a; }
+  .t2-ic:hover { color: #e8e8ec; }
+  .t2-ic .tip { position: absolute; left: 42px; top: 50%; transform: translateY(-50%); background: #24242c; color: #e8e8ec;
+    font-size: 11px; padding: 4px 9px; border-radius: 5px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .12s; font-family: system-ui, sans-serif; z-index: 5; }
+  .t2-ic:hover .tip { opacity: 1; }
+
+  .t2-main { flex: 1; padding: 18px 20px; min-width: 0; }
+  .t2-top { display: flex; align-items: center; margin-bottom: 14px; }
+  .t2-top h2 { font-size: 15px; color: #e8e8ec; margin: 0; font-weight: 700; }
+  .t2-density { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 11px; color: #75758a; font-family: system-ui, sans-serif; }
+  .t2-switch { width: 34px; height: 19px; border-radius: 999px; background: #26262f; position: relative; cursor: pointer; }
+  .t2-switch::after { content: ""; position: absolute; width: 15px; height: 15px; border-radius: 50%; background: #75758a; top: 2px; left: 2px; transition: all .18s ease; }
+  .t2-switch.on { background: #ff3f6a55; }
+  .t2-switch.on::after { left: 17px; background: #ff3f6a; }
+
+  .t2-bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 82px; gap: 10px; transition: gap .2s ease; }
+  .t2-bento.dense { gap: 6px; grid-auto-rows: 68px; }
+  .t2-tile { background: #17171d; border: 1px solid #26262f; border-radius: 14px; padding: 14px; position: relative; overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .t2-tile:hover { transform: translateY(-3px); border-color: #3a3a46; box-shadow: 0 10px 26px -8px #00000090; }
+  .t2-price   { grid-column: span 3; grid-row: span 3; }
+  .t2-gauge   { grid-column: span 2; grid-row: span 3; cursor: pointer; perspective: 800px; }
+  .t2-spark2  { grid-column: span 1; grid-row: span 3; }
+  .t2-chart   { grid-column: span 6; grid-row: span 3; }
+  .t2-bb      { grid-column: span 2; grid-row: span 2; cursor: pointer; perspective: 800px; }
+  .t2-prec    { grid-column: span 2; grid-row: span 2; cursor: pointer; perspective: 800px; }
+  .t2-note    { grid-column: span 2; grid-row: span 2; }
+
+  .t2-tile-label { font-size: 9.5px; letter-spacing: 1px; color: #6a6a78; text-transform: uppercase; font-family: system-ui, sans-serif; font-weight: 600; }
+  .t2-big { font-size: 30px; font-weight: 800; color: #e8e8ec; margin-top: 6px; }
+  .t2-deltas { display: flex; gap: 10px; margin-top: 6px; font-family: system-ui, sans-serif; font-size: 12px; font-weight: 600; }
+  .t2-up { color: #33d17a; } .t2-down { color: #ff5a67; }
+  .t2-live { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: #33d17a; font-family: system-ui, sans-serif; font-weight: 700; margin-top: 10px; }
+  .t2-live i { width: 6px; height: 6px; border-radius: 50%; background: #33d17a; display: inline-block; }
+  @media (prefers-reduced-motion: no-preference) { .t2-live i { animation: t1blink 1.5s ease-in-out infinite; } }
+
+  .t2-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.4,.2,.2,1); }
+  .t2-tile.flipped .t2-flip-inner { transform: rotateY(180deg); }
+  .t2-face { position: absolute; inset: 0; backface-visibility: hidden; padding: 0; }
+  .t2-face.back { transform: rotateY(180deg); font-size: 11.5px; color: #b6b6c2; font-family: system-ui, sans-serif; line-height: 1.5; }
+  .t2-flipcue { position: absolute; bottom: 8px; right: 10px; font-size: 9px; color: #5a5a68; font-family: system-ui, sans-serif; }
+
+  .t2-chartwrap { position: relative; height: 100%; }
+  .t2-tooltip { position: absolute; top: 8px; padding: 4px 9px; background: #24242c; border: 1px solid #34343e; border-radius: 6px;
+    font-size: 11px; color: #e8e8ec; font-family: "JetBrains Mono", monospace; pointer-events: none; opacity: 0; transform: translate(-50%, 0); white-space: nowrap; }
+  .t2-crosshair { position: absolute; top: 0; bottom: 0; width: 1px; background: #ff3f6a55; opacity: 0; pointer-events: none; }
+
+  .t2-ringmini { --pct: 78; width: 88px; height: 88px; border-radius: 50%; background: conic-gradient(#ff3f6a calc(var(--pct)*1%), #26262f 0); display: flex; align-items: center; justify-content: center; margin: 4px auto 0; }
+  .t2-ringmini-inner { width: 76%; height: 76%; border-radius: 50%; background: #17171d; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; }
+
+  /* =====================================================================
+     THEME 3 — CINEMATIC. Full-bleed hero, horizontal scroll-snap chapters,
+     sticky condensed header on scroll, mouse parallax.
+     ===================================================================== */
+  .t3 { position: relative; min-height: 620px; height: 620px; overflow-y: auto; overflow-x: hidden; background: #0c0910; font-family: "Fraunces", serif; }
+  .t3-sticky { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 22px; background: transparent; backdrop-filter: none; transition: all .25s ease; font-family: "Chivo Mono", monospace; }
+  .t3-sticky.scrolled { background: #0c0910dd; backdrop-filter: blur(10px); border-bottom: 1px solid #2a2233; }
+  .t3-sticky .nm { font-size: 12px; color: #f2ecf7; letter-spacing: 1px; opacity: 0; transition: opacity .25s; }
+  .t3-sticky.scrolled .nm { opacity: 1; }
+  .t3-sticky .px { font-size: 12px; color: #d9a5ff; opacity: 0; transition: opacity .25s; }
+  .t3-sticky.scrolled .px { opacity: 1; }
+  .t3-wordmark { font-size: 12px; letter-spacing: 2px; color: #7a6f8c; }
+
+  .t3-hero { position: relative; padding: 40px 26px 34px; overflow: hidden; }
+  .t3-blob { position: absolute; width: 640px; height: 460px; top: -180px; left: -80px; border-radius: 50%;
+    background: radial-gradient(circle, #d9a5ff, transparent 65%); filter: blur(70px); opacity: .35; transition: transform .3s ease-out; }
+  .t3-blob2 { position: absolute; width: 500px; height: 400px; bottom: -220px; right: -100px; border-radius: 50%;
+    background: radial-gradient(circle, #6fe3c8, transparent 65%); filter: blur(80px); opacity: .28; transition: transform .3s ease-out; }
+  .t3-eyebrow { position: relative; font-family: "Chivo Mono", monospace; font-size: 11px; letter-spacing: 2px; color: #b494d1; margin-bottom: 10px; }
+  .t3-headline { position: relative; font-size: clamp(38px, 6vw, 64px); font-weight: 700; color: #f7f2fb; line-height: 1; text-wrap: balance; }
+  .t3-headline .tk { color: #d9a5ff; font-style: italic; }
+  .t3-sub { position: relative; margin-top: 12px; display: flex; gap: 18px; font-family: "Chivo Mono", monospace; font-size: 13px; }
+  .t3-sub .up { color: #6fe3c8; } .t3-sub .down { color: #ff9ab0; }
+
+  .t3-dots { position: sticky; bottom: 14px; z-index: 5; display: flex; justify-content: center; gap: 7px; margin-top: -6px; }
+  .t3-dot { width: 7px; height: 7px; border-radius: 50%; background: #3a3145; cursor: pointer; transition: all .2s; }
+  .t3-dot.on { background: #d9a5ff; width: 20px; border-radius: 4px; }
+
+  .t3-rail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .t3-rail::-webkit-scrollbar { display: none; }
+  .t3-chapter { flex: 0 0 100%; scroll-snap-align: start; padding: 10px 26px 50px; min-height: 300px; }
+  .t3-chip { font-family: "Chivo Mono", monospace; font-size: 10.5px; letter-spacing: 1.5px; color: #b494d1; margin-bottom: 14px; }
+  .t3-ch-title { font-size: 26px; color: #f7f2fb; margin-bottom: 16px; font-weight: 600; }
+  .t3-card { background: #17121f; border: 1px solid #2a2233; border-radius: 16px; padding: 18px; margin-bottom: 12px; font-family: "Chivo Mono", monospace; font-size: 12.5px; color: #c9bdd6; line-height: 1.6; }
+  .t3-stat3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .t3-stat3 div { background: #17121f; border: 1px solid #2a2233; border-radius: 14px; padding: 14px; text-align: center; }
+  .t3-stat3 .v { font-family: "Fraunces", serif; font-size: 22px; color: #f7f2fb; font-weight: 700; }
+  .t3-stat3 .l { font-family: "Chivo Mono", monospace; font-size: 9.5px; color: #8f81a3; margin-top: 4px; letter-spacing: .5px; }
+
+  /* =====================================================================
+     THEME 4 — BLUEPRINT. A cyanotype schematic: annotations on leader
+     lines, a functional crosshair, layer toggles.
+     ===================================================================== */
+  .t4 { background: #0a2440; min-height: 620px; padding: 22px 24px; font-family: "Chivo Mono", monospace; color: #cfe7fb;
+    background-image: linear-gradient(#ffffff14 1px, transparent 1px), linear-gradient(90deg, #ffffff14 1px, transparent 1px);
+    background-size: 24px 24px; position: relative; }
+  .t4-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .t4-title { font-size: 13px; letter-spacing: 2px; color: #eaf4ff; }
+  .t4-title span { color: #6fb8ff; }
+  .t4-legend { display: flex; gap: 16px; }
+  .t4-toggle { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #9fc4e3; cursor: pointer; user-select: none; }
+  .t4-sw { width: 26px; height: 14px; border: 1px solid #6fb8ff; border-radius: 999px; position: relative; }
+  .t4-sw::after { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #6fb8ff; top: 1px; left: 2px; transition: left .15s ease; }
+  .t4-toggle.off .t4-sw::after { left: 13px; background: #35577a; }
+  .t4-toggle.off .t4-sw { border-color: #35577a; }
+
+  .t4-drawing { position: relative; height: 430px; }
+  .t4-chart-box { position: absolute; left: 220px; right: 220px; top: 30px; bottom: 30px; border: 1px dashed #6fb8ff88; }
+  .t4-dim { position: absolute; font-size: 9.5px; color: #6fb8ff; }
+  .t4-readout { position: absolute; padding: 3px 8px; background: #06182b; border: 1px solid #6fb8ff; border-radius: 3px; font-size: 10.5px; color: #eaf4ff; pointer-events: none; opacity: 0; white-space: nowrap; z-index: 6; }
+
+  .t4-callout { position: absolute; width: 190px; border: 1px solid #6fb8ff88; border-radius: 4px; padding: 9px 11px; background: #06182bcc; cursor: default; transition: border-color .15s, background .15s; }
+  .t4-callout.active { border-color: #eaf4ff; background: #0d2c4a; }
+  .t4-callout .lbl { font-size: 9.5px; letter-spacing: 1px; color: #6fb8ff; margin-bottom: 4px; }
+  .t4-callout .val { font-size: 15px; color: #eaf4ff; font-weight: 600; }
+  .t4-callout .sub { font-size: 10px; color: #9fc4e3; margin-top: 3px; line-height: 1.4; }
+
+  .t4-leader { position: absolute; stroke: #6fb8ff55; stroke-width: 1; fill: none; stroke-dasharray: 3 3; transition: stroke .15s, stroke-width .15s; }
+  .t4-leader.active { stroke: #eaf4ff; stroke-width: 1.4; stroke-dasharray: none; }
+  .t4-node { fill: #6fb8ff; transition: r .15s, fill .15s; }
+  .t4-node.active { fill: #eaf4ff; }
+</style>
+
+<div class="outer">
+  <div class="banner">
+    <b>Four independent designs, not four reskins.</b> Different layout logic each time — a terminal log, a
+    bento deck, a horizontal-scroll story, a blueprint schematic. All interactive: type, flip, scroll, hover.
+  </div>
+  <div class="switcher" id="switcher">
+    <button data-room="t1" class="active">Terminal</button>
+    <button data-room="t2">Command Deck</button>
+    <button data-room="t3">Cinematic</button>
+    <button data-room="t4">Blueprint</button>
+  </div>
+
+  <div class="stage">
+    <!-- ============ THEME 1: TERMINAL ============ -->
+    <section class="room active t1" id="room-t1">
+      <div class="t1-chrome">
+        <span class="t1-dot" style="background:#ff5f57"></span><span class="t1-dot" style="background:#febc2e"></span><span class="t1-dot" style="background:#28c840"></span>
+        <span class="t1-title">meridian — research session</span>
+      </div>
+      <div class="t1-body" id="t1-body">
+        <div class="t1-line"><span class="prompt">meridian&gt;</span> <span id="t1-typed"></span><span class="t1-cursor" id="t1-cursor"></span></div>
+        <div id="t1-hint" class="t1-hint" style="display:none">
+          jump: <span data-fold="asset">asset</span><span data-fold="screener">screener</span><span data-fold="precedent">precedent</span><span data-fold="bullbear">bull/bear</span><span data-fold="notes">notes</span><span data-fold="narrative">narrative</span>
+        </div>
+        <div id="t1-blocks" style="display:none">
+          <div class="t1-block" data-key="asset">
+            <div class="t1-head">[ASSET] Apple Inc. · AAPL</div>
+            <div class="t1-content"><pre>NAME     Apple Inc. (AAPL)              LIVE TRACKED
+PRICE    312.44                         <span class="t1-up">▲ 1D +0.80%</span>
+                                         <span class="t1-down">▼ 1W -1.20%</span>
+TREND    ▂▃▂▄▃▅▄▆▅▇▆<span class="t1-up">█</span>  (90d, block-scaled)</pre></div>
+          </div>
+          <div class="t1-block" data-key="screener">
+            <div class="t1-head">[SCREENER] composite factor score</div>
+            <div class="t1-content"><pre>SCORE    [<span class="t1-up">████████████████░░░░</span>] 78 / 100
+BASIS    quality · trend · technicals · precedent · cost</pre></div>
+          </div>
+          <div class="t1-block" data-key="precedent">
+            <div class="t1-head">[PRECEDENT] nearest historical analogues</div>
+            <div class="t1-content"><pre>┌─────────────────┬─────────┐
+│ close matches    │ 6       │
+│ typical 3m fwd    │ <span class="t1-up">+4.2%</span>   │
+│ hit rate          │ 67%     │
+└─────────────────┴─────────┘</pre></div>
+          </div>
+          <div class="t1-block" data-key="bullbear">
+            <div class="t1-head">[BULL/BEAR] signal tally — 5 vs 2</div>
+            <div class="t1-content"><pre><span class="t1-up">+++++</span><span class="t1-down">--</span>
+<span class="t1-up">bull</span>  price above both 50d and 200d averages
+<span class="t1-down">bear</span>  short interest above its own 1y average</pre></div>
+          </div>
+          <div class="t1-block" data-key="notes">
+            <div class="t1-head">[NOTES] your chart annotations</div>
+            <div class="t1-content"><pre>2028-09-12  guidance raised — <span class="t1-muted">example annotation</span></pre></div>
+          </div>
+          <div class="t1-block" data-key="narrative">
+            <div class="t1-head">[NARRATIVE] where things stand</div>
+            <div class="t1-content"><div class="t1-narr">Trading 4.2% above its 50-day average on volume in line
+            with the past month. No stored earnings or dividend event in the next two weeks.
+            Example narrative — composed from the figures above it, not generated freehand.</div></div>
+          </div>
+        </div>
+        <div class="t1-line" id="t1-final-prompt" style="display:none"><span class="prompt">meridian&gt;</span> <span class="t1-cursor"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ THEME 2: COMMAND DECK ============ -->
+    <section class="room t2" id="room-t2">
+      <div class="t2-rail">
+        <svg class="t2-logo" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#ff3f6a" stroke-width="1.6"/><line x1="12" y1="3" x2="12" y2="21" stroke="#ff3f6a" stroke-width="1.6"/></svg>
+        <div class="t2-ic">◐<span class="tip">What Changed</span></div>
+        <div class="t2-ic">◉<span class="tip">Risk</span></div>
+        <div class="t2-ic on">◎<span class="tip">Research</span></div>
+        <div class="t2-ic">◰<span class="tip">Portfolio</span></div>
+        <div class="t2-ic">▦<span class="tip">Screener</span></div>
+        <div class="t2-ic">◬<span class="tip">Markets</span></div>
+      </div>
+      <div class="t2-main">
+        <div class="t2-top">
+          <h2>Apple Inc. · AAPL</h2>
+          <div class="t2-density"><span>Dense</span><div class="t2-switch" id="t2-densesw"></div></div>
+        </div>
+        <div class="t2-bento" id="t2-bento">
+          <div class="t2-tile t2-price">
+            <div class="t2-tile-label">Price</div>
+            <div class="t2-big tabular">312.44</div>
+            <div class="t2-deltas"><span class="t2-up tabular">▲ +0.80%</span><span class="t2-down tabular">▼ 1W −1.20%</span></div>
+            <div class="t2-live"><i></i>LIVE TRACKED</div>
+          </div>
+          <div class="t2-tile t2-gauge" id="t2-gaugetile">
+            <div class="t2-flip-inner">
+              <div class="t2-face front">
+                <div class="t2-tile-label">Screener score</div>
+                <div class="t2-ringmini"><div class="t2-ringmini-inner">78</div></div>
+              </div>
+              <div class="t2-face back">
+                <div class="t2-tile-label" style="color:#c9c9d4">Made of</div>
+                quality 82 · trend 74 · technicals 69 · precedent 71 · cost 88
+              </div>
+            </div>
+            <div class="t2-flipcue">click to flip</div>
+          </div>
+          <div class="t2-tile t2-spark2">
+            <div class="t2-tile-label">90d</div>
+            <svg width="100%" height="70" viewBox="0 0 60 70" preserveAspectRatio="none">
+              <polyline points="0,50 8,44 16,47 24,32 32,36 40,20 48,26 56,10" fill="none" stroke="#33d17a" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="t2-tile t2-chart">
+            <div class="t2-tile-label">Price · 1Y</div>
+            <div class="t2-chartwrap" id="t2-chartwrap">
+              <svg width="100%" height="150" viewBox="0 0 900 150" preserveAspectRatio="none" id="t2-svg">
+                <polyline points="0,110 60,95 120,102 180,72 240,80 300,55 360,64 420,42 480,50 540,28 600,36 660,18 720,25 780,10 840,20 900,14"
+                  fill="none" stroke="#ff3f6a" stroke-width="2.4" id="t2-line"/>
+              </svg>
+              <div class="t2-crosshair" id="t2-crosshair"></div>
+              <div class="t2-tooltip" id="t2-tooltip"></div>
+            </div>
+          </div>
+          <div class="t2-tile t2-bb" id="t2-bbtile">
+            <div class="t2-flip-inner">
+              <div class="t2-face front">
+                <div class="t2-tile-label">Bull / Bear</div>
+                <div class="t2-big" style="font-size:22px">5 <span style="color:#75758a; font-size:14px">vs</span> 2</div>
+              </div>
+              <div class="t2-face back">
+                <b style="color:#e8e8ec">Bull</b> — above 50d &amp; 200d avg<br><b style="color:#e8e8ec">Bear</b> — short interest elevated
+              </div>
+            </div>
+            <div class="t2-flipcue">click to flip</div>
+          </div>
+          <div class="t2-tile t2-prec" id="t2-prectile">
+            <div class="t2-flip-inner">
+              <div class="t2-face front">
+                <div class="t2-tile-label">Precedent</div>
+                <div class="t2-big" style="font-size:22px">67<span style="font-size:13px">% hit</span></div>
+              </div>
+              <div class="t2-face back">6 close matches · typical 3m forward return +4.2% · method: technical z-score, own history only</div>
+            </div>
+            <div class="t2-flipcue">click to flip</div>
+          </div>
+          <div class="t2-tile t2-note">
+            <div class="t2-tile-label">Notes</div>
+            <div style="font-size:11.5px; color:#b6b6c2; margin-top:6px; font-family:system-ui,sans-serif;">12/09 — guidance raised (example)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THEME 3: CINEMATIC ============ -->
+    <section class="room t3" id="room-t3">
+      <div class="t3-sticky" id="t3-sticky">
+        <span class="t3-wordmark">MERIDIAN</span>
+        <span class="nm">AAPL</span><span class="px tabular">312.44</span>
+      </div>
+      <div class="t3-hero">
+        <div class="t3-blob" id="t3-blob"></div>
+        <div class="t3-blob2" id="t3-blob2"></div>
+        <div class="t3-eyebrow">ASSET RESEARCH — LIVE TRACKED</div>
+        <div class="t3-headline">Apple Inc.<br><span class="tk">312.44</span></div>
+        <div class="t3-sub"><span class="up">▲ 1D +0.80%</span><span class="down">▼ 1W −1.20%</span></div>
+      </div>
+      <div class="t3-rail" id="t3-rail">
+        <div class="t3-chapter">
+          <div class="t3-chip">01 — OVERVIEW</div>
+          <div class="t3-ch-title">Where things stand</div>
+          <div class="t3-card">Trading 4.2% above its 50-day average on volume in line with the past month.
+          No stored earnings or dividend event in the next two weeks. Example narrative, composed from stored figures.</div>
+        </div>
+        <div class="t3-chapter">
+          <div class="t3-chip">02 — PRECEDENTS</div>
+          <div class="t3-ch-title">What happened last time</div>
+          <div class="t3-stat3"><div><div class="v tabular">6</div><div class="l">CLOSE MATCHES</div></div><div><div class="v tabular">+4.2%</div><div class="l">TYPICAL 3M FWD</div></div><div><div class="v tabular">67%</div><div class="l">HIT RATE</div></div></div>
+        </div>
+        <div class="t3-chapter">
+          <div class="t3-chip">03 — BULL / BEAR</div>
+          <div class="t3-ch-title">Five signals for, two against</div>
+          <div class="t3-card"><b style="color:#6fe3c8">Bull</b> — price above both 50d and 200d averages<br><br><b style="color:#ff9ab0">Bear</b> — short interest above its own 1y average</div>
+        </div>
+        <div class="t3-chapter">
+          <div class="t3-chip">04 — NEWS</div>
+          <div class="t3-ch-title">Recent coverage</div>
+          <div class="t3-card">"Supplier checks point to steady holiday build" — example headline, 3 days ago</div>
+          <div class="t3-card">"Services growth offsets hardware softness" — example headline, 6 days ago</div>
+        </div>
+        <div class="t3-chapter">
+          <div class="t3-chip">05 — AI NOTE</div>
+          <div class="t3-ch-title">Nothing unusual to report</div>
+          <div class="t3-card">Sigma-scored moves this week sit inside their normal range. Example note — the
+          real model is instructed to say exactly this when nothing notable happened.</div>
+        </div>
+      </div>
+      <div class="t3-dots" id="t3-dots"></div>
+    </section>
+
+    <!-- ============ THEME 4: BLUEPRINT ============ -->
+    <section class="room t4" id="room-t4">
+      <div class="t4-head">
+        <div class="t4-title">FIG. 4 — <span>AAPL / APPLE INC.</span> · SCHEMATIC ELEVATION</div>
+        <div class="t4-legend">
+          <div class="t4-toggle" id="t4-ma50"><div class="t4-sw"></div>MA50</div>
+          <div class="t4-toggle" id="t4-ma200"><div class="t4-sw"></div>MA200</div>
+        </div>
+      </div>
+      <div class="t4-drawing" id="t4-drawing">
+        <div class="t4-chart-box" id="t4-chartbox">
+          <svg width="100%" height="100%" viewBox="0 0 620 370" preserveAspectRatio="none" style="position:absolute; inset:0;" id="t4-svg">
+            <g stroke="#6fb8ff33" stroke-width="1">
+              <line x1="0" y1="92" x2="620" y2="92"/><line x1="0" y1="184" x2="620" y2="184"/><line x1="0" y1="276" x2="620" y2="276"/>
+            </g>
+            <polyline id="t4-ma50line" points="0,300 60,280 120,290 180,240 240,255 300,200 360,215 420,165 480,180 540,130 600,145" fill="none" stroke="#ffb46f" stroke-width="1.3" stroke-dasharray="4 3" opacity=".8"/>
+            <polyline id="t4-ma200line" points="0,320 60,315 120,318 180,300 240,305 300,285 360,290 420,265 480,270 540,240 600,248" fill="none" stroke="#c98bff" stroke-width="1.3" stroke-dasharray="4 3" opacity=".8"/>
+            <polyline points="0,310 60,285 120,295 180,225 240,245 300,175 360,195 420,120 480,145 540,80 600,100" fill="none" stroke="#eaf4ff" stroke-width="2"/>
+            <circle class="t4-node" id="node-screener" cx="600" cy="100" r="4"/>
+            <circle class="t4-node" id="node-precedent" cx="300" cy="175" r="4"/>
+            <circle class="t4-node" id="node-bullbear" cx="120" cy="295" r="4"/>
+            <path class="t4-leader" id="lead-screener" d="M600,100 C 660,100 690,60 700,60"/>
+            <path class="t4-leader" id="lead-precedent" d="M300,175 C 300,60 400,-40 -20,-30"/>
+            <path class="t4-leader" id="lead-bullbear" d="M120,295 C 60,340 -40,340 -60,340"/>
+          </svg>
+          <div class="t4-readout" id="t4-readout"></div>
+        </div>
+
+        <div class="t4-callout" id="cal-screener" style="right:0; top:14px;" data-node="node-screener" data-leader="lead-screener">
+          <div class="lbl">SCREENER SCORE</div><div class="val tabular">78 / 100</div>
+          <div class="sub">quality · trend · technicals · precedent · cost</div>
+        </div>
+        <div class="t4-callout" id="cal-precedent" style="left:0; top:14px;" data-node="node-precedent" data-leader="lead-precedent">
+          <div class="lbl">PRECEDENT OUTLOOK</div><div class="val tabular">67% hit rate</div>
+          <div class="sub">6 close matches · typical 3m fwd +4.2%</div>
+        </div>
+        <div class="t4-callout" id="cal-bullbear" style="left:0; bottom:8px;" data-node="node-bullbear" data-leader="lead-bullbear">
+          <div class="lbl">BULL / BEAR</div><div class="val tabular">5 vs 2</div>
+          <div class="sub">above 50d/200d avg · short interest elevated</div>
+        </div>
+        <div class="t4-callout" style="right:0; bottom:8px;">
+          <div class="lbl">LIVE PRICE</div><div class="val tabular">312.44</div>
+          <div class="sub">▲ 1D +0.80% · ▼ 1W −1.20%</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="note">Preview only — fictional example data, not connected to a real account.</footer>
+</div>
+
+<script>
+  // ---------- room switcher ----------
+  const rooms = document.querySelectorAll(".room");
+  const buttons = document.querySelectorAll("#switcher button");
+  const inited = new Set();
+  function showRoom(id) {
+    rooms.forEach(r => r.classList.toggle("active", r.id === "room-" + id));
+    buttons.forEach(b => b.classList.toggle("active", b.dataset.room === id));
+    if (!inited.has(id)) { inited.add(id); ({ t1: initT1, t2: initT2, t3: initT3, t4: initT4 })[id](); }
+  }
+  buttons.forEach(b => b.addEventListener("click", () => showRoom(b.dataset.room)));
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- THEME 1: terminal typing + folds ----------
+  function initT1() {
+    const typed = document.getElementById("t1-typed");
+    const hint = document.getElementById("t1-hint");
+    const blocksWrap = document.getElementById("t1-blocks");
+    const finalPrompt = document.getElementById("t1-final-prompt");
+    const cursor = document.getElementById("t1-cursor");
+    const line = "research aapl";
+    function reveal() {
+      hint.style.display = "block"; blocksWrap.style.display = "block"; finalPrompt.style.display = "block";
+      cursor.style.display = "none";
+      document.querySelectorAll(".t1-block").forEach((b, i) => setTimeout(() => b.classList.add("shown"), i * 110));
+    }
+    if (reduceMotion) { typed.textContent = line; reveal(); }
+    else {
+      let i = 0;
+      const t = setInterval(() => { typed.textContent = line.slice(0, ++i); if (i >= line.length) { clearInterval(t); setTimeout(reveal, 300); } }, 55);
+    }
+    document.querySelectorAll(".t1-head").forEach(h => h.addEventListener("click", () => h.parentElement.classList.toggle("folded")));
+    document.querySelectorAll("#t1-hint span").forEach(s => s.addEventListener("click", () => {
+      document.querySelectorAll("#t1-hint span").forEach(x => x.classList.remove("on"));
+      s.classList.add("on");
+      const target = document.querySelector('.t1-block[data-key="' + s.dataset.fold + '"]');
+      if (target) { target.classList.remove("folded"); target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" }); }
+    }));
+  }
+
+  // ---------- THEME 2: bento interactions ----------
+  function initT2() {
+    document.getElementById("t2-densesw").addEventListener("click", function () {
+      this.classList.toggle("on"); document.getElementById("t2-bento").classList.toggle("dense");
+    });
+    ["t2-gaugetile", "t2-bbtile", "t2-prectile"].forEach(id => {
+      document.getElementById(id).addEventListener("click", function () { this.classList.toggle("flipped"); });
+    });
+    const svg = document.getElementById("t2-svg");
+    const wrap = document.getElementById("t2-chartwrap");
+    const crosshair = document.getElementById("t2-crosshair");
+    const tooltip = document.getElementById("t2-tooltip");
+    const pts = [110,95,102,72,80,55,64,42,50,28,36,18,25,10,20,14].map((y,i)=>({x:i*60,y}));
+    wrap.addEventListener("mousemove", e => {
+      const r = wrap.getBoundingClientRect();
+      const xFrac = (e.clientX - r.left) / r.width;
+      const px = xFrac * 900;
+      const nearest = pts.reduce((a,b) => Math.abs(b.x-px) < Math.abs(a.x-px) ? b : a);
+      const leftPct = (nearest.x / 900) * 100;
+      crosshair.style.left = leftPct + "%"; crosshair.style.opacity = "1";
+      tooltip.style.left = leftPct + "%"; tooltip.style.top = (nearest.y / 150 * 100) + "%";
+      tooltip.style.opacity = "1";
+      const value = (280 + (150 - nearest.y) * 0.35).toFixed(2);
+      tooltip.textContent = "£" + value;
+    });
+    wrap.addEventListener("mouseleave", () => { crosshair.style.opacity = "0"; tooltip.style.opacity = "0"; });
+  }
+
+  // ---------- THEME 3: sticky header, dots, parallax ----------
+  function initT3() {
+    const room = document.getElementById("room-t3");
+    const sticky = document.getElementById("t3-sticky");
+    const rail = document.getElementById("t3-rail");
+    const dotsWrap = document.getElementById("t3-dots");
+    const chapters = document.querySelectorAll(".t3-chapter");
+    chapters.forEach((_, i) => {
+      const d = document.createElement("div"); d.className = "t3-dot" + (i === 0 ? " on" : "");
+      d.addEventListener("click", () => rail.scrollTo({ left: i * rail.clientWidth, behavior: reduceMotion ? "auto" : "smooth" }));
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll(".t3-dot");
+    room.addEventListener("scroll", () => { sticky.classList.toggle("scrolled", room.scrollTop > 140); });
+    rail.addEventListener("scroll", () => {
+      const idx = Math.round(rail.scrollLeft / rail.clientWidth);
+      dots.forEach((d, i) => d.classList.toggle("on", i === idx));
+    });
+    if (!reduceMotion) {
+      room.addEventListener("mousemove", e => {
+        const r = room.getBoundingClientRect();
+        const mx = (e.clientX - r.left) / r.width - 0.5, my = (e.clientY - r.top) / r.height - 0.5;
+        document.getElementById("t3-blob").style.transform = `translate(${mx*24}px, ${my*24}px)`;
+        document.getElementById("t3-blob2").style.transform = `translate(${mx*-20}px, ${my*-20}px)`;
+      });
+    }
+  }
+
+  // ---------- THEME 4: crosshair readout + leader-line linking + toggles ----------
+  function initT4() {
+    const box = document.getElementById("t4-chartbox");
+    const readout = document.getElementById("t4-readout");
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"];
+    box.addEventListener("mousemove", e => {
+      const r = box.getBoundingClientRect();
+      const xFrac = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      const yFrac = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      const price = (400 - yFrac * 130).toFixed(2);
+      readout.style.left = (xFrac * 100) + "%"; readout.style.top = (yFrac * 100) + "%";
+      readout.style.opacity = "1";
+      readout.textContent = months[Math.floor(xFrac * (months.length - 1))] + " · £" + price;
+    });
+    box.addEventListener("mouseleave", () => { readout.style.opacity = "0"; });
+
+    document.querySelectorAll(".t4-callout[data-node]").forEach(c => {
+      c.addEventListener("mouseenter", () => {
+        c.classList.add("active");
+        document.getElementById(c.dataset.node).classList.add("active");
+        document.getElementById(c.dataset.leader).classList.add("active");
+      });
+      c.addEventListener("mouseleave", () => {
+        c.classList.remove("active");
+        document.getElementById(c.dataset.node).classList.remove("active");
+        document.getElementById(c.dataset.leader).classList.remove("active");
+      });
+    });
+
+    document.getElementById("t4-ma50").addEventListener("click", function () {
+      this.classList.toggle("off");
+      document.getElementById("t4-ma50line").style.display = this.classList.contains("off") ? "none" : "";
+    });
+    document.getElementById("t4-ma200").addEventListener("click", function () {
+      this.classList.toggle("off");
+      document.getElementById("t4-ma200line").style.display = this.classList.contains("off") ? "none" : "";
+    });
+  }
+
+  initT1();
+</script>
+
+</body></html>

@@ -1,0 +1,351 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four New Rooms</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&family=Italiana&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<style>
+  /* ============================================================
+     COPPER is the resting/default state — a complete, correctly
+     themed page with no JS at all. The other three redefine the
+     same variables under [data-app-theme="..."]. One gauge style
+     only (a ring) reused everywhere, to keep this robust.
+     ============================================================ */
+  :root {
+    --bg:#161210; --bgDeep:#0f0c0a; --surface:#1f1a16; --surfaceAlt:#251f19;
+    --border:#3a2f27; --borderStrong:#5a4433;
+    --text:#f3e9df; --textSoft:#c9b6a4; --textFaint:#8a7461;
+    --accent:#e0703a; --accent2:#d4af6a;
+    --pos:#8fbf6a; --neg:#e0645a; --warn:#d4af6a;
+    --displayFont:"Fraunces", serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:6px; --radiusLg:8px; --bw:1px; --shadow: none;
+  }
+
+  :root[data-app-theme="coral"] {
+    --bg:#fdf5f1; --bgDeep:#fbe8de; --surface:#ffffff; --surfaceAlt:#fff2ec;
+    --border:#f3d9cc; --borderStrong:#e8b8a0;
+    --text:#221f1c; --textSoft:#5c5651; --textFaint:#8a827b;
+    --accent:#ff6b57; --accent2:#1f8a7a;
+    --pos:#1f8a7a; --neg:#e0473a; --warn:#c97a17;
+    --displayFont:"Manrope", sans-serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:16px; --radiusLg:20px; --bw:1px; --shadow: 0 16px 32px -20px #4a271a30;
+  }
+
+  :root[data-app-theme="obsidian"] {
+    --bg:#000000; --bgDeep:#000000; --surface:#0b0b0b; --surfaceAlt:#121110;
+    --border:#26221a; --borderStrong:#40371f;
+    --text:#f2ead8; --textSoft:#b9ac89; --textFaint:#6e6650;
+    --accent:#c9a24a; --accent2:#8a7239;
+    --pos:#7fae6a; --neg:#b5544a; --warn:#c9a24a;
+    --displayFont:"Italiana", serif; --bodyFont:"IBM Plex Sans", sans-serif;
+    --radius:2px; --radiusLg:2px; --bw:1px; --shadow: none;
+  }
+
+  :root[data-app-theme="lime"] {
+    --bg:#f4f4ee; --bgDeep:#e9e9df; --surface:#ffffff; --surfaceAlt:#eeeee4;
+    --border:#111111; --borderStrong:#111111;
+    --text:#111111; --textSoft:#2c2c2c; --textFaint:#5c5c5c;
+    --accent:#111111; --accent2:#111111;
+    --pos:#1a7a3a; --neg:#c81f22; --warn:#8a6a00;
+    --displayFont:"Archivo", sans-serif; --bodyFont:"Archivo", sans-serif;
+    --radius:0px; --radiusLg:0px; --bw:2px; --shadow: 5px 5px 0 var(--borderStrong);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--text); font-family: var(--bodyFont);
+    padding-inline: 14px; padding-block: 18px;
+  }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .outer { max-width: 1180px; margin: 0 auto; }
+
+  .banner {
+    border: var(--bw) solid var(--border); border-radius: var(--radius);
+    background: var(--surfaceAlt); padding: 10px 14px; font-size: 12.5px;
+    color: var(--textSoft); line-height: 1.5; margin-bottom: 16px; max-width: 84ch;
+  }
+  .banner b { color: var(--accent); }
+
+  .switcher { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+  .switcher button {
+    font-family: system-ui, sans-serif; font-size:12px; font-weight:600; letter-spacing:.3px;
+    padding:8px 14px 8px 10px; border-radius:999px; cursor:pointer;
+    background: var(--surface); border: var(--bw) solid var(--border); color: var(--textSoft);
+    display:inline-flex; align-items:center; gap:8px; transition: all .15s ease;
+  }
+  .switcher button .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .switcher button:hover { color: var(--text); border-color: var(--accent); }
+  .switcher button.active { background: var(--text); color: var(--bgDeep); border-color: var(--text); }
+  .switcher button.active .dot { background: var(--bgDeep); }
+
+  /* ============================================================ ROOM */
+  .room {
+    position: relative; border-radius: var(--radiusLg);
+    border: var(--bw) solid var(--border); background: var(--bg);
+    display: flex; min-height: 640px;
+  }
+
+  .sidebar {
+    width: 190px; flex-shrink:0; padding: 18px 12px;
+    background: var(--surfaceAlt); border-right: var(--bw) solid var(--border);
+    display:flex; flex-direction:column; gap: 20px;
+  }
+  .sb-brand { display:flex; align-items:center; gap:9px; padding: 0 6px; }
+  .sb-brand svg { width:22px; height:22px; flex-shrink:0; }
+  .sb-word { font-family: var(--displayFont); font-weight:700; font-size:15px; letter-spacing:1.2px; }
+  .sb-nav { display:flex; flex-direction:column; gap:2px; }
+  .sb-item { padding:8px 9px; border-radius: var(--radius); font-size:12px; color: var(--textFaint); font-weight:500; }
+  .sb-item.on { color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); }
+  :root[data-app-theme="lime"] .sb-item.on { color: var(--bg); background: var(--accent); font-weight: 800; }
+
+  .main { flex:1; min-width:0; padding: 18px 20px; display:flex; flex-direction:column; gap: 14px; }
+
+  .topbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:1.6px; color: var(--textFaint); }
+  .search { flex:1; min-width:180px; display:flex; align-items:center; gap:10px; background: var(--surface); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 8px 12px; }
+  .search input { background:none; border:none; outline:none; color:var(--text); font-family: var(--bodyFont); font-size:13px; width:100%; }
+  .btn-analyse { font-family: var(--bodyFont); font-weight:700; font-size:11.5px; letter-spacing:.6px; padding:9px 16px; border-radius: var(--radius); background: var(--accent); color: var(--bgDeep); border: var(--bw) solid var(--accent); cursor:pointer; }
+  :root[data-app-theme="lime"] .btn-analyse { background: var(--accent); color: #f4f4ee; }
+
+  .pillrow { display:flex; gap:7px; flex-wrap:wrap; }
+  .pill { font-size:10.5px; font-weight:600; padding:5px 10px; border-radius:999px; background: var(--surface); border: var(--bw) solid var(--border); color: var(--textSoft); }
+  .pill.on { color: var(--accent); border-color: var(--accent); }
+  :root[data-app-theme="lime"] .pill { border-radius:0; }
+  :root[data-app-theme="lime"] .pill.on { color:#fff; background: var(--accent); }
+
+  .hero { border-radius: var(--radiusLg); border: var(--bw) solid var(--border); background: var(--surface); box-shadow: var(--shadow); padding: 18px 20px; display:flex; align-items:center; gap: 20px; flex-wrap:wrap; }
+  .hero-mono { width:52px; height:52px; border-radius:50%; background: var(--surfaceAlt); border: var(--bw) solid var(--borderStrong); display:flex; align-items:center; justify-content:center; font-family:var(--displayFont); font-weight:700; font-size:20px; flex-shrink:0; }
+  :root[data-app-theme="lime"] .hero-mono { border-radius:0; }
+  .hero-id { min-width: 150px; }
+  .hero-name { font-family: var(--displayFont); font-weight:700; font-size:18px; }
+  .hero-live { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; letter-spacing:1px; color: var(--accent); margin-top:3px; }
+  :root[data-app-theme="lime"] .hero-live { color: var(--pos); }
+  .hero-live .blip { width:6px; height:6px; border-radius:50%; background: currentColor; }
+
+  .hero-price-wrap { flex-shrink:0; }
+  .hero-price { font-family: var(--displayFont); font-weight:700; font-size:40px; line-height:1; }
+  .hero-deltas { display:flex; gap:14px; margin-top:6px; }
+  .hero-delta { font-size:12px; font-weight:600; }
+  .up { color: var(--pos); } .down { color: var(--neg); }
+
+  .gauge-wrap { margin-left:auto; display:flex; flex-direction:column; align-items:center; gap:6px; flex-shrink:0; }
+  .gauge-label { font-size:9.5px; letter-spacing:1px; color: var(--textFaint); font-weight:600; }
+  .gauge { width:78px; height:78px; position:relative; }
+  .ring-face { width:100%; height:100%; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--surfaceAlt) 0); }
+  .ring-inner { width:78%; height:78%; border-radius:50%; background: var(--bg); display:flex; align-items:center; justify-content:center; font-family: var(--displayFont); font-weight:700; font-size:19px; }
+  :root[data-app-theme="lime"] .ring-face { border-radius:0; border: var(--bw) solid var(--borderStrong); }
+  :root[data-app-theme="lime"] .ring-inner { border-radius:0; }
+
+  .tabs { display:flex; gap: 4px; border-bottom: var(--bw) solid var(--border); flex-wrap:wrap; }
+  .tab { font-size:11.5px; font-weight:600; letter-spacing:.4px; padding:9px 4px; margin-right:16px; color: var(--textFaint); border-bottom: 2px solid transparent; }
+  .tab.on { color: var(--accent); border-color: var(--accent); }
+
+  .content { display:grid; grid-template-columns: 1fr 260px; gap:14px; flex:1; min-height:0; }
+  @media (max-width: 760px) { .content { grid-template-columns: 1fr; } .room { flex-direction:column; } .sidebar { width:auto; flex-direction:row; overflow-x:auto; } .sb-nav { flex-direction:row; } }
+
+  .panel { background: var(--surface); border: var(--bw) solid var(--border); border-radius: var(--radiusLg); overflow:hidden; box-shadow: var(--shadow); }
+  .panel-head { padding:11px 15px; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color: var(--textFaint); font-weight:700; display:flex; justify-content:space-between; border-bottom: var(--bw) solid var(--border); }
+
+  .chartbox { padding: 12px 15px 6px; }
+  .rangebtns { display:flex; gap:4px; margin-bottom:8px; }
+  .rangebtn { font-size:10px; font-weight:600; padding:3px 8px; border-radius: var(--radius); color: var(--textFaint); }
+  .rangebtn.on { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  :root[data-app-theme="lime"] .rangebtn.on { color:#fff; background: var(--accent); }
+  .chart-legend { display:flex; gap:14px; font-size:10.5px; color: var(--textSoft); margin-bottom:6px; }
+  .legend-dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+
+  .notesrow { display:flex; align-items:center; gap:10px; padding: 10px 15px; border-top: var(--bw) solid var(--border); font-size:11.5px; color: var(--textSoft); }
+  .notesrow input { background: var(--surfaceAlt); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 5px 9px; color: var(--text); font-family: var(--bodyFont); font-size:11px; }
+
+  .stat3 { display:grid; grid-template-columns: repeat(3,1fr); gap:1px; background: var(--border); }
+  .stat3 > div { background: var(--surface); padding: 11px 10px; text-align:center; }
+  .stat3 .v { font-family: var(--displayFont); font-weight:700; font-size:16px; }
+  .stat3 .l { font-size:9.5px; color: var(--textFaint); letter-spacing:.5px; margin-top:3px; }
+
+  .bbbar { display:flex; height:10px; border-radius:999px; overflow:hidden; margin: 4px 15px 10px; }
+  :root[data-app-theme="lime"] .bbbar { border-radius:0; border: var(--bw) solid var(--borderStrong); }
+  .bbbar .bull { background: var(--pos); } .bbbar .bear { background: var(--neg); }
+  .bbrow { display:flex; justify-content:space-between; padding: 0 15px 10px; font-size:11px; }
+  .bbsig { padding: 6px 15px; font-size:11.5px; color: var(--textSoft); border-top: var(--bw) solid var(--border); line-height:1.5; }
+  .bbsig b { color: var(--text); }
+
+  .narrative { padding: 12px 15px; font-size:12px; color: var(--textSoft); line-height:1.65; }
+
+  footer.note { text-align:center; font-size:11px; color: var(--textFaint); margin-top:12px; }
+
+  /* ---- decorative touches, each theme's own, none shared ---- */
+  .hero, .panel { position: relative; overflow: hidden; }
+  :root[data-app-theme="coral"] .hero::before {
+    content:""; position:absolute; top:-90px; right:-60px; width:260px; height:260px; border-radius:50%;
+    background: radial-gradient(circle, var(--accent), transparent 70%); opacity:.16; pointer-events:none;
+  }
+  :root[data-app-theme="coral"] .hero::after {
+    content:""; position:absolute; bottom:-100px; left:30%; width:220px; height:220px; border-radius:50%;
+    background: radial-gradient(circle, var(--accent2), transparent 70%); opacity:.12; pointer-events:none;
+  }
+  :root:not([data-app-theme="coral"]) .hero::before, :root:not([data-app-theme="coral"]) .hero::after { content: none; }
+
+  :root[data-app-theme="obsidian"] .hero { border-image: none; }
+  :root[data-app-theme="obsidian"] .hero-name { letter-spacing: .5px; }
+  :root[data-app-theme="obsidian"] .gauge-label, :root[data-app-theme="obsidian"] .eyebrow,
+  :root[data-app-theme="obsidian"] .panel-head, :root[data-app-theme="obsidian"] .sb-word { letter-spacing: 2px; }
+</style>
+
+<div class="outer">
+  <div class="banner">
+    <b>Four new rooms, nothing carried over from the purple one but the idea of it.</b> Same Research page,
+    fictional AAPL example. Switch below.
+  </div>
+
+  <div class="switcher" id="switcher">
+    <button data-theme="copper" class="active"><span class="dot" style="background:#e0703a"></span>Copper Foundry</button>
+    <button data-theme="coral"><span class="dot" style="background:#ff6b57"></span>Coral Reef</button>
+    <button data-theme="obsidian"><span class="dot" style="background:#c9a24a"></span>Obsidian Gold</button>
+    <button data-theme="lime"><span class="dot" style="background:#111111"></span>Signal Lime</button>
+  </div>
+
+  <div class="room">
+    <div class="sidebar">
+      <div class="sb-brand" id="brandmark"></div>
+      <div class="sb-nav">
+        <div class="sb-item">What Changed</div>
+        <div class="sb-item">Risk</div>
+        <div class="sb-item on">Research</div>
+        <div class="sb-item">Portfolio</div>
+        <div class="sb-item">Watchlist</div>
+        <div class="sb-item">Screener</div>
+        <div class="sb-item">Markets</div>
+        <div class="sb-item">News</div>
+        <div class="sb-item">Settings</div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="topbar">
+        <span class="eyebrow">ASSET RESEARCH</span>
+        <div class="search"><input value="Apple" readonly></div>
+        <button class="btn-analyse">ANALYSE</button>
+      </div>
+
+      <div class="pillrow">
+        <span class="pill on">S&amp;P 500</span><span class="pill">NASDAQ</span><span class="pill">VUSA</span>
+        <span class="pill">FTSE 100</span><span class="pill">Eurostoxx 50</span><span class="pill">Asia Pac</span>
+        <span class="pill">Emerging Mkts</span><span class="pill">VIX</span><span class="pill">Gold</span>
+      </div>
+
+      <div class="hero">
+        <div class="hero-mono">A</div>
+        <div class="hero-id">
+          <div class="hero-name">Apple Inc. · AAPL</div>
+          <div class="hero-live"><span class="blip"></span>LIVE TRACKED</div>
+        </div>
+        <div class="hero-price-wrap">
+          <div class="hero-price tabular">312.44</div>
+          <div class="hero-deltas">
+            <span class="hero-delta up tabular">↑ 1D +0.80%</span>
+            <span class="hero-delta down tabular">↓ 1W −1.20%</span>
+          </div>
+        </div>
+        <svg width="120" height="40" viewBox="0 0 120 40" style="flex-shrink:0;">
+          <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="var(--pos)"/><stop offset="60%" stop-color="var(--pos)"/><stop offset="100%" stop-color="var(--neg)"/>
+          </linearGradient></defs>
+          <polyline points="0,28 12,24 24,26 36,18 48,20 60,12 72,15 84,10 96,16 108,13 120,22"
+            fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="gauge-wrap">
+          <div class="gauge-label">SCREENER SCORE</div>
+          <div class="gauge" style="--pct:78">
+            <div class="ring-face"><div class="ring-inner">78</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <span class="tab on">OVERVIEW</span><span class="tab">COMPARE</span><span class="tab">PRECEDENTS</span>
+        <span class="tab">NEWS</span><span class="tab">BULL / BEAR</span><span class="tab">FILINGS</span><span class="tab">AI NOTE</span>
+      </div>
+
+      <div class="content">
+        <div class="panel" style="display:flex; flex-direction:column;">
+          <div class="panel-head"><span>PRICE</span><span class="mono">1Y</span></div>
+          <div class="chartbox">
+            <div class="rangebtns">
+              <span class="rangebtn">1D</span><span class="rangebtn">1M</span><span class="rangebtn on">1Y</span>
+              <span class="rangebtn">3Y</span><span class="rangebtn">MAX</span>
+            </div>
+            <div class="chart-legend">
+              <span><span class="legend-dot" style="background:var(--accent)"></span>Price</span>
+              <span><span class="legend-dot" style="background:var(--accent2)"></span>50d / 200d</span>
+            </div>
+            <svg width="100%" height="200" viewBox="0 0 560 200" preserveAspectRatio="none">
+              <g stroke="var(--border)" stroke-width="1">
+                <line x1="0" y1="40" x2="560" y2="40"/><line x1="0" y1="90" x2="560" y2="90"/>
+                <line x1="0" y1="140" x2="560" y2="140"/><line x1="0" y1="190" x2="560" y2="190"/>
+              </g>
+              <polyline points="0,170 40,150 80,160 120,120 160,130 200,95 240,110 280,80 320,90 360,60 400,75 440,45 480,55 520,30 560,42"
+                fill="none" stroke="var(--accent2)" stroke-width="1.4" opacity=".55"/>
+              <polyline points="0,175 40,168 80,172 120,150 160,158 200,130 240,140 280,115 320,120 360,95 400,100 440,78 480,82 520,58 560,65"
+                fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+              <circle cx="560" cy="65" r="3.5" fill="var(--accent)"/>
+            </svg>
+          </div>
+          <div class="notesrow">
+            <input value="12/09/2028" readonly><span>Guidance raised note — example annotation</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="panel">
+            <div class="panel-head">PRECEDENT OUTLOOK</div>
+            <div class="stat3">
+              <div><div class="v tabular">6</div><div class="l">CLOSE MATCHES</div></div>
+              <div><div class="v tabular up">+4.2%</div><div class="l">TYPICAL 3M FWD</div></div>
+              <div><div class="v tabular">67%</div><div class="l">HIT RATE</div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">BULL / BEAR SIGNALS</div>
+            <div class="bbbar"><div class="bull" style="width:71%"></div><div class="bear" style="width:29%"></div></div>
+            <div class="bbrow"><span class="up">5 bullish</span><span class="down">2 bearish</span></div>
+            <div class="bbsig"><b>Bull</b> — price above both 50d and 200d averages</div>
+            <div class="bbsig"><b>Bear</b> — short interest above its own 1y average</div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">WHERE THINGS STAND</div>
+            <div class="narrative">Trading 4.2% above its 50-day average on volume in line with the past
+            month. No stored earnings or dividend event in the next two weeks. Example narrative — composed
+            from the same figures shown above it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="note">Preview only — fictional example data, not connected to a real account.</footer>
+</div>
+
+<script>
+  const marks = {
+    copper: `<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="var(--accent)" stroke-width="1.6"/><circle cx="7" cy="7" r="1" fill="var(--accent2)"/><circle cx="17" cy="7" r="1" fill="var(--accent2)"/><circle cx="7" cy="17" r="1" fill="var(--accent2)"/><circle cx="17" cy="17" r="1" fill="var(--accent2)"/><path d="M8 16l4-8 4 8" stroke="var(--accent)" stroke-width="1.4" fill="none"/></svg>`,
+    coral: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 17c2-8 6-12 8-12s6 4 8 12" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="12" cy="17" r="2" fill="var(--accent2)"/></svg>`,
+    obsidian: `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="var(--accent)" stroke-width="1"/><line x1="12" y1="2" x2="12" y2="22" stroke="var(--accent)" stroke-width="1"/><circle cx="12" cy="12" r="1.6" fill="var(--accent)"/></svg>`,
+    lime: `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" stroke="var(--accent)" stroke-width="2"/><rect x="9" y="9" width="6" height="6" fill="var(--accent)"/></svg>`,
+  };
+
+  const root = document.documentElement;
+  const brandEl = document.getElementById("brandmark");
+  const buttons = document.querySelectorAll("#switcher button");
+
+  function setTheme(name) {
+    root.setAttribute("data-app-theme", name);
+    brandEl.innerHTML = marks[name] + `<span class="sb-word">MERIDIAN</span>`;
+    buttons.forEach(b => b.classList.toggle("active", b.dataset.theme === name));
+  }
+  buttons.forEach(b => b.addEventListener("click", () => setTheme(b.dataset.theme)));
+  setTheme("copper");
+</script>
+
+</body></html>

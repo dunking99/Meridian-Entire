@@ -1,0 +1,498 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Portfolio Page Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --shell-bg: #eef0f3; --shell-surface: #ffffff; --shell-surface-2: #f6f7f9;
+    --shell-border: #dde1e7; --shell-text: #191c22; --shell-text-dim: #5a6072;
+    --shell-muted: #868da2; --shell-accent: #4453d8; --shell-accent-ink: #ffffff;
+    --shadow-card: 0 1px 2px rgba(20,24,34,.04), 0 8px 24px rgba(20,24,34,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --shell-bg: #14161c; --shell-surface: #1b1e27; --shell-surface-2: #20232d;
+      --shell-border: #2b2f3b; --shell-text: #eceef3; --shell-text-dim: #a7adc0;
+      --shell-muted: #767d93; --shell-accent: #8892ff; --shell-accent-ink: #12141c;
+      --shadow-card: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --shell-bg: #14161c; --shell-surface: #1b1e27; --shell-surface-2: #20232d;
+    --shell-border: #2b2f3b; --shell-text: #eceef3; --shell-text-dim: #a7adc0;
+    --shell-muted: #767d93; --shell-accent: #8892ff; --shell-accent-ink: #12141c;
+    --shadow-card: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--shell-bg); color: var(--shell-text); font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif; padding: 0 20px; padding-block: 40px 64px; }
+  .wrap { max-width: 1220px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
+  .intro { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--shell-accent); font-weight: 600; }
+  h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: clamp(26px,4vw,36px); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+  .intro p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--shell-text-dim); max-width: 68ch; }
+  .intro p strong { color: var(--shell-text); font-weight: 600; }
+
+  .switcher { display: flex; gap: 8px; flex-wrap: wrap; }
+  .d-btn {
+    font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 500;
+    padding: 12px 16px; border-radius: 10px; border: 1px solid var(--shell-border);
+    background: var(--shell-surface); color: var(--shell-text-dim); cursor: pointer;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 168px;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .d-btn b { font-family: "Archivo", sans-serif; font-size: 13.5px; color: inherit; }
+  .d-btn span { font-size: 10.5px; opacity: .8; font-family: "IBM Plex Sans", sans-serif; }
+  .d-btn:hover { border-color: var(--shell-accent); }
+  .d-btn[aria-pressed="true"] { background: var(--shell-accent); color: var(--shell-accent-ink); border-color: var(--shell-accent); }
+
+  .frame { background: var(--shell-surface); border: 1px solid var(--shell-border); border-radius: 16px; box-shadow: var(--shadow-card); padding: 14px; }
+  .frame-chrome { display: flex; align-items: center; gap: 8px; padding: 4px 6px 14px; }
+  .frame-chrome .cdot { width: 9px; height: 9px; border-radius: 50%; background: var(--shell-border); }
+  .frame-chrome .curl { margin-left: 10px; font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--shell-muted); }
+  .stage { border-radius: 10px; overflow: hidden; }
+
+  footer.note { font-size: 12.5px; color: var(--shell-muted); line-height: 1.6; max-width: 66ch; }
+
+  /* ============================================================
+     DESIGN 1 — TERMINAL ELEVATED
+     Dark, monospace, layered glow — the app's own DNA with real depth.
+  ============================================================ */
+  .d1 {
+    --bg: #0a0c10; --bg2: #070810; --panel: #10141c; --border: rgba(255,255,255,.08);
+    --heading: #f2f6ff; --primary: #cfd9ee; --muted: #7f8db3;
+    --teal: #17e6b8; --blue: #4c8dff; --neg: #ff5f78; --warn: #ffb648;
+    font-family: "JetBrains Mono", monospace; background: var(--bg); color: var(--primary);
+  }
+  .d1-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: linear-gradient(180deg, #0d1119, var(--bg2)); border-bottom: 1px solid var(--border); }
+  .d1-brand { display: flex; align-items: center; gap: 12px; }
+  .d1-mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--teal), var(--blue)); box-shadow: 0 0 22px rgba(23,230,184,.45); }
+  .d1-word { font-weight: 700; font-size: 13px; color: var(--heading); letter-spacing: .04em; }
+  .d1-tag { font-size: 9px; color: var(--muted); letter-spacing: .16em; }
+  .d1-date { font-size: 11px; color: var(--muted); }
+  .d1-main { padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 18px; position: relative; }
+  .d1-main::before { content:""; position:absolute; top:-40px; left:50%; width:640px; height:260px; transform:translateX(-50%); background: radial-gradient(ellipse at center, rgba(23,230,184,.10), transparent 70%); pointer-events:none; }
+  .d1-h1 { font-size: 20px; font-weight: 700; color: var(--heading); letter-spacing: .02em; position: relative; }
+  .d1-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .d1-hero { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; position: relative; }
+  .d1-hero > div { background: var(--panel); padding: 18px 20px; }
+  .d1-label { font-size: 9.5px; letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+  .d1-val { font-size: 26px; font-weight: 700; color: var(--heading); text-shadow: 0 0 26px rgba(23,230,184,.18); }
+  .d1-val.neg { color: var(--neg); text-shadow: 0 0 26px rgba(255,95,120,.22); }
+  .d1-val.pos { color: var(--teal); text-shadow: 0 0 26px rgba(23,230,184,.28); }
+  .d1-sub2 { font-size: 10.5px; margin-top: 4px; }
+  .d1-sub2.neg { color: var(--neg); } .d1-sub2.pos { color: var(--teal); }
+  .d1-panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+  .d1-chart { padding: 20px 22px 26px; }
+  .d1-chart-head { display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 10px; color: var(--muted); }
+  .d1-sect { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .d1-sect-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--heading); }
+  .d1-row { display: flex; align-items: center; gap: 14px; padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,.045); }
+  .d1-mono { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #071018; flex: none; }
+  .d1-row-name { font-weight: 600; color: var(--heading); font-size: 12.5px; }
+  .d1-row-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+  .d1-spark { width: 64px; height: 22px; flex: none; }
+  .d1-figs { margin-left: auto; display: flex; gap: 26px; align-items: center; text-align: right; }
+  .d1-figs .f-label { font-size: 8.5px; color: var(--muted); letter-spacing: .06em; margin-bottom: 2px; }
+  .d1-figs .f-val { font-size: 12px; }
+  .d1-weight-track { width: 46px; height: 4px; border-radius: 3px; background: rgba(255,255,255,.08); overflow: hidden; margin-top: 4px; }
+  .d1-weight-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+  .d1-rings { display: flex; gap: 26px; padding: 20px 22px 26px; flex-wrap: wrap; }
+  .d1-ring-item { display: flex; align-items: center; gap: 14px; }
+  .d1-ring-meta .name { font-size: 11.5px; color: var(--heading); font-weight: 600; }
+  .d1-ring-meta .pct { font-size: 15px; color: var(--teal); font-weight: 700; font-family: "JetBrains Mono", monospace; }
+
+  /* ============================================================
+     DESIGN 2 — EDITORIAL LEDGER
+     Warm paper, serif numerals, typeset rules — read, not scanned.
+  ============================================================ */
+  .d2 {
+    --paper: #faf7f1; --ink: #211c15; --ink-dim: #5b5344; --rule: #ddd3bf; --accent: #8a4a2e; --pos: #3f6b4a; --neg: #a13c2a;
+    font-family: "IBM Plex Sans", sans-serif; background: var(--paper); color: var(--ink);
+  }
+  .d2-top { display: flex; justify-content: space-between; align-items: baseline; padding: 28px 40px 16px; border-bottom: 2px solid var(--ink); }
+  .d2-brand { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; letter-spacing: .01em; }
+  .d2-brand span { font-family: "IBM Plex Sans", sans-serif; font-size: 10px; letter-spacing: .18em; color: var(--ink-dim); display: block; margin-top: 2px; font-weight: 500; }
+  .d2-date { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-dim); }
+  .d2-main { padding: 30px 40px 40px; display: flex; flex-direction: column; gap: 30px; }
+  .d2-title { font-family: "Fraunces", serif; font-size: 15px; font-weight: 500; color: var(--ink-dim); letter-spacing: .04em; text-transform: uppercase; }
+  .d2-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+  .d2-hero-num { font-family: "Fraunces", serif; font-size: 56px; font-weight: 500; line-height: 1; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+  .d2-hero-cap { font-size: 12px; color: var(--ink-dim); margin-top: 6px; font-family: "IBM Plex Mono", monospace; }
+  .d2-stats { display: flex; gap: 40px; }
+  .d2-stat .v { font-family: "IBM Plex Mono", monospace; font-size: 19px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .d2-stat .v.neg { color: var(--neg); } .d2-stat .v.pos { color: var(--pos); }
+  .d2-stat .l { font-size: 10.5px; color: var(--ink-dim); letter-spacing: .08em; text-transform: uppercase; margin-top: 5px; }
+  .d2-ledger-head { display: grid; grid-template-columns: 2.6fr .8fr .9fr .9fr 1fr .7fr; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); font-size: 10px; letter-spacing: .08em; color: var(--ink-dim); text-transform: uppercase; }
+  .d2-ledger-head span:not(:first-child) { text-align: right; }
+  .d2-ledger-row { display: grid; grid-template-columns: 2.6fr .8fr .9fr .9fr 1fr .7fr; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--rule); align-items: baseline; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; }
+  .d2-ledger-row span:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .d2-name-cell { font-family: "IBM Plex Sans", sans-serif; }
+  .d2-name-cell b { font-weight: 600; font-size: 13px; }
+  .d2-name-cell i { display: block; font-style: normal; font-size: 10.5px; color: var(--ink-dim); margin-top: 1px; }
+  .d2-neg { color: var(--neg); }
+  .d2-alloc { display: flex; flex-direction: column; gap: 10px; }
+  .d2-alloc-row { display: grid; grid-template-columns: 200px 1fr 50px; gap: 14px; align-items: center; font-family: "IBM Plex Mono", monospace; font-size: 12px; }
+  .d2-alloc-track { height: 1px; background: var(--rule); position: relative; }
+  .d2-alloc-fill { height: 5px; background: var(--ink); position: absolute; top: -2px; }
+
+  /* ============================================================
+     DESIGN 3 — CARD GRID (modern fintech)
+     Light, rounded, card-based — approachable, glanceable.
+  ============================================================ */
+  .d3 {
+    --bg: #f1f1f8; --card: #ffffff; --border: #e6e6f2; --heading: #16162a; --primary: #2b2b45; --muted: #7b7c95;
+    --violet: #6d5cff; --violet-soft: #efedff; --pos: #12b76a; --pos-soft: #e7f9f0; --neg: #f04452; --neg-soft: #fdecee;
+    font-family: "IBM Plex Sans", sans-serif; background: var(--bg); color: var(--primary);
+  }
+  .d3-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; }
+  .d3-brand { display: flex; align-items: center; gap: 10px; }
+  .d3-mark { width: 30px; height: 30px; border-radius: 9px; background: var(--violet); }
+  .d3-word { font-family: "Manrope", sans-serif; font-weight: 800; font-size: 14px; color: var(--heading); }
+  .d3-tag { font-size: 9.5px; color: var(--muted); letter-spacing: .1em; }
+  .d3-main { padding: 4px 28px 32px; display: flex; flex-direction: column; gap: 20px; }
+  .d3-h1 { font-family: "Manrope", sans-serif; font-weight: 800; font-size: 22px; color: var(--heading); }
+  .d3-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .d3-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .d3-kpi { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(30,30,60,.03), 0 6px 18px rgba(30,30,60,.05); }
+  .d3-kpi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .d3-kpi-icon { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .d3-kpi-label { font-size: 10.5px; color: var(--muted); font-weight: 600; letter-spacing: .04em; }
+  .d3-kpi-val { font-family: "Manrope", sans-serif; font-size: 22px; font-weight: 800; color: var(--heading); }
+  .d3-kpi-val.neg { color: var(--neg); } .d3-kpi-val.pos { color: var(--pos); }
+  .d3-pill { display: inline-flex; font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 20px; margin-top: 6px; }
+  .d3-pill.neg { background: var(--neg-soft); color: var(--neg); } .d3-pill.pos { background: var(--pos-soft); color: var(--pos); }
+  .d3-split { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; align-items: start; }
+  .d3-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 1px 2px rgba(30,30,60,.03), 0 6px 18px rgba(30,30,60,.05); }
+  .d3-card-head { padding: 16px 20px; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 13px; color: var(--heading); border-bottom: 1px solid var(--border); }
+  .d3-hold-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 14px; }
+  .d3-hold { border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .d3-hold-top { display: flex; align-items: center; gap: 9px; }
+  .d3-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #fff; flex: none; }
+  .d3-hold-name { font-weight: 700; font-size: 12px; color: var(--heading); }
+  .d3-hold-tick { font-size: 9.5px; color: var(--muted); }
+  .d3-hold-bottom { display: flex; justify-content: space-between; align-items: baseline; }
+  .d3-hold-val { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--primary); }
+  .d3-donut-wrap { display: flex; flex-direction: column; align-items: center; padding: 22px 18px; gap: 16px; }
+  .d3-legend { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .d3-legend-row { display: flex; align-items: center; gap: 8px; font-size: 11.5px; }
+  .d3-legend-dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+  .d3-legend-pct { margin-left: auto; font-family: "JetBrains Mono", monospace; color: var(--muted); }
+
+  /* ============================================================
+     DESIGN 4 — COMMAND DECK (dense pro terminal)
+     Near-black, hairlines, heat-tinted cells — max data per pixel.
+  ============================================================ */
+  .d4 {
+    --bg: #060708; --panel: #08090b; --line: #1a1d22; --text: #e7eaef; --muted: #676d7a;
+    --pos: #16c784; --neg: #ea3943; --amber: #f5a623;
+    font-family: "JetBrains Mono", monospace; background: var(--bg); color: var(--text);
+  }
+  .d4-top { display: flex; justify-content: space-between; padding: 9px 16px; border-bottom: 1px solid var(--line); font-size: 10.5px; }
+  .d4-word { font-weight: 700; letter-spacing: .06em; }
+  .d4-date { color: var(--muted); }
+  .d4-main { padding: 12px 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .d4-h1 { font-size: 13.5px; font-weight: 700; letter-spacing: .04em; }
+  .d4-sub { font-size: 10px; color: var(--muted); }
+  .d4-strip { display: flex; border: 1px solid var(--line); }
+  .d4-strip > div { flex: 1; padding: 9px 14px; border-right: 1px solid var(--line); }
+  .d4-strip > div:last-child { border-right: none; }
+  .d4-slabel { font-size: 8.5px; color: var(--muted); letter-spacing: .06em; }
+  .d4-sval { font-size: 15px; font-weight: 700; margin-top: 3px; }
+  .d4-sval.neg { color: var(--neg); } .d4-sval.pos { color: var(--pos); }
+  table.d4-table { width: 100%; border-collapse: collapse; font-size: 10.5px; border: 1px solid var(--line); }
+  .d4-table th { text-align: right; font-size: 8px; color: var(--muted); letter-spacing: .05em; padding: 6px 10px; border-bottom: 1px solid var(--line); font-weight: 500; }
+  .d4-table th:nth-child(1), .d4-table th:nth-child(2) { text-align: left; }
+  .d4-table td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .d4-table td:nth-child(1), .d4-table td:nth-child(2) { text-align: left; }
+  .d4-ticker { color: var(--muted); }
+  .d4-pnl-cell { font-weight: 600; }
+  .d4-spark { width: 46px; height: 16px; display: block; }
+  .d4-bar { display: flex; height: 22px; border: 1px solid var(--line); }
+  .d4-bar > div { display: flex; align-items: center; justify-content: center; font-size: 8.5px; color: #06070a; font-weight: 700; overflow: hidden; }
+  .d4-bar-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 9.5px; color: var(--muted); }
+  .d4-bar-legend b { color: var(--text); }
+
+  @media (max-width: 720px) {
+    .d1-hero { grid-template-columns: 1fr 1fr; }
+    .d2-hero { flex-direction: column; align-items: flex-start; }
+    .d2-ledger-head, .d2-ledger-row { grid-template-columns: 1.6fr .7fr .8fr .8fr; }
+    .d2-ledger-head span:nth-child(5), .d2-ledger-row span:nth-child(5),
+    .d2-ledger-head span:nth-child(6), .d2-ledger-row span:nth-child(6) { display: none; }
+    .d3-kpis { grid-template-columns: 1fr 1fr; }
+    .d3-split { grid-template-columns: 1fr; }
+    .d3-hold-grid { grid-template-columns: 1fr; }
+    .d4-strip { flex-wrap: wrap; }
+    .d4-strip > div { flex: 1 1 50%; }
+    .d4-table { font-size: 9px; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="intro">
+    <div class="eyebrow">Four directions — Portfolio page</div>
+    <h1>Not recolours — four different visions for the same page.</h1>
+    <p>
+      Same six holdings, same real numbers (allocation is weighted by cost basis, since
+      this preview has no live prices) — but each direction rethinks layout, type, and
+      how the data is presented, not just which hex codes are used.
+      <strong>Nothing here touches App.jsx.</strong>
+    </p>
+  </div>
+
+  <div class="switcher" role="group" aria-label="Design direction">
+    <button class="d-btn" data-d="1" aria-pressed="true"><b>Terminal Elevated</b><span>Dark, glowing, layered depth</span></button>
+    <button class="d-btn" data-d="2" aria-pressed="false"><b>Editorial Ledger</b><span>Warm paper, serif, typeset</span></button>
+    <button class="d-btn" data-d="3" aria-pressed="false"><b>Card Grid</b><span>Rounded, consumer fintech</span></button>
+    <button class="d-btn" data-d="4" aria-pressed="false"><b>Command Deck</b><span>Max density, heat-tinted cells</span></button>
+  </div>
+
+  <div class="frame">
+    <div class="frame-chrome"><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="curl" id="curl">meridian.local/portfolio — Terminal Elevated</span></div>
+    <div class="stage">
+
+      <!-- ============ DESIGN 1 ============ -->
+      <section class="d1" data-design="1">
+        <div class="d1-top">
+          <div class="d1-brand"><div class="d1-mark"></div><div><div class="d1-word">MERIDIAN</div><div class="d1-tag">TRADING INTELLIGENCE</div></div></div>
+          <div class="d1-date">Thu, 10 Sept 2026</div>
+        </div>
+        <div class="d1-main">
+          <div><div class="d1-h1">PORTFOLIO</div><div class="d1-sub">6 Positions</div></div>
+          <div class="d1-hero">
+            <div><div class="d1-label">TOTAL VALUE</div><div class="d1-val">£0</div></div>
+            <div><div class="d1-label">INVESTED</div><div class="d1-val" style="font-size:20px">£0</div></div>
+            <div><div class="d1-label">TOTAL P&amp;L</div><div class="d1-val neg">£65,747</div><div class="d1-sub2 neg">-100.0%</div></div>
+            <div><div class="d1-label">TODAY</div><div class="d1-val pos">+£0</div><div class="d1-sub2 pos">+0.00%</div></div>
+          </div>
+          <div class="d1-panel d1-chart">
+            <div class="d1-chart-head"><span>COMBINED · % RETURN · £ VALUE</span><span>1M 3M 6M YTD 1Y MAX</span></div>
+            <svg viewBox="0 0 760 130" width="100%" height="130" preserveAspectRatio="none">
+              <defs><linearGradient id="d1g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#17e6b8" stop-opacity=".35"/><stop offset="100%" stop-color="#17e6b8" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,90 L60,78 L120,85 L180,60 L240,68 L300,45 L360,52 L420,30 L480,40 L540,22 L600,34 L660,15 L720,24 L760,10 L760,130 L0,130 Z" fill="url(#d1g)"/>
+              <path d="M0,90 L60,78 L120,85 L180,60 L240,68 L300,45 L360,52 L420,30 L480,40 L540,22 L600,34 L660,15 L720,24 L760,10" fill="none" stroke="#17e6b8" stroke-width="2"/>
+              <circle cx="760" cy="10" r="4.5" fill="#17e6b8"><animate attributeName="opacity" values="1;.4;1" dur="2s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+          <div class="d1-panel">
+            <div class="d1-sect"><span class="d1-sect-title">HOLDINGS</span><span style="font-size:10px;color:var(--muted)">SORTED BY WEIGHT</span></div>
+            <div id="d1-rows"></div>
+          </div>
+          <div class="d1-panel d1-rings" id="d1-rings"></div>
+        </div>
+      </section>
+
+      <!-- ============ DESIGN 2 ============ -->
+      <section class="d2" data-design="2" hidden>
+        <div class="d2-top">
+          <div class="d2-brand">Meridian<span>PORTFOLIO STATEMENT</span></div>
+          <div class="d2-date">10 SEP 2026</div>
+        </div>
+        <div class="d2-main">
+          <div class="d2-hero">
+            <div>
+              <div class="d2-title">Total portfolio value</div>
+              <div class="d2-hero-num">£0</div>
+              <div class="d2-hero-cap">6 holdings · cost basis £65,747</div>
+            </div>
+            <div class="d2-stats">
+              <div class="d2-stat"><div class="v neg">−£65,747</div><div class="l">Total P&amp;L</div></div>
+              <div class="d2-stat"><div class="v pos">+£0</div><div class="l">Today</div></div>
+              <div class="d2-stat"><div class="v" style="color:var(--ink)">£0</div><div class="l">Cash</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="d2-title" style="margin-bottom:12px">Holdings</div>
+            <div class="d2-ledger-head"><span>Security</span><span>Qty</span><span>Avg cost</span><span>Value</span><span>P&amp;L</span><span>Weight</span></div>
+            <div id="d2-rows"></div>
+          </div>
+          <div>
+            <div class="d2-title" style="margin-bottom:14px">Where the cost basis sits</div>
+            <div class="d2-alloc" id="d2-alloc"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DESIGN 3 ============ -->
+      <section class="d3" data-design="3" hidden>
+        <div class="d3-top">
+          <div class="d3-brand"><div class="d3-mark"></div><div><div class="d3-word">Meridian</div><div class="d3-tag">Trading intelligence</div></div></div>
+        </div>
+        <div class="d3-main">
+          <div><div class="d3-h1">Portfolio</div><div class="d3-sub">6 positions · updated moments ago</div></div>
+          <div class="d3-kpis">
+            <div class="d3-kpi"><div class="d3-kpi-top"><span class="d3-kpi-label">TOTAL VALUE</span><div class="d3-kpi-icon" style="background:var(--violet-soft)">💷</div></div><div class="d3-kpi-val">£0</div></div>
+            <div class="d3-kpi"><div class="d3-kpi-top"><span class="d3-kpi-label">INVESTED</span><div class="d3-kpi-icon" style="background:#eef2ff">🏦</div></div><div class="d3-kpi-val">£0</div></div>
+            <div class="d3-kpi"><div class="d3-kpi-top"><span class="d3-kpi-label">TOTAL P&amp;L</span><div class="d3-kpi-icon" style="background:var(--neg-soft)">↓</div></div><div class="d3-kpi-val neg">−£65,747</div><span class="d3-pill neg">−100.0%</span></div>
+            <div class="d3-kpi"><div class="d3-kpi-top"><span class="d3-kpi-label">TODAY</span><div class="d3-kpi-icon" style="background:var(--pos-soft)">↑</div></div><div class="d3-kpi-val pos">+£0</div><span class="d3-pill pos">+0.00%</span></div>
+          </div>
+          <div class="d3-split">
+            <div class="d3-card">
+              <div class="d3-card-head">Holdings</div>
+              <div class="d3-hold-grid" id="d3-holdings"></div>
+            </div>
+            <div class="d3-card">
+              <div class="d3-card-head">Allocation, by cost</div>
+              <div class="d3-donut-wrap">
+                <svg id="d3-donut" viewBox="0 0 140 140" width="150" height="150"></svg>
+                <div class="d3-legend" id="d3-legend"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DESIGN 4 ============ -->
+      <section class="d4" data-design="4" hidden>
+        <div class="d4-top"><div class="d4-word">MERIDIAN // PORTFOLIO</div><div class="d4-date">2026-09-10 · 6 POS</div></div>
+        <div class="d4-main">
+          <div><div class="d4-h1">PORTFOLIO</div><div class="d4-sub">value-weighted view unavailable — no live prices in this preview; weights below use cost basis</div></div>
+          <div class="d4-strip">
+            <div><div class="d4-slabel">VALUE</div><div class="d4-sval">£0</div></div>
+            <div><div class="d4-slabel">INVESTED</div><div class="d4-sval">£0</div></div>
+            <div><div class="d4-slabel">CASH</div><div class="d4-sval">£0</div></div>
+            <div><div class="d4-slabel">P&amp;L</div><div class="d4-sval neg">−£65,747</div></div>
+            <div><div class="d4-slabel">P&amp;L %</div><div class="d4-sval neg">−100.0%</div></div>
+            <div><div class="d4-slabel">TODAY</div><div class="d4-sval pos">+£0.00%</div></div>
+          </div>
+          <table class="d4-table">
+            <thead><tr><th>SEC</th><th>TICKER</th><th>QTY</th><th>AVG</th><th>VALUE</th><th>P&amp;L</th><th>P&amp;L %</th><th>WT</th><th>TREND</th></tr></thead>
+            <tbody id="d4-rows"></tbody>
+          </table>
+          <div>
+            <div class="d4-sub" style="margin-bottom:6px">COST-WEIGHTED COMPOSITION</div>
+            <div class="d4-bar" id="d4-bar"></div>
+            <div class="d4-bar-legend" id="d4-bar-legend" style="margin-top:8px"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="note">
+    Illustrative only — trend lines and sparklines are placeholder shapes, not real price
+    history (Yahoo is unreachable from this preview environment). Pick a direction, or
+    name a specific element from one to graft onto another, and I'll fold it into the
+    real implementation plan.
+  </footer>
+</div>
+
+<script>
+  const HOLDINGS = [
+    { name: "0P0000WN7J.L", ticker: "0P0000WN7J.L", qty: "100", avg: "£1.00", cost: 100, pnl: 100 },
+    { name: "L&G European Index C Acc", ticker: "0P000102LY.L · LSE", qty: "1,863.56", avg: "£6.56", cost: 12224.92, pnl: 12225 },
+    { name: "Fidelity Index World Fund", ticker: "0P000125KV.L · LSE", qty: "4,743.21", avg: "£3.60", cost: 17075.56, pnl: 17076 },
+    { name: "iShares UK Equity Index (UK) S Acc", ticker: "0P0001O7DK.L · LSE", qty: "6,752.63", avg: "£1.06", cost: 7157.78, pnl: 7158 },
+    { name: "iShares Pacific ex Jpn Eq Idx (UK) S Acc", ticker: "0P0001O7DL.L · LSE", qty: "3,362.53", avg: "£1.01", cost: 3396.15, pnl: 3396 },
+    { name: "Vanguard S&P 500", ticker: "VUSA.L · LSE", qty: "323.5", avg: "£79.73", cost: 25792.66, pnl: 25793 },
+  ];
+  const TOTAL_COST = HOLDINGS.reduce((s, h) => s + h.cost, 0);
+  HOLDINGS.forEach(h => h.weight = h.cost / TOTAL_COST * 100);
+
+  const PALETTE = ["#17e6b8", "#4c8dff", "#ffb648", "#ff5f78", "#9a7bff", "#43d1ff"];
+  const monogram = t => t.replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase();
+  const SPARKS = [
+    "0,14 8,10 16,12 24,6 32,8 40,3",
+    "0,4 8,8 16,5 24,11 32,9 40,13",
+    "0,10 8,6 16,9 24,4 32,7 40,2",
+    "0,6 8,9 16,4 24,8 32,5 40,10",
+    "0,12 8,9 16,11 24,7 32,10 40,6",
+    "0,3 8,7 16,4 24,9 32,6 40,11",
+  ];
+
+  // ---- Design 1 rows + rings ----
+  document.getElementById("d1-rows").innerHTML = HOLDINGS.map((h, i) => `
+    <div class="d1-row">
+      <div class="d1-mono" style="background:${PALETTE[i % PALETTE.length]}">${monogram(h.name)}</div>
+      <div><div class="d1-row-name">${h.name}</div><div class="d1-row-sub">${h.ticker}</div></div>
+      <svg class="d1-spark" viewBox="0 0 40 16" preserveAspectRatio="none"><polyline points="${SPARKS[i]}" fill="none" stroke="${h.pnl >= 0 ? '#17e6b8' : '#ff5f78'}" stroke-width="1.6"/></svg>
+      <div class="d1-figs">
+        <div><div class="f-label">VALUE</div><div class="f-val">£0</div></div>
+        <div><div class="f-label">P&amp;L</div><div class="f-val" style="color:var(--neg)">−£${h.pnl.toLocaleString()}</div></div>
+        <div><div class="f-label">WEIGHT</div><div class="f-val">${h.weight.toFixed(1)}%</div><div class="d1-weight-track"><div class="d1-weight-fill" style="width:${h.weight}%"></div></div></div>
+      </div>
+    </div>`).join("");
+
+  document.getElementById("d1-rings").innerHTML = HOLDINGS.slice(0, 4).map((h, i) => {
+    const r = 22, c = 2 * Math.PI * r, len = h.weight / 100 * c;
+    return `<div class="d1-ring-item">
+      <svg width="56" height="56" viewBox="0 0 56 56">
+        <circle cx="28" cy="28" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+        <circle cx="28" cy="28" r="${r}" fill="none" stroke="${PALETTE[i % PALETTE.length]}" stroke-width="5" stroke-linecap="round"
+          stroke-dasharray="${len} ${c - len}" transform="rotate(-90 28 28)"/>
+      </svg>
+      <div class="d1-ring-meta"><div class="name">${monogram(h.name)}</div><div class="pct">${h.weight.toFixed(1)}%</div></div>
+    </div>`;
+  }).join("");
+
+  // ---- Design 2 rows + alloc ----
+  document.getElementById("d2-rows").innerHTML = HOLDINGS.map(h => `
+    <div class="d2-ledger-row">
+      <div class="d2-name-cell"><b>${h.name}</b><i>${h.ticker}</i></div>
+      <span>${h.qty}</span><span>${h.avg}</span><span>£0</span>
+      <span class="d2-neg">−£${h.pnl.toLocaleString()}</span><span>${h.weight.toFixed(1)}%</span>
+    </div>`).join("");
+  document.getElementById("d2-alloc").innerHTML = HOLDINGS.map(h => `
+    <div class="d2-alloc-row">
+      <span>${h.name}</span>
+      <span class="d2-alloc-track"><span class="d2-alloc-fill" style="width:${h.weight}%"></span></span>
+      <span>${h.weight.toFixed(1)}%</span>
+    </div>`).join("");
+
+  // ---- Design 3 holdings + donut ----
+  document.getElementById("d3-holdings").innerHTML = HOLDINGS.map((h, i) => `
+    <div class="d3-hold">
+      <div class="d3-hold-top">
+        <div class="d3-avatar" style="background:${PALETTE[i % PALETTE.length]}">${monogram(h.name)}</div>
+        <div><div class="d3-hold-name">${h.name.length > 26 ? h.name.slice(0, 24) + "…" : h.name}</div><div class="d3-hold-tick">${h.ticker.split(" · ")[0]}</div></div>
+      </div>
+      <div class="d3-hold-bottom"><span class="d3-hold-val">£0</span><span class="d3-pill neg">−100.0%</span></div>
+    </div>`).join("");
+
+  (function donut() {
+    const r = 54, c = 2 * Math.PI * r; let off = 0;
+    const svg = document.getElementById("d3-donut");
+    let arcs = "";
+    HOLDINGS.forEach((h, i) => {
+      const len = h.weight / 100 * c;
+      arcs += `<circle cx="70" cy="70" r="${r}" fill="none" stroke="${PALETTE[i % PALETTE.length]}" stroke-width="16"
+        stroke-dasharray="${len} ${c - len}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;
+      off += len;
+    });
+    svg.innerHTML = arcs + `<text x="70" y="66" text-anchor="middle" font-family="Manrope" font-size="10" fill="#7b7c95">HOLDINGS</text>
+      <text x="70" y="82" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="16" fill="#16162a">6</text>`;
+  })();
+  document.getElementById("d3-legend").innerHTML = HOLDINGS.map((h, i) => `
+    <div class="d3-legend-row"><span class="d3-legend-dot" style="background:${PALETTE[i % PALETTE.length]}"></span>
+      ${monogram(h.name)} <span class="d3-legend-pct">${h.weight.toFixed(1)}%</span></div>`).join("");
+
+  // ---- Design 4 rows + bar ----
+  document.getElementById("d4-rows").innerHTML = HOLDINGS.map((h, i) => `
+    <tr>
+      <td>${h.name.length > 30 ? h.name.slice(0, 28) + "…" : h.name}</td>
+      <td class="d4-ticker">${h.ticker.split(" · ")[0]}</td>
+      <td>${h.qty}</td><td>${h.avg}</td><td>£0</td>
+      <td class="d4-pnl-cell" style="background:rgba(234,57,67,${(0.06 + h.weight/100*0.18).toFixed(2)});color:var(--neg)">−£${h.pnl.toLocaleString()}</td>
+      <td style="color:var(--neg)">−100.0%</td>
+      <td>${h.weight.toFixed(1)}%</td>
+      <td><svg class="d4-spark" viewBox="0 0 40 16" preserveAspectRatio="none"><polyline points="${SPARKS[i]}" fill="none" stroke="var(--neg)" stroke-width="1.4"/></svg></td>
+    </tr>`).join("");
+  document.getElementById("d4-bar").innerHTML = HOLDINGS.map((h, i) =>
+    `<div style="flex-basis:${h.weight}%;background:${PALETTE[i % PALETTE.length]}">${h.weight > 8 ? h.weight.toFixed(0) + "%" : ""}</div>`).join("");
+  document.getElementById("d4-bar-legend").innerHTML = HOLDINGS.map((h, i) =>
+    `<span><b style="color:${PALETTE[i % PALETTE.length]}">■</b> ${monogram(h.name)} ${h.weight.toFixed(1)}%</span>`).join("");
+
+  // ---- switcher ----
+  const btns = document.querySelectorAll(".d-btn");
+  const sections = document.querySelectorAll("[data-design]");
+  const curl = document.getElementById("curl");
+  const NAMES = { 1: "Terminal Elevated", 2: "Editorial Ledger", 3: "Card Grid", 4: "Command Deck" };
+  btns.forEach(b => b.addEventListener("click", () => {
+    btns.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    sections.forEach(s => s.hidden = s.dataset.design !== b.dataset.d);
+    curl.textContent = `meridian.local/portfolio — ${NAMES[b.dataset.d]}`;
+  }));
+</script>
+
+</body></html>

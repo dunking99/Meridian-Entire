@@ -1,0 +1,634 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Five Showcase Concepts</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #0d0d0d; }
+
+  .switcher {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; background: #151515; border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 0 12px; overflow-x: auto;
+  }
+  .switcher button {
+    appearance: none; border: none; background: none; color: #8a8a8a;
+    font-family: system-ui, sans-serif; font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.04em; padding: 14px 16px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .switcher button.active { color: #fff; border-bottom-color: #fff; }
+  .switcher button:hover { color: #ddd; }
+  .design { display: none; min-height: 100vh; }
+  .design.active { display: block; }
+
+  /* ============ 1: THE PIE ============ */
+  #s1 { background: #fbfaf7; color: #201d17; font-family: "Sora", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #s1 .inner { max-width: 880px; margin: 0 auto; }
+  #s1 .kicker { font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #918c7d; margin: 0 0 6px; }
+  #s1 h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+  #s1 .sub { font-size: 13px; color: #6b6558; margin: 0 0 28px; }
+  #s1 .layout { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+  #s1 .pie-stage { position: relative; width: 380px; height: 380px; flex: none; }
+  #s1 .pie-stage svg { overflow: visible; }
+  #s1 .slice { cursor: pointer; transition: transform 220ms cubic-bezier(.2,.8,.3,1), filter 160ms ease; transform-origin: 190px 190px; }
+  #s1 .slice.hover, #s1 .slice.locked { filter: brightness(1.08) drop-shadow(0 10px 18px rgba(30,20,10,0.22)); }
+  #s1 .leader { stroke: #c9c2ae; stroke-width: 1; fill: none; }
+  #s1 .leader-label { font-size: 11.5px; fill: #201d17; font-weight: 600; }
+  #s1 .direct-label { font-size: 13px; fill: #fff; font-weight: 700; text-anchor: middle; pointer-events: none; }
+  #s1 .direct-pct { font-size: 10.5px; fill: rgba(255,255,255,0.85); text-anchor: middle; pointer-events: none; }
+  #s1 .side { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+  #s1 .legend-row { display: flex; align-items: center; gap: 10px; font-size: 13.5px; padding: 8px 10px; border-radius: 10px; cursor: pointer; transition: background 120ms ease; }
+  #s1 .legend-row:hover, #s1 .legend-row.active { background: #f1efe8; }
+  #s1 .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  #s1 .lname { flex: 1; }
+  #s1 .lval { font-weight: 700; font-variant-numeric: tabular-nums; }
+  #s1 .detail { margin-top: 8px; padding: 14px 16px; background: #201d17; color: #fbfaf7; border-radius: 14px; font-size: 12.5px; line-height: 1.6; min-height: 62px; }
+  #s1 .detail b { font-size: 16px; display: block; margin-bottom: 2px; }
+  #s1 .pills { display: flex; gap: 10px; margin-top: 30px; }
+  #s1 .pill { background: #fff; border: 1px solid #ece8de; border-radius: 999px; padding: 8px 16px; font-size: 12.5px; }
+  #s1 .pill b { color: #b5502f; }
+
+  /* ============ 2: WEIGHTED MAP ============ */
+  #s2 { background: #0d1b1e; color: #eaf3f1; font-family: "Manrope", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #s2 .inner { max-width: 960px; margin: 0 auto; }
+  #s2 .kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #7fa39c; margin: 0 0 6px; }
+  #s2 h1 { font-size: 21px; font-weight: 700; margin: 0 0 26px; }
+  #s2 .mapstage { position: relative; width: 100%; height: 420px; background: radial-gradient(ellipse at 50% 40%, #123037 0%, #0d1b1e 70%); border-radius: 20px; overflow: hidden; }
+  #s2 .land { position: absolute; background: #163b3f; border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%; opacity: 0.75; }
+  #s2 .node { position: absolute; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 200ms ease, box-shadow 200ms ease; }
+  #s2 .node .pulse { position: absolute; inset: -8px; border-radius: 50%; border: 1.5px solid currentColor; opacity: 0; animation: s2pulse 2.6s ease-out infinite; }
+  #s2 .node.flag .pulse { opacity: 0.55; }
+  @keyframes s2pulse { 0% { transform: scale(0.85); opacity: 0.5; } 100% { transform: scale(1.7); opacity: 0; } }
+  #s2 .node:hover, #s2 .node.pinned { transform: scale(1.08); }
+  #s2 .node .nn { font-size: 12px; font-weight: 700; color: #0d1b1e; }
+  #s2 .maplabel { position: absolute; font-size: 10.5px; color: #7fa39c; letter-spacing: 0.04em; pointer-events: none; }
+  #s2 .tooltip2 {
+    position: absolute; background: #eaf3f1; color: #0d1b1e; padding: 10px 13px; border-radius: 10px;
+    font-size: 12.5px; pointer-events: none; opacity: 0; transition: opacity 120ms ease; z-index: 20; white-space: nowrap;
+  }
+  #s2 .tooltip2.show { opacity: 1; }
+  #s2 .tooltip2 b { display: block; font-size: 15px; }
+  #s2 .footer2 { display: flex; gap: 30px; margin-top: 22px; flex-wrap: wrap; font-size: 12.5px; color: #a9c7c2; }
+  #s2 .footer2 b { color: #eaf3f1; }
+
+  /* ============ 3: SANKEY FLOW ============ */
+  #s3 { background: #12141a; color: #eef0f5; font-family: "Outfit", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #s3 .inner { max-width: 940px; margin: 0 auto; }
+  #s3 .kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a8fa3; margin: 0 0 6px; }
+  #s3 h1 { font-size: 21px; font-weight: 600; margin: 0 0 26px; }
+  #s3 .flowpath { cursor: pointer; transition: opacity 150ms ease; }
+  #s3 .flowpath:hover { opacity: 0.95 !important; }
+  #s3 .nodelabel { font-size: 12.5px; fill: #eef0f5; font-weight: 600; }
+  #s3 .nodeval { font-size: 11px; fill: #8a8fa3; }
+  #s3 .stagelabel { font-size: 10.5px; fill: #6b7086; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ============ 4: RADIAL BLOOM ============ */
+  #s4 { background: linear-gradient(160deg, #10202b 0%, #0a1620 100%); color: #eaf2f6; font-family: "Sora", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #s4 .inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  #s4 .kicker { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #7c93a3; margin: 0 0 6px; }
+  #s4 h1 { font-size: 21px; font-weight: 700; margin: 0 0 30px; }
+  #s4 .petal { cursor: pointer; transition: transform 200ms ease, filter 200ms ease; transform-origin: 220px 220px; }
+  #s4 .petal:hover { filter: brightness(1.15); }
+  #s4 .legend4 { display: flex; justify-content: center; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
+  #s4 .lrow4 { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #c3d3dc; }
+  #s4 .dot4 { width: 9px; height: 9px; border-radius: 50%; }
+  #s4 .center-label { font-size: 20px; font-weight: 700; fill: #eaf2f6; text-anchor: middle; }
+  #s4 .center-sub { font-size: 9.5px; fill: #7c93a3; text-anchor: middle; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ============ 5: ORGANIC MOSAIC ============ */
+  #s5 { background: #0f0f0e; color: #f2f0ea; font-family: "Fraunces", Georgia, serif; padding: 44px 20px 90px; }
+  #s5 .inner { max-width: 900px; margin: 0 auto; }
+  #s5 .kicker { font-family: system-ui, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9b9689; margin: 0 0 6px; }
+  #s5 h1 { font-size: 24px; font-weight: 500; margin: 0 0 24px; }
+  #s5 .stage5 { position: relative; border-radius: 18px; overflow: hidden; }
+  #s5 canvas { display: block; width: 100%; height: auto; cursor: crosshair; }
+  #s5 .tooltip5 {
+    position: absolute; font-family: system-ui, sans-serif; background: rgba(15,15,14,0.92); color: #f2f0ea;
+    padding: 8px 12px; border-radius: 8px; font-size: 12.5px; pointer-events: none; opacity: 0; transition: opacity 100ms ease;
+  }
+  #s5 .tooltip5.show { opacity: 1; }
+  #s5 .tooltip5 b { font-family: "Fraunces", serif; font-size: 15px; display: block; }
+  #s5 .legend5 { display: flex; gap: 16px; margin-top: 18px; flex-wrap: wrap; font-family: system-ui, sans-serif; font-size: 12px; color: #cfcbbe; }
+  #s5 .lrow5b { display: flex; align-items: center; gap: 6px; }
+  #s5 .dot5b { width: 9px; height: 9px; border-radius: 2px; }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@500;700;800&family=Outfit:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+
+<div class="switcher" id="switcher">
+  <button data-t="s1" class="active">01 · The Pie</button>
+  <button data-t="s2">02 · Weighted Map</button>
+  <button data-t="s3">03 · Sankey Flow</button>
+  <button data-t="s4">04 · Radial Bloom</button>
+  <button data-t="s5">05 · Organic Mosaic</button>
+</div>
+
+<!-- ===== 1: PIE ===== -->
+<div class="design active" id="s1">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Geography</h1>
+    <p class="sub">Click a slice to pull it forward. Hover the legend to find it on the chart.</p>
+    <div class="layout">
+      <div class="pie-stage">
+        <svg width="380" height="380" viewBox="0 0 380 380" id="s1-svg"></svg>
+      </div>
+      <div class="side">
+        <div class="legend" id="s1-legend"></div>
+        <div class="detail" id="s1-detail">Select a region to see its detail here.</div>
+      </div>
+    </div>
+    <div class="pills">
+      <div class="pill">Largest position <b>35.5%</b></div>
+      <div class="pill">Top three <b>74.6%</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2: MAP ===== -->
+<div class="design" id="s2">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Where the portfolio actually lives</h1>
+    <div class="mapstage" id="s2-stage">
+      <div class="tooltip2" id="s2-tooltip"></div>
+    </div>
+    <div class="footer2" id="s2-footer"></div>
+  </div>
+</div>
+
+<!-- ===== 3: SANKEY ===== -->
+<div class="design" id="s3">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>How the portfolio breaks down</h1>
+    <svg width="100%" height="420" viewBox="0 0 900 420" id="s3-svg"></svg>
+  </div>
+</div>
+
+<!-- ===== 4: BLOOM ===== -->
+<div class="design" id="s4">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Geography, as a bloom</h1>
+    <svg width="440" height="440" viewBox="0 0 440 440" id="s4-svg" style="margin: 0 auto; display:block;"></svg>
+    <div class="legend4" id="s4-legend"></div>
+  </div>
+</div>
+
+<!-- ===== 5: MOSAIC ===== -->
+<div class="design" id="s5">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Composition, as terrain</h1>
+    <div class="stage5">
+      <canvas id="s5-canvas" width="860" height="420"></canvas>
+      <div class="tooltip5" id="s5-tooltip"></div>
+    </div>
+    <div class="legend5" id="s5-legend"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var geo = [
+    { name: "US", value: 46.0, c: "#3a6fd6" },
+    { name: "Global", value: 19.5, c: "#e08a3c" },
+    { name: "Europe", value: 13.5, c: "#3fa27a" },
+    { name: "UK", value: 8.5, c: "#c65d6c" },
+    { name: "Asia-Pacific", value: 5.0, c: "#8a6fd1" },
+    { name: "Cash", value: 7.5, c: "#8c887c" }
+  ];
+  var notes = {
+    "US": "46.0% of the portfolio. Largest single geography, driven mainly by one broad index holding.",
+    "Global": "19.5%. Diversified developed-market exposure via a single global tracker.",
+    "Europe": "13.5%. Continental Europe ex-UK.",
+    "UK": "8.5%. Home-market exposure via a FTSE tracker.",
+    "Asia-Pacific": "5.0%. Smallest active geography, ex-Japan.",
+    "Cash": "7.5%. Uninvested balance, GBP."
+  };
+
+  document.getElementById("switcher").addEventListener("click", function (e) {
+    var btn = e.target.closest("button"); if (!btn) return;
+    document.querySelectorAll(".switcher button").forEach(function (b) { b.classList.remove("active"); });
+    document.querySelectorAll(".design").forEach(function (d) { d.classList.remove("active"); });
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.t).classList.add("active");
+  });
+
+  function polar(cx, cy, r, deg) { var rad = deg * Math.PI / 180; return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) }; }
+  function arcPath(cx, cy, rOuter, rInner, s, e) {
+    var large = e - s > 180 ? 1 : 0;
+    var p1 = polar(cx, cy, rOuter, s), p2 = polar(cx, cy, rOuter, e);
+    if (rInner === 0) return ["M", cx, cy, "L", p1.x, p1.y, "A", rOuter, rOuter, 0, large, 1, p2.x, p2.y, "Z"].join(" ");
+    var p3 = polar(cx, cy, rInner, e), p4 = polar(cx, cy, rInner, s);
+    return ["M", p1.x, p1.y, "A", rOuter, rOuter, 0, large, 1, p2.x, p2.y, "L", p3.x, p3.y, "A", rInner, rInner, 0, large, 0, p4.x, p4.y, "Z"].join(" ");
+  }
+
+  /* ===================== 1: PIE ===================== */
+  (function () {
+    var svg = document.getElementById("s1-svg");
+    var cx = 190, cy = 190, r = 150;
+    var total = geo.reduce(function (a, d) { return a + d.value; }, 0);
+    var angle = -90;
+    var legend = document.getElementById("s1-legend");
+    var detail = document.getElementById("s1-detail");
+    var slices = {};
+
+    geo.forEach(function (d) {
+      var sweep = (d.value / total) * 360;
+      var s = angle, e = angle + sweep;
+      var mid = (s + e) / 2;
+      angle += sweep;
+
+      var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      g.setAttribute("class", "slice");
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", arcPath(cx, cy, r, 0, s, e));
+      path.setAttribute("fill", d.c);
+      path.setAttribute("stroke", "#fbfaf7");
+      path.setAttribute("stroke-width", "2");
+      g.appendChild(path);
+
+      var big = sweep > 22;
+      if (big) {
+        var lp = polar(cx, cy, r * 0.62, mid);
+        var t1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t1.setAttribute("x", lp.x); t1.setAttribute("y", lp.y - 3);
+        t1.setAttribute("class", "direct-label"); t1.textContent = d.name;
+        var t2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t2.setAttribute("x", lp.x); t2.setAttribute("y", lp.y + 13);
+        t2.setAttribute("class", "direct-pct"); t2.textContent = d.value.toFixed(1) + "%";
+        g.appendChild(t1); g.appendChild(t2);
+      } else {
+        var p1 = polar(cx, cy, r + 4, mid);
+        var p2 = polar(cx, cy, r + 26, mid);
+        var alignRight = Math.cos(mid * Math.PI / 180) >= 0;
+        var p3x = p2.x + (alignRight ? 22 : -22);
+        var leader = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+        leader.setAttribute("points", p1.x + "," + p1.y + " " + p2.x + "," + p2.y + " " + p3x + "," + p2.y);
+        leader.setAttribute("class", "leader");
+        var lt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        lt.setAttribute("x", p3x + (alignRight ? 4 : -4));
+        lt.setAttribute("y", p2.y + 4);
+        lt.setAttribute("text-anchor", alignRight ? "start" : "end");
+        lt.setAttribute("class", "leader-label");
+        lt.textContent = d.name + " " + d.value.toFixed(1) + "%";
+        svg.appendChild(leader);
+        svg.appendChild(lt);
+      }
+
+      var explodeX = Math.cos(mid * Math.PI / 180) * 14;
+      var explodeY = Math.sin(mid * Math.PI / 180) * 14;
+
+      function setState(hover, locked) {
+        g.style.transform = (hover || locked) ? "translate(" + explodeX + "px," + explodeY + "px)" : "";
+        g.classList.toggle("hover", hover);
+        g.classList.toggle("locked", locked);
+      }
+      g.dataset.locked = "0";
+      g.addEventListener("pointerenter", function () { if (g.dataset.locked !== "1") setState(true, false); syncLegend(d.name, true); });
+      g.addEventListener("pointerleave", function () { if (g.dataset.locked !== "1") setState(false, false); syncLegend(d.name, false); });
+      g.addEventListener("click", function () {
+        Object.keys(slices).forEach(function (k) { slices[k].dataset.locked = "0"; setStateFor(slices[k], false, false); });
+        g.dataset.locked = "1"; setState(false, true);
+        showDetail(d);
+      });
+      slices[d.name] = g;
+      svg.appendChild(g);
+    });
+
+    function setStateFor(g, hover, locked) {
+      var idx = Object.keys(slices).find(function (k) { return slices[k] === g; });
+      g.style.transform = "";
+      g.classList.remove("hover", "locked");
+    }
+
+    function showDetail(d) {
+      detail.innerHTML = '<b>' + d.name + ' — ' + d.value.toFixed(1) + '%</b>' + notes[d.name];
+    }
+
+    function syncLegend(name, on) {
+      var row = legend.querySelector('[data-name="' + name + '"]');
+      if (row) row.classList.toggle("active", on);
+    }
+
+    legend.innerHTML = geo.map(function (d) {
+      return '<div class="legend-row" data-name="' + d.name + '"><span class="dot" style="background:' + d.c + '"></span><span class="lname">' + d.name + '</span><span class="lval">' + d.value.toFixed(1) + '%</span></div>';
+    }).join("");
+    legend.querySelectorAll(".legend-row").forEach(function (row) {
+      var name = row.dataset.name;
+      row.addEventListener("pointerenter", function () { slices[name].dispatchEvent(new Event("pointerenter")); });
+      row.addEventListener("pointerleave", function () { slices[name].dispatchEvent(new Event("pointerleave")); });
+      row.addEventListener("click", function () { slices[name].dispatchEvent(new Event("click")); });
+    });
+  })();
+
+  /* ===================== 2: WEIGHTED MAP ===================== */
+  (function () {
+    var stage = document.getElementById("s2-stage");
+    var tooltip = document.getElementById("s2-tooltip");
+    var landmasses = [
+      { top: "8%", left: "6%", w: "24%", h: "46%" },
+      { top: "6%", left: "40%", w: "16%", h: "30%" },
+      { top: "44%", left: "38%", w: "18%", h: "40%" },
+      { top: "10%", left: "58%", w: "30%", h: "50%" },
+      { top: "58%", left: "76%", w: "16%", h: "26%" }
+    ];
+    landmasses.forEach(function (l) {
+      var el = document.createElement("div");
+      el.className = "land";
+      el.style.top = l.top; el.style.left = l.left; el.style.width = l.w; el.style.height = l.h;
+      stage.appendChild(el);
+    });
+
+    var positions = {
+      "US": { top: "34%", left: "16%" },
+      "Global": { top: "50%", left: "48%" },
+      "Europe": { top: "24%", left: "46%" },
+      "UK": { top: "18%", left: "42%" },
+      "Asia-Pacific": { top: "55%", left: "78%" },
+      "Cash": { top: "78%", left: "12%" }
+    };
+    var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+    var minV = Math.min.apply(null, geo.map(function (d) { return d.value; }));
+    var pinned = null;
+
+    geo.forEach(function (d) {
+      var size = 46 + ((d.value - minV) / (maxV - minV || 1)) * 74;
+      var node = document.createElement("div");
+      node.className = "node" + (d.name === "US" ? " flag" : "");
+      node.style.width = size + "px"; node.style.height = size + "px";
+      node.style.left = "calc(" + positions[d.name].left + " - " + (size / 2) + "px)";
+      node.style.top = "calc(" + positions[d.name].top + " - " + (size / 2) + "px)";
+      node.style.background = d.c;
+      node.style.color = d.c;
+      node.innerHTML = '<span class="pulse"></span><span class="nn">' + d.value.toFixed(0) + '%</span>';
+      node.addEventListener("pointerenter", function (e) { showTip(d, e); });
+      node.addEventListener("pointermove", function (e) { positionTip(e); });
+      node.addEventListener("pointerleave", function () { if (!pinned) tooltip.classList.remove("show"); });
+      node.addEventListener("click", function (e) {
+        document.querySelectorAll("#s2 .node").forEach(function (n) { n.classList.remove("pinned"); });
+        if (pinned === d.name) { pinned = null; }
+        else { pinned = d.name; node.classList.add("pinned"); showTip(d, e); }
+      });
+      stage.appendChild(node);
+    });
+
+    function showTip(d, e) {
+      tooltip.innerHTML = '<b>' + d.name + '</b>' + d.value.toFixed(1) + '% of portfolio';
+      tooltip.classList.add("show");
+      positionTip(e);
+    }
+    function positionTip(e) {
+      var rect = stage.getBoundingClientRect();
+      tooltip.style.left = (e.clientX - rect.left + 16) + "px";
+      tooltip.style.top = (e.clientY - rect.top - 10) + "px";
+    }
+
+    document.getElementById("s2-footer").innerHTML =
+      '<div>Sector <b>92% Broad</b></div><div>Currency <b>100% GBP</b></div><div>Wrapper <b>92% ISA</b></div>' +
+      '<div>Largest position <b>35.5%</b> (flagged, pulsing)</div>';
+  })();
+
+  /* ===================== 3: SANKEY ===================== */
+  (function () {
+    var svg = document.getElementById("s3-svg");
+    var W = 900, H = 420;
+    var total = geo.reduce(function (a, d) { return a + d.value; }, 0);
+    var investedTotal = total - (geo.find(function (d) { return d.name === "Cash"; }).value);
+    var cashVal = geo.find(function (d) { return d.name === "Cash"; }).value;
+
+    var colX = [40, 380, 720];
+    var srcH = H - 40, srcY = 20;
+
+    function nodeRect(x, y, h, w) { return { x: x, y: y, h: h, w: w }; }
+    var portfolioNode = nodeRect(colX[0], srcY, srcH, 26);
+
+    var stage2 = [
+      { name: "Invested", value: investedTotal, c: "#3a6fd6" },
+      { name: "Cash", value: cashVal, c: "#8c887c" }
+    ];
+    var gap2 = 14;
+    var y2 = srcY;
+    var stage2Nodes = stage2.map(function (d) {
+      var h = (d.value / total) * (srcH - gap2 * (stage2.length - 1));
+      var n = nodeRect(colX[1], y2, h, 26);
+      y2 += h + gap2;
+      return Object.assign({}, d, n);
+    });
+
+    var investedGeo = geo.filter(function (d) { return d.name !== "Cash"; });
+    var gap3 = 10;
+    var y3 = srcY;
+    var stage3Nodes = investedGeo.map(function (d) {
+      var h = (d.value / total) * (srcH - gap3 * geo.length);
+      var n = nodeRect(colX[2], y3, h, 26);
+      y3 += h + gap3;
+      return Object.assign({}, d, n);
+    });
+    var cashNode3 = nodeRect(colX[2], y3, (cashVal / total) * (srcH - gap3 * geo.length), 26);
+
+    function flowPath(x1, y1, h1, x2, y2, h2) {
+      var xm = (x1 + x2) / 2;
+      return ["M", x1, y1, "C", xm, y1, xm, y2, x2, y2,
+        "L", x2, y2 + h2, "C", xm, y2 + h2, xm, y1 + h1, x1, y1 + h1, "Z"].join(" ");
+    }
+
+    function drawNode(n, label, color) {
+      var r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      r.setAttribute("x", n.x); r.setAttribute("y", n.y); r.setAttribute("width", n.w); r.setAttribute("height", n.h);
+      r.setAttribute("rx", 4); r.setAttribute("fill", color);
+      svg.appendChild(r);
+      var t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      var onLeft = n.x < W / 2;
+      t.setAttribute("x", onLeft ? n.x + n.w + 10 : n.x - 10);
+      t.setAttribute("y", n.y + n.h / 2 - 3);
+      t.setAttribute("text-anchor", onLeft ? "start" : "end");
+      t.setAttribute("class", "nodelabel");
+      t.textContent = label;
+      svg.appendChild(t);
+    }
+
+    var py = portfolioNode.y;
+    stage2Nodes.forEach(function (s) {
+      var h = (s.value / total) * srcH;
+      var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", flowPath(portfolioNode.x + portfolioNode.w, py, h, s.x, s.y, s.h));
+      p.setAttribute("fill", s.c); p.setAttribute("opacity", "0.55"); p.setAttribute("class", "flowpath");
+      svg.appendChild(p);
+      py += h;
+    });
+
+    var investedNode = stage2Nodes[0];
+    var iy = investedNode.y;
+    stage3Nodes.forEach(function (g) {
+      var h = (g.value / total) * srcH;
+      var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", flowPath(investedNode.x + investedNode.w, iy, h, g.x, g.y, g.h));
+      p.setAttribute("fill", g.c); p.setAttribute("opacity", "0.6"); p.setAttribute("class", "flowpath");
+      svg.appendChild(p);
+      iy += h;
+    });
+    var cashS2 = stage2Nodes[1];
+    var pc = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    pc.setAttribute("d", flowPath(cashS2.x + cashS2.w, cashS2.y, cashS2.h, cashNode3.x, cashNode3.y, cashNode3.h));
+    pc.setAttribute("fill", "#8c887c"); pc.setAttribute("opacity", "0.6"); pc.setAttribute("class", "flowpath");
+    svg.appendChild(pc);
+
+    drawNode(portfolioNode, "Portfolio · 100%", "#eef0f5");
+    stage2Nodes.forEach(function (s) { drawNode(s, s.name + " · " + s.value.toFixed(1) + "%", s.c); });
+    stage3Nodes.forEach(function (g) { drawNode(g, g.name + " · " + g.value.toFixed(1) + "%", g.c); });
+    drawNode(cashNode3, "Cash · " + cashVal.toFixed(1) + "%", "#8c887c");
+
+    ["Source", "Split", "Geography"].forEach(function (lab, i) {
+      var t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      t.setAttribute("x", colX[i]); t.setAttribute("y", 14);
+      t.setAttribute("class", "stagelabel"); t.textContent = lab;
+      svg.appendChild(t);
+    });
+  })();
+
+  /* ===================== 4: RADIAL BLOOM ===================== */
+  (function () {
+    var svg = document.getElementById("s4-svg");
+    var cx = 220, cy = 220;
+    var n = geo.length;
+    var angleStep = 360 / n;
+    var maxV = Math.max.apply(null, geo.map(function (d) { return d.value; }));
+    var maxR = 175, minR = 46;
+
+    geo.forEach(function (d, i) {
+      var s = -90 + i * angleStep + 3;
+      var e = -90 + (i + 1) * angleStep - 3;
+      var r = minR + (d.value / maxV) * (maxR - minR);
+      var mid = (s + e) / 2;
+
+      var petal = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      petal.setAttribute("d", arcPath(cx, cy, r, minR * 0.5, s, e));
+      var gradId = "grad" + i;
+      var grad = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient");
+      grad.setAttribute("id", gradId); grad.setAttribute("cx", "50%"); grad.setAttribute("cy", "50%"); grad.setAttribute("r", "70%");
+      var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+      stop1.setAttribute("offset", "0%"); stop1.setAttribute("stop-color", d.c); stop1.setAttribute("stop-opacity", "0.55");
+      var stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+      stop2.setAttribute("offset", "100%"); stop2.setAttribute("stop-color", d.c);
+      grad.appendChild(stop1); grad.appendChild(stop2);
+      svg.appendChild(grad);
+      petal.setAttribute("fill", "url(#" + gradId + ")");
+      petal.setAttribute("class", "petal");
+      petal.setAttribute("data-name", d.name);
+
+      var lp = polar(cx, cy, r + 14, mid);
+      var label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", lp.x); label.setAttribute("y", lp.y);
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("fill", "#eaf2f6"); label.setAttribute("font-size", "11.5");
+      label.textContent = d.name + " " + d.value.toFixed(1) + "%";
+
+      petal.addEventListener("pointerenter", function () { petal.style.transform = "scale(1.05)"; });
+      petal.addEventListener("pointerleave", function () { petal.style.transform = ""; });
+
+      svg.appendChild(petal);
+      svg.appendChild(label);
+    });
+
+    var c1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c1.setAttribute("cx", cx); c1.setAttribute("cy", cy); c1.setAttribute("r", minR * 0.5);
+    c1.setAttribute("fill", "#10202b"); c1.setAttribute("stroke", "#2a4351"); c1.setAttribute("stroke-width", "1.5");
+    svg.appendChild(c1);
+    var t1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t1.setAttribute("x", cx); t1.setAttribute("y", cy - 3); t1.setAttribute("class", "center-label"); t1.textContent = "100%";
+    var t2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t2.setAttribute("x", cx); t2.setAttribute("y", cy + 12); t2.setAttribute("class", "center-sub"); t2.textContent = "Allocated";
+    svg.appendChild(t1); svg.appendChild(t2);
+
+    document.getElementById("s4-legend").innerHTML = geo.map(function (d) {
+      return '<div class="lrow4"><span class="dot4" style="background:' + d.c + '"></span>' + d.name + ' ' + d.value.toFixed(1) + '%</div>';
+    }).join("");
+  })();
+
+  /* ===================== 5: ORGANIC MOSAIC ===================== */
+  (function () {
+    var canvas = document.getElementById("s5-canvas");
+    var ctx = canvas.getContext("2d");
+    var W = canvas.width, H = canvas.height;
+    var seeds = [
+      { d: geo[0], x: W * 0.30, y: H * 0.42, w: 46.0 },
+      { d: geo[1], x: W * 0.68, y: H * 0.30, w: 19.5 },
+      { d: geo[2], x: W * 0.60, y: H * 0.68, w: 13.5 },
+      { d: geo[3], x: W * 0.16, y: H * 0.75, w: 8.5 },
+      { d: geo[4], x: W * 0.86, y: H * 0.70, w: 5.0 },
+      { d: geo[5], x: W * 0.88, y: H * 0.20, w: 7.5 }
+    ];
+    var step = 5;
+    var gridW = Math.ceil(W / step), gridH = Math.ceil(H / step);
+    var idxGrid = new Int8Array(gridW * gridH);
+
+    for (var gy = 0; gy < gridH; gy++) {
+      for (var gx = 0; gx < gridW; gx++) {
+        var px = gx * step + step / 2, py = gy * step + step / 2;
+        var best = -1, bestD = Infinity;
+        for (var i = 0; i < seeds.length; i++) {
+          var s = seeds[i];
+          var dx = px - s.x, dy = py - s.y;
+          var dist = Math.sqrt(dx * dx + dy * dy) / Math.sqrt(s.w);
+          if (dist < bestD) { bestD = dist; best = i; }
+        }
+        idxGrid[gy * gridW + gx] = best;
+      }
+    }
+
+    function render(hoverIdx) {
+      ctx.clearRect(0, 0, W, H);
+      for (var gy = 0; gy < gridH; gy++) {
+        for (var gx = 0; gx < gridW; gx++) {
+          var idx = idxGrid[gy * gridW + gx];
+          var s = seeds[idx];
+          ctx.fillStyle = s.d.c;
+          ctx.globalAlpha = (hoverIdx === null || hoverIdx === idx) ? 1 : 0.35;
+          ctx.fillRect(gx * step, gy * step, step + 1, step + 1);
+        }
+      }
+      ctx.globalAlpha = 1;
+      var grad = ctx.createRadialGradient(W / 2, H / 2, H * 0.2, W / 2, H / 2, W * 0.65);
+      grad.addColorStop(0, "rgba(0,0,0,0)");
+      grad.addColorStop(1, "rgba(0,0,0,0.28)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+      ctx.font = "600 13px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      seeds.forEach(function (s) {
+        ctx.fillStyle = "rgba(15,15,14,0.55)";
+        ctx.fillRect(s.x - 30, s.y - 11, 60, 20);
+        ctx.fillStyle = "#f2f0ea";
+        ctx.fillText(s.d.name + " " + s.d.value.toFixed(0) + "%", s.x, s.y + 4);
+      });
+    }
+    render(null);
+
+    var tooltip = document.getElementById("s5-tooltip");
+    var stage = document.querySelector("#s5 .stage5");
+    canvas.addEventListener("pointermove", function (e) {
+      var rect = canvas.getBoundingClientRect();
+      var scaleX = W / rect.width, scaleY = H / rect.height;
+      var px = (e.clientX - rect.left) * scaleX, py = (e.clientY - rect.top) * scaleY;
+      var gx = Math.min(gridW - 1, Math.floor(px / step)), gy = Math.min(gridH - 1, Math.floor(py / step));
+      var idx = idxGrid[gy * gridW + gx];
+      render(idx);
+      var s = seeds[idx];
+      tooltip.innerHTML = '<b>' + s.d.name + '</b>' + s.d.value.toFixed(1) + '% of portfolio';
+      tooltip.classList.add("show");
+      tooltip.style.left = (e.clientX - rect.left + 14) + "px";
+      tooltip.style.top = (e.clientY - rect.top - 10) + "px";
+    });
+    canvas.addEventListener("pointerleave", function () { render(null); tooltip.classList.remove("show"); });
+
+    document.getElementById("s5-legend").innerHTML = geo.map(function (d) {
+      return '<div class="lrow5b"><span class="dot5b" style="background:' + d.c + '"></span>' + d.name + ' ' + d.value.toFixed(1) + '%</div>';
+    }).join("");
+  })();
+})();
+</script>
+
+</body></html>

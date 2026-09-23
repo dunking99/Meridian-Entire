@@ -1,0 +1,362 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Four Distinct Chart Forms</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #0d0d0d; }
+
+  .switcher {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; background: #151515; border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 0 12px; overflow-x: auto;
+  }
+  .switcher button {
+    appearance: none; border: none; background: none; color: #8a8a8a;
+    font-family: system-ui, sans-serif; font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.04em; padding: 14px 16px; cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .switcher button.active { color: #fff; border-bottom-color: #fff; }
+  .switcher button:hover { color: #ddd; }
+  .design { display: none; min-height: 100vh; }
+  .design.active { display: block; }
+  .kicker { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 6px; }
+  .capt { font-size: 12.5px; margin: 0 0 30px; }
+
+  /* ============ 1: PIE CHART ============ */
+  #f1 { background: #fbfaf7; color: #221f19; font-family: "Fraunces", Georgia, serif; padding: 44px 20px 90px; }
+  #f1 .ui { font-family: "Work Sans", system-ui, sans-serif; }
+  #f1 .kicker { color: #948e7f; font-family: "Work Sans", system-ui, sans-serif; }
+  #f1 .capt { color: #6b6558; font-family: "Work Sans", system-ui, sans-serif; }
+  #f1 .inner { max-width: 1000px; margin: 0 auto; }
+  #f1 h1 { font-size: 26px; font-weight: 500; margin: 0 0 8px; }
+  #f1 .row { display: flex; gap: 44px; flex-wrap: wrap; justify-content: space-between; }
+  #f1 .col { flex: 1; min-width: 250px; text-align: center; }
+  #f1 .clbl { font-family: "Work Sans", system-ui, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #948e7f; margin-bottom: 16px; }
+  #f1 .slice { cursor: default; transition: filter 140ms ease; }
+  #f1 .slice:hover { filter: brightness(1.08); }
+  #f1 .direct-label { font-family: "Work Sans", system-ui, sans-serif; font-size: 11.5px; fill: #fff; font-weight: 600; text-anchor: middle; pointer-events: none; }
+  #f1 .leader { stroke: #d8d2c2; stroke-width: 1; fill: none; }
+  #f1 .leader-label { font-family: "Work Sans", system-ui, sans-serif; font-size: 11px; fill: #221f19; }
+
+  /* ============ 2: TREEMAP ============ */
+  #f2 { background: #f4f5f3; color: #171a17; font-family: "Manrope", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #f2 .kicker { color: #737a71; }
+  #f2 .capt { color: #565c54; }
+  #f2 .inner { max-width: 1000px; margin: 0 auto; }
+  #f2 h1 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
+  #f2 .row2 { display: flex; gap: 20px; flex-wrap: wrap; }
+  #f2 .col2 { flex: 1; min-width: 280px; }
+  #f2 .clbl2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #737a71; margin-bottom: 10px; }
+  #f2 .tmwrap { position: relative; width: 100%; height: 220px; border-radius: 12px; overflow: hidden; }
+  #f2 .cell { position: absolute; display: flex; align-items: flex-end; padding: 8px 10px; color: #fff; font-size: 11.5px; font-weight: 700; }
+  #f2 .cell .cv { font-weight: 500; opacity: 0.9; margin-left: 5px; }
+
+  /* ============ 3: BUBBLE ============ */
+  #f3 { background: #fdf8f4; color: #2b2118; font-family: "Quicksand", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #f3 .kicker { color: #a08d7a; }
+  #f3 .capt { color: #7a6a5a; }
+  #f3 .inner { max-width: 1000px; margin: 0 auto; }
+  #f3 h1 { font-size: 21px; font-weight: 700; margin: 0 0 8px; }
+  #f3 .row3 { display: flex; gap: 20px; flex-wrap: wrap; }
+  #f3 .col3 { flex: 1; min-width: 280px; }
+  #f3 .clbl3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #a08d7a; margin-bottom: 10px; }
+  #f3 .bstage { position: relative; width: 100%; height: 220px; }
+  #f3 .bubble { position: absolute; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center; }
+  #f3 .bubble .bn { font-weight: 700; font-variant-numeric: tabular-nums; }
+  #f3 .bubble .bl { font-size: 9.5px; opacity: 0.9; }
+
+  /* ============ 4: WAFFLE ============ */
+  #f4 { background: #fafaf8; color: #1b1b18; font-family: "IBM Plex Sans", system-ui, sans-serif; padding: 44px 20px 90px; }
+  #f4 .kicker { color: #86867e; }
+  #f4 .capt { color: #61615a; }
+  #f4 .inner { max-width: 1000px; margin: 0 auto; }
+  #f4 h1 { font-size: 20px; font-weight: 600; margin: 0 0 8px; }
+  #f4 .row4 { display: flex; gap: 30px; flex-wrap: wrap; }
+  #f4 .col4 { flex: 1; min-width: 240px; }
+  #f4 .clbl4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #86867e; margin-bottom: 10px; }
+  #f4 .waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2.5px; width: 100%; max-width: 190px; }
+  #f4 .wcell { aspect-ratio: 1; border-radius: 2px; }
+  #f4 .legend4 { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+  #f4 .lrow4 { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+  #f4 .dot4 { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  #f4 .lrow4 b { margin-left: auto; font-variant-numeric: tabular-nums; }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Work+Sans:wght@400;500;600&family=Manrope:wght@500;700;800&family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<div class="switcher" id="switcher">
+  <button data-t="f1" class="active">01 · Pie Chart</button>
+  <button data-t="f2">02 · Treemap</button>
+  <button data-t="f3">03 · Bubble Chart</button>
+  <button data-t="f4">04 · Waffle Grid</button>
+</div>
+
+<!-- ===== 1: PIE ===== -->
+<div class="design active" id="f1">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Composition</h1>
+    <p class="capt">8 holdings &middot; 4 regions &middot; 5 sectors &middot; 6 currencies</p>
+    <div class="row" id="f1-row"></div>
+  </div>
+</div>
+
+<!-- ===== 2: TREEMAP ===== -->
+<div class="design" id="f2">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Composition</h1>
+    <p class="capt">8 holdings &middot; 4 regions &middot; 5 sectors &middot; 6 currencies</p>
+    <div class="row2" id="f2-row"></div>
+  </div>
+</div>
+
+<!-- ===== 3: BUBBLE ===== -->
+<div class="design" id="f3">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Composition</h1>
+    <p class="capt">8 holdings &middot; 4 regions &middot; 5 sectors &middot; 6 currencies</p>
+    <div class="row3" id="f3-row"></div>
+  </div>
+</div>
+
+<!-- ===== 4: WAFFLE ===== -->
+<div class="design" id="f4">
+  <div class="inner">
+    <p class="kicker">Portfolio &middot; Composition</p>
+    <h1>Composition</h1>
+    <p class="capt">8 holdings &middot; 4 regions &middot; 5 sectors &middot; 6 currencies</p>
+    <div class="row4" id="f4-row"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var palette = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"];
+  var boxes = {
+    geography: [
+      { name: "US", value: 33.0 },
+      { name: "Europe", value: 32.5 },
+      { name: "Asia-Pacific", value: 23.0 },
+      { name: "UK", value: 11.5 }
+    ],
+    sector: [
+      { name: "Technology", value: 43.0 },
+      { name: "Cons. Discretionary", value: 22.5 },
+      { name: "Financials", value: 14.0 },
+      { name: "Energy", value: 11.5 },
+      { name: "Cons. Staples", value: 9.0 }
+    ],
+    currency: [
+      { name: "USD", value: 33.0 },
+      { name: "EUR", value: 23.5 },
+      { name: "JPY", value: 12.5 },
+      { name: "GBP", value: 11.5 },
+      { name: "KRW", value: 10.5 },
+      { name: "CHF", value: 9.0 }
+    ]
+  };
+  Object.keys(boxes).forEach(function (k) { boxes[k].forEach(function (d, i) { d.c = palette[i]; }); });
+  var boxLabels = { geography: "Geography", sector: "Sector", currency: "Currency" };
+  var boxOrder = ["geography", "sector", "currency"];
+
+  document.getElementById("switcher").addEventListener("click", function (e) {
+    var btn = e.target.closest("button"); if (!btn) return;
+    document.querySelectorAll(".switcher button").forEach(function (b) { b.classList.remove("active"); });
+    document.querySelectorAll(".design").forEach(function (d) { d.classList.remove("active"); });
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.t).classList.add("active");
+  });
+
+  function polar(cx, cy, r, deg) { var rad = deg * Math.PI / 180; return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) }; }
+  function arcPath(cx, cy, r, s, e) {
+    var large = e - s > 180 ? 1 : 0;
+    var p1 = polar(cx, cy, r, s), p2 = polar(cx, cy, r, e);
+    return ["M", cx, cy, "L", p1.x, p1.y, "A", r, r, 0, large, 1, p2.x, p2.y, "Z"].join(" ");
+  }
+
+  /* ===== 1: PIE ===== */
+  (function () {
+    var row = document.getElementById("f1-row");
+    boxOrder.forEach(function (key) {
+      var data = boxes[key];
+      var col = document.createElement("div");
+      col.className = "col";
+      col.innerHTML = '<div class="clbl">' + boxLabels[key] + '</div><svg width="190" height="190" viewBox="0 0 190 190" class="psvg"></svg>';
+      row.appendChild(col);
+      var svg = col.querySelector(".psvg");
+      var cx = 95, cy = 95, r = 82;
+      var total = data.reduce(function (a, d) { return a + d.value; }, 0);
+      var angle = -90;
+      data.forEach(function (d) {
+        var sweep = (d.value / total) * 360;
+        var s = angle, e = angle + sweep;
+        var mid = (s + e) / 2;
+        angle += sweep;
+        var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttribute("class", "slice");
+        var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", arcPath(cx, cy, r, s, e));
+        path.setAttribute("fill", d.c);
+        path.setAttribute("stroke", "#fbfaf7");
+        path.setAttribute("stroke-width", "2");
+        g.appendChild(path);
+        if (sweep >= 22) {
+          var lp = polar(cx, cy, r * 0.62, mid);
+          var t1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          t1.setAttribute("x", lp.x); t1.setAttribute("y", lp.y + 4);
+          t1.setAttribute("class", "direct-label");
+          t1.textContent = d.value.toFixed(0) + "%";
+          g.appendChild(t1);
+        } else {
+          var p1 = polar(cx, cy, r + 4, mid), p2 = polar(cx, cy, r + 20, mid);
+          var alignRight = Math.cos(mid * Math.PI / 180) >= 0;
+          var p3x = p2.x + (alignRight ? 18 : -18);
+          var leader = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+          leader.setAttribute("points", p1.x + "," + p1.y + " " + p2.x + "," + p2.y + " " + p3x + "," + p2.y);
+          leader.setAttribute("class", "leader");
+          svg.appendChild(leader);
+          var lt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          lt.setAttribute("x", p3x + (alignRight ? 4 : -4)); lt.setAttribute("y", p2.y + 4);
+          lt.setAttribute("text-anchor", alignRight ? "start" : "end");
+          lt.setAttribute("class", "leader-label");
+          lt.textContent = d.name + " " + d.value.toFixed(1) + "%";
+          svg.appendChild(lt);
+        }
+        svg.appendChild(g);
+      });
+      var namesRow = document.createElement("div");
+      namesRow.className = "ui";
+      namesRow.style.cssText = "font-size:11.5px;color:#6b6558;margin-top:10px;line-height:1.6";
+      namesRow.textContent = data.filter(function (d) { return (d.value / total) * 360 >= 22; }).map(function (d) { return d.name + " " + d.value.toFixed(1) + "%"; }).join(" · ");
+      col.appendChild(namesRow);
+    });
+  })();
+
+  /* ===== 2: TREEMAP ===== */
+  (function () {
+    function treemap(items, x, y, w, h, horizontal, out) {
+      if (items.length === 1) { out.push({ d: items[0], x: x, y: y, w: w, h: h }); return; }
+      var total = items.reduce(function (a, d) { return a + d.value; }, 0);
+      var half = total / 2, acc = 0, splitIdx = 1;
+      for (var i = 0; i < items.length; i++) {
+        acc += items[i].value;
+        if (acc >= half) { splitIdx = i + 1; break; }
+      }
+      splitIdx = Math.max(1, Math.min(splitIdx, items.length - 1));
+      var groupA = items.slice(0, splitIdx), groupB = items.slice(splitIdx);
+      var fracA = groupA.reduce(function (a, d) { return a + d.value; }, 0) / total;
+      if (horizontal) {
+        var wA = w * fracA;
+        treemap(groupA, x, y, wA, h, false, out);
+        treemap(groupB, x + wA, y, w - wA, h, false, out);
+      } else {
+        var hA = h * fracA;
+        treemap(groupA, x, y, w, hA, true, out);
+        treemap(groupB, x, y + hA, w, h - hA, true, out);
+      }
+    }
+    var row = document.getElementById("f2-row");
+    boxOrder.forEach(function (key) {
+      var col = document.createElement("div");
+      col.className = "col2";
+      col.innerHTML = '<div class="clbl2">' + boxLabels[key] + '</div><div class="tmwrap"></div>';
+      row.appendChild(col);
+      var wrap = col.querySelector(".tmwrap");
+      var W = 320, H = 220;
+      var rects = [];
+      treemap(boxes[key], 0, 0, W, H, true, rects);
+      rects.forEach(function (r) {
+        var cell = document.createElement("div");
+        cell.className = "cell";
+        var gap = 2;
+        cell.style.left = (r.x / W) * 100 + "%";
+        cell.style.top = (r.y / H) * 100 + "%";
+        cell.style.width = "calc(" + (r.w / W) * 100 + "% - " + gap + "px)";
+        cell.style.height = "calc(" + (r.h / H) * 100 + "% - " + gap + "px)";
+        cell.style.background = r.d.c;
+        var showLabel = r.w > 60 && r.h > 34;
+        cell.innerHTML = showLabel ? (r.d.name + '<span class="cv">' + r.d.value.toFixed(0) + '%</span>') : "";
+        if (!showLabel) cell.title = r.d.name + " " + r.d.value.toFixed(1) + "%";
+        wrap.appendChild(cell);
+      });
+    });
+  })();
+
+  /* ===== 3: BUBBLE ===== */
+  (function () {
+    var row = document.getElementById("f3-row");
+    boxOrder.forEach(function (key) {
+      var data = boxes[key].slice().sort(function (a, b) { return b.value - a.value; });
+      var col = document.createElement("div");
+      col.className = "col3";
+      col.innerHTML = '<div class="clbl3">' + boxLabels[key] + '</div><div class="bstage"></div>';
+      row.appendChild(col);
+      var stage = col.querySelector(".bstage");
+      var W = 320, H = 220, cx = W / 2, cy = H / 2;
+      var maxV = data[0].value, minV = data[data.length - 1].value;
+      var maxR = 62, minR = 24;
+      var placed = [];
+      data.forEach(function (d, i) {
+        var r = minR + ((d.value - minV) / (maxV - minV || 1)) * (maxR - minR);
+        var pos;
+        if (i === 0) { pos = { x: cx - 30, y: cy, r: r }; }
+        else {
+          var found = false, tries = 0;
+          while (!found && tries < 300) {
+            var ang = (i * 61 + tries * 13) * Math.PI / 180;
+            var testR = placed[0].r + r + 8 + Math.floor(tries / 15) * 6;
+            var x = placed[0].x + Math.cos(ang) * testR, y = placed[0].y + Math.sin(ang) * testR;
+            var ok = x - r > 4 && x + r < W - 4 && y - r > 4 && y + r < H - 4;
+            for (var j = 0; j < placed.length && ok; j++) {
+              var dx = x - placed[j].x, dy = y - placed[j].y;
+              if (Math.sqrt(dx * dx + dy * dy) < r + placed[j].r + 5) ok = false;
+            }
+            if (ok) { pos = { x: x, y: y, r: r }; found = true; }
+            tries++;
+          }
+          if (!found) pos = { x: cx, y: cy, r: r };
+        }
+        placed.push(pos);
+        var el = document.createElement("div");
+        el.className = "bubble";
+        el.style.width = pos.r * 2 + "px"; el.style.height = pos.r * 2 + "px";
+        el.style.left = (pos.x - pos.r) + "px"; el.style.top = (pos.y - pos.r) + "px";
+        el.style.background = d.c;
+        el.innerHTML = '<div class="bn">' + d.value.toFixed(0) + '%</div><div class="bl">' + d.name + '</div>';
+        stage.appendChild(el);
+      });
+    });
+  })();
+
+  /* ===== 4: WAFFLE ===== */
+  (function () {
+    var row = document.getElementById("f4-row");
+    boxOrder.forEach(function (key) {
+      var data = boxes[key];
+      var col = document.createElement("div");
+      col.className = "col4";
+      col.innerHTML = '<div class="clbl4">' + boxLabels[key] + '</div><div class="waffle"></div><div class="legend4"></div>';
+      row.appendChild(col);
+      var seq = [];
+      data.forEach(function (d) { for (var i = 0; i < Math.round(d.value); i++) seq.push(d.c); });
+      while (seq.length < 100) seq.push(data[data.length - 1].c);
+      seq = seq.slice(0, 100);
+      var waffle = col.querySelector(".waffle");
+      seq.forEach(function (c) {
+        var cell = document.createElement("div");
+        cell.className = "wcell";
+        cell.style.background = c;
+        waffle.appendChild(cell);
+      });
+      col.querySelector(".legend4").innerHTML = data.map(function (d) {
+        return '<div class="lrow4"><span class="dot4" style="background:' + d.c + '"></span>' + d.name + '<b>' + d.value.toFixed(1) + '%</b></div>';
+      }).join("");
+    });
+  })();
+})();
+</script>
+
+</body></html>
